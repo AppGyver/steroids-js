@@ -17,7 +17,12 @@ page.open(captureUrl, function(status) {
     }
 
     page.onConsoleMessage = function (msg, line, id) {
+      if (typeof id === "undefined") {
+        console.log("Error in ether: "+msg+"");
+        return false;
+      }
       var fileName = id.split('/');
+
       // format the output message with filename, line number and message
       // weird gotcha: phantom only uses the first console.log argument it gets :(
       console.log(fileName[fileName.length-1]+', '+ line +': '+ msg);
