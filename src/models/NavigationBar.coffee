@@ -1,19 +1,40 @@
-class NavigationBar extends SteroidsNativeObject
+# Navigation bar description
+class NavigationBar extends NativeObject
   constructor: ->
-    #TODO:
-    # Use context
 
+  # ###Steroids.navigationBar.rightButton
   #
-  # Steroids.navigationBar.setTitle({ title: "Kikuli"}, {onFailure: kusi })
+  # ####Example:
+  #     Steroids.navigationBar.rightButton({
+  #         title: 'Settings'
+  #     }, {
+  #       onSuccess: function(){
+  #         // button was set
+  #       }
+  #     })
+  rightButton: new Button
+
+  # ###Steroids.navigationBar.show
   #
-  setTitle: (options, userCallbacks)->
+  #   Show navigationBar in current layer
+  #
+  # ####Example:
+  #     Steroids.navigationBar.show({
+  #         title: 'My Nav Title'
+  #     }, {
+  #       onSuccess: function(){
+  #         // navigation bar was set
+  #       }
+  #     })
+  show: (options, callbacks={})->
+    @nativeCall
+      method: "showNavigationBar"
+      parameters:
+        title: options.title
+      successCallbacks: [callbacks.onSuccess]
+      failureCallbacks: [callbacks.onFailure]
+
+  # TODO: implement this
+  setTitle: (options, callbacks)->
     whenSet = () ->
       @.title = options.title
-      @.emit "change", options
-
-    natiiviSilta
-      method: "setNavigationBarTitle"
-      options: options
-      failureCallbacks: [ whenFucked, userCallbacks.onSuccess]
-      successCallbacks: [ whenUnfucked, userCallbacks.onFailure ]
-
