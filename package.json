@@ -1,0 +1,17 @@
+{
+  "name": "SteroidsJS",
+  "version": "0.0.1",
+  "dependencies": {
+    "grunt"    : "0.3.x",
+    "grunt-coffee": "0.0.x",
+    "grunt-concat": "0.1.x",
+    "buster": "0.6.x",
+    "buster-coffee": "0.1.x"
+  },
+  "scripts": {
+    "start": "./bin/server.sh",
+    "stop": "./bin/kill-server.sh",
+    "test": "buster-test"
+  },
+  "private": true
+}

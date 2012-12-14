@@ -1,0 +1,2 @@
+class Layer
+  constructor: ->
