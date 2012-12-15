@@ -2,18 +2,23 @@ Steroids JS - html5 wrapper JS unfucked
 
 
 Development:
-  brew install phantomjs
   npm install
 
 Testing:
-  # run phantomjs & buster
+  # run buster server
   npm start
 
   # optional: open in device
   http://yourip:1111
 
-  # run tests in phantom and in device
+  # run tests
   npm test
 
-  # shutdown phantomjs & buster
+  # shutdown buster
   npm stop
+
+  # automatically restart buster server and run tests
+
+  ### (because it loses connections quite frequently)
+
+  npm testloop
