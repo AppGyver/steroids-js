@@ -21,7 +21,7 @@ module.exports = function(grunt) {
 
     watch: {
         files: ['src/**/*'],
-        tasks: 'coffee concat:dist shell:generate_documentation concat:docs'
+        tasks: 'default'
     },
 
     concat: {
@@ -67,7 +67,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-coffee');
 
   // Default task.
-  grunt.registerTask('default', 'coffee');
+  grunt.registerTask('default', 'coffee concat:dist shell:generate_documentation concat:docs');
 
 
 };
