@@ -3,7 +3,7 @@ while :; do
   npm start
   sleep 2
   echo "Press enter to start tests"
-  read
+  read input
 
   npm test
 

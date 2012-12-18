@@ -17,7 +17,6 @@ describe "UI", ->
     it "should show right button", (done)->
       Steroids.UI.navigationBar.rightButton.show {title: "Nibu"}
         onSuccess: (parameters)->
-          console.log parameters
           assert true
           done()
         onFailure: ->

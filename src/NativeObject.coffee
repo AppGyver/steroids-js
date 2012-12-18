@@ -6,11 +6,13 @@ class NativeObject
 
   # Run passed successCallbacks on API call failure failure
   didHappen: (options, parameters) ->
-    callback.call(@, parameters, options) for callback in options.successCallbacks
+    for callback in options.successCallbacks when callback?
+      callback.call(@, parameters, options)
 
   # Run passed failureCallbacks on API call failure failure
   didFail: (options)->
-    callback.call(@, parameters, options) for callback in options.failureCallbacks
+    for callback in options.failureCallbacks when callback?
+      callback.call(@, parameters, options)
 
 
   # Call to native layer via native bridge

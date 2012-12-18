@@ -2,11 +2,16 @@ class Steroids
   constructor: ->
     @debug "Steroids loaded"
   # Public NavigationBar class
-  NavigationBar: NavigationBar
+  @NavigationBar: NavigationBar
   # Public Layer class
-  Layer: Layer
+  @Layer: Layer
+  @layers: new LayerCollection
+
+  # Public Modal class
+  @Modal: new Modal
+
   # Public Tab class
-  Tab: Tab
+  @Tab: Tab
 
   # Current version
   @version: "0.0.1"

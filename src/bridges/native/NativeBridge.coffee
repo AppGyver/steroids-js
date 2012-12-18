@@ -72,14 +72,19 @@ class NativeBridge
       callbacks = {}
 
     # Build the request object for native API
-    request = JSON.stringify
+    request =
       method: method
       parameters: if options?.parameters? then options.parameters else {}
       callbacks: callbacks
 
+    # Add context parameters
+    request.parameters["view"] = window.top.AG_VIEW_ID
+    request.parameters["screen"] = window.top.AG_SCREEN_ID
+    request.parameters["layer"] = window.top.AG_LAYER_ID
+    #console.log(request)
     # Ensure websocket is open before sending anything
     if @websocket.readyState is 0
       @websocket.addEventListener "open", ()=>
-         @websocket.send request
+         @websocket.send JSON.stringify request
     else
-      @websocket.send request
+      @websocket.send JSON.stringify request

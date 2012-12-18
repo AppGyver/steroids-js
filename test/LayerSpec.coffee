@@ -1,17 +1,62 @@
 buster.spec.expose()
 
+describe "Layer", ->
+  before ->
+    this.timeout = 3000
+
+  it "should exist", ->
+
+    expect( typeof Steroids.Layer ).toBe "function"
+
+  it "should take location", ->
+    layer = new Steroids.Layer({location: "http://www.google.com"})
+
+    expect( layer.location ).toBe "http://www.google.com"
+
+
+  describe "collection", ->
+
+    it "should exist", ->
+      expect( Steroids.layers instanceof LayerCollection ).toBe true
+
+    it "should push and pop layers", (done)->
+
+      layer = new Steroids.Layer({location: "http://www.google.com"})
+
+      Steroids.layers.push(layer, {
+        onSuccess: ->
+          Steroids.layers.pop
+            onSuccess: ->
+              done()
+      })
 
 
 
-#@send "startApplication",
-#  parameters:
-#    id: @application_json.id
-#    name: @application_json.name
-#    path: @application_json.application_path
-#    server_host: URI(@json_url).hostname()
-#    server_port: ( URI(@json_url).port() || "80" )
-#    bottom_bars:  @application_json.bottom_bars
-#    configuration: @application_json.configuration
-#    appearance: @application_json.appearance
-#    authentication: @application_json.authentication
-#    update: @application_json.update
+    it "// should have an instance in Steroids.layer", ->
+      expect( Steroids.layer ).toBe "object"
+
+###
+#  it "should preload", ->
+
+#  it "should reload", ->
+#    Steroids.layer.reload()
+
+  it "should call onload callback when pushed", ->
+    # setTimeout(function(){
+    #   layer.onload = function(){alert('parametriolitämä')
+    #   Steroids.layers.push(layer})
+    # }, 5000)
+
+
+
+
+    it "should pop all layers", ->
+      # Steroids.layers.popAll()
+
+    it "should return all layers", ->
+      # Steroids.layers => [LayerObject, LayerObject]
+###
+
+
+
+
