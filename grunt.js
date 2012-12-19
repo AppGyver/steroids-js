@@ -30,6 +30,7 @@ module.exports = function(grunt) {
               '<file_strip_banner:lib/bridges/native/NativeBridge.js>',
               '<file_strip_banner:lib/NativeObject.js>',
               '<file_strip_banner:lib/models/Device.js>',
+              '<file_strip_banner:lib/models/Animation.js>',
               '<file_strip_banner:lib/models/App.js>',
               '<file_strip_banner:lib/models/Button.js>',
               '<file_strip_banner:lib/models/Modal.js>',
@@ -45,6 +46,7 @@ module.exports = function(grunt) {
       docs: {
         src: ['docs/Steroids.html',
               'docs/App.html',
+              'docs/Animation.html',
               'docs/Audio.html',
               'docs/Device.html',
               'docs/Button.html',

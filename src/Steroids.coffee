@@ -10,7 +10,11 @@ class Steroids
   # Public Modal class
   @Modal: new Modal
 
+  # Public singleton of Audio class
   @Audio: new Audio
+
+  # Public singleton of Animation class
+  @Animation: new Animation
 
   # Public Tab class
   @Tab: Tab

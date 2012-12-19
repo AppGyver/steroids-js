@@ -4,20 +4,20 @@
   "navigation_bar_style": "black",
   "status_bar_style": "black",
   "fullscreen": "false",
-  "fullscreen_start_url": "http://10.3.102.137:1111",
+  "fullscreen_start_url": "http://10.3.103.14:1111",
   "client_version": "edge",
   "background_eval_js_string": "",
   "bottom_bars": [
     {
       "position": 1,
       "title": "First",
-      "target_url": "http://10.3.102.137:1111",
+      "target_url": "http://10.3.103.14:1111",
       "image_path": "images/tabbar/native@2x.png"
     },
     {
       "position": 2,
       "title": "Second",
-      "target_url": "http://10.3.102.137:1111",
+      "target_url": "http://10.3.103.14:1111",
       "image_path": "images/tabbar/native@2x.png"
     }
   ],
