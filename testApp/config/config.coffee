@@ -12,14 +12,19 @@ Steroids.config.tabBar.enabled = true
 
 Steroids.config.tabBar.tabs = [
  {
-   title: "First"
+   title: "Audio"
    icon: "images/first@2x.png"
    location: "http://localhost:13101/views/audio/index.html"
  },
  {
-   title: "Second"
+   title: "Layers"
    icon: "images/first@2x.png"
    location: "http://localhost:13101/views/layers/index.html"
+ },
+ {
+   title: "Camera"
+   icon: "images/first@2x.png"
+   location: "http://localhost:13101/views/camera/index.html"
  }
 ]
 

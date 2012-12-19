@@ -16,6 +16,9 @@ class Steroids
   # Public singleton of Animation class
   @Animation: new Animation
 
+  # Public singleton of Camera class
+  @Camera: new Camera
+
   # Public Tab class
   @Tab: Tab
 
