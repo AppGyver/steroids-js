@@ -10,6 +10,8 @@ class Steroids
   # Public Modal class
   @Modal: new Modal
 
+  @Audio: new Audio
+
   # Public Tab class
   @Tab: Tab
 

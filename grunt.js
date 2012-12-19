@@ -37,6 +37,7 @@ module.exports = function(grunt) {
               '<file_strip_banner:lib/models/Layer.js>',
               '<file_strip_banner:lib/models/Tab.js>',
               '<file_strip_banner:lib/models/NavigationBar.js>',
+              '<file_strip_banner:lib/Audio.js>',
               '<file_strip_banner:lib/Steroids.js>'],
         dest: 'dist/steroids.js',
         separator: ';'
@@ -44,6 +45,7 @@ module.exports = function(grunt) {
       docs: {
         src: ['docs/Steroids.html',
               'docs/App.html',
+              'docs/Audio.html',
               'docs/Device.html',
               'docs/Button.html',
               'docs/NavigationBar.html',

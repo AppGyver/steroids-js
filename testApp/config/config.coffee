@@ -5,23 +5,23 @@ Steroids.config.location = "http://localhost:13101/views/layers/index.html"
 
 #Steroids.config.statusBar.enabled = true
 #Steroids.config.statusBar.style = "black" # options are: "default", "black" and "hidden"
-#Steroids.config.tabBar.enabled = false
+Steroids.config.tabBar.enabled = true
 
 #Steroids.config.worker.evalJS = "alert(1)"
 
 
-#Steroids.config.tabBar.tabs = [
-# {
-#   title: "First"
-#   icon: "images/first@2x.png"
-#   location: "http://localhost/hirvet/index.html"
-# },
-# {
-#   title: "Second"
-#   icon: "images/first@2x.png"
-#   location: "hirvet/index.html"
-# }
-#]
+Steroids.config.tabBar.tabs = [
+ {
+   title: "First"
+   icon: "images/first@2x.png"
+   location: "http://localhost:13101/views/audio/index.html"
+ },
+ {
+   title: "Second"
+   icon: "images/first@2x.png"
+   location: "http://localhost:13101/views/layers/index.html"
+ }
+]
 
 #Steroids.config.navigationBar.tintColor = ""
 #Steroids.config.navigationBar.titleColor = ""
