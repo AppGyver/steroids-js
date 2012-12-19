@@ -4,7 +4,7 @@
   <meta charset="utf8">
   <script>
     window.onerror = function(a,b,c){
-      alert("A: "+a+" B: "+b+" C: "+c);
+      console.log("A: "+a+" B: "+b+" C: "+c);
     }
   </script>
   <style>
@@ -14,7 +14,7 @@
   </style>
   <title>New Application</title>
   <script src="/appgyver/cordova.js"></script>
-  <script src="http://10.3.103.14:1337/steroids.js"></script>
+  <script src="/steroids.js"></script>
   <script src="/controllers/<%= yield.controller %>.js"></script>
 </head>
 <body>
