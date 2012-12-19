@@ -16,13 +16,16 @@ class LayerCollection extends NativeObject
     defaultOnSuccess = ()=>
       ()=>@array.push layer
 
+    parameters =
+      url: layer.location
+
+    parameters.pushAnimation = layer.pushAnimation if layer.pushAnimation?
+    parameters.pushAnimationDuration = layer.pushAnimationDuration if layer.pushAnimationDuration?
+    parameters.popAnimation = layer.popAnimation if layer.popAnimation?
+    parameters.popAnimationDuration = layer.popAnimationDuration if layer.popAnimationDuration?
+
     @nativeCall
       method: "openLayer"
-      parameters:
-        url: layer.location
-        pushAnimation: layer.pushAnimation
-        pushAnimationDuration: layer.pushAnimationDuration
-        popAnimation: layer.popAnimation
-        popAnimationDuration: layer.popAnimationDuration
+      parameters: parameters
       successCallbacks: [defaultOnSuccess, callbacks.onSuccess]
       failureCallbacks: [callbacks.onFailure]

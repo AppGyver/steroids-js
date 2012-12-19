@@ -1,12 +1,25 @@
 document.addEventListener "deviceready", ->
 
   openElement = document.getElementById("openLayer")
+  openFadeElement = document.getElementById("openLayerFade")
   popElement = document.getElementById("popLayer")
   openModalElement = document.getElementById("openModal")
 
   if openElement?
     openElement.addEventListener "touchstart", ->
       layer = new Steroids.Layer({location: "http://localhost:13101/views/layers/show.html"})
+      Steroids.layers.push layer
+
+  if openFadeElement?
+    openFadeElement.addEventListener "touchstart", ->
+      layer = new Steroids.Layer {
+        location: "http://localhost:13101/views/layers/show.html"
+        pushAnimation: "fade"
+        pushAnimationDuration: 1
+        popAnimation: "fade"
+        popAnimationDuration: 1
+      }
+
       Steroids.layers.push layer
 
   if popElement?
