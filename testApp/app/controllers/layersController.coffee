@@ -33,6 +33,19 @@ document.addEventListener "deviceready", ->
 
       Steroids.Modal.show(layer)
 
-      setTimeout(()->
+      setTimeout ()->
         Steroids.Modal.hide()
-      , 5000)
+      , 5000
+
+  Steroids.navigationBar.show {title: "LAYERS"}
+
+  Steroids.navigationBar.rightButton.show {title: "Modal"}, onRecurring: ()->
+    createLayer = new Steroids.Layer {
+      location:"http://www.google.com"
+    }
+
+    Steroids.Modal.show(createLayer)
+
+    setTimeout ()->
+      Steroids.Modal.hide()
+    , 5000
