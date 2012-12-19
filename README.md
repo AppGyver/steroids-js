@@ -3,6 +3,7 @@ Steroids JS - html5 wrapper JS unfucked
 
 Development:
   npm install
+  easy_install pygments
 
 Testing:
   # run buster server
