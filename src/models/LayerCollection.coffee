@@ -20,5 +20,9 @@ class LayerCollection extends NativeObject
       method: "openLayer"
       parameters:
         url: layer.location
+        pushAnimation: layer.pushAnimation
+        pushAnimationDuration: layer.pushAnimationDuration
+        popAnimation: layer.popAnimation
+        popAnimationDuration: layer.popAnimationDuration
       successCallbacks: [defaultOnSuccess, callbacks.onSuccess]
       failureCallbacks: [callbacks.onFailure]
