@@ -16,10 +16,8 @@ class Steroids
   # Current version
   @version: "0.0.1"
 
-  # User interface instances
-  @UI:
-    # current layer navigation bar
-    navigationBar: new NavigationBar
+  # current screen Navigation Bar
+  @navigationBar: new NavigationBar
 
   # Application instance
   @app: new App

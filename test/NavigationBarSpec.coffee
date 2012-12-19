@@ -1,21 +1,21 @@
 buster.spec.expose()
 
-describe "UI", ->
+describe "NavigationBar", ->
 
   it "should exist", ->
 
-    expect( typeof Steroids.UI ).toBe "object"
+    expect( typeof Steroids.navigationBar ).toBe "object"
 
   describe "navigationBar", ->
 
     it "should appear", (done)->
 
-      Steroids.UI.navigationBar.show {title: "Nebu"}
+      Steroids.navigationBar.show {title: "Steroids!"}
       assert true
       done()
 
     it "should show right button", (done)->
-      Steroids.UI.navigationBar.rightButton.show {title: "Nibu"}
+      Steroids.navigationBar.rightButton.show {title: "nabbula"}
         onSuccess: (parameters)->
           assert true
           done()

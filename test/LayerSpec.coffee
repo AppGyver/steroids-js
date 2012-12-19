@@ -3,7 +3,7 @@ buster.spec.expose()
 describe "Layer", ->
   before ->
     this.timeout = 3000
-
+###
   it "should exist", ->
 
     expect( typeof Steroids.Layer ).toBe "function"
@@ -35,7 +35,7 @@ describe "Layer", ->
     it "// should have an instance in Steroids.layer", ->
       expect( Steroids.layer ).toBe "object"
 
-###
+
 #  it "should preload", ->
 
 #  it "should reload", ->
