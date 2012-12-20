@@ -2,7 +2,7 @@ class LayerCollection extends NativeObject
   constructor: ->
     @array = []
 
-  pop: (callbacks={})->
+  pop: (options={}, callbacks={})->
     defaultOnSuccess = ()=>
       @array.pop()
 

@@ -9,9 +9,9 @@ class Modal extends NativeObject
       failureCallbacks: [callbacks.onFailure]
 
   # Hide Modal
-  hide: (callbacks={})->
+  hide: (options={}, callbacks={})->
     @nativeCall
       method: "closeModal"
-      parameters: {}
-      successCallbacks: []
+      parameters: options
+      successCallbacks: [callbacks.onSuccess]
       failureCallbacks: [callbacks.onFailure]

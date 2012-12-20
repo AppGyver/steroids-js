@@ -1,13 +1,13 @@
-###
 buster.spec.expose()
 
-
 describe "Modal", ->
+  before ->
+    @timeout = 5000
 
-  it "should present modal", ->
-      # Steroids.Modal.show(layer)
-
-  it "should hide presented modal", ->
-      # Steroids.Modal.hide()
-
-###
+  it "should show and hide modal", (done)->
+    # layer = new Steroids.Layer({location: window.location.href})
+    #
+    # Steroids.Modal.show layer, onSuccess: ->
+    #   Steroids.Modal.hide {}, onSuccess: ->
+        assert true
+        done()

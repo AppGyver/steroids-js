@@ -10,12 +10,12 @@ describe "NavigationBar", ->
 
     it "should appear", (done)->
 
-      Steroids.navigationBar.show {title: "Steroids!"}
+      Steroids.navigationBar.show {title: "Steroids!"}, onSuccess: ->
       assert true
       done()
 
     it "should show right button", (done)->
-      Steroids.navigationBar.rightButton.show {title: "nabbula"}
+      Steroids.navigationBar.rightButton.show {title: "nabbula"},
         onSuccess: (parameters)->
           assert true
           done()

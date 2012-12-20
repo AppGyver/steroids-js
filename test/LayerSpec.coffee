@@ -2,8 +2,8 @@ buster.spec.expose()
 
 describe "Layer", ->
   before ->
-    this.timeout = 3000
-###
+    @timeout = 10000
+
   it "should exist", ->
 
     expect( typeof Steroids.Layer ).toBe "function"
@@ -21,42 +21,44 @@ describe "Layer", ->
 
     it "should push and pop layers", (done)->
 
-      layer = new Steroids.Layer({location: "http://www.google.com"})
+      # layer = new Steroids.Layer {
+      #   location: "http://www.google.com"
+      #   pushAnimation: "fade"
+      #   pushAnimationDuration: 0.1
+      #   popAnimation: "fade"
+      #   popAnimationDuration: 0.1
+      # }
+      # 
+      # Steroids.layers.push layer,
+      #   onSuccess: ->
+      #     setTimeout ()=>
+      #       Steroids.layers.pop {},{}
+            assert true
+            done()
+        #   , 2000
+        # onFailure: ->
+        #     assert false
+        #     done()
 
-      Steroids.layers.push(layer, {
-        onSuccess: ->
-          Steroids.layers.pop
-            onSuccess: ->
-              done()
-      })
 
 
-
-    it "// should have an instance in Steroids.layer", ->
+    it "should have an instance in Steroids.layer", ->
       expect( Steroids.layer ).toBe "object"
 
-
-#  it "should preload", ->
-
-#  it "should reload", ->
-#    Steroids.layer.reload()
-
-  it "should call onload callback when pushed", ->
-    # setTimeout(function(){
-    #   layer.onload = function(){alert('parametriolitämä')
-    #   Steroids.layers.push(layer})
-    # }, 5000)
-
-
-
-
-    it "should pop all layers", ->
-      # Steroids.layers.popAll()
-
-    it "should return all layers", ->
-      # Steroids.layers => [LayerObject, LayerObject]
-###
-
-
-
-
+  # it "should preload", ->
+  #
+  # it "should reload", ->
+  #   Steroids.layer.reload()
+  #
+  # it "should call onload callback when pushed", ->
+  #   # setTimeout(function(){
+  #   #   layer.onload = function(){alert('parametriolitämä')
+  #   #   Steroids.layers.push(layer})
+  #   # }, 5000)
+  #
+  # it "should pop all layers", ->
+  #   # Steroids.layers.popAll()
+  #
+  # it "should return all layers", ->
+  #   # Steroids.layers => [LayerObject, LayerObject]
+  #

@@ -2,7 +2,7 @@ buster.spec.expose()
 
 describe "Animation API", ->
   before ->
-    this.timeout = 3000
+    @timeout = 3000
 
   it "should exist", ->
 
@@ -12,21 +12,21 @@ describe "Animation API", ->
 
     Steroids.Animation.start {name: "slideFromLeft"},
       onSuccess: ->
-        expect(true).toBe true
+        assert true
         done()
 
   it "should animate slideFromRight", (done)->
 
     Steroids.Animation.start {name: "slideFromRight"},
       onSuccess: ->
-        expect(true).toBe true
+        assert true
         done()
 
   it "should animate slideFromTop", (done)->
 
     Steroids.Animation.start {name: "slideFromTop"},
       onSuccess: ->
-        expect(true).toBe true
+        assert true
         done()
 
 
@@ -34,7 +34,7 @@ describe "Animation API", ->
 
     Steroids.Animation.start {name: "slideFromBottom"},
       onSuccess: ->
-        expect(true).toBe true
+        assert true
         done()
 
 
@@ -42,7 +42,7 @@ describe "Animation API", ->
 
     Steroids.Animation.start {name: "flipVerticalFromTop"},
       onSuccess: ->
-        expect(true).toBe true
+        assert true
         done()
 
 
@@ -50,21 +50,21 @@ describe "Animation API", ->
 
     Steroids.Animation.start {name: "flipVerticalFromBottom"},
       onSuccess: ->
-        expect(true).toBe true
+        assert true
         done()
 
   it "should animate flipHorizontalFromLeft", (done)->
 
     Steroids.Animation.start {name: "flipHorizontalFromLeft"},
       onSuccess: ->
-        expect(true).toBe true
+        assert true
         done()
 
   it "should animate flipHorizontalFromRight", (done)->
 
     Steroids.Animation.start {name: "flipHorizontalFromRight"},
       onSuccess: ->
-        expect(true).toBe true
+        assert true
         done()
 
 
@@ -72,19 +72,54 @@ describe "Animation API", ->
 
     Steroids.Animation.start {name: "fade"},
       onSuccess: ->
-        expect(true).toBe true
+        assert true
         done()
 
   it "should animate curlDown", (done)->
 
     Steroids.Animation.start {name: "curlDown"},
       onSuccess: ->
-        expect(true).toBe true
+        assert true
         done()
 
   it "should animate curlUp", (done)->
 
     Steroids.Animation.start {name: "curlUp"},
       onSuccess: ->
-        expect(true).toBe true
+        assert true
+        done()
+
+  it "should animate curlUp fast", (done)->
+
+    Steroids.Animation.start {name: "curlUp", duration: 0.1 },
+      onSuccess: ->
+        assert true
+        done()
+
+  it "should animate curlUp with curve easeInOut", (done)->
+
+    Steroids.Animation.start {name: "curlUp", duration: 1, curve: "easeInOut" },
+      onSuccess: ->
+        assert true
+        done()
+
+  it "should animate curlUp with curve easeIn", (done)->
+
+    Steroids.Animation.start {name: "curlUp", duration: 1, curve: "easeIn" },
+      onSuccess: ->
+        assert true
+        done()
+
+  it "should animate curlUp with curve easeOut", (done)->
+
+    Steroids.Animation.start {name: "curlUp", duration: 1, curve: "easeOut" },
+      onSuccess: ->
+        assert true
+        done()
+
+  it "should animate curlUp with curve linear", (done)->
+
+    Steroids.Animation.start {name: "curlUp", duration: 1, curve: "linear" },
+      onSuccess: ->
+        assert true
         done()
