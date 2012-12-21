@@ -2,7 +2,9 @@ class NativeObject
   context: undefined
 
   # Communication endpoint to native API
-  nativeBridge: new NativeBridge
+  # Native bridge is the communication layer from WebView to Native
+  # Valid values are subclasses of Bridge
+  nativeBridge: new WebsocketBridge
 
   # Run passed recurringCallbacks on API call
   didOccur: (options, parameters) ->

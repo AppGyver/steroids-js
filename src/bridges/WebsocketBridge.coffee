@@ -1,5 +1,5 @@
-# Native bridge is the communication layer from WebView to Native
-class NativeBridge
+# Communication bridge that utilizes a websocket through the network layer
+class WebsocketBridge extends Bridge
   constructor: ()->
     # Use reopen to open WebSocket
     @reopen()
