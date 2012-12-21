@@ -5,14 +5,8 @@ describe "app", ->
 
     expect( typeof Steroids.app ).toBe "object"
 
-  it "should get path", (done)->
-
-    Steroids.app.path {},
-      onSuccess: (parameters)->
-        assert( /^\/var/.test parameters.applicationFullPath )
-        assert( /^applications/.test parameters.applicationPath )
-        done()
-
-      onFailure: ->
-        assert false
-        done()
+  # it "should have path", (done)->
+  #   Steroids.on 'ready', ()=>
+  #     assert( /^\/var/.test Steroids.app.absolutePath )
+  #     assert( /^applications/.test Steroids.app.path )
+  #     done()

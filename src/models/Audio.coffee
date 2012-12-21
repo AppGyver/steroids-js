@@ -4,16 +4,28 @@ class Audio extends NativeObject
   #
   #   Play an audio file from the file system
   #
-  # ####Example:
+  # ####Examples:
   #     Steroids.Audio.play({
+  #       path: "sounds/drum.mp3"
+  #     });
+  #
+  #     Steroids.Audio.play({
+  #       absolutePath: Steroids.app.absolutePath + "/sounds/drum.mp3"
+  #     });
   play: (options, callbacks={})->
-    @nativeCall
-      method: "play"
-      parameters: {
-        filenameWithPath:  options.fullPath
-      }
-      successCallbacks: [callbacks.onSuccess]
-      failureCallbacks: [callbacks.onFailure]
+    Steroids.on "ready", ()=>
+      if options.absolutePath
+        mediaPath = options.absolutePath
+      else
+        mediaPath = "#{Steroids.app.path}/#{options.path}"
+
+      @nativeCall
+        method: "play"
+        parameters: {
+          filenameWithPath: mediaPath
+        }
+        successCallbacks: [callbacks.onSuccess]
+        failureCallbacks: [callbacks.onFailure]
 
   # ###Steroids.Audio.prime()
   #
