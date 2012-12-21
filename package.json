@@ -21,5 +21,6 @@
   "private": true,
   "scripts": {
     "install": "grunt"
-  }
+  },
+  "main": "main.js"
 }
