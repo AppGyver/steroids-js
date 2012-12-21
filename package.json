@@ -18,5 +18,8 @@
     "gdocs": "find ./src -name '*.coffee' |xargs echo|xargs docco"
 
   },
-  "private": true
+  "private": true,
+  "scripts": {
+    "install": "./grunt"
+  }
 }
