@@ -20,6 +20,6 @@
   },
   "private": true,
   "scripts": {
-    "install": "./grunt"
+    "install": "grunt"
   }
 }
