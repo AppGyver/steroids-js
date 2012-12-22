@@ -27,6 +27,7 @@ module.exports = function(grunt) {
     concat: {
       dist: {
         src: ['<banner>',
+              '<file_strip_banner:lib/bridges/Bridge.js>',
               '<file_strip_banner:lib/bridges/WebsocketBridge.js>',
               '<file_strip_banner:lib/NativeObject.js>',
               '<file_strip_banner:lib/models/Device.js>',
@@ -59,6 +60,7 @@ module.exports = function(grunt) {
               'docs/Layer.html',
               'docs/Tab.html',
               'docs/NativeObject.html',
+              'docs//Bridge.html',
               'docs//WebsocketBridge.html'],
         dest: 'docs/<%= pkg.name %>-<%= pkg.version %>.html',
         separator: '<hr>'
