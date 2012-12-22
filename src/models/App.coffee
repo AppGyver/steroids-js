@@ -19,14 +19,14 @@ class App extends NativeObject
   #
   # #### Example:
   #
-  # Steroids.app.path == "/var/mobile/Applications/AAAAAAAA-AAAA-AAAA-AAAA-AAAAAAAAAAAA/Scanner.app/Documents/applications/local/123456789/"
+  # Steroids.app.absolutePath == "/var/mobile/Applications/AAAAAAAA-AAAA-AAAA-AAAA-AAAAAAAAAAAA/Scanner.app/Documents/applications/local/123456789/"
   #
-  fullPath: undefined
+  absolutePath: undefined
 
   constructor: ->
     @getPath {}, onSuccess: (params)=>
       @path = params.applicationPath
-      @fullPath = params.applicationFullPath
+      @absolutePath = params.applicationFullPath
       Steroids.markComponentReady("App")
 
   getPath: (options, callbacks)->

@@ -29,9 +29,8 @@ class Layer extends NativeObject
   #
   # Valid values for attributes:
   #   location:
-  #     Can be file URL path relative to the application directory. Example value: 'index.html'
-  #     Can be a local URL. Files are served from the application directory. Example value: "http://localhost:13101/" (would serve "/index.html")
-  #     Can be a remote URL. All reachable URLs are valid. Example value: "http://www.google.com"
+  #     Can be a path relative to the application path. Example values: 'index.html'
+  #     Can be a full URL. All reachable URLs are valid. Example value: "http://www.google.com"
   #   pushAnimation and popAnimation:
   #     fade
   #       A transition that dissolves from one view to the next.
@@ -56,6 +55,11 @@ class Layer extends NativeObject
   #
   constructor: (options)->
     @location = options.location
+
+    if @location.indexOf("://") == -1 # if a path
+      if window.location.href.indexOf("file://") == -1 # if not currently on file protocol
+        @location = "#{window.location.protocol}//#{window.location.host}/#{@location}"
+
     @pushAnimation = options.pushAnimation if options.pushAnimation?
     @pushAnimationDuration = options.pushAnimationDuration if options.pushAnimationDuration?
     @popAnimation = options.popAnimation if options.popAnimation?

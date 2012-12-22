@@ -7,13 +7,13 @@ document.addEventListener "deviceready", ->
 
   if openElement?
     openElement.addEventListener "touchstart", ->
-      layer = new Steroids.Layer({location: "http://localhost:13101/views/layers/show.html"})
+      layer = new Steroids.Layer({location: "views/layers/show.html"})
       Steroids.layers.push layer: layer
 
   if openFadeElement?
     openFadeElement.addEventListener "touchstart", ->
       layer = new Steroids.Layer {
-        location: "http://localhost:13101/views/layers/show.html"
+        location: "views/layers/show.html"
         pushAnimation: "fade"
         pushAnimationDuration: 1
         popAnimation: "fade"
