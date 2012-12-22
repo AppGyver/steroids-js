@@ -1,26 +1,58 @@
 {
   "name": "steroids-js",
-  "version": "0.0.6",
-  "dependencies": {
-    "grunt"    : "0.3.x",
-    "grunt-coffee": "0.0.x",
-    "grunt-concat": "0.1.x",
-    "grunt-shell": "0.1.x",
-    "buster": "0.6.x",
-    "buster-coffee": "0.1.x",
-    "docco": "0.4.x"
-  },
+  "version": "0.0.7",
+
+  "private": true,
+
+  "license": "MIT",
+  "author": "AppGyver <contact@appgyver.com>",
+  "description": "AppGyver Steroids javascript library",
+  "contributors": [
+    {
+      "name": "Matti Paksula",
+      "email": "matti.paksula@appgyver.com"
+    },
+    {
+      "name": "Jesse Ikonen",
+      "email": "jesse.ikonen@appgyver.com"
+    },
+    {
+      "name": "Juha Suuraho",
+      "email": "juha.suuraho@appgyver.com"
+    }
+  ],
+
+  "main": "main.js",
+
   "scripts": {
     "stop": "./bin/kill-server.sh",
     "start": "./bin/server.sh",
     "test": "buster-test",
     "testloop": "./bin/testloop.sh",
-    "gdocs": "find ./src -name '*.coffee' |xargs echo|xargs docco"
-
-  },
-  "private": true,
-  "scripts": {
+    "gdocs": "find ./src -name '*.coffee' |xargs echo|xargs docco",
     "install": "grunt"
   },
-  "main": "main.js"
+
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/AppGyver/steroids-js.git"
+  },
+
+  "engines": {
+    "node": ">=0.8.14",
+    "npm":  ">=1.1.65"
+  },
+
+  "dependencies": {
+    "grunt"    : "0.3.x",
+    "grunt-coffee": "0.0.x",
+    "grunt-concat": "0.1.x",
+    "grunt-shell": "0.1.x"
+  },
+
+  "devDependencies": {
+    "buster": "0.6.x",
+    "buster-coffee": "0.1.x",
+    "docco": "0.4.x"
+  }
 }
