@@ -6,15 +6,15 @@ describe "Flash API", ->
 
   it "should exist", ->
 
-    expect( typeof Steroids.Camera.flash ).toBe "object"
+    expect( typeof Steroids.camera.flash ).toBe "object"
 
   describe "Toggle", ->
 
     it "should toggle on and off", (done)->
 
-      Steroids.Camera.flash.toggle {},
+      Steroids.camera.flash.toggle {},
         onSuccess: ->
-          Steroids.Camera.flash.toggle {},
+          Steroids.camera.flash.toggle {},
             onSuccess: ->
               assert true
               done()

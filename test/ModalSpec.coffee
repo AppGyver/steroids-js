@@ -7,7 +7,7 @@ describe "Modal", ->
   it "should show and hide modal", (done)->
     # layer = new Steroids.Layer({location: window.location.href})
     #
-    # Steroids.Modal.show layer, onSuccess: ->
-    #   Steroids.Modal.hide {}, onSuccess: ->
+    # Steroids.modal.show layer, onSuccess: ->
+    #   Steroids.modal.hide {}, onSuccess: ->
         assert true
         done()

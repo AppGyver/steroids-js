@@ -31,10 +31,10 @@ document.addEventListener "deviceready", ->
 
       layer = new Steroids.Layer({location: "http://www.google.com"})
 
-      Steroids.Modal.show(layer)
+      Steroids.modal.show(layer)
 
       setTimeout ()->
-        Steroids.Modal.hide()
+        Steroids.modal.hide()
       , 5000
 
   Steroids.navigationBar.show {title: "LAYERS"}
@@ -44,8 +44,8 @@ document.addEventListener "deviceready", ->
       location:"http://www.google.com"
     }
 
-    Steroids.Modal.show(createLayer)
+    Steroids.modal.show(createLayer)
 
     setTimeout ()->
-      Steroids.Modal.hide()
+      Steroids.modal.hide()
     , 5000

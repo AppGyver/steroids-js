@@ -28,7 +28,7 @@ describe "Layer", ->
       #   popAnimation: "fade"
       #   popAnimationDuration: 0.1
       # }
-      # 
+      #
       # Steroids.layers.push layer,
       #   onSuccess: ->
       #     setTimeout ()=>
@@ -39,11 +39,6 @@ describe "Layer", ->
         # onFailure: ->
         #     assert false
         #     done()
-
-
-
-    it "should have an instance in Steroids.layer", ->
-      expect( Steroids.layer ).toBe "object"
 
   # it "should preload", ->
   #
