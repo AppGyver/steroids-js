@@ -1,6 +1,6 @@
 class Steroids
   # Current version
-  @version: "0.0.1"
+  @version: "1.0.0"
 
   # Public Layer class
   @Layer: Layer
