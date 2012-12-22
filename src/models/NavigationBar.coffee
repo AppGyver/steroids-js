@@ -2,39 +2,34 @@
 class NavigationBar extends NativeObject
   constructor: ->
 
-  # ###Steroids.navigationBar.rightButton
-  #
-  # ####Example:
-  #     Steroids.navigationBar.rightButton({
-  #         title: 'Settings'
-  #     }, {
-  #       onSuccess: function(){
-  #         // button was set
-  #       }
-  #     })
+  # Singleton Button representing the button on the right side of navigation bar.
   rightButton: new Button
 
-  # ###Steroids.navigationBar.show
+  # ### Steroids.navigationBar.show
   #
-  #   Show navigationBar in current layer
+  # Show navigationBar in current layer
   #
-  # ####Example:
-  #     Steroids.navigationBar.show({
-  #         title: 'My Nav Title'
-  #     }, {
-  #       onSuccess: function(){
-  #         // navigation bar was set
-  #       }
-  #     })
-  show: (options, callbacks={})->
+  # Parameters:
+  #   title:
+  #     Text visible in the center of navigation bar.
+  #
+  # #### Example:
+  #
+  # Steroids.navigationBar.show({
+  #   title: 'My Nav Title'
+  # },{
+  #   onSuccess: function() {
+  #     console.log("Navigation bar is now visible");
+  #   },
+  #   onFailure: function(e) {
+  #     console.log("Navigation bar could not be shown: " + e);
+  #   }
+  # });
+  #
+  show: (options={}, callbacks={})->
     @nativeCall
       method: "showNavigationBar"
       parameters:
         title: options.title
       successCallbacks: [callbacks.onSuccess]
       failureCallbacks: [callbacks.onFailure]
-
-  # TODO: implement this
-  setTitle: (options, callbacks)->
-    whenSet = () ->
-      @.title = options.title

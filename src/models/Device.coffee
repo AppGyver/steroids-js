@@ -1,16 +1,19 @@
+# Device description
 class Device extends NativeObject
   constructor: ->
 
-  # ###Steroids.device.ping
+  # ### Steroids.device.ping
   #
-  #   Ping the native side using given payload
+  # Ping the native side using given payload
   #
-  # ####Example:
-  #     Steroids.device.ping({data: 'BIGDATA'}, {
-  #       onSuccess: function(parameters){
-  #         parameters.message == 'pong' // => true
-  #       }
-  #     })
+  # #### Example:
+  #
+  # Steroids.device.ping({data: 'BIGDATA'}, {
+  #   onSuccess: function(parameters){
+  #     parameters.message == 'pong' // => true
+  #   }
+  # });
+  #
   ping: (options, callbacks={})->
     @nativeCall
       method: "ping"

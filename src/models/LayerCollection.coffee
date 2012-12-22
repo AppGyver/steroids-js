@@ -1,7 +1,20 @@
+# LayerCollection description
 class LayerCollection extends NativeObject
   constructor: ->
     @array = []
 
+  # ### Steroids.layers.pop
+  #
+  # Removes the topmost layer on screen.
+  #
+  # #### Example:
+  #
+  # Steroids.layers.pop({}, { onSuccess: function() {
+  #   console.log("Layer is being popped");
+  # }, onFailure: function(e) {
+  #   console.log("Layer could not be popped: " + e);
+  # }});
+  #
   pop: (options={}, callbacks={})->
     defaultOnSuccess = ()=>
       @array.pop()
@@ -12,17 +25,39 @@ class LayerCollection extends NativeObject
       failureCallbacks: [callbacks.onFailure]
     @array.pop()
 
-  push: (layer, callbacks={})->
+  # ### Steroids.layers.push
+  #
+  # Pushes a Layer class object to be shown on screen.
+  #
+  # Parameters:
+  #   layer:
+  #     Layer object to be pushed
+  #
+  # #### Example:
+  #
+  # var layer = new Steroids.Layer({
+  #   location: "http://google.com/"
+  # });
+  #
+  # Steroids.layers.push({
+  #   layer: layer
+  # }, { onSuccess: function() {
+  #   console.log("Layer is being pushed");
+  # }, onFailure: function(e) {
+  #   console.log("Layer could not be pushed: "+ e);
+  # }});
+  #
+  push: (options={}, callbacks={})->
     defaultOnSuccess = ()=>
-      ()=>@array.push layer
+      ()=>@array.push options.layer
 
     parameters =
-      url: layer.location
+      url: options.layer.location
 
-    parameters.pushAnimation = layer.pushAnimation if layer.pushAnimation?
-    parameters.pushAnimationDuration = layer.pushAnimationDuration if layer.pushAnimationDuration?
-    parameters.popAnimation = layer.popAnimation if layer.popAnimation?
-    parameters.popAnimationDuration = layer.popAnimationDuration if layer.popAnimationDuration?
+    parameters.pushAnimation = options.layer.pushAnimation if options.layer.pushAnimation?
+    parameters.pushAnimationDuration = options.layer.pushAnimationDuration if options.layer.pushAnimationDuration?
+    parameters.popAnimation = options.layer.popAnimation if options.layer.popAnimation?
+    parameters.popAnimationDuration = options.layer.popAnimationDuration if options.layer.popAnimationDuration?
 
     @nativeCall
       method: "openLayer"

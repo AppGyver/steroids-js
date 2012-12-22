@@ -1,6 +1,5 @@
+# NativeObject description
 class NativeObject
-  context: undefined
-
   # Communication endpoint to native API
   # Native bridge is the communication layer from WebView to Native
   # Valid values are subclasses of Bridge

@@ -1,38 +1,36 @@
 class Steroids
-  constructor: ->
-    @debug "Steroids loaded"
+  # Current version
+  @version: "0.0.1"
 
-  # Public NavigationBar class
-  @NavigationBar: NavigationBar
   # Public Layer class
   @Layer: Layer
-  @layers: new LayerCollection
-
-  # Public Modal class
-  @Modal: new Modal
-
-  # Public singleton of Audio class
-  @Audio: new Audio
-
-  # Public singleton of Animation class
-  @Animation: new Animation
-
-  # Public singleton of Camera class
-  @Camera: new Camera
 
   # Public Tab class
   @Tab: Tab
 
-  # Current version
-  @version: "0.0.1"
+  # Public Animation singleton
+  #TODO: refactor into a class that is instantiated
+  @Animation: new Animation
 
-  # current screen Navigation Bar
+  # Public LayerCollection singleton
+  @layers: new LayerCollection
+
+  # Public Modal singleton
+  @modal: new Modal
+
+  # Public Audio singleton
+  @audio: new Audio
+
+  # Public Camera singleton
+  @camera: new Camera
+
+  # Public NavigationBar singleton
   @navigationBar: new NavigationBar
 
-  # Application instance
+  # Public App singleton
   @app: new App
 
-  # Device instance
+  # Public Device singleton
   @device: new Device
 
   @eventCallbacks = {}
@@ -62,10 +60,9 @@ class Steroids
     if @waitingForComponents.length == 0
       @fireSteroidsEvent "ready"
 
-
-  # Debugging boolean
-  debugBoolean: false
+  # Debugging boolean to enable debug logging
+  debugEnabled: false
 
   # Debug function
   debug: (msg)->
-    console.log msg if @debugBoolean
+    console.log msg if @debugEnabled
