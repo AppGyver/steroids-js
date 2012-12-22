@@ -2,8 +2,6 @@
   "name": "steroids-js",
   "version": "0.0.7",
 
-  "private": true,
-
   "license": "MIT",
   "author": "AppGyver <contact@appgyver.com>",
   "description": "AppGyver Steroids javascript library",
