@@ -1,6 +1,6 @@
 {
   "name": "steroids-js",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "dependencies": {
     "grunt"    : "0.3.x",
     "grunt-coffee": "0.0.x",
