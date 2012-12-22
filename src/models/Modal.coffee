@@ -26,7 +26,7 @@ class Modal extends NativeObject
     @nativeCall
       method: "openModal"
       parameters:
-        url: layer.location
+        url: options.layer.location
       successCallbacks: [callbacks.onSuccess]
       failureCallbacks: [callbacks.onFailure]
 

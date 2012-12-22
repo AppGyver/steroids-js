@@ -8,7 +8,7 @@ document.addEventListener "deviceready", ->
   if openElement?
     openElement.addEventListener "touchstart", ->
       layer = new Steroids.Layer({location: "http://localhost:13101/views/layers/show.html"})
-      Steroids.layers.push layer
+      Steroids.layers.push layer: layer
 
   if openFadeElement?
     openFadeElement.addEventListener "touchstart", ->
@@ -20,7 +20,7 @@ document.addEventListener "deviceready", ->
         popAnimationDuration: 1
       }
 
-      Steroids.layers.push layer
+      Steroids.layers.push layer: layer
 
   if popElement?
     popElement.addEventListener "touchstart", ->
@@ -31,7 +31,7 @@ document.addEventListener "deviceready", ->
 
       layer = new Steroids.Layer({location: "http://www.google.com"})
 
-      Steroids.modal.show(layer)
+      Steroids.modal.show layer: layer
 
       setTimeout ()->
         Steroids.modal.hide()
@@ -44,7 +44,7 @@ document.addEventListener "deviceready", ->
       location:"http://www.google.com"
     }
 
-    Steroids.modal.show(createLayer)
+    Steroids.modal.show layer: createLayer
 
     setTimeout ()->
       Steroids.modal.hide()
