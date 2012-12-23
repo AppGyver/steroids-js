@@ -2,7 +2,7 @@ module.exports = function(grunt) {
 
   // Project configuration.
   var documentationSourceFiles = [
-    'docs/Steroids.html',
+//    'docs/Steroids.html',
     'docs/App.html',
     'docs/Animation.html',
     'docs/Audio.html',
@@ -13,10 +13,10 @@ module.exports = function(grunt) {
     'docs/NavigationBar.html',
     'docs/LayerCollection.html',
     'docs/Layer.html',
-    'docs/Tab.html',
-    'docs/NativeObject.html',
-    'docs//Bridge.html',
-    'docs//WebsocketBridge.html'
+    'docs/Tab.html'
+//    'docs/NativeObject.html',
+//    'docs//Bridge.html',
+//    'docs//WebsocketBridge.html'
   ]
 
   grunt.initConfig({
