@@ -23,3 +23,6 @@ Testing:
   ### (because it loses connections quite frequently)
 
   npm testloop
+
+Generate Docs:
+  Grunt default task takes care of generating the docs.
