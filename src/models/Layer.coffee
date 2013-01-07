@@ -64,3 +64,22 @@ class Layer extends NativeObject
     @pushAnimationDuration = options.pushAnimationDuration if options.pushAnimationDuration?
     @popAnimation = options.popAnimation if options.popAnimation?
     @popAnimationDuration = options.popAnimationDuration if options.popAnimationDuration?
+
+    @params = @getParams()
+
+  # ### Steroids.layer.params
+  # Query string parameters of the layer's URL as a hash, initialized in the constructor
+  #
+  # #### Example:
+  #
+  # var layer = new Steroids.Layer({ location: "pills/show.html?pill=red" });
+  # var pillValue = Steroids.layer.params["pill"];
+  params: {}
+
+  getParams: ()->
+    params = {}
+    pairStrings = @location.slice(@location.indexOf('?') + 1).split('&')
+    for pairString in pairStrings
+      pair = pairString.split '='
+      params[pair[0]] = pair[1]
+    return params
