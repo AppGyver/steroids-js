@@ -11,5 +11,4 @@ Bugfixes:
 
 ## 0.1.0 (2012-12-22)
 
-Initial release
-
+Initial release, see API documentation
