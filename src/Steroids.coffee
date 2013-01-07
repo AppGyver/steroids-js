@@ -15,6 +15,9 @@ class Steroids
   # Public LayerCollection singleton
   @layers: new LayerCollection
 
+  # Current Layer
+  @layer: new Layer { location: window.location.href }
+
   # Public Modal singleton
   @modal: new Modal
 
