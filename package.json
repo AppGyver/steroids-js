@@ -1,6 +1,6 @@
 {
   "name": "steroids-js",
-  "version": "0.1.2",
+  "version": "0.1.3",
 
   "license": "MIT",
   "author": "AppGyver <contact@appgyver.com>",
@@ -27,7 +27,8 @@
     "start": "./bin/server.sh",
     "test": "buster-test",
     "testloop": "./bin/testloop.sh",
-    "gdocs": "find ./src -name '*.coffee' |xargs echo|xargs docco"
+    "gdocs": "find ./src -name '*.coffee' |xargs echo|xargs docco",
+    "install": "grunt coffee concat:dist"
   },
 
   "repository": {
