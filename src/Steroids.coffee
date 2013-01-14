@@ -1,44 +1,8 @@
-class Steroids
-  # Current version
-  @version: "0.1.1"
+class SteroidsFramework
+  eventCallbacks: {}
+  waitingForComponents: []
 
-  # Public Layer class
-  @Layer: Layer
-
-  # Public Tab class
-  @Tab: Tab
-
-  # Public Animation singleton
-  #TODO: refactor into a class that is instantiated
-  @Animation: new Animation
-
-  # Public LayerCollection singleton
-  @layers: new LayerCollection
-
-  # Current Layer
-  @layer: new Layer { location: window.location.href }
-
-  # Public Modal singleton
-  @modal: new Modal
-
-  # Public Audio singleton
-  @audio: new Audio
-
-  # Public Camera singleton
-  @camera: new Camera
-
-  # Public NavigationBar singleton
-  @navigationBar: new NavigationBar
-
-  # Public App singleton
-  @app: new App
-
-  # Public Device singleton
-  @device: new Device
-
-  @eventCallbacks = {}
-
-  @on: (event, callback)->
+  on: (event, callback)->
     if @["#{event}_has_fired"]?
       callback()
     else
@@ -46,7 +10,7 @@ class Steroids
       @eventCallbacks[event].push(callback)
 
 
-  @fireSteroidsEvent: (event)->
+  fireSteroidsEvent: (event)->
     @["#{event}_has_fired"] = new Date().getTime()
 
     if @eventCallbacks[event]?
@@ -54,18 +18,53 @@ class Steroids
         callback()
         @eventCallbacks[event].splice @eventCallbacks[event].indexOf(callback), 1
 
-  @waitingForComponents: [
-    "App"
-  ]
-
-  @markComponentReady: (model)->
+  markComponentReady: (model)->
     @waitingForComponents.splice @waitingForComponents.indexOf(model), 1
     if @waitingForComponents.length == 0
       @fireSteroidsEvent "ready"
 
-  # Debugging boolean to enable debug logging
-  debugEnabled: false
+window.Steroids = new SteroidsFramework
 
-  # Debug function
-  debug: (msg)->
-    console.log msg if @debugEnabled
+# Communication endpoint to native API
+# Native bridge is the communication layer from WebView to Native
+# Valid values are subclasses of Bridge
+window.Steroids.nativeBridge = Bridge.getBestNativeBridge()
+
+# Current version
+window.Steroids.version = "0.1.1"
+
+
+# Public Layer class
+window.Steroids.Layer = Layer
+
+# Public Tab class
+window.Steroids.Tab = Tab
+
+# Public Animation singleton
+#TODO: refactor into a class that is instantiated
+window.Steroids.Animation = new Animation
+
+# Public LayerCollection singleton
+window.Steroids.layers = new LayerCollection
+
+# Current Layer
+window.Steroids.layer = new Layer { location: window.location.href }
+
+# Public Modal singleton
+window.Steroids.modal = new Modal
+
+# Public Audio singleton
+window.Steroids.audio = new Audio
+
+# Public Camera singleton
+window.Steroids.camera = new Camera
+
+# Public NavigationBar singleton
+window.Steroids.navigationBar = new NavigationBar
+
+# Public App singleton
+window.Steroids.waitingForComponents.push("App")
+window.Steroids.app = new App
+
+# Public Device singleton
+window.Steroids.device = new Device

@@ -24,6 +24,7 @@ class App extends NativeObject
   absolutePath: undefined
 
   constructor: ->
+    super()
     @getPath {}, onSuccess: (params)=>
       @path = params.applicationPath
       @absolutePath = params.applicationFullPath

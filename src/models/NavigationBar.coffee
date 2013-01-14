@@ -1,7 +1,5 @@
 # Navigation bar description
 class NavigationBar extends NativeObject
-  constructor: ->
-
   # Singleton Button representing the button on the right side of navigation bar.
   rightButton: new Button
 

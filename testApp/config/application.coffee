@@ -1,7 +1,7 @@
 Steroids = require "steroids"
 
 Steroids.config.name = "Steroids"
-Steroids.config.location = "http://localhost:13101/views/layers/index.html"
+Steroids.config.location = "views/layers/index.html"
 
 #Steroids.config.statusBar.enabled = true
 #Steroids.config.statusBar.style = "black" # options are: "default", "black" and "hidden"

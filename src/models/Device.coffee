@@ -1,7 +1,5 @@
 # Device description
 class Device extends NativeObject
-  constructor: ->
-
   # ### Steroids.device.ping
   #
   # Ping the native side using given payload

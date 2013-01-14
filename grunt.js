@@ -47,6 +47,7 @@ module.exports = function(grunt) {
         src: [
           '<banner>',
           '<file_strip_banner:lib/bridges/Bridge.js>',
+          '<file_strip_banner:lib/bridges/AndroidBridge.js>',
           '<file_strip_banner:lib/bridges/WebsocketBridge.js>',
           '<file_strip_banner:lib/NativeObject.js>',
           '<file_strip_banner:lib/models/Device.js>',

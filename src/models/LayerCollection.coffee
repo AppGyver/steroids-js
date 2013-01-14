@@ -1,6 +1,7 @@
 # LayerCollection description
 class LayerCollection extends NativeObject
   constructor: ->
+    super()
     @array = []
 
   # ### Steroids.layers.pop

@@ -54,6 +54,7 @@ class Layer extends NativeObject
   # });
   #
   constructor: (options)->
+    super()
     @location = options.location
 
     if @location.indexOf("://") == -1 # if a path

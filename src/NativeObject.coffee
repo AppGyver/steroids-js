@@ -1,9 +1,7 @@
 # NativeObject description
 class NativeObject
-  # Communication endpoint to native API
-  # Native bridge is the communication layer from WebView to Native
-  # Valid values are subclasses of Bridge
-  nativeBridge: new WebsocketBridge
+
+  constructor: ()->
 
   # Run passed recurringCallbacks on API call
   didOccur: (options, parameters) ->
@@ -22,7 +20,7 @@ class NativeObject
 
   # Call to native layer via native bridge
   nativeCall: (options) ->
-    @nativeBridge.send
+    Steroids.nativeBridge.send
       # options.method is the native API call name
       method: options.method
       # options.parameters is a parameters object for API call
