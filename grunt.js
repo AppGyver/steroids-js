@@ -1,5 +1,5 @@
 module.exports = function(grunt) {
-
+  grunt.file.defaultEncoding = 'utf8';
   // Project configuration.
   var documentationSourceFiles = [
 //    'docs/Steroids.html',
@@ -86,9 +86,14 @@ module.exports = function(grunt) {
     }
   });
 
+  grunt.registerTask('wrap', 'Wrap steroids.js to anonymous function so it does not pollute the global namespace', function(){
+    var content = grunt.file.read("dist/steroids.js");
+    grunt.file.write("dist/steroids.js", "(function(window){\n"+content+"\n})(window)\n");
+  })
+
   grunt.loadNpmTasks('grunt-shell');
   grunt.loadNpmTasks('grunt-coffee');
 
   // Default task.
-  grunt.registerTask('default', 'coffee concat:dist shell:generate_documentation concat:docs_by_version concat:docs_latest_version');
+  grunt.registerTask('default', 'coffee concat:dist wrap shell:generate_documentation concat:docs_by_version concat:docs_latest_version');
 };
