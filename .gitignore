@@ -3,3 +3,4 @@ lib
 dist
 .DS_Store
 docs
+npm-debug.log
