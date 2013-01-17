@@ -28,7 +28,7 @@
     "test": "buster-test",
     "testloop": "./bin/testloop.sh",
     "gdocs": "find ./src -name '*.coffee' |xargs echo|xargs docco",
-    "install": "grunt coffee concat:dist"
+    "install": "grunt build"
   },
 
   "repository": {
