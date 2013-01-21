@@ -33,7 +33,6 @@ window.Steroids.nativeBridge = Bridge.getBestNativeBridge()
 # Current version
 window.Steroids.version = "@@version"
 
-
 # Public Layer class
 window.Steroids.Layer = Layer
 
@@ -70,3 +69,5 @@ window.Steroids.app = new App
 window.Steroids.device = new Device
 
 window.Steroids.OAuth = OAuth
+
+window.Steroids.XHR = XHR

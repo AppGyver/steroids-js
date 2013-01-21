@@ -9,21 +9,26 @@ Steroids.config.tabBar.enabled = true
 
 
 Steroids.config.tabBar.tabs = [
- {
+  {
+    title: "Data"
+    icon: "images/first@2x.png"
+    location: "http://localhost:13101/views/data/index.html"
+  },
+  {
    title: "Audio"
    icon: "images/first@2x.png"
    location: "http://localhost:13101/views/audio/index.html"
- },
- {
+  },
+  {
    title: "Layers"
    icon: "images/first@2x.png"
    location: "http://localhost:13101/views/layers/index.html"
- },
- {
+  },
+  {
    title: "Camera"
    icon: "images/first@2x.png"
    location: "http://localhost:13101/views/camera/index.html"
- }
+  }
 ]
 
 #Steroids.config.navigationBar.tintColor = ""
