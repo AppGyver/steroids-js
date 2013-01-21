@@ -1,5 +1,3 @@
-Steroids = require "steroids"
-
 Steroids.config.name = "Steroids"
 Steroids.config.location = "views/layers/index.html"
 
@@ -42,5 +40,3 @@ Steroids.config.tabBar.tabs = [
 #Steroids.config.tabBar.selectedTabBackgroundImage = ""
 
 #Steroids.config.theme = "black"
-
-module.exports = Steroids.config
