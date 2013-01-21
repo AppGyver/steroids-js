@@ -62,6 +62,7 @@ module.exports = function(grunt) {
           '<file_strip_banner:lib/models/Audio.js>',
           '<file_strip_banner:lib/models/Flash.js>',
           '<file_strip_banner:lib/models/Camera.js>',
+          '<file_strip_banner:lib/models/OAuth.js>',
           '<file_strip_banner:lib/Steroids.js>'
         ],
         dest: 'dist/steroids.js',

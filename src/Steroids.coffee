@@ -1,8 +1,8 @@
 class Steroids
-  eventCallbacks: {}
-  waitingForComponents: []
+  @eventCallbacks: {}
+  @waitingForComponents: []
 
-  on: (event, callback)->
+  @on: (event, callback)->
     if @["#{event}_has_fired"]?
       callback()
     else
@@ -10,7 +10,7 @@ class Steroids
       @eventCallbacks[event].push(callback)
 
 
-  fireSteroidsEvent: (event)->
+  @fireSteroidsEvent: (event)->
     @["#{event}_has_fired"] = new Date().getTime()
 
     if @eventCallbacks[event]?
@@ -18,12 +18,12 @@ class Steroids
         callback()
         @eventCallbacks[event].splice @eventCallbacks[event].indexOf(callback), 1
 
-  markComponentReady: (model)->
+  @markComponentReady: (model)->
     @waitingForComponents.splice @waitingForComponents.indexOf(model), 1
     if @waitingForComponents.length == 0
       @fireSteroidsEvent "ready"
 
-window.Steroids = new Steroids
+window.Steroids = Steroids
 
 # Communication endpoint to native API
 # Native bridge is the communication layer from WebView to Native
@@ -68,3 +68,5 @@ window.Steroids.app = new App
 
 # Public Device singleton
 window.Steroids.device = new Device
+
+window.Steroids.OAuth = OAuth

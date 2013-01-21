@@ -20,7 +20,7 @@ class NativeObject
 
   # Call to native layer via native bridge
   nativeCall: (options) ->
-    window.Steroids.nativeBridge.send
+    Steroids.nativeBridge.send
       # options.method is the native API call name
       method: options.method
       # options.parameters is a parameters object for API call
