@@ -1,30 +1,47 @@
-Steroids = require "steroids"
-
 Steroids.config.name = "Steroids"
 Steroids.config.location = "views/layers/index.html"
 
 #Steroids.config.statusBar.enabled = true
 #Steroids.config.statusBar.style = "black" # options are: "default", "black" and "hidden"
-Steroids.config.tabBar.enabled = true
-
 #Steroids.config.worker.evalJS = "alert(1)"
 
+Steroids.config.tabBar.enabled = true
 
+# iOS Tabs:
+# Steroids.config.tabBar.tabs = [
+#  {
+#    title: "Audio"
+#    icon: "images/first@2x.png"
+#    location: "http://localhost:13101/views/audio/index.html"
+#  },
+#  {
+#    title: "Layers"
+#    icon: "images/first@2x.png"
+#    location: "http://localhost:13101/views/layers/index.html"
+#  },
+#  {
+#    title: "Camera"
+#    icon: "images/first@2x.png"
+#    location: "http://localhost:13101/views/camera/index.html"
+#  }
+# ]
+
+# Android tabs:
 Steroids.config.tabBar.tabs = [
  {
    title: "Audio"
    icon: "images/first@2x.png"
-   location: "http://localhost:13101/views/audio/index.html"
+   location: "views/audio/index.html"
  },
  {
    title: "Layers"
    icon: "images/first@2x.png"
-   location: "http://localhost:13101/views/layers/index.html"
+   location: "views/layers/index.html"
  },
  {
    title: "Camera"
    icon: "images/first@2x.png"
-   location: "http://localhost:13101/views/camera/index.html"
+   location: "views/camera/index.html"
  }
 ]
 
@@ -42,5 +59,3 @@ Steroids.config.tabBar.tabs = [
 #Steroids.config.tabBar.selectedTabBackgroundImage = ""
 
 #Steroids.config.theme = "black"
-
-module.exports = Steroids.config
