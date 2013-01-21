@@ -10,6 +10,12 @@ Steroids.config.tabBar.enabled = true
 
 Steroids.config.tabBar.tabs = [
  {
+    title: "OAuth"
+    icon: "images/first@2x.png"
+    location: "http://localhost:13101/views/oauth/index.html"
+  },
+
+ {
    title: "Audio"
    icon: "images/first@2x.png"
    location: "http://localhost:13101/views/audio/index.html"
