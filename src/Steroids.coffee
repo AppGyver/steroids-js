@@ -31,7 +31,7 @@ window.Steroids = new Steroids
 window.Steroids.nativeBridge = Bridge.getBestNativeBridge()
 
 # Current version
-window.Steroids.version = "0.1.1"
+window.Steroids.version = "@@version"
 
 
 # Public Layer class

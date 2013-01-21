@@ -83,6 +83,22 @@ module.exports = function(grunt) {
       generate_documentation: {
         command: 'npm run-script gdocs'
       }
+    },
+
+    replace: {
+      dist: {
+        options: {
+          variables: {
+            version: '<%= pkg.version %>',
+            timestamp: '<%= grunt.template.today() %>'
+          }
+        },
+        files: {
+          'dist/steroids.js': [
+            'dist/steroids.js'
+          ]
+        }
+      }
     }
   });
 
@@ -93,6 +109,7 @@ module.exports = function(grunt) {
 
   grunt.loadNpmTasks('grunt-shell');
   grunt.loadNpmTasks('grunt-coffee');
+  grunt.loadNpmTasks('grunt-replace');
 
   // Default task.
   grunt.registerTask('default', 'coffee concat:dist wrap shell:generate_documentation concat:docs_by_version concat:docs_latest_version');
