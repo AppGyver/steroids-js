@@ -1,4 +1,4 @@
-class SteroidsFramework
+class Steroids
   eventCallbacks: {}
   waitingForComponents: []
 
@@ -23,7 +23,7 @@ class SteroidsFramework
     if @waitingForComponents.length == 0
       @fireSteroidsEvent "ready"
 
-window.Steroids = new SteroidsFramework
+window.Steroids = new Steroids
 
 # Communication endpoint to native API
 # Native bridge is the communication layer from WebView to Native
