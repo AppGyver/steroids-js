@@ -112,7 +112,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-replace');
 
   // Default task.
-  grunt.registerTask('default', 'coffee concat:dist wrap shell:generate_documentation concat:docs_by_version concat:docs_latest_version');
+  grunt.registerTask('default', 'coffee concat:dist wrap replace shell:generate_documentation concat:docs_by_version concat:docs_latest_version');
 
-  grunt.registerTask('build', 'coffee concat:dist wrap');
+  grunt.registerTask('build', 'coffee concat:dist wrap replace');
 };
