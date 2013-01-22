@@ -46,7 +46,8 @@
     "grunt-coffee": "0.0.x",
     "grunt-concat": "0.1.x",
     "grunt-shell": "0.1.x",
-    "grunt-replace": "0.3.x"
+    "grunt-replace": "0.3.x",
+    "exec-sync": "0.1.x"
   },
 
   "devDependencies": {

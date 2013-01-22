@@ -1,3 +1,5 @@
+execSync = require("exec-sync");
+
 module.exports = function(grunt) {
   grunt.file.defaultEncoding = 'utf8';
   // Project configuration.
@@ -91,13 +93,13 @@ module.exports = function(grunt) {
         options: {
           variables: {
             version: '<%= pkg.version %>',
-            timestamp: '<%= grunt.template.today() %>'
+            timestamp: '<%= grunt.template.today() %>',
+            ipAddress: execSync('ifconfig en0 | grep "inet " | cut -f 2 -d " "')
           }
         },
         files: {
-          'dist/steroids.js': [
-            'dist/steroids.js'
-          ]
+          'dist/steroids.js': [ 'dist/steroids.js'],
+          'testSlave/www/index.html': ['testSlave/www/index.html.template']
         }
       }
     }
