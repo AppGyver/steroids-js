@@ -1,6 +1,8 @@
 node_modules
 lib
-dist
+/dist
+/testSlave/dist
+/testApp/dist
 .DS_Store
 docs
 npm-debug.log
