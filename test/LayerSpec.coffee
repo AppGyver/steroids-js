@@ -17,7 +17,7 @@ describe "Layer", ->
   describe "collection", ->
 
     it "should exist", ->
-      expect( Steroids.layers instanceof LayerCollection ).toBe true
+      expect( Steroids.layers.array ).toEqual []
 
     it "should push and pop layers", (done)->
 

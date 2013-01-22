@@ -9,7 +9,7 @@ Steroids.config.location = "index.html"
 # This will override Steroids.config.location (that is for single webview apps, like in PhoneGap)
 # Default: false
 #
-# Steroids.config.tabBar.enabled = true
+Steroids.config.tabBar.enabled = true
 
 # Array with objects to specify which tabs are created on app startup
 #
@@ -21,23 +21,23 @@ Steroids.config.location = "index.html"
 #   - http://localhost:13101/ (serves files locally from www, f.e. http://localhost:13101/ would serve index.html)
 #   - http://www.google.com (directly from internet)
 #
-# Steroids.config.tabBar.tabs = [
-#   {
-#     title: "Localhost"
-#     icon: "icons/pill@2x.png"
-#     location: "http://localhost:13101/views/pills/index.html"
-#   },
-#   {
-#     title: "File URL"
-#     icon: "icons/shoebox@2x.png"
-#     location: "index.html"
-#   },
-#   {
-#     title: "Internet"
-#     icon: "icons/telescope@2x.png"
-#     location: "http://www.google.com"
-#   }
-# ]
+Steroids.config.tabBar.tabs = [
+  {
+    title: "Localhost"
+    icon: "icons/pill@2x.png"
+    location: "http://localhost:13101/index.html"
+  },
+  {
+    title: "File"
+    icon: "icons/shoebox@2x.png"
+    location: "index.html"
+  },
+  {
+    title: "Internet"
+    icon: "icons/telescope@2x.png"
+    location: "http://www.google.com"
+  }
+]
 
 
 
