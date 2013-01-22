@@ -1,3 +1,16 @@
+## 0.1.8 (2013-01-22)
+
+Features:
+
+  - Initial Android support
+
+Bugfixes:
+
+  - `Steroids.Layer` etc do not pollute namespace as `Layer`
+  - Various other bugfixes
+  - Unit tests are runnable again
+
+
 ## 0.1.1 (2013-01-07)
 
 Features:
