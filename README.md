@@ -1,28 +1,37 @@
 Steroids JS - html5 wrapper JS unfucked
+---------------------------------------
 
 
-Development:
+## Development:
+
   npm install
+
+and for docs
+
   easy_install pygments
 
-Testing:
-  # run buster server
+## Testing:
+
+start buster server
+
   npm start
 
-  # optional: open in device
-  http://yourip:1111
+connect real clients
 
-  # run tests
+  cd testSlave && steroids connect
+
+then, run tests
+
   npm test
 
-  # shutdown buster
+and to shut down buster
+
   npm stop
 
-  # automatically restart buster server and run tests
 
-  ### (because it loses connections quite frequently)
+### automatically restart buster server and run tests (because it loses connections quite frequently)
 
   npm testloop
 
-Generate Docs:
+## Generate Docs:
   Grunt default task takes care of generating the docs.
