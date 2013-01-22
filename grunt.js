@@ -2,9 +2,9 @@ execSync = require("exec-sync");
 
 module.exports = function(grunt) {
   grunt.file.defaultEncoding = 'utf8';
+
   // Project configuration.
   var documentationSourceFiles = [
-//    'docs/Steroids.html',
     'docs/App.html',
     'docs/Animation.html',
     'docs/Audio.html',
@@ -16,9 +16,6 @@ module.exports = function(grunt) {
     'docs/LayerCollection.html',
     'docs/Layer.html',
     'docs/Tab.html'
-//    'docs/NativeObject.html',
-//    'docs//Bridge.html',
-//    'docs//WebsocketBridge.html'
   ]
 
   grunt.initConfig({
@@ -64,7 +61,9 @@ module.exports = function(grunt) {
           '<file_strip_banner:lib/models/Audio.js>',
           '<file_strip_banner:lib/models/Flash.js>',
           '<file_strip_banner:lib/models/Camera.js>',
-          '<file_strip_banner:lib/models/OAuth.js>',
+          '<file_strip_banner:lib/models/OAuth2/OAuth2Flow.js>',
+          '<file_strip_banner:lib/models/OAuth2/AuthorizationCodeFlow.js>',
+          '<file_strip_banner:lib/models/OAuth2.js>',
           '<file_strip_banner:lib/Steroids.js>'
         ],
         dest: 'dist/steroids.js',
