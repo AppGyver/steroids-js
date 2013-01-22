@@ -1,16 +1,20 @@
 document.addEventListener "deviceready", ->
 
+  Steroids.navigationBar.show { title: "DATA" }
+
   fetchElement = document.getElementById("fetch")
 
   if fetchElement?
     fetchElement.addEventListener "touchstart", ->
+
       request = new Steroids.XHR
+      request.open("GET", "http://www.google.com")
+      request.fetch({filename: "google.html"})
 
-      # tämä kuten XHR:ssa tehtäis
-      request.location = "https://registry.npmjs.org/grunt-replace"
-      request.headers["jotain"] = "test"
-      targetOnDisk = "/npm.json"
 
-      request.fetch(targetOnDisk)
+  showFetchedElement = document.getElementById("showFetched")
 
-  Steroids.navigationBar.show { title: "DATA" }
+  if showFetchedElement?
+    showFetchedElement.addEventListener "touchstart", ->
+      fetchedLayer = new Steroids.Layer location: "../../google.html"
+      Steroids.layers.push(layer: fetchedLayer)
