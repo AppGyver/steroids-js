@@ -12,7 +12,13 @@ and for docs
 
 ## Testing:
 
-start buster server
+First, remember to GRUNT
+
+  grunt
+
+becase this inserts your IP to testSlave/www/index.html (and creates that file)
+
+To start buster server
 
   npm start
 
