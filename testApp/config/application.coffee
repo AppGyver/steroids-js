@@ -9,7 +9,13 @@ Steroids.config.tabBar.enabled = true
 
 
 Steroids.config.tabBar.tabs = [
- {
+  {
+     title: "TouchDB"
+     icon: "images/first@2x.png"
+     location: "views/touchdb/index.html"
+   },
+
+  {
     title: "OAuth"
     icon: "images/first@2x.png"
     location: "http://localhost:13101/views/oauth/index.html"

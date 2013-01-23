@@ -70,3 +70,7 @@ window.Steroids.app = new App
 window.Steroids.device = new Device
 
 window.Steroids.OAuth = OAuth
+
+window.Steroids.data = {}
+window.Steroids.data.TouchDB = TouchDB
+
