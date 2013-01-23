@@ -39,6 +39,9 @@ window.Steroids.Layer = Layer
 # Public Tab class
 window.Steroids.Tab = Tab
 
+# Public OAuth2 class
+window.Steroids.OAuth2 = OAuth2
+
 # Public Animation singleton
 #TODO: refactor into a class that is instantiated
 window.Steroids.Animation = new Animation
@@ -67,8 +70,6 @@ window.Steroids.app = new App
 
 # Public Device singleton
 window.Steroids.device = new Device
-
-window.Steroids.OAuth = OAuth
 
 window.Steroids.data = {}
 window.Steroids.data.TouchDB = TouchDB

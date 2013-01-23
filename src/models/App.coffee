@@ -8,7 +8,7 @@ class App extends NativeObject
   #
   # #### Example:
   #
-  # Steroids.app.path == "applications/local/123456789/"
+  # Steroids.app.path == "applications/local/123456789"
   #
   path: undefined
 
@@ -19,7 +19,7 @@ class App extends NativeObject
   #
   # #### Example:
   #
-  # Steroids.app.absolutePath == "/var/mobile/Applications/AAAAAAAA-AAAA-AAAA-AAAA-AAAAAAAAAAAA/Scanner.app/Documents/applications/local/123456789/"
+  # Steroids.app.absolutePath == "/var/mobile/Applications/AAAAAAAA-AAAA-AAAA-AAAA-AAAAAAAAAAAA/Scanner.app/Documents/applications/local/123456789"
   #
   absolutePath: undefined
 
