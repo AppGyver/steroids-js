@@ -10,6 +10,11 @@ Steroids.config.tabBar.enabled = true
 # iOS Tabs:
 Steroids.config.tabBar.tabs = [
   {
+    title: "TouchDB"
+    icon: "images/first@2x.png"
+    location: "views/touchdb/index.html"
+  },
+  {
     title: "Data"
     icon: "images/first@2x.png"
     location: "http://localhost:13101/views/data/index.html"
