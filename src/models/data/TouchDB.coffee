@@ -1,14 +1,16 @@
 class TouchDB
+  @baseURL: "http://localhost:13131"
 
   constructor: (@options) ->
     throw "Database name required" unless @options.name
 
     @replicas = {}
+    @baseURL = "#{TouchDB.baseURL}/#{@options.name}"
 
 
   startMonitoringChanges: (options={}, callbacks={}) ->
     request = new XMLHttpRequest();
-    request.open("GET", "http://.touchdb./#{@options.name}/_changes?feed=continuous")
+    request.open("GET", "#{@baseURL}/_changes?feed=continuous")
 
     request.onreadystatechange = () =>
       return unless request.readyState == 3
@@ -17,9 +19,9 @@ class TouchDB
 
     request.send()
 
-  createDB: (options={}, callbacks={}) =>
+  createDB: (options={}, callbacks={}) ->
     request = new XMLHttpRequest();
-    request.open("PUT", "http://.touchdb./#{@options.name}")
+    request.open("PUT", "#{@baseURL}/")
 
     request.onreadystatechange = () =>
       return unless request.readyState == 4
@@ -35,19 +37,19 @@ class TouchDB
     request.send()
 
 
-  addTwoWayReplica: (options={}, callbacks={}) =>
+  addTwoWayReplica: (options={}, callbacks={}) ->
 
-    toCloudAdded = () =>
+    toCloudAdded = ()=>
       @startReplication({source: options.url, target: @options.name}, {onSuccess: fromCloudAdded, onFailure: fromCloudFailed})
 
-    toCloudFailed = () ->
+    toCloudFailed = ()=>
       callbacks.onFailure() if callbacks.onFailure
 
-    fromCloudAdded = () ->
+    fromCloudAdded = ()=>
       @replicas[options.url] = {}
       callbacks.onSuccess() if callbacks.onSuccess
 
-    fromCloudFailed = () ->
+    fromCloudFailed = ()=>
       callbacks.onFailure() if callbacks.onFailure
 
 
@@ -56,7 +58,7 @@ class TouchDB
 
   startReplication: (options={}, callbacks={}) ->
     request = new XMLHttpRequest();
-    request.open("POST", "http://.touchdb./_replicate")
+    request.open("POST", "#{TouchDB.baseURL}/_replicate")
 
     request.onreadystatechange = () =>
       return unless request.readyState == 4
@@ -73,4 +75,3 @@ class TouchDB
 
 
     request.send JSON.stringify({source: options.source, target: options.target, continuous: true})
-

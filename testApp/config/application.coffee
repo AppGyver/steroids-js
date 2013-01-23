@@ -1,7 +1,7 @@
 Steroids.config.name = "Steroids"
 Steroids.config.location = "views/layers/index.html"
 
-#Steroids.config.statusBar.enabled = true
+Steroids.config.statusBar.enabled = true
 #Steroids.config.statusBar.style = "black" # options are: "default", "black" and "hidden"
 #Steroids.config.worker.evalJS = "alert(1)"
 
@@ -10,19 +10,9 @@ Steroids.config.tabBar.enabled = true
 # iOS Tabs:
 Steroids.config.tabBar.tabs = [
   {
-    title: "TouchDB"
-    icon: "images/first@2x.png"
-    location: "views/touchdb/index.html"
-  },
-  {
     title: "Data"
     icon: "images/first@2x.png"
     location: "http://localhost:13101/views/data/index.html"
-  },
-  {
-    title: "OAuth"
-    icon: "images/first@2x.png"
-    location: "http://localhost:13101/views/oauth/index.html"
   },
   {
     title: "Audio"
@@ -60,17 +50,21 @@ Steroids.config.tabBar.tabs = [
 #  }
 #]
 
-#Steroids.config.navigationBar.tintColor = ""
-#Steroids.config.navigationBar.titleColor = ""
-#Steroids.config.navigationBar.titleShadowColor = ""
+Steroids.config.navigationBar.tintColor = "#472030"
+Steroids.config.navigationBar.titleColor = "#FF00FF"
+Steroids.config.navigationBar.titleShadowColor = "#FF00FF"
 
-#Steroids.config.navigationBar.buttonTitleColor = ""
-#Steroids.config.navigationBar.buttonShadowColor = ""
+Steroids.config.navigationBar.buttonTintColor = "#FF00FF"
+Steroids.config.navigationBar.buttonTitleColor = "#472030"
+Steroids.config.navigationBar.buttonShadowColor = "#FF00FF"
 
-#Steroids.config.tabBar.tintColor = ""
-#Steroids.config.tabBar.tabTitleColor = ""
-#Steroids.config.tabBar.tabTitleShadowColor = ""
-#Steroids.config.tabBar.selectedTabTintColor = ""
-#Steroids.config.tabBar.selectedTabBackgroundImage = ""
+Steroids.config.tabBar.tintColor = "#472030"
+Steroids.config.tabBar.tabTitleColor = "#FF00FF"
+Steroids.config.tabBar.tabTitleShadowColor = "#FF00FF"
+Steroids.config.tabBar.selectedTabTintColor = "#FF00FF"
+
+# Can be used to set an indicator image for the selected tab (can be bigger than the tab)
+# Default: ""
+Steroids.config.tabBar.selectedTabBackgroundImage = "RealisticDolan.png"
 
 #Steroids.config.theme = "black"

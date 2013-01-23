@@ -2,19 +2,20 @@ document.addEventListener "deviceready", ->
 
   Steroids.navigationBar.show { title: "DATA" }
 
-  fetchElement = document.getElementById("fetch")
+  xhrElement = document.getElementById("xhr")
 
-  if fetchElement?
-    fetchElement.addEventListener "touchstart", ->
+  if xhrElement?
+    xhrElement.addEventListener "touchstart", ->
+      Steroids.layers.push layer: new Steroids.Layer(location: "views/xhr/index.html")
 
-      request = new Steroids.XHR
-      request.open("GET", "http://www.google.com")
-      request.fetch({filename: "google.html"})
+  oauthElement = document.getElementById("oauth")
 
+  if oauthElement?
+    oauthElement.addEventListener "touchstart", ->
+      Steroids.layers.push layer: new Steroids.Layer(location: "views/oauth/index.html")
 
-  showFetchedElement = document.getElementById("showFetched")
+  touchdbElement = document.getElementById("touchdb")
 
-  if showFetchedElement?
-    showFetchedElement.addEventListener "touchstart", ->
-      fetchedLayer = new Steroids.Layer location: "../../google.html"
-      Steroids.layers.push(layer: fetchedLayer)
+  if touchdbElement?
+    touchdbElement.addEventListener "touchstart", ->
+      Steroids.layers.push layer: new Steroids.Layer(location: "views/touchdb/index.html")

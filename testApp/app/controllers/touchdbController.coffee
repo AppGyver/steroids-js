@@ -1,5 +1,6 @@
 
 document.addEventListener "deviceready", ->
+  Steroids.navigationBar.show { title: "TOUCHDB" }
 
   createSuccess = () =>
     console.log "suc created"

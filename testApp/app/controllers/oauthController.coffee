@@ -1,5 +1,8 @@
 document.addEventListener "deviceready", ->
   Steroids.on "ready", ()=>
+    Steroids.navigationBar.show { title: "OAUTH2" }
+
+
     authElement = document.getElementById("authenticate")
     fetchElement = document.getElementById("fetchJSON")
     clientCredsElement = document.getElementById("authClientCredentials")
