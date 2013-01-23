@@ -9,7 +9,12 @@ Steroids.config.tabBar.enabled = true
 
 # iOS Tabs:
 Steroids.config.tabBar.tabs = [
- {
+  {
+    title: "Data"
+    icon: "images/first@2x.png"
+    location: "http://localhost:13101/views/data/index.html"
+  },
+  {
     title: "OAuth"
     icon: "images/first@2x.png"
     location: "http://localhost:13101/views/oauth/index.html"
