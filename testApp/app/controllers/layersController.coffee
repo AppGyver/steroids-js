@@ -41,11 +41,11 @@ document.addEventListener "deviceready", ->
 
   Steroids.navigationBar.rightButton.show {title: "Modal"}, onRecurring: ()->
     createLayer = new Steroids.Layer {
-      location:"http://localhost:13101/views/oauth/iframe.html"
+      location:"http://www.google.com"
     }
 
     Steroids.modal.show layer: createLayer
 
-    # setTimeout ()->
-    #   Steroids.modal.hide()
-    # , 5000
+    setTimeout ()->
+      Steroids.modal.hide()
+    , 5000
