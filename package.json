@@ -1,6 +1,6 @@
 {
   "name": "steroids-js",
-  "version": "0.2.0",
+  "version": "0.2.1",
 
   "license": "MIT",
   "author": "AppGyver <contact@appgyver.com>",
@@ -28,7 +28,7 @@
     "test": "buster-test",
     "testloop": "./bin/testloop.sh",
     "gdocs": "find ./src -name '*.coffee' |xargs echo|xargs docco",
-    "install": "grunt build"
+    "prepublish": "grunt build"
   },
 
   "repository": {
@@ -37,20 +37,20 @@
   },
 
   "engines": {
-    "node": ">=0.8.14",
-    "npm":  ">=1.1.65"
+    "node": ">=0.8.0",
+    "npm":  ">=1.1.0"
   },
 
   "dependencies": {
+  },
+
+  "devDependencies": {
     "grunt"    : "0.3.x",
     "grunt-coffee": "0.0.x",
     "grunt-concat": "0.1.x",
     "grunt-shell": "0.1.x",
     "grunt-replace": "0.3.x",
-    "exec-sync": "0.1.x"
-  },
-
-  "devDependencies": {
+    "exec-sync": "0.1.x",
     "buster": "0.6.x",
     "buster-coffee": "0.1.x",
     "docco": "0.4.x"
