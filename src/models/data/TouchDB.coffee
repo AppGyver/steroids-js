@@ -1,5 +1,5 @@
 class TouchDB
-  @baseURL: "http://localhost:13131"
+  @baseURL: "http://.touchdb."
 
   constructor: (@options) ->
     throw "Database name required" unless @options.name
