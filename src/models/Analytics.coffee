@@ -5,7 +5,7 @@ class Analytics extends NativeObject
       method: "recordEvent"
       parameters:
         type: "custom"
-        attributes: opts.attributes
+        attributes: opts.event
       successCallbacks: [callbacks.onSuccess]
       failureCallbacks: [callbacks.onFailure]
 

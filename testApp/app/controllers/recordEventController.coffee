@@ -4,6 +4,7 @@ document.addEventListener "deviceready", ->
 
     Steroids.analytics.recordEvent
       event:
+        keenio: true
         hello: "world"
       {
         onSuccess: () ->
