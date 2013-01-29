@@ -75,3 +75,5 @@ window.Steroids.data = {}
 window.Steroids.data.TouchDB = TouchDB
 
 window.Steroids.XHR = XHR
+
+window.Steroids.analytics = new Analytics
