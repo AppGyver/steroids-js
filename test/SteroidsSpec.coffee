@@ -5,7 +5,7 @@ describe "Steroids namespace", ->
     expect( typeof Steroids ).toBe "function"
 
   it "should have version number", ->
-    expect( Steroids.version ).toBe "0.2.3"
+    expect( Steroids.version ).toBe "0.2.4"
 
   # it "should have a ready event", (done)->
   #   expect( typeof Steroids.on ).toBe "function"
