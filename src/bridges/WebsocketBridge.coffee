@@ -18,8 +18,8 @@ class WebsocketBridge extends Bridge
 
   # Map current context so that native calls know where to send responses
   map_context: ()=>
-    if window.top.AG_SCREEN_ID? and window.top.AG_LAYER_ID? and window.top.AG_VIEW_ID?
-      @send "mapWebSocketConnectionToContext", { parameters: {screen: window.top.AG_SCREEN_ID, layer: window.top.AG_LAYER_ID, view: window.top.AG_VIEW_ID } }
+    @send method: "mapWebSocketConnectionToContext"
+
     return @
 
   sendMessageToNative:(message)->
