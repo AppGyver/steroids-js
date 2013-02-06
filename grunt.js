@@ -63,6 +63,7 @@ module.exports = function(grunt) {
           '<file_strip_banner:lib/models/Camera.js>',
           '<file_strip_banner:lib/models/OAuth2/OAuth2Flow.js>',
           '<file_strip_banner:lib/models/OAuth2/AuthorizationCodeFlow.js>',
+          '<file_strip_banner:lib/models/OAuth2/ClientCredentialsFlow.js>',
           '<file_strip_banner:lib/models/OAuth2.js>',
           '<file_strip_banner:lib/models/data/TouchDB.js>',
           '<file_strip_banner:lib/models/XHR.js>',
