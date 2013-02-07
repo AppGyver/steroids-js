@@ -232,7 +232,7 @@ NativeObject = (function() {
 
   NativeObject.prototype.nativeCall = function(options) {
     var _this = this;
-    return Steroids.nativeBridge.send({
+    return steroids.nativeBridge.send({
       method: options.method,
       parameters: options.parameters,
       callbacks: {
@@ -1185,7 +1185,7 @@ window.steroids.OAuth2 = OAuth2;
 
 window.steroids.Animation = new Animation;
 
-window.steroids.animation = window.Steroids.Animation;
+window.steroids.animation = window.steroids.Animation;
 
 window.steroids.layers = new LayerCollection;
 

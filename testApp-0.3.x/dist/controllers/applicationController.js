@@ -3,24 +3,24 @@
   document.addEventListener("deviceready", function() {
     $(".opensLayer").on("tap", function() {
       var layer;
-      layer = new Steroids.Layer({
+      layer = new steroids.Layer({
         location: this.getAttribute("data-location")
       });
-      return Steroids.layers.push({
+      return steroids.layers.push({
         layer: layer
       });
     });
     $(".opensModal").on("tap", function() {
       var layer;
-      layer = new Steroids.Layer({
+      layer = new steroids.Layer({
         location: this.getAttribute("data-location")
       });
-      return Steroids.modal.show({
+      return steroids.modal.show({
         layer: layer
       });
     });
     $(".closesModal").on("tap", function() {
-      return Steroids.modal.hide();
+      return steroids.modal.hide();
     });
     return $(".performsTest").on("tap", function() {
       return eval("" + STEROIDS.controllerName + "." + (this.getAttribute("data-test")) + "()");

@@ -1,8 +1,8 @@
-class Steroids
-  @eventCallbacks: {}
-  @waitingForComponents: []
+window.steroids =
+  eventCallbacks: {}
+  waitingForComponents: []
 
-  @on: (event, callback)->
+  on: (event, callback)->
     if @["#{event}_has_fired"]?
       callback()
     else
@@ -10,7 +10,7 @@ class Steroids
       @eventCallbacks[event].push(callback)
 
 
-  @fireSteroidsEvent: (event)->
+  fireSteroidsEvent: (event)->
     @["#{event}_has_fired"] = new Date().getTime()
 
     if @eventCallbacks[event]?
@@ -18,62 +18,62 @@ class Steroids
         callback()
         @eventCallbacks[event].splice @eventCallbacks[event].indexOf(callback), 1
 
-  @markComponentReady: (model)->
+  markComponentReady: (model)->
     @waitingForComponents.splice @waitingForComponents.indexOf(model), 1
     if @waitingForComponents.length == 0
       @fireSteroidsEvent "ready"
 
-window.Steroids = Steroids
 
 # Communication endpoint to native API
 # Native bridge is the communication layer from WebView to Native
 # Valid values are subclasses of Bridge
-window.Steroids.nativeBridge = Bridge.getBestNativeBridge()
+window.steroids.nativeBridge = Bridge.getBestNativeBridge()
 
 # Current version
-window.Steroids.version = "@@version"
+window.steroids.version = "@@version"
 
 # Public Layer class
-window.Steroids.Layer = Layer
+window.steroids.Layer = Layer
 
 # Public Tab class
-window.Steroids.Tab = Tab
+window.steroids.Tab = Tab
 
 # Public OAuth2 class
-window.Steroids.OAuth2 = OAuth2
+window.steroids.OAuth2 = OAuth2
 
 # Public Animation singleton
-#TODO: refactor into a class that is instantiated
-window.Steroids.Animation = new Animation
+
+window.steroids.Animation = new Animation  # to be deprecated, not documented
+window.steroids.animation = window.steroids.Animation
 
 # Public LayerCollection singleton
-window.Steroids.layers = new LayerCollection
+window.steroids.layers = new LayerCollection
 
 # Current Layer
-window.Steroids.layer = new Layer { location: window.location.href }
+window.steroids.layer = new Layer { location: window.location.href }
 
 # Public Modal singleton
-window.Steroids.modal = new Modal
+window.steroids.modal = new Modal
 
 # Public Audio singleton
-window.Steroids.audio = new Audio
+window.steroids.audio = new Audio
 
 # Public Camera singleton
-window.Steroids.camera = new Camera
+window.steroids.camera = new Camera
 
 # Public NavigationBar singleton
-window.Steroids.navigationBar = new NavigationBar
+window.steroids.navigationBar = new NavigationBar
 
 # Public App singleton
-window.Steroids.waitingForComponents.push("App")
-window.Steroids.app = new App
+window.steroids.waitingForComponents.push("App")
+window.steroids.app = new App
 
 # Public Device singleton
-window.Steroids.device = new Device
+window.steroids.device = new Device
 
-window.Steroids.data = {}
-window.Steroids.data.TouchDB = TouchDB
+window.steroids.data = {}
+window.steroids.data.TouchDB = TouchDB
 
-window.Steroids.XHR = XHR
+window.steroids.XHR = XHR
 
-window.Steroids.analytics = new Analytics
+window.steroids.analytics = new Analytics

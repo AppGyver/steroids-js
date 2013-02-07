@@ -6,22 +6,22 @@ document.addEventListener "deviceready", ()->
 
     # Create a new layer that ...
 
-    layer = new Steroids.Layer { location: @getAttribute("data-location") }
+    layer = new steroids.Layer { location: @getAttribute("data-location")  }
 
     # ... Open on top of this document and pushes to the navigation stack
-    Steroids.layers.push layer: layer
+    steroids.layers.push layer: layer
 
 
   $(".opensModal").on "tap", () ->
 
-    layer = new Steroids.Layer { location: @getAttribute("data-location") }
+    layer = new steroids.Layer { location: @getAttribute("data-location") }
 
-    Steroids.modal.show { layer: layer }
+    steroids.modal.show { layer: layer }
 
 
   $(".closesModal").on "tap", () ->
 
-     Steroids.modal.hide()
+     steroids.modal.hide()
 
   $(".performsTest").on "tap", () ->
 
