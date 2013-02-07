@@ -11,7 +11,7 @@ module.exports = function(grunt) {
     'docs/Button.html',
     'docs/Camera.html',
     'docs/Device.html',
-    'docs/Flash.html',
+    'docs/Torch.html',
     'docs/NavigationBar.html',
     'docs/LayerCollection.html',
     'docs/Layer.html',
@@ -49,6 +49,7 @@ module.exports = function(grunt) {
           '<file_strip_banner:lib/bridges/AndroidBridge.js>',
           '<file_strip_banner:lib/bridges/WebsocketBridge.js>',
           '<file_strip_banner:lib/NativeObject.js>',
+          '<file_strip_banner:lib/models/device/Torch.js>',
           '<file_strip_banner:lib/models/Device.js>',
           '<file_strip_banner:lib/models/Animation.js>',
           '<file_strip_banner:lib/models/App.js>',
@@ -59,7 +60,6 @@ module.exports = function(grunt) {
           '<file_strip_banner:lib/models/Tab.js>',
           '<file_strip_banner:lib/models/NavigationBar.js>',
           '<file_strip_banner:lib/models/Audio.js>',
-          '<file_strip_banner:lib/models/Flash.js>',
           '<file_strip_banner:lib/models/Camera.js>',
           '<file_strip_banner:lib/models/OAuth2/OAuth2Flow.js>',
           '<file_strip_banner:lib/models/OAuth2/AuthorizationCodeFlow.js>',
@@ -118,7 +118,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-replace');
 
   // Default task.
-  grunt.registerTask('default', 'coffee concat:dist wrap replace shell:generate_documentation concat:docs_by_version concat:docs_latest_version');
+  grunt.registerTask('default', 'coffee concat:dist wrap replace');
 
   grunt.registerTask('build', 'coffee concat:dist wrap replace');
 };

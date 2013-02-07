@@ -4,4 +4,4 @@ class Camera extends NativeObject
   #
   # Singleton representing the flash torch of the device
   #
-  flash: new Flash
+#  flash: new Flash

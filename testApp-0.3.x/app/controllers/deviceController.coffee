@@ -7,9 +7,24 @@ class window.DeviceController
 
     steroids.device.ping({}, { onSuccess: gotPong })
 
-    @testPing: () ->
 
-      gotPong = (e) ->
-        alert e.message
+  @testTorchOn: () ->
 
-      steroids.device.ping({}, { onSuccess: gotPong })
+    steroids.device.torch.turnOn {
+    }, {
+      onSuccess: () -> alert "turned on"
+    }
+
+  @testTorchOff: () ->
+
+    steroids.device.torch.turnOff {
+    }, {
+      onSuccess: () -> alert "turned off"
+    }
+
+  @testTorchToggle: () ->
+
+    steroids.device.torch.toggle {
+    }, {
+      onSuccess: () -> alert "toggled"
+    }

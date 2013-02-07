@@ -8,6 +8,10 @@
   <link rel="stylesheet" href="/stylesheets/ratchet-fixed.css" />
 
   <script>
+    window.onerror = function(a,b,c){ alert(a+" "+b+" "+c); }
+  </script>
+
+  <script>
     function capitaliseFirstLetter(string) {
       return string.charAt(0).toUpperCase() + string.slice(1);
     }
@@ -30,16 +34,13 @@
   <div class="content">
       <div class="content-padded">
 
-        <h1>steroids.app.path</h1>
-
-<ul class="list">
+        <ul class="list">
   <li class="performsTest" data-test="testPath">
-    steroids.app.path
+    path
   </li>
   <li class="performsTest" data-test="testAbsolutePath">
-    steroids.app.absolutePath
+    absolutePath
   </li>
-
 </ul>
 
 

@@ -252,6 +252,66 @@ NativeObject = (function() {
   return NativeObject;
 
 })();
+;var Torch,
+  __hasProp = {}.hasOwnProperty,
+  __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
+
+Torch = (function(_super) {
+
+  __extends(Torch, _super);
+
+  function Torch() {
+    return Torch.__super__.constructor.apply(this, arguments);
+  }
+
+  Torch.prototype.turnOn = function(options, callbacks) {
+    if (options == null) {
+      options = {};
+    }
+    if (callbacks == null) {
+      callbacks = {};
+    }
+    return this.nativeCall({
+      method: "cameraFlashOn",
+      parameters: options,
+      successCallbacks: [callbacks.onSuccess],
+      failureCallbacks: [callbacks.onFailure]
+    });
+  };
+
+  Torch.prototype.turnOff = function(options, callbacks) {
+    if (options == null) {
+      options = {};
+    }
+    if (callbacks == null) {
+      callbacks = {};
+    }
+    return this.nativeCall({
+      method: "cameraFlashOff",
+      parameters: options,
+      successCallbacks: [callbacks.onSuccess],
+      failureCallbacks: [callbacks.onFailure]
+    });
+  };
+
+  Torch.prototype.toggle = function(options, callbacks) {
+    if (options == null) {
+      options = {};
+    }
+    if (callbacks == null) {
+      callbacks = {};
+    }
+    return this.nativeCall({
+      method: "cameraFlashToggle",
+      parameters: options,
+      successCallbacks: [callbacks.onSuccess],
+      failureCallbacks: [callbacks.onFailure]
+    });
+  };
+
+  return Torch;
+
+})(NativeObject);
 ;var Device,
   __hasProp = {}.hasOwnProperty,
   __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
@@ -263,6 +323,8 @@ Device = (function(_super) {
   function Device() {
     return Device.__super__.constructor.apply(this, arguments);
   }
+
+  Device.prototype.torch = new Torch();
 
   Device.prototype.ping = function(options, callbacks) {
     if (callbacks == null) {
@@ -331,7 +393,7 @@ App = (function(_super) {
       onSuccess: function(params) {
         _this.path = params.applicationPath;
         _this.absolutePath = params.applicationFullPath;
-        return Steroids.markComponentReady("App");
+        return steroids.markComponentReady("App");
       }
     });
   }
@@ -642,36 +704,6 @@ Audio = (function(_super) {
   return Audio;
 
 })(NativeObject);
-;var Flash,
-  __hasProp = {}.hasOwnProperty,
-  __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
-
-Flash = (function(_super) {
-
-  __extends(Flash, _super);
-
-  function Flash() {
-    return Flash.__super__.constructor.apply(this, arguments);
-  }
-
-  Flash.prototype.toggle = function(options, callbacks) {
-    if (options == null) {
-      options = {};
-    }
-    if (callbacks == null) {
-      callbacks = {};
-    }
-    return this.nativeCall({
-      method: "cameraFlashToggle",
-      parameters: options,
-      successCallbacks: [callbacks.onSuccess],
-      failureCallbacks: [callbacks.onFailure]
-    });
-  };
-
-  return Flash;
-
-})(NativeObject);
 ;var Camera,
   __hasProp = {}.hasOwnProperty,
   __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
@@ -683,8 +715,6 @@ Camera = (function(_super) {
   function Camera() {
     return Camera.__super__.constructor.apply(this, arguments);
   }
-
-  Camera.prototype.flash = new Flash;
 
   return Camera;
 

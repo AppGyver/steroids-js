@@ -9,7 +9,7 @@ class App extends NativeObject
     @getPath {}, onSuccess: (params)=>
       @path = params.applicationPath
       @absolutePath = params.applicationFullPath
-      Steroids.markComponentReady("App")
+      steroids.markComponentReady("App")
 
   getPath: (options, callbacks)->
     @nativeCall

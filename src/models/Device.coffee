@@ -1,5 +1,7 @@
 class Device extends NativeObject
 
+  torch: new Torch()
+
   ping: (options, callbacks={})->
     @nativeCall
       method: "ping"
