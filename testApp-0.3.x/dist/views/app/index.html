@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf8">
+  <title>New Application</title>
+
+  <link rel="stylesheet" href="/stylesheets/application.css" />
+  <link rel="stylesheet" href="/stylesheets/ratchet-fixed.css" />
+
+  <script>
+    function capitaliseFirstLetter(string) {
+      return string.charAt(0).toUpperCase() + string.slice(1);
+    }
+
+    STEROIDS = {};
+    STEROIDS.controllerName = capitaliseFirstLetter("appController");
+  </script>
+
+
+  <script src="/javascripts/cordova.js"></script>
+  <script src="/javascripts/steroids.js"></script>
+
+  <script src="/javascripts/zepto.min.js"></script>
+
+  <script src="/controllers/applicationController.js"></script>
+  <script src="/controllers/appController.js"></script>
+
+</head>
+<body>
+  <div class="content">
+      <div class="content-padded">
+
+        <h1>steroids.app</h1>
+
+<ul class="list">
+  <li class="opensLayer" data-location="views/app/path.html">
+    path
+    <span class="chevron"/>
+  </li>
+</ul>
+
+
+      </div>
+  </div>
+</body>
+</html>
