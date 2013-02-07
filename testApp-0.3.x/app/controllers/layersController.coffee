@@ -4,12 +4,12 @@ class window.LayersController
     pushed = () ->
       console.log "PUSHED"
 
-    appgyver = new steroids.views.WebView {
+    popView = new steroids.views.WebView {
       location: "/views/layers/pop.html"
     }
 
     steroids.layers.push {
-      layer: appgyver
+      layer: popView
     }, {
       onSuccess: pushed
     }
