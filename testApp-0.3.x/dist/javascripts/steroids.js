@@ -560,16 +560,16 @@ LayerCollection = (function(_super) {
   return LayerCollection;
 
 })(NativeObject);
-;var Layer,
+;var WebView,
   __hasProp = {}.hasOwnProperty,
   __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
-Layer = (function(_super) {
+WebView = (function(_super) {
 
-  __extends(Layer, _super);
+  __extends(WebView, _super);
 
-  function Layer(options) {
-    Layer.__super__.constructor.call(this);
+  function WebView(options) {
+    WebView.__super__.constructor.call(this);
     this.location = options.location;
     if (this.location.indexOf("://") === -1) {
       if (window.location.href.indexOf("file://") === -1) {
@@ -591,9 +591,9 @@ Layer = (function(_super) {
     this.params = this.getParams();
   }
 
-  Layer.prototype.params = {};
+  WebView.prototype.params = {};
 
-  Layer.prototype.getParams = function() {
+  WebView.prototype.getParams = function() {
     var pair, pairString, pairStrings, params, _i, _len;
     params = {};
     pairStrings = this.location.slice(this.location.indexOf('?') + 1).split('&');
@@ -605,7 +605,7 @@ Layer = (function(_super) {
     return params;
   };
 
-  return Layer;
+  return WebView;
 
 })(NativeObject);
 ;var Tab;
@@ -1207,7 +1207,9 @@ window.steroids.nativeBridge = Bridge.getBestNativeBridge();
 
 window.steroids.version = "0.2.5";
 
-window.steroids.Layer = Layer;
+window.steroids.views = {};
+
+window.steroids.views.WebView = WebView;
 
 window.steroids.Tab = Tab;
 
@@ -1219,7 +1221,7 @@ window.steroids.animation = window.steroids.Animation;
 
 window.steroids.layers = new LayerCollection;
 
-window.steroids.layer = new Layer({
+window.steroids.view = new steroids.views.WebView({
   location: window.location.href
 });
 

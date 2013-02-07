@@ -56,7 +56,7 @@ module.exports = function(grunt) {
           '<file_strip_banner:lib/models/Button.js>',
           '<file_strip_banner:lib/models/Modal.js>',
           '<file_strip_banner:lib/models/LayerCollection.js>',
-          '<file_strip_banner:lib/models/Layer.js>',
+          '<file_strip_banner:lib/models/views/WebView.js>',
           '<file_strip_banner:lib/models/Tab.js>',
           '<file_strip_banner:lib/models/NavigationBar.js>',
           '<file_strip_banner:lib/models/Audio.js>',

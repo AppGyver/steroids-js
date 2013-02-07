@@ -32,8 +32,8 @@ window.steroids.nativeBridge = Bridge.getBestNativeBridge()
 # Current version
 window.steroids.version = "@@version"
 
-# Public Layer class
-window.steroids.Layer = Layer
+window.steroids.views = {}
+window.steroids.views.WebView = WebView
 
 # Public Tab class
 window.steroids.Tab = Tab
@@ -49,8 +49,8 @@ window.steroids.animation = window.steroids.Animation
 # Public LayerCollection singleton
 window.steroids.layers = new LayerCollection
 
-# Current Layer
-window.steroids.layer = new Layer { location: window.location.href }
+# Current view
+window.steroids.view = new steroids.views.WebView { location: window.location.href }
 
 # Public Modal singleton
 window.steroids.modal = new Modal

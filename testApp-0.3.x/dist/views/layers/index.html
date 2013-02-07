@@ -17,7 +17,7 @@
     }
 
     STEROIDS = {};
-    STEROIDS.controllerName = capitaliseFirstLetter("steroidsController");
+    STEROIDS.controllerName = capitaliseFirstLetter("layersController");
   </script>
 
 
@@ -27,38 +27,18 @@
   <script src="/javascripts/zepto.min.js"></script>
 
   <script src="/controllers/applicationController.js"></script>
-  <script src="/controllers/steroidsController.js"></script>
+  <script src="/controllers/layersController.js"></script>
 
 </head>
 <body>
   <div class="content">
       <div class="content-padded">
 
-        <h1>steroids</h1>
-
-<ul class="list">
-  <li class="opensLayer" data-location="/views/app/index.html">
-    app
-    <span class="chevron"/>
-  </li>
-  <li class="opensLayer" data-location="/views/device/index.html">
-    device
-    <span class="chevron"/>
-  </li>
-  <li class="opensLayer" data-location="/views/layers/index.html">
-    layers
-    <span class="chevron"/>
-  </li>
-
-</ul>
-
-
-<ul class="list">
-  <li class="performsTest" data-test="testSteroidsDefined">
-    <code>steroids</code> defined?
+        <ul class="list">
+  <li class="performsTest" data-test="testPushPop">
+    push() + pop()
   </li>
 </ul>
-
 
 
       </div>

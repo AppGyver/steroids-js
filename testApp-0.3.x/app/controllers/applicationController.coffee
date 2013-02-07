@@ -6,7 +6,7 @@ document.addEventListener "deviceready", ()->
 
     # Create a new layer that ...
 
-    layer = new steroids.Layer { location: @getAttribute("data-location")  }
+    layer = new steroids.views.WebView { location: @getAttribute("data-location")  }
 
     # ... Open on top of this document and pushes to the navigation stack
     steroids.layers.push layer: layer
@@ -14,7 +14,7 @@ document.addEventListener "deviceready", ()->
 
   $(".opensModal").on "tap", () ->
 
-    layer = new steroids.Layer { location: @getAttribute("data-location") }
+    layer = new steroids.views.WebView { location: @getAttribute("data-location") }
 
     steroids.modal.show { layer: layer }
 

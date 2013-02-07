@@ -3,7 +3,7 @@
   document.addEventListener("deviceready", function() {
     $(".opensLayer").on("tap", function() {
       var layer;
-      layer = new steroids.Layer({
+      layer = new steroids.views.WebView({
         location: this.getAttribute("data-location")
       });
       return steroids.layers.push({
@@ -12,7 +12,7 @@
     });
     $(".opensModal").on("tap", function() {
       var layer;
-      layer = new steroids.Layer({
+      layer = new steroids.views.WebView({
         location: this.getAttribute("data-location")
       });
       return steroids.modal.show({
