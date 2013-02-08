@@ -1,6 +1,10 @@
 window.steroids =
   eventCallbacks: {}
   waitingForComponents: []
+  debugEnabled: false
+
+  debug: (msg)->
+    console.log msg if steroids.debugEnabled
 
   on: (event, callback)->
     if @["#{event}_has_fired"]?

@@ -17,10 +17,12 @@ class WebView extends NativeObject
     @params = @getParams()
 
   preload: (options={}, callbacks={}) ->
+    steroids.debug "preload called for WebView #{JSON.stringify @}"
 
     proposedId = @location || options.id
 
     setIdOnSuccess = () =>
+      steroids.debug "preload success: setting id"
       @id = proposedId
 
     @nativeCall
