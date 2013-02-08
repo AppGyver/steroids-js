@@ -67,12 +67,12 @@ window.steroids.camera = new Camera
 # Public NavigationBar singleton
 window.steroids.navigationBar = new NavigationBar
 
-window.steroids.waitingForComponents.push("App")
-window.steroids.waitingForComponents.push("Events")
 
 # Public App singleton
-
+window.steroids.waitingForComponents.push("App")
 window.steroids.app = new App
+
+window.steroids.waitingForComponents.push("Events")
 Events.extend(document)
 
 # Public Device singleton
@@ -86,3 +86,5 @@ window.steroids.XHR = XHR
 window.steroids.analytics = new Analytics
 
 window.steroids.screen = new Screen
+
+window.steroids.File = File

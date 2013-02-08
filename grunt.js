@@ -69,6 +69,7 @@ module.exports = function(grunt) {
           '<file_strip_banner:lib/models/XHR.js>',
           '<file_strip_banner:lib/models/analytics/Analytics.js>',
           '<file_strip_banner:lib/models/Screen.js>',
+          '<file_strip_banner:lib/models/File.js>',
           '<file_strip_banner:lib/Steroids.js>'
         ],
         dest: 'dist/steroids.js',
