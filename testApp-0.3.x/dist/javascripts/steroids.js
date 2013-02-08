@@ -344,6 +344,7 @@ Device = (function(_super) {
 
 })(NativeObject);
 ;var Animation,
+  __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   __hasProp = {}.hasOwnProperty,
   __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
@@ -351,20 +352,30 @@ Animation = (function(_super) {
 
   __extends(Animation, _super);
 
-  function Animation() {
-    return Animation.__super__.constructor.apply(this, arguments);
+  function Animation(options) {
+    if (options == null) {
+      options = {};
+    }
+    this.perform = __bind(this.perform, this);
+
+    this.transition = options.transition || "curlUp";
+    this.curve = options.curve || "easeInOut";
+    this.duration = options.duration || 0.7;
   }
 
-  Animation.prototype.start = function(options, callbacks) {
+  Animation.prototype.perform = function(options, callbacks) {
+    if (options == null) {
+      options = {};
+    }
     if (callbacks == null) {
       callbacks = {};
     }
     return this.nativeCall({
       method: "performTransition",
       parameters: {
-        transition: options.name,
-        curve: options.curve || "easeInOut",
-        duration: options.duration || 0.7
+        transition: options.transition || this.transition,
+        curve: options.curve || this.curve,
+        duration: options.duration || this.duration
       },
       successCallbacks: [callbacks.onSuccess],
       failureCallbacks: [callbacks.onFailure]
@@ -1215,9 +1226,7 @@ window.steroids.Tab = Tab;
 
 window.steroids.OAuth2 = OAuth2;
 
-window.steroids.Animation = new Animation;
-
-window.steroids.animation = window.steroids.Animation;
+window.steroids.Animation = Animation;
 
 window.steroids.layers = new LayerCollection;
 

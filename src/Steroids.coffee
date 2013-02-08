@@ -43,8 +43,7 @@ window.steroids.OAuth2 = OAuth2
 
 # Public Animation singleton
 
-window.steroids.Animation = new Animation  # to be deprecated, not documented
-window.steroids.animation = window.steroids.Animation
+window.steroids.Animation = Animation
 
 # Public LayerCollection singleton
 window.steroids.layers = new LayerCollection

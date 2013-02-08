@@ -25,7 +25,7 @@ Steroids.config.tabBar.tabs = [
   {
     title: "FUT"
     icon: "icons/telescope@2x.png"
-    location: "http://localhost:13101/views/modal/index.html"
+    location: "http://localhost:13101/views/animation/index.html"
   },
   {
     title: "Steroids"
