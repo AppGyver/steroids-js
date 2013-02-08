@@ -7,6 +7,14 @@ class window.DeviceController
 
     steroids.device.ping({}, { onSuccess: gotPong })
 
+  @testGetIPAddress: () ->
+    showIPAddress = (e) ->
+      alert e.ipAddress
+
+    steroids.device.getIPAddress {
+    }, {
+      onSuccess: showIPAddress
+    }
 
   @testTorchOn: () ->
 
