@@ -1,20 +1,20 @@
-class Screen extends NativeObject
+class Screen
   freeze: (options={}, callbacks={})->
-    @nativeCall
+    steroids.nativeBridge.nativeCall
       method: "freeze"
       parameters: options
       successCallbacks: [callbacks.onSuccess]
       failureCallbacks: [callbacks.onFailure]
 
   unfreeze: (options={}, callbacks={})->
-    @nativeCall
+    steroids.nativeBridge.nativeCall
       method: "unfreeze"
       parameters: options
       successCallbacks: [callbacks.onSuccess]
       failureCallbacks: [callbacks.onFailure]
 
   capture: (options={}, callbacks={})->
-    @nativeCall
+    steroids.nativeBridge.nativeCall
       method: "takeScreenshot"
       parameters: options
       successCallbacks: [callbacks.onSuccess]
