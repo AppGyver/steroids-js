@@ -1,5 +1,9 @@
 class WebView extends NativeObject
 
+  params: {}
+  id: null
+  location: null
+
   constructor: (options)->
     super()
     @location = options.location
@@ -10,7 +14,20 @@ class WebView extends NativeObject
 
     @params = @getParams()
 
-  params: {}
+  preload: (options={}, callbacks={}) ->
+
+    proposedId = @location || options.id
+
+    setIdOnSuccess = () =>
+      @id = proposedId
+
+    @nativeCall
+      method: "preloadLayer"
+      parameters:
+        id: proposedId
+        url: @location || options.location
+      successCallbacks: [setIdOnSuccess, callbacks.onSuccess]
+      failureCallbacks: [callbacks.onFailure]
 
   getParams: ()->
     params = {}
