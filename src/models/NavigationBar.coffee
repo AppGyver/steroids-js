@@ -1,14 +1,14 @@
-class NavigationBar extends NativeObject
+class NavigationBar
 
   hide: (options={}, callbacks={}) =>
-    @nativeCall
+    steroids.nativeBridge.nativeCall
       method: "hideNavigationBar"
       parameters: {}
       successCallbacks: [callbacks.onSuccess]
       failureCallbacks: [callbacks.onFailure]
 
   show: (options={}, callbacks={}) =>
-    @nativeCall
+    steroids.nativeBridge.nativeCall
       method: "showNavigationBar"
       parameters:
         title: options.title

@@ -1,14 +1,12 @@
-# LayerCollection description
-class LayerCollection extends NativeObject
+class LayerCollection
   constructor: ->
-    super()
     @array = []
 
   pop: (options={}, callbacks={})->
     defaultOnSuccess = ()=>
       @array.pop()
 
-    @nativeCall
+    steroids.nativeBridge.nativeCall
       method: "popLayer"
       successCallbacks: [defaultOnSuccess, callbacks.onSuccess]
       failureCallbacks: [callbacks.onFailure]
@@ -29,7 +27,7 @@ class LayerCollection extends NativeObject
       parameters.popAnimation = options.animation.reversedTransition
       parameters.popAnimationDuration = options.animation.reversedDuration
 
-    @nativeCall
+    steroids.nativeBridge.nativeCall
       method: "openLayer"
       parameters: parameters
       successCallbacks: [defaultOnSuccess, callbacks.onSuccess]

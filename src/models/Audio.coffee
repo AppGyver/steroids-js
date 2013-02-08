@@ -1,19 +1,6 @@
-# Audio description
-class Audio extends NativeObject
-  # ### Steroids.audio.play
-  #
-  # Play an audio file from the file system
-  #
-  # #### Examples:
-  #
-  # Steroids.audio.play({
-  #   path: "sounds/drum.mp3"
-  # });
-  #
-  # Steroids.audio.play({
-  #   absolutePath: Steroids.app.absolutePath + "/sounds/drum.mp3"
-  # });
-  #
+
+class Audio
+
   play: (options, callbacks={})->
     Steroids.on "ready", ()=>
       if options.absolutePath
@@ -21,7 +8,7 @@ class Audio extends NativeObject
       else
         mediaPath = "#{Steroids.app.path}/#{options.path}"
 
-      @nativeCall
+      steroids.nativeBridge.nativeCall
         method: "play"
         parameters: {
           filenameWithPath: mediaPath
@@ -29,16 +16,8 @@ class Audio extends NativeObject
         successCallbacks: [callbacks.onSuccess]
         failureCallbacks: [callbacks.onFailure]
 
-  # ### Steroids.audio.prime()
-  #
-  # Preload the native audio framework to play sounds instantly
-  #
-  # #### Example:
-  #
-  # Steroids.audio.prime();
-  #
   prime: (options={}, callbacks={})->
-    @nativeCall
+    steroids.nativeBridge.nativeCall
       method: "primeAudioPlayer"
       parameters: options
       successCallbacks: [callbacks.onSuccess]

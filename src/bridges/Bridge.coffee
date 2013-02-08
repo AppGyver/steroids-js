@@ -36,6 +36,26 @@ class Bridge
       if @callbacks[msg.callback]?
         @callbacks[msg.callback].call(msg.parameters, msg.parameters)
 
+
+  nativeCall: (options) =>
+    @send
+      # options.method is the native API call name
+      method: options.method
+      # options.parameters is a parameters object for API call
+      parameters: options.parameters
+      # options.callbacks should have successCallbacks, recurringCallbacks and failureCallbacks function arrays
+      callbacks:
+        recurring: (parameters) =>
+          for callback in options.recurringCallbacks when callback?
+            callback.call(@, parameters, options)
+        success: (parameters) =>
+          for callback in options.successCallbacks when callback?
+            callback.call(@, parameters, options)
+        failure: (parameters) =>
+          for callback in options.failureCallbacks when callback?
+            callback.call(@, parameters, options)
+
+
   send: (options)=>
     callbacks = @storeCallbacks(options)
 

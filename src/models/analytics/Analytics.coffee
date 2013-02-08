@@ -1,7 +1,7 @@
-class Analytics extends NativeObject
+class Analytics
 
   recordEvent: (opts={}, callbacks={}) ->
-    @nativeCall
+    steroids.nativeBridge.nativeCall
       method: "recordEvent"
       parameters:
         type: "custom"

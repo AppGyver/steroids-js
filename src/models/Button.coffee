@@ -1,22 +1,8 @@
-# Button description
-class Button extends NativeObject
-  # ### Steroids.navigationBar.rightButton.show
-  #  Show a button on the right side of navigation bar
-  #
-  # #### Example:
-  # Steroids.navigationBar.rightButton.show({
-  #   title: 'Settings'
-  # },{
-  #   onSuccess: function() {
-  #     console.log("Button set.");
-  #   },
-  #   onRecurring: function() {
-  #     console.log("User tapped the button");
-  #   }
-  # });
-  #
+
+class Button
+
   show: (options, callbacks={})->
-    @nativeCall
+    steroids.nativeBridge.nativeCall
       method: "showNavigationBarRightButton"
       parameters:
         title: options.title

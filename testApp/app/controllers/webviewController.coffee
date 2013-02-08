@@ -1,5 +1,13 @@
 class window.WebviewController
 
+  @testAddVisibilitychangeEvent: () ->
+    changed = () ->
+      alert "become visible"
+
+    document.addEventListener "visibilitychange", changed, true
+
+    alert "added eventlistner for visibilitychange"
+
   @testPreload: () ->
 
     webView = new steroids.views.WebView {

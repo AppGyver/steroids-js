@@ -1,5 +1,5 @@
 # XHR Description
-class XHR extends NativeObject
+class XHR
   headers: []
 
   # ### new Steroids.XHR
@@ -36,7 +36,7 @@ class XHR extends NativeObject
 
     fullPath = "#{Steroids.app.path}/#{options.filename}"
 
-    @nativeCall
+    steroids.nativeBridge.nativeCall
       method: "downloadFile"
       parameters:
         url: options.url || @url

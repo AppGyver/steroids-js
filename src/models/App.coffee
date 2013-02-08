@@ -1,18 +1,17 @@
-class App extends NativeObject
+class App
 
   path: undefined
 
   absolutePath: undefined
 
   constructor: ->
-    super()
     @getPath {}, onSuccess: (params)=>
       @path = params.applicationPath
       @absolutePath = params.applicationFullPath
       steroids.markComponentReady("App")
 
   getPath: (options, callbacks)->
-    @nativeCall
+    steroids.nativeBridge.nativeCall
       method: "getApplicationPath"
       parameters: {}
       successCallbacks: [callbacks.onSuccess]

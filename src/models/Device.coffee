@@ -1,9 +1,9 @@
-class Device extends NativeObject
+class Device
 
   torch: new Torch()
 
   ping: (options={}, callbacks={}) =>
-    @nativeCall
+    steroids.nativeBridge.nativeCall
       method: "ping"
       parameters:
         payload: options.data
@@ -11,7 +11,7 @@ class Device extends NativeObject
       failureCallbacks: [callbacks.onFailure]
 
   getIPAddress: (options={}, callbacks={}) =>
-    @nativeCall
+    steroids.nativeBridge.nativeCall
       method: "getIPAddress"
       parameters: {}
       successCallbacks: [callbacks.onSuccess]

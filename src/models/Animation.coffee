@@ -1,5 +1,4 @@
-# Animation description
-class Animation extends NativeObject
+class Animation
   @TRANSITION_REVERSION_MAPPING:
     slideFromLeft: "slideFromRight"
     slideFromRight: "slideFromLeft"
@@ -23,7 +22,7 @@ class Animation extends NativeObject
     @curve = options.curve || "easeInOut"
 
   perform: (options={}, callbacks={}) =>
-    @nativeCall
+    steroids.nativeBridge.nativeCall
       method: "performTransition"
       parameters: {
         transition: options.transition || @transition

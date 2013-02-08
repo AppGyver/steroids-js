@@ -1,4 +1,4 @@
-class WebView extends NativeObject
+class WebView
 
   params: {}
   id: null
@@ -7,7 +7,6 @@ class WebView extends NativeObject
   navigationBar: new NavigationBar
 
   constructor: (options)->
-    super()
     @location = options.location
 
     if @location.indexOf("://") == -1 # if a path
@@ -15,6 +14,7 @@ class WebView extends NativeObject
         @location = "#{window.location.protocol}//#{window.location.host}/#{@location}"
 
     @params = @getParams()
+
 
   preload: (options={}, callbacks={}) ->
     steroids.debug "preload called for WebView #{JSON.stringify @}"
@@ -25,7 +25,7 @@ class WebView extends NativeObject
       steroids.debug "preload success: setting id"
       @id = proposedId
 
-    @nativeCall
+    steroids.nativeBridge.nativeCall
       method: "preloadLayer"
       parameters:
         id: proposedId
