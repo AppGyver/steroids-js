@@ -80,3 +80,5 @@ window.steroids.data.TouchDB = TouchDB
 window.steroids.XHR = XHR
 
 window.steroids.analytics = new Analytics
+
+window.steroids.screen = new Screen
