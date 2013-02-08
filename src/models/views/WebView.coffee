@@ -4,6 +4,8 @@ class WebView extends NativeObject
   id: null
   location: null
 
+  navigationBar: new NavigationBar
+
   constructor: (options)->
     super()
     @location = options.location
