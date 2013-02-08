@@ -55,10 +55,11 @@ class LayerCollection extends NativeObject
     parameters =
       url: options.layer.location
 
-    parameters.pushAnimation = options.layer.pushAnimation if options.layer.pushAnimation?
-    parameters.pushAnimationDuration = options.layer.pushAnimationDuration if options.layer.pushAnimationDuration?
-    parameters.popAnimation = options.layer.popAnimation if options.layer.popAnimation?
-    parameters.popAnimationDuration = options.layer.popAnimationDuration if options.layer.popAnimationDuration?
+    if options.animation?
+      parameters.pushAnimation = options.animation.transition
+      parameters.pushAnimationDuration = options.animation.duration
+      parameters.popAnimation = options.animation.reversedTransition
+      parameters.popAnimationDuration = options.animation.reversedDuration
 
     @nativeCall
       method: "openLayer"

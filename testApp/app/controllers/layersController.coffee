@@ -1,22 +1,29 @@
 class window.LayersController
-
-  @testPushPop: () ->
-    pushed = () ->
-      console.log "PUSHED"
-
-    popView = new steroids.views.WebView {
+  @createWebView: ->
+    new steroids.views.WebView {
       location: "/views/layers/pop.html"
     }
 
+  @testPushPop: ->
+    pushed = ->
+      console.log "PUSHED"
+
     steroids.layers.push {
-      layer: popView
+      layer: @createWebView()
     }, {
       onSuccess: pushed
     }
 
-  @testPop: () ->
-    popped = () ->
+  @testPop: ->
+    popped = ->
       alert "popped"
 
     steroids.layers.pop()
 
+  @testPushAnimated: ->
+    animation = new steroids.Animation()
+
+    steroids.layers.push {
+      layer: @createWebView(),
+      animation: animation
+    }

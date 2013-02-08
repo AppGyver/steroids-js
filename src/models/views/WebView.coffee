@@ -8,11 +8,6 @@ class WebView extends NativeObject
       if window.location.href.indexOf("file://") == -1 # if not currently on file protocol
         @location = "#{window.location.protocol}//#{window.location.host}/#{@location}"
 
-    @pushAnimation = options.pushAnimation if options.pushAnimation?
-    @pushAnimationDuration = options.pushAnimationDuration if options.pushAnimationDuration?
-    @popAnimation = options.popAnimation if options.popAnimation?
-    @popAnimationDuration = options.popAnimationDuration if options.popAnimationDuration?
-
     @params = @getParams()
 
   params: {}
