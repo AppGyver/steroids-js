@@ -14,12 +14,17 @@ class LayerCollection
 
   push: (options={}, callbacks={})->
     defaultOnSuccess = ()=>
-      @array.push options.layer
+      @array.push view
 
-    parameters = if options.layer.id?
-      { id: options.layer.id }
+    view = if options.constructor.name == "String"
+      options
     else
-      { url: options.layer.location }
+      options.view
+
+    parameters = if view.id?
+      { id: view.id }
+    else
+      { url: view.location }
 
     if options.animation?
       parameters.pushAnimation = options.animation.transition

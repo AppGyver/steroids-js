@@ -9,7 +9,7 @@ class window.LayersController
       console.log "PUSHED"
 
     steroids.layers.push {
-      layer: @createWebView()
+      view: @createWebView()
     }, {
       onSuccess: pushed
     }
@@ -24,6 +24,6 @@ class window.LayersController
     animation = new steroids.Animation()
 
     steroids.layers.push {
-      layer: @createWebView(),
+      view: @createWebView(),
       animation: animation
     }
