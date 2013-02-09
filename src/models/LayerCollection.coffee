@@ -16,7 +16,7 @@ class LayerCollection
     defaultOnSuccess = ()=>
       @array.push view
 
-    view = if options.constructor.name == "String"
+    view = if options.constructor.name == "WebView"
       options
     else
       options.view

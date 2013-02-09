@@ -9,7 +9,7 @@ document.addEventListener "deviceready", ()->
     layer = new steroids.views.WebView { location: @getAttribute("data-location")  }
 
     # ... Open on top of this document and pushes to the navigation stack
-    steroids.layers.push layer: layer
+    steroids.layers.push layer
 
 
   $(".opensModal").on "tap", () ->
