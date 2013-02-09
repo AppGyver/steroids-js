@@ -2,7 +2,7 @@ class window.AnalyticsController
 
   @testRecordEvent: () ->
 
-    steroids.device.ping {
+    steroids.analytics.recordEvent {
       event: {
         hello: "world"
       }

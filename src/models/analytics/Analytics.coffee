@@ -1,11 +1,12 @@
 class Analytics
 
-  recordEvent: (opts={}, callbacks={}) ->
+  recordEvent: (options={}, callbacks={}) ->
+
     steroids.nativeBridge.nativeCall
       method: "recordEvent"
       parameters:
         type: "custom"
-        attributes: opts.event
+        attributes: options.event
       successCallbacks: [callbacks.onSuccess]
       failureCallbacks: [callbacks.onFailure]
 
