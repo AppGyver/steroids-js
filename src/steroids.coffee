@@ -69,13 +69,16 @@ window.steroids.camera = new Camera
 window.steroids.navigationBar = new NavigationBar
 
 
-# Public App singleton
 window.steroids.waitingForComponents.push("App")
+window.steroids.waitingForComponents.push("Events")
+
+
+# Public App singleton
 window.steroids.app = new App
 
-window.steroids.waitingForComponents.push("Events")
 Events.extend(document)
 
+window.steroids.openURL = OpenURL.open
 # Public Device singleton
 window.steroids.device = new Device
 
