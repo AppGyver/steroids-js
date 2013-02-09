@@ -9,7 +9,7 @@ class window.ModalController
     }
 
     steroids.modal.show {
-      layer: hideView
+      view: hideView
     }, {
       onSuccess: opened
     }

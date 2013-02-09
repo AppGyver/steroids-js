@@ -38,6 +38,7 @@ window.steroids.version = "@@version"
 
 window.steroids.views = {}
 window.steroids.views.WebView = WebView
+window.steroids.views.PreviewFileView = PreviewFileView
 
 # Public Tab class
 window.steroids.Tab = Tab

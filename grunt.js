@@ -58,6 +58,7 @@ module.exports = function(grunt) {
           '<file_strip_banner:lib/models/LayerCollection.js>',
           '<file_strip_banner:lib/models/NavigationBar.js>',
           '<file_strip_banner:lib/models/views/WebView.js>',
+          '<file_strip_banner:lib/models/views/PreviewFileView.js>',
           '<file_strip_banner:lib/models/Tab.js>',
           '<file_strip_banner:lib/models/Audio.js>',
           '<file_strip_banner:lib/models/Camera.js>',
