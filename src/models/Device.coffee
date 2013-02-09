@@ -3,10 +3,15 @@ class Device
   torch: new Torch()
 
   ping: (options={}, callbacks={}) =>
+    data = if options.constructor.name == "String"
+      options
+    else
+      options.data
+
     steroids.nativeBridge.nativeCall
       method: "ping"
       parameters:
-        payload: options.data
+        payload: data
       successCallbacks: [callbacks.onSuccess]
       failureCallbacks: [callbacks.onFailure]
 
