@@ -3,19 +3,24 @@ class Modal
 
   show: (options={}, callbacks={})->
 
-    switch options.view.constructor.name
+    view = if options.constructor.name == "String"
+      options
+    else
+      options.view
+
+    switch view.constructor.name
       when "PreviewFileView"
         steroids.nativeBridge.nativeCall
           method: "previewFile"
           parameters:
-            filenameWithPath: options.view.file
+            filenameWithPath: view.file
           successCallbacks: [callbacks.onSuccess]
           failureCallbacks: [callbacks.onFailure]
       when "WebView"
         steroids.nativeBridge.nativeCall
           method: "openModal"
           parameters:
-            url: options.view.location
+            url: view.location
           successCallbacks: [callbacks.onSuccess]
           failureCallbacks: [callbacks.onFailure]
       else
