@@ -36,9 +36,14 @@ class File
   #     failureCallbacks: [callbacks.onFailure]
 
   unzip: (options={}, callbacks={})->
+    destinationPath = if options.constructor.name == "String"
+      options
+    else
+      options.destinationPath
+
     parameters =
       filenameWithPath: @path
-      path: options.destinationPath
+      path: destinationPath
 
     steroids.nativeBridge.nativeCall
       method: "unzip"
