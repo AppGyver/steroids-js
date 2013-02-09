@@ -23,14 +23,13 @@ Steroids.config.tabBar.enabled = true
 #
 Steroids.config.tabBar.tabs = [
   {
-    title: "FUT"
-    icon: "icons/telescope@2x.png"
-    location: "http://localhost:13101/views/previewfileview/index.html"
-  },
-  {
     title: "Steroids"
     icon: "icons/pill@2x.png"
     location: "http://localhost:13101/views/steroids/index.html"
+  }, {
+    title: "FUT"
+    icon: "icons/telescope@2x.png"
+    location: "http://localhost:13101/views/previewfileview/index.html"
   }
 ]
 
