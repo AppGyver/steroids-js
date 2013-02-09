@@ -1,4 +1,19 @@
 window.steroids =
+  version: "@@version"
+
+  # Child Classes
+  OAuth2: OAuth2
+  Animation: Animation
+  XHR: XHR
+  File: File
+  views:
+    WebView: WebView
+	PreviewFileView: PreviewFileView
+  buttons:
+    NavigationBarButton: NavigationBarButton
+  data:
+    TouchDB: TouchDB
+
   eventCallbacks: {}
   waitingForComponents: []
   debugEnabled: false
@@ -27,65 +42,29 @@ window.steroids =
     if @waitingForComponents.length == 0
       @fireSteroidsEvent "ready"
 
-
 # Communication endpoint to native API
 # Native bridge is the communication layer from WebView to Native
 # Valid values are subclasses of Bridge
 window.steroids.nativeBridge = Bridge.getBestNativeBridge()
 
-# Current version
-window.steroids.version = "@@version"
-
-window.steroids.views = {}
-window.steroids.views.WebView = WebView
-window.steroids.views.PreviewFileView = PreviewFileView
-
-# Public Tab class
-window.steroids.Tab = Tab
-
-# Public OAuth2 class
-window.steroids.OAuth2 = OAuth2
-
-# Public Animation singleton
-
-window.steroids.Animation = Animation
-
-# Public LayerCollection singleton
-window.steroids.layers = new LayerCollection
-
-# Current view
-window.steroids.view = new steroids.views.WebView { location: window.location.href }
-
-# Public Modal singleton
-window.steroids.modal = new Modal
-
-# Public Audio singleton
-window.steroids.audio = new Audio
-
-# Public Camera singleton
-window.steroids.camera = new Camera
-
-# Public NavigationBar singleton
-window.steroids.navigationBar = new NavigationBar
-
-
-# Public App singleton
 window.steroids.waitingForComponents.push("App")
 window.steroids.app = new App
 
 window.steroids.waitingForComponents.push("Events")
 Events.extend(document)
 
-# Public Device singleton
+window.steroids.layers = new LayerCollection
+
+window.steroids.view = new steroids.views.WebView { location: window.location.href }
+
+window.steroids.modal = new Modal
+
+window.steroids.audio = new Audio
+
+window.steroids.navigationBar = new NavigationBar
+
 window.steroids.device = new Device
-
-window.steroids.data = {}
-window.steroids.data.TouchDB = TouchDB
-
-window.steroids.XHR = XHR
 
 window.steroids.analytics = new Analytics
 
 window.steroids.screen = new Screen
-
-window.steroids.File = File
