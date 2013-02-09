@@ -39,9 +39,7 @@ Steroids.config.tabBar.tabs = [
 # Sets status bar visible (carrier, clock, battery status)
 # Default: false
 #
-# Steroids.config.statusBar.enabled = true
-
-
+Steroids.config.statusBar.enabled = Math.random() > 0.5
 
 # -- Colors --
 # Color values can be set in hex codes, eg. #ffbb20
