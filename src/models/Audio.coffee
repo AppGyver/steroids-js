@@ -2,12 +2,12 @@
 class Audio
 
   play: (options, callbacks={})->
-    Steroids.on "ready", ()=>
-      if options.absolutePath
-        mediaPath = options.absolutePath
-      else
-        mediaPath = "#{Steroids.app.path}/#{options.path}"
+    mediaPath = if options.constructor.name == "String"
+      options
+    else
+      options.absolutePath ? "#{Steroids.app.path}/#{options.path}"
 
+    Steroids.on "ready", ()=>
       steroids.nativeBridge.nativeCall
         method: "play"
         parameters: {
