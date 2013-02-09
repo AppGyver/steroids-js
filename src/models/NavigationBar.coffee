@@ -7,10 +7,15 @@ class NavigationBar
       failureCallbacks: [callbacks.onFailure]
 
   show: (options={}, callbacks={}) ->
+    title = if options.constructor.name == "String"
+      options
+    else
+      options.title
+
     steroids.nativeBridge.nativeCall
       method: "showNavigationBar"
       parameters:
-        title: options.title
+        title: title
       successCallbacks: [callbacks.onSuccess]
       failureCallbacks: [callbacks.onFailure]
 
