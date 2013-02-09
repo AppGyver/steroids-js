@@ -8,7 +8,7 @@ window.steroids =
   File: File
   views:
     WebView: WebView
-	PreviewFileView: PreviewFileView
+    PreviewFileView: PreviewFileView
   buttons:
     NavigationBarButton: NavigationBarButton
   data:

@@ -1,7 +1,7 @@
 # -- Required settings --
 
 Steroids.config.name = "Hello World"
-Steroids.config.location = "index.html"
+Steroids.config.location = "http://localhost:13101/views/steroids/index.html"
 
 # -- Tabs --
 
@@ -9,7 +9,7 @@ Steroids.config.location = "index.html"
 # This will override Steroids.config.location (that is for single webview apps, like in PhoneGap)
 # Default: false
 #
-Steroids.config.tabBar.enabled = true
+#Steroids.config.tabBar.enabled = true
 
 # Array with objects to specify which tabs are created on app startup
 #
