@@ -1,7 +1,6 @@
 {
   "name": "steroids-js",
-  "version": "0.2.5",
-
+  "version": "0.3.0",
   "license": "MIT",
   "author": "AppGyver <contact@appgyver.com>",
   "description": "AppGyver Steroids javascript library",
@@ -19,9 +18,7 @@
       "email": "juha.suuraho@appgyver.com"
     }
   ],
-
   "main": "main.js",
-
   "scripts": {
     "stop": "./bin/kill-server.sh",
     "start": "./bin/server.sh",
@@ -30,22 +27,17 @@
     "gdocs": "find ./src -name '*.coffee' |xargs echo|xargs docco",
     "prepublish": "grunt build"
   },
-
   "repository": {
     "type": "git",
     "url": "git://github.com/AppGyver/steroids-js.git"
   },
-
   "engines": {
     "node": ">=0.8.0",
-    "npm":  ">=1.1.0"
+    "npm": ">=1.1.0"
   },
-
-  "dependencies": {
-  },
-
+  "dependencies": {},
   "devDependencies": {
-    "grunt"    : "0.3.x",
+    "grunt": "0.3.x",
     "grunt-coffee": "0.0.x",
     "grunt-concat": "0.1.x",
     "grunt-shell": "0.1.x",
