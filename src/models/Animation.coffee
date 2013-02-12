@@ -13,7 +13,11 @@ class Animation
     flipHorizontalFromRight: "flipHorizontalFromLeft"
 
   constructor: (options={}) ->
-    @transition = options.transition || "curlUp"
+    @transition = if options.constructor.name == "String"
+      options
+    else
+      options.transition ? "curlUp"
+
     @reversedTransition = @.constructor.TRANSITION_REVERSION_MAPPING[@transition]
 
     @duration = options.duration || 0.7
