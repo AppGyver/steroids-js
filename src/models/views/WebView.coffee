@@ -6,8 +6,11 @@ class WebView
 
   navigationBar: new NavigationBar
 
-  constructor: (options)->
-    @location = options.location
+  constructor: (options={})->
+    @location = if options.constructor.name == "String"
+      options
+    else
+      options.location
 
     if @location.indexOf("://") == -1 # if a path
       if window.location.href.indexOf("file://") == -1 # if not currently on file protocol

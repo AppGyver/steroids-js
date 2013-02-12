@@ -1,4 +1,7 @@
 class PreviewFileView
 
   constructor: (options={})->
-    @file = options.file
+    @file = if options.constructor.name == "String"
+      options
+    else
+      options.file
