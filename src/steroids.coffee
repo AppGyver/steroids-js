@@ -2,7 +2,6 @@ window.steroids =
   version: "@@version"
 
   # Child Classes
-  OAuth2: OAuth2
   Animation: Animation
   XHR: XHR
   File: File
@@ -13,6 +12,7 @@ window.steroids =
     NavigationBarButton: NavigationBarButton
   data:
     TouchDB: TouchDB
+    OAuth2: OAuth2
 
   eventCallbacks: {}
   waitingForComponents: []
