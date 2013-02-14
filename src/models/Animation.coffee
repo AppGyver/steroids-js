@@ -18,6 +18,9 @@ class Animation
     else
       options.transition ? "curlUp"
 
+    throw "transition required" unless @transition?
+
+
     @reversedTransition = @.constructor.TRANSITION_REVERSION_MAPPING[@transition]
 
     @duration = options.duration || 0.7
@@ -29,7 +32,6 @@ class Animation
     steroids.nativeBridge.nativeCall
       method: "performTransition"
       parameters: {
-        transition: options.transition || @transition
         curve: options.curve || @curve
         duration: options.duration || @duration
       }
