@@ -1,0 +1,23 @@
+{
+  "name": "steroids-js",
+  "version": "0.3.3",
+  "main": "./dist/steroids.js",
+  "dependencies": {
+  },
+  "ignore": [
+    "bin/",
+    "buster.js",
+    "docs/",
+    "grunt.js",
+    "lib/",
+    "main.js",
+    "package.json",
+    "publish-plz.sh",
+    "README.md",
+    "server.coffee",
+    "src/",
+    "test/",
+    "testApp",
+    "testSlave"
+  ]
+}

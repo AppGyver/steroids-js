@@ -1,6 +1,5 @@
 node_modules
 lib
-/dist
 /testSlave/dist
 /testApp/dist
 .DS_Store
