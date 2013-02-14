@@ -3,18 +3,25 @@ class File
     @path = options
 
   resizeImage: (options={}, callbacks={})->
+
+    userCompression = options.format?.compression ? 100
+    nativeCompression = 1-(userCompression/100)
+
     parameters =
       filenameWithPath: @path
-      format: options.format ? "png"
-      compression: options.compression ? 1.0
+      format: options.format?.type ? "jpg"
+      compression: nativeCompression
 
-    switch options.constraint
-      when "width"
-        parameters.size = { width: options.constraintLength }
-      when "height"
-        parameters.size = { height: options.constraintLength }
-      else
-        throw "unknown constraint name for steroids.file#resizeImage"
+    if options.constraint?
+      switch options.constraint.dimension
+        when "width"
+          parameters.size = { width: options.constraint.length }
+        when "height"
+          parameters.size = { height: options.constraint.length }
+        else
+          throw "unknown constraint name"
+    else
+      throw "constraint not specified"
 
     steroids.nativeBridge.nativeCall
       method: "resizeImage"

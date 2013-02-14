@@ -14,10 +14,12 @@ class window.FileController
 
   @testResize: ->
     @createFile().resizeImage {
-      constraint: "width"
-      constraintLength: 100
-      compression: 1.0
-      format: "jpg"
+      format:
+        type: "jpg"
+        compression: 100
+      constraint:
+        dimension: "width"
+        length: 100
     },
       onSuccess: (params)=>
         img = document.createElement 'img'
@@ -40,6 +42,7 @@ class window.FileController
   #       fileResult.appendChild img
   #     onFailure: =>
   #       alert "scale failed"
+
 
   @testUnzip: ->
     @createFile("#{steroids.app.path}/test.zip").unzip {
