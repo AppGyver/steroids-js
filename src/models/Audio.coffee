@@ -4,11 +4,12 @@ class Audio
   play: (options, callbacks={})->
 
     steroids.on "ready", ()=>
+      relativeTo = options.relativeTo ? steroids.app.path
 
       mediaPath = if options.constructor.name == "String"
-        "#{steroids.app.path}/#{options}"
+        "#{relativeTo}/#{options}"
       else
-        options.absolutePath ? "#{steroids.app.path}/#{options.path}"
+        "#{relativeTo}/#{options.path}"
 
       steroids.nativeBridge.nativeCall
         method: "play"

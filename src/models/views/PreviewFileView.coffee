@@ -1,7 +1,12 @@
 class PreviewFileView
 
   constructor: (options={})->
-    @file = if options.constructor.name == "String"
+    @filePath = if options.constructor.name == "String"
       options
     else
-      options.file
+      options.filePath
+
+    @relativeTo = options.relativeTo ? steroids.app.path
+
+  getNativeFilePath: ->
+    "#{@relativeTo}/#{@filePath}"

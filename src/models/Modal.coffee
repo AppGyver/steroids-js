@@ -13,7 +13,7 @@ class Modal
         steroids.nativeBridge.nativeCall
           method: "previewFile"
           parameters:
-            filenameWithPath: view.file
+            filenameWithPath: view.getNativeFilePath()
           successCallbacks: [callbacks.onSuccess]
           failureCallbacks: [callbacks.onFailure]
       when "WebView"

@@ -33,14 +33,16 @@ class XHR
 
 
   fetch: (options={}, callbacks={}) ->
-
-    fullPath = "#{Steroids.app.path}/#{options.filename}"
+    destinationPath = if options.constructor.name == "String"
+      options
+    else
+      options.absoluteDestinationPath
 
     steroids.nativeBridge.nativeCall
       method: "downloadFile"
       parameters:
         url: options.url || @url
         headers: options.headers || @headers
-        filenameWithPath: fullPath
+        filenameWithPath: destinationPath
       successCallbacks: [callbacks.onSuccess]
       failureCallbacks: [callbacks.onFailure]

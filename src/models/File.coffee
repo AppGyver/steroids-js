@@ -1,14 +1,21 @@
 class File
   constructor: (options)->
-    @path = options
+    @path = if options.constructor.name == "String"
+      options
+    else
+      options.path
+
+    @relativeTo = options.relativeTo ? steroids.app.path
 
   resizeImage: (options={}, callbacks={})->
+    unless @relativeTo == steroids.app.userFilesPath
+      throw "Cannot resize images outside `steroids.app.userFilesPath`. Files must first be copied under application document root and then resized."
 
     userCompression = options.format?.compression ? 100
     nativeCompression = 1-(userCompression/100)
 
     parameters =
-      filenameWithPath: @path
+      filenameWithPath: "#{@relativeTo}/#{@path}"
       format: options.format?.type ? "jpg"
       compression: nativeCompression
 
@@ -43,13 +50,15 @@ class File
   #     failureCallbacks: [callbacks.onFailure]
 
   unzip: (options={}, callbacks={})->
+    sourcePath = "#{@relativeTo}/#{@path}"
+
     destinationPath = if options.constructor.name == "String"
       options
     else
       options.destinationPath
 
     parameters =
-      filenameWithPath: @path
+      filenameWithPath: sourcePath
       path: destinationPath
 
     steroids.nativeBridge.nativeCall

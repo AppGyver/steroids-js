@@ -1,7 +1,7 @@
 class App
 
   path: undefined
-
+  userFilesPath: ""
   absolutePath: undefined
 
   constructor: ->

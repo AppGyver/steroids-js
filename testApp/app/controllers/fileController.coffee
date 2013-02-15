@@ -1,6 +1,5 @@
 class window.FileController
-
-  @createFile: (options="#{steroids.app.path}/test.png")->
+  @createFile: (options="test.png")->
     new steroids.File(options)
 
   @index: ->
@@ -13,21 +12,23 @@ class window.FileController
 
 
   @testResize: ->
-    @createFile().resizeImage {
-      format:
-        type: "jpg"
-        compression: 100
-      constraint:
-        dimension: "width"
-        length: 100
-    },
-      onSuccess: (params)=>
-        img = document.createElement 'img'
-        img.setAttribute 'src', "/test.png"
-        fileResult.innerHTML = ""
-        fileResult.appendChild img
-      onFailure: =>
-        alert "resize failed"
+    @createFile("test.zip").unzip "resizetest",
+      onSuccess: =>
+        @createFile( path: "resizetest/success.png", relativeTo: steroids.app.userFilesPath ).resizeImage {
+          format:
+            type: "jpg"
+            compression: 100
+          constraint:
+            dimension: "width"
+            length: 100
+        },
+          onSuccess: (params)=>
+            img = document.createElement 'img'
+            img.setAttribute 'src', "/resizetest/success.png"
+            fileResult.innerHTML = ""
+            fileResult.appendChild img
+          onFailure: =>
+            alert "resize failed"
 
   # @testScale: ->
   #   @createFile().scaleImage {
@@ -45,9 +46,7 @@ class window.FileController
 
 
   @testUnzip: ->
-    @createFile("#{steroids.app.path}/test.zip").unzip {
-      destinationPath: "unzippedtest"
-    },
+    @createFile("test.zip").unzip "unzippedtest",
       onSuccess: (params)=>
         img = document.createElement 'img'
         img.setAttribute 'src', "/unzippedtest/success.png"

@@ -1,0 +1,8 @@
+{
+  "name": "myProject",
+  "version": "0.0.1",
+  "dependencies": {
+    "steroids-js": "git://github.com/steroidsjs/steroids-js.git",
+    "zepto": "1.0.0rc1"
+  }
+}
