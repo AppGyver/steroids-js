@@ -1,19 +1,70 @@
+
+
 class Events
 
+  @dispatchVisibilitychangedEvent: (options={}) =>
+    steroids.debug
+      msg: "dispatched visibilitychanged"
 
-  @extend: (element, callbacks={}) ->
+    visibilityChangeCustomEvent = document.createEvent("CustomEvent")
+    visibilityChangeCustomEvent.initCustomEvent("visibilitychange", true, true)
+
+    document.dispatchEvent(visibilityChangeCustomEvent)
+
+  @initializeVisibilityState: (options={}) =>
+    steroids.debug
+      msg: "set document.visibilityState to unloaded"
+
+    document.visibilityState = "unloaded"
+
+    document.addEventListener "DOMContentLoaded", () =>
+      steroids.debug
+        msg: "got DOMContentLoaded, setting document.visibilityState to prerender"
+
+      document.visibilityState = "prerender"
+
+
+  @extend: (options={}, callbacks={}) ->
+
+    @initializeVisibilityState()
+
     focusAdded = () =>
+      steroids.debug
+        msg: "focus added"
+
+      steroids.nativeBridge.nativeCall
+        method: "addEventListener"
+        parameters:
+          event: "lostFocus"
+        successCallbacks: [lostFocusAdded,callbacks.onSuccess]
+        recurringCallbacks: [becomeHiddenEvent, callbacks.onFailure]
+
+    lostFocusAdded = () =>
+      steroids.debug
+        msg: "lostfocus added"
+
       steroids.markComponentReady("Events")
 
-    dispatchVisibilitychangedEvent = () =>
-      visibilityChangeCustomEvent = document.createEvent("CustomEvent")
-      visibilityChangeCustomEvent.initCustomEvent("visibilitychange", true, true)
+    becomeVisibleEvent = () =>
+      steroids.debug
+        msg: "become visible"
 
-      element.dispatchEvent(visibilityChangeCustomEvent)
+      document.visibilityState = "visible"
+      document.hidden = false
+      @dispatchVisibilitychangedEvent()
+
+    becomeHiddenEvent = () =>
+      steroids.debug
+        msg: "document become hidden"
+
+      document.visibilityState = "hidden"
+      document.hidden = true
+      @dispatchVisibilitychangedEvent()
+
 
     steroids.nativeBridge.nativeCall
       method: "addEventListener"
       parameters:
         event: "focus"
       successCallbacks: [focusAdded,callbacks.onSuccess]
-      recurringCallbacks: [dispatchVisibilitychangedEvent, callbacks.onFailure]
+      recurringCallbacks: [becomeVisibleEvent, callbacks.onFailure]

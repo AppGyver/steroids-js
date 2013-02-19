@@ -63,7 +63,7 @@ window.steroids.waitingForComponents.push("App")
 window.steroids.app = new App
 
 window.steroids.waitingForComponents.push("Events")
-Events.extend(document)
+Events.extend()
 
 window.steroids.layers = new LayerCollection
 
@@ -75,15 +75,6 @@ window.steroids.audio = new Audio
 
 window.steroids.navigationBar = new NavigationBar
 
-
-window.steroids.waitingForComponents.push("App")
-window.steroids.waitingForComponents.push("Events")
-
-
-# Public App singleton
-window.steroids.app = new App
-
-Events.extend(document)
 
 window.steroids.openURL = OpenURL.open
 
