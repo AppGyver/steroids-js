@@ -7,7 +7,7 @@ class window.WebviewController
 
   @testAddVisibilitychangeEvent: () ->
     changed = () ->
-      alert "become visible"
+      alert "visibility of #{window.location.href} changed, document.visibilityState: " + document.visibilityState + ", document.hidden: " + document.hidden
 
     document.addEventListener "visibilitychange", changed, true
 
