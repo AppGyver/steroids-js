@@ -32,6 +32,7 @@ class Animation
     steroids.nativeBridge.nativeCall
       method: "performTransition"
       parameters: {
+        transition: @transition
         curve: options.curve || @curve
         duration: options.duration || @duration
       }
