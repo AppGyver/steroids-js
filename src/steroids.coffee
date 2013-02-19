@@ -16,10 +16,22 @@ window.steroids =
 
   eventCallbacks: {}
   waitingForComponents: []
+
+  debugMessages: []
   debugEnabled: false
 
-  debug: (msg)->
-    console.log msg if steroids.debugEnabled
+  debug: (options) ->
+    return unless steroids.debugEnabled
+
+    msg = if options.constructor.name == "String"
+      options
+    else
+      options.msg
+
+    debugMessage = "#{window.location.href} - #{msg}"
+
+    window.steroids.debugMessages.push debugMessage
+    console.log debugMessage
 
   on: (event, callback)->
     if @["#{event}_has_fired"]?
