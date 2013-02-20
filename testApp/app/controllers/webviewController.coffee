@@ -5,6 +5,16 @@ class window.WebviewController
     # Make Navigation Bar to appear with a custom title text
     steroids.navigationBar.show { title: "webview" }
 
+  @testPreloadVisibilityChange: () ->
+
+    webView = new steroids.views.WebView "/views/webview/preloadThatSetsVisibilityChanges.html"
+
+    webView.preload()
+
+    window.setTimeout =>
+      steroids.layers.push webView
+    , 500
+
   @testAddVisibilitychangeEvent: () ->
     changed = () ->
       alert "visibility of #{window.location.href} changed, document.visibilityState: " + document.visibilityState + ", document.hidden: " + document.hidden
