@@ -26,6 +26,9 @@ class LayerCollection
     else
       { url: view.location }
 
+    if options.navigationBar == false
+      parameters.hidesNavigationBar = true
+
     if options.animation?
       parameters.pushAnimation = options.animation.transition
       parameters.pushAnimationDuration = options.animation.duration

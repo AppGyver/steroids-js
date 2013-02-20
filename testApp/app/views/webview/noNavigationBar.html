@@ -1,0 +1,11 @@
+<h1>^-- no navbar there</h1>
+
+<button>Tap to pop</button>
+
+<script>
+  steroids.on("ready", function() {
+    document.querySelector("button").addEventListener("touchend", function() {
+      steroids.layers.pop();
+    });
+  });
+</script>
