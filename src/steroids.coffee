@@ -62,7 +62,8 @@ window.steroids.nativeBridge = Bridge.getBestNativeBridge()
 window.steroids.waitingForComponents.push("App")
 window.steroids.app = new App
 
-window.steroids.waitingForComponents.push("Events")
+window.steroids.waitingForComponents.push("Events.focuslisteners")
+window.steroids.waitingForComponents.push("Events.initialVisibility")
 Events.extend()
 
 window.steroids.layers = new LayerCollection

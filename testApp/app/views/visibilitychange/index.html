@@ -1,0 +1,11 @@
+<ul class="list">
+  <li class="performsTest" data-test="testAddVisibilitychangeEvent">
+    document.addEventListener("visibilitychange", cb)
+  </li>
+  <li class="performsTest" data-test="testPreloadVisibilityChange">
+    preload + visibilitychange (FAILING)
+  </li>
+  <li class="performsTest" data-test="testCurrentVisibilityIsVisible">
+    document.hidden == false &amp;&amp; document.visibilityState == "visible"
+  </li>
+</ul>
