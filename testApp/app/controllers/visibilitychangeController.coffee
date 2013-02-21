@@ -24,3 +24,14 @@ class window.VisibilitychangeController
 
     alert document.hidden
     alert document.visibilityState
+
+  @testPreloadInitialVisibilityIsPrerender: () ->
+    webView = new steroids.views.WebView "/views/visibilitychange/preloadThatTellsItsInitialVisbility.html"
+
+    webView.preload()
+
+
+  @testInModal: () ->
+    webView = new steroids.views.WebView "/views/visibilitychange/modal.html"
+    steroids.modal.show
+      view: webView
