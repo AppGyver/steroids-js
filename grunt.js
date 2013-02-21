@@ -73,6 +73,7 @@ module.exports = function(grunt) {
           '<file_strip_banner:lib/models/Screen.js>',
           '<file_strip_banner:lib/models/File.js>',
           '<file_strip_banner:lib/models/OpenURL.js>',
+          '<file_strip_banner:lib/PostMessage.js>',
           '<file_strip_banner:lib/steroids.js>'
         ],
         dest: 'dist/steroids.js',
