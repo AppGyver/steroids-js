@@ -1,0 +1,29 @@
+<script>
+  var visibilityChanged = function() {
+    alert("window.location: " + window.location.href + " - visibilityState: " + document.visibilityState + " - hidden:" + document.hidden);
+  }
+
+  steroids.on("ready", function() {
+
+    document.querySelector("button#close").addEventListener("touchend", function() {
+      document.removeEventListener("visibilitychange", visibilityChanged);
+      steroids.modal.hide();
+    });
+
+    document.querySelector("button#listen").addEventListener("touchend", function() {
+      document.addEventListener("visibilitychange", visibilityChanged);
+    });
+
+    document.querySelector("button#current").addEventListener("touchend", function() {
+      visibilityChanged();
+    });
+
+  });
+
+</script>
+
+<button id="close">Close modal</button> (removes eventlistener to prevent alert bug, fix this when alert is fixed)
+<br/><br/>
+<button id="current">See current visibilitystate</button>
+<br/><br/>
+<button id="listen">Listen for visibilitychanges</button>
