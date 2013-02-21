@@ -11,3 +11,6 @@ class window.PostmessageController
 
     alert "Listening for messages and appending them to this document."
 
+  @testSendingUncommonCharacters: ->
+    msg = {text: "%=!=€%&hay'jay  ____dolan"}
+    window.postMessage msg, "*"
