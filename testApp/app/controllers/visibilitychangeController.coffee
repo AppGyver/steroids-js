@@ -25,8 +25,8 @@ class window.VisibilitychangeController
     alert document.hidden
     alert document.visibilityState
 
-  @testPreloadInitialVisibilityIsPrerender: () ->
-    webView = new steroids.views.WebView "/views/visibilitychange/preloadThatTellsItsInitialVisbility.html"
+  @testPrerenderVisibilityIsHidden: () ->
+    webView = new steroids.views.WebView "/views/visibilitychange/preloadThatTellsItsVisibilityWhenLoaded.html"
 
     webView.preload()
 
