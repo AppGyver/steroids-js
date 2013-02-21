@@ -69,6 +69,7 @@ class Bridge
     request.parameters["view"] = window.top.AG_VIEW_ID
     request.parameters["screen"] = window.top.AG_SCREEN_ID
     request.parameters["layer"] = window.top.AG_LAYER_ID
+    request.parameters["udid"] = window.top.AG_WEBVIEW_UDID
 
     #console.log(request)
     @sendMessageToNative JSON.stringify(request)
