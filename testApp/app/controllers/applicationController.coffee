@@ -2,7 +2,7 @@
 
 document.addEventListener "deviceready", ()->
 
-  $(".opensLayer").on "tap", () ->
+  $(".opensLayer").on "longTap", () ->
 
     # Create a new layer that ...
 
@@ -12,17 +12,17 @@ document.addEventListener "deviceready", ()->
     steroids.layers.push layer
 
 
-  $(".opensModal").on "tap", () ->
+  $(".opensModal").on "longTap", () ->
 
     layer = new steroids.views.WebView { location: @getAttribute("data-location") }
 
     steroids.modal.show { layer: layer }
 
 
-  $(".closesModal").on "tap", () ->
+  $(".closesModal").on "longTap", () ->
     steroids.modal.hide()
 
-  $(".performsTest").on "tap", () ->
+  $(".performsTest").on "longTap", () ->
     eval "#{STEROIDS.controllerName}.#{@getAttribute("data-test")}()"
 
 
