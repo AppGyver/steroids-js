@@ -84,3 +84,5 @@ window.steroids.device = new Device
 window.steroids.analytics = new Analytics
 
 window.steroids.screen = new Screen
+
+window.steroids.notifications = new Notifications
