@@ -2,6 +2,16 @@ class window.WebviewController
   # always put everything inside PhoneGap deviceready
   document.addEventListener "deviceready", ->
 
+  @testOnSuccessWithOpen: () ->
+    webView = new steroids.views.WebView "/views/webview/noNavigationBar.html"
+
+    steroids.layers.push {
+      view: webView
+    }, {
+      onSuccess: -> alert "on success!"
+    }
+
+
   @testOpenWithoutNavigationBar: () ->
     webView = new steroids.views.WebView "/views/webview/noNavigationBar.html"
 
