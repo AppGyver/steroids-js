@@ -21,11 +21,25 @@ class window.ModalController
 
   @testShowShorthand: () ->
 
-    hideView = new steroids.views.WebView {
-      location: "/views/modal/hide.html"
-    }
+    hideView = new steroids.views.WebView "/views/modal/hide.html"
 
     steroids.modal.show(hideView)
+
+
+  @testShowPreloaded: () ->
+    receiveMessage = (message) =>
+      if message.data == "okay to show modal"
+        steroids.modal.show(preloadedView)
+
+    window.addEventListener "message", receiveMessage
+
+
+    preloadedView = new steroids.views.WebView {
+      location: "/views/modal/preload.html"
+    }
+
+    preloadedView.preload()
+
 
   @testHide: () ->
 
