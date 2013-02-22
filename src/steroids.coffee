@@ -86,6 +86,7 @@ window.steroids.analytics = new Analytics
 
 window.steroids.screen = new Screen
 
+window.steroids.notifications = new Notifications
 window.steroids.PostMessage = PostMessage
 
 window.postMessage = PostMessage.postMessage
