@@ -27,17 +27,12 @@ class window.ModalController
 
 
   @testShowPreloaded: () ->
-    receiveMessage = (message) =>
-      if message.data == "okay to show modal"
-        steroids.modal.show(preloadedView)
 
-    window.addEventListener "message", receiveMessage
+    window.addEventListener "message", (message) =>
+      steroids.modal.show(preloadedView) if message.data == "okay to show modal"
 
 
-    preloadedView = new steroids.views.WebView {
-      location: "/views/modal/preload.html"
-    }
-
+    preloadedView = new steroids.views.WebView "/views/modal/preload.html"
     preloadedView.preload()
 
 
