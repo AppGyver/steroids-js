@@ -22,7 +22,7 @@ class WebView
   preload: (options={}, callbacks={}) ->
     steroids.debug "preload called for WebView #{JSON.stringify @}"
 
-    proposedId = @location || options.id
+    proposedId = options.id || @location
 
     setIdOnSuccess = () =>
       steroids.debug "preload success: setting id"
@@ -32,7 +32,7 @@ class WebView
       method: "preloadLayer"
       parameters:
         id: proposedId
-        url: @location || options.location
+        url: options.location || @location
       successCallbacks: [setIdOnSuccess, callbacks.onSuccess]
       failureCallbacks: [callbacks.onFailure]
 
