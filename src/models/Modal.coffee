@@ -2,11 +2,10 @@
 class Modal
 
   show: (options={}, callbacks={})->
-
-    view = if options.constructor.name == "String"
-      options
-    else
+    view = if options.constructor.name == "Object"
       options.view
+    else
+      options
 
     switch view.constructor.name
       when "PreviewFileView"
@@ -24,7 +23,7 @@ class Modal
           successCallbacks: [callbacks.onSuccess]
           failureCallbacks: [callbacks.onFailure]
       else
-        throw "Unsupported view sent to steroids.modal.show"
+        throw "Unsupported view sent to steroids.modal.show - #{view.constructor.name}"
 
 
   hide: (options={}, callbacks={})->

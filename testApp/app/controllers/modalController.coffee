@@ -19,6 +19,14 @@ class window.ModalController
       onSuccess: opened
     }
 
+  @testShowShorthand: () ->
+
+    hideView = new steroids.views.WebView {
+      location: "/views/modal/hide.html"
+    }
+
+    steroids.modal.show(hideView)
+
   @testHide: () ->
 
     hided = () ->
