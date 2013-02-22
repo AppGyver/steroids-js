@@ -49,7 +49,7 @@ class window.WebviewController
       webView.location = null   # make sure that it has no location
 
       steroids.layers.push {
-        layer: webView
+        view: webView
       }, {
         onSuccess: () -> "pushed preloaded webview"
       }
