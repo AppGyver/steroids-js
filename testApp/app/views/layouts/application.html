@@ -4,8 +4,8 @@
   <meta charset="utf8">
   <title>New Application</title>
 
-  <link rel="stylesheet" href="/stylesheets/application.css" />
-  <link rel="stylesheet" href="/stylesheets/ratchet-fixed.css" />
+  <link rel="stylesheet" href="../../stylesheets/application.css" />
+  <link rel="stylesheet" href="../../stylesheets/ratchet-fixed.css" />
 
   <script>
     window.onerror = function(a,b,c){ alert(a+" "+b+" "+c); }
@@ -22,12 +22,19 @@
 
 
   <script src="/javascripts/cordova.js"></script>
+  <script src="../../javascripts/cordova.js"></script>
+
   <script src="/javascripts/steroids.js"></script>
+  <script src="../../javascripts/steroids.js"></script>
 
   <script src="/javascripts/zepto.min.js"></script>
+  <script src="../../javascripts/zepto.min.js"></script>
 
   <script src="/controllers/applicationController.js"></script>
+  <script src="../../controllers/applicationController.js"></script>
+
   <script src="/controllers/<%= yield.controller %>.js"></script>
+  <script src="../../controllers/<%= yield.controller %>.js"></script>
 
 </head>
 <body>

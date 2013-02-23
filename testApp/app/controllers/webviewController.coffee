@@ -73,3 +73,13 @@ class window.WebviewController
       onSuccess: () -> andOpen()
       onFailure: () -> alert "preload failed"
     }
+
+
+  @testShowParamsWhenNone: () ->
+    alert JSON.stringify(steroids.view.params)
+
+  @testParamsInFileURL: () ->
+    fileURLWebView = new steroids.views.WebView "file://#{steroids.app.absolutePath}/views/webview/params.html"
+
+    steroids.layers.push fileURLWebView
+
