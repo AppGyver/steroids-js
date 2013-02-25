@@ -6,3 +6,4 @@ lib
 docs
 npm-debug.log
 /testSlave/www/index.html
+/bower
