@@ -8,3 +8,5 @@ componentJSON = require componentJSONPath
 componentJSON.version = currentVersion
 
 fs.writeFileSync componentJSONPath, JSON.stringify(componentJSON, null, "\t")
+
+console.log currentVersion
