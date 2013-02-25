@@ -10,6 +10,16 @@ and for docs
 
   easy_install pygments
 
+
+## Publishing:
+
+    sh ./publish-plz.sh
+    echo "VERSION=$(coffee sync-bower.coffee)"
+
+    cd bower && git co master && git commit -am "$VERSION" && git tag "$VERSION" && git push && git push --tags && cd ..
+    git add bower && git commit -m "$VERSION" && git push && git push --tags
+
+
 ## Testing:
 
 First, remember to GRUNT
