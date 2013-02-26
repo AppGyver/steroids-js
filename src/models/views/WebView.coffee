@@ -43,3 +43,11 @@ class WebView
       pair = pairString.split '='
       params[pair[0]] = pair[1]
     return params
+
+  removeLoading: (options={}, callbacks={}) ->
+
+    steroids.nativeBridge.nativeCall
+      method: "removeTransitionHelper"
+      successCallbacks: [callbacks.onSuccess]
+      failureCallbacks: [callbacks.onFailure]
+

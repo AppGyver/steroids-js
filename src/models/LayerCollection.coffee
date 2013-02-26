@@ -29,6 +29,9 @@ class LayerCollection
     if options.navigationBar == false
       parameters.hidesNavigationBar = true
 
+    if options.keepLoading == true
+      parameters.keepTransitionHelper = true
+
     if options.animation?
       parameters.pushAnimation = options.animation.transition
       parameters.pushAnimationDuration = options.animation.duration
