@@ -2,27 +2,23 @@
 
 document.addEventListener "deviceready", ()->
 
-  $(".opensLayer").click () ->
-
-    # Create a new layer that ...
+  $(".opensLayer").hammer().on "tap", () ->
 
     layer = new steroids.views.WebView { location: @getAttribute("data-location")  }
-
-    # ... Open on top of this document and pushes to the navigation stack
     steroids.layers.push layer
 
 
-  $(".opensModal").click () ->
+  $(".opensModal").hammer().on "tap", () ->
 
     layer = new steroids.views.WebView { location: @getAttribute("data-location") }
-
     steroids.modal.show { layer: layer }
 
 
-  $(".closesModal").click "tap", () ->
+  $(".closesModal").hammer().on "tap", () ->
+
     steroids.modal.hide()
 
-  $(".performsTest").click () ->
+  $(".performsTest").hammer().on "tap", () ->
     eval "#{STEROIDS.controllerName}.#{@getAttribute("data-test")}()"
     return false
 
