@@ -1,25 +1,29 @@
-# always put everything inside PhoneGap deviceready
 
 document.addEventListener "deviceready", ()->
 
-  $(".opensLayer").hammer().on "tap", () ->
+  $(".opensLayer").hammer().on "tap", (e) ->
+    return if e.gesture.srcEvent.type == "mousedown"
 
     layer = new steroids.views.WebView { location: @getAttribute("data-location")  }
     steroids.layers.push layer
 
 
-  $(".opensModal").hammer().on "tap", () ->
+
+  $(".opensModal").hammer().on "tap", (e) ->
+    return if e.gesture.srcEvent.type == "mousedown"
 
     layer = new steroids.views.WebView { location: @getAttribute("data-location") }
     steroids.modal.show { layer: layer }
 
 
-  $(".closesModal").hammer().on "tap", () ->
+  $(".closesModal").hammer().on "tap", (e) ->
+    return if e.gesture.srcEvent.type == "mousedown"
 
     steroids.modal.hide()
 
-  $(".performsTest").hammer().on "tap", () ->
+  $(".performsTest").hammer().on "tap", (e) ->
+    return if e.gesture.srcEvent.type == "mousedown"
+
     eval "#{STEROIDS.controllerName}.#{@getAttribute("data-test")}()"
-    return false
 
 
