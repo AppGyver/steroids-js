@@ -3,6 +3,7 @@ class WebView
   params: {}
   id: null
   location: null
+  allowedRotations: null
 
   navigationBar: new NavigationBar
 
@@ -17,6 +18,7 @@ class WebView
         @location = "#{window.location.protocol}//#{window.location.host}/#{@location}"
 
     @params = @getParams()
+    @setAllowedRotations([])
 
 
   preload: (options={}, callbacks={}) ->
@@ -50,4 +52,18 @@ class WebView
       method: "removeTransitionHelper"
       successCallbacks: [callbacks.onSuccess]
       failureCallbacks: [callbacks.onFailure]
+
+  setAllowedRotations: (options={}, callbacks={}) ->
+    @allowedRotations = if options.constructor.name == "Array"
+      options
+    else
+      options.allowedRotations
+
+    window.shouldRotateToOrientation = (orientation) =>
+      return if orientation in @allowedRotations
+        true
+      else
+        false
+
+    callbacks.onSuccess?.call()
 
