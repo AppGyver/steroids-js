@@ -29,6 +29,11 @@ class Animation
     @curve = options.curve || "easeInOut"
 
   perform: (options={}, callbacks={}) =>
+
+    if window.orientation != 0 and @transition in ["slideFromRight", "slideFromLeft", "slideFromTop", "slideFromBottom"]
+      callbacks.onFailure?.call()
+      return
+
     steroids.nativeBridge.nativeCall
       method: "performTransition"
       parameters: {
