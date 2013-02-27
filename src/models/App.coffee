@@ -16,3 +16,6 @@ class App
       parameters: {}
       successCallbacks: [callbacks.onSuccess]
       failureCallbacks: [callbacks.onFailure]
+
+  getLaunchURL: (options, callbacs) ->
+    return window.AG_STEROIDS_SCANNER_URL

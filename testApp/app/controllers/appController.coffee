@@ -15,3 +15,9 @@ class window.AppController
 
   @testAbsolutePath: () ->
     alert JSON.stringify(steroids.app.absolutePath)
+
+  @testGetLaunchURL: ->
+    alert steroids.app.getLaunchURL()
+
+  @testOpenSteroidsScannerURL: ->
+    steroids.openURL("steroids-scanner://base/path?first=1&second=2")
