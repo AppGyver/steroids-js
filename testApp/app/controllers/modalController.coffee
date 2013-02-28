@@ -36,6 +36,22 @@ class window.ModalController
     preloadedView.preload()
 
 
+  @testShowPreloadedKeepLoading: () ->
+
+    preloadedNowOpenModal = () =>
+      setTimeout ->
+        steroids.modal.show {
+          view: preloadedView
+          keepLoading: true
+        }
+      , 1000
+
+    preloadedView = new steroids.views.WebView "/views/modal/keepLoading.html"
+    preloadedView.preload {}, {
+      onSuccess: preloadedNowOpenModal
+    }
+
+
   @testHide: () ->
 
     hided = () ->

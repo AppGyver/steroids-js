@@ -22,6 +22,9 @@ class Modal
         else
           { url: view.location }
 
+        if options.keepLoading == true
+          parameters.keepTransitionHelper = true
+
         steroids.nativeBridge.nativeCall
           method: "openModal"
           parameters: parameters
