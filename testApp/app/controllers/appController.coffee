@@ -21,3 +21,9 @@ class window.AppController
 
   @testOpenSteroidsScannerURL: ->
     steroids.openURL("steroids-scanner://base/path?first=1&second=2")
+
+  @testAddEventListenerForResumeAndAlertGetLaunchURL: ->
+    alert "set eventlistener for resume"
+
+    document.addEventListener "resume", () ->
+      alert steroids.app.getLaunchURL()
