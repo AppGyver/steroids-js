@@ -42,6 +42,21 @@ class window.LayersController
       keepLoading: true
     }
 
+  @testKeepLoadingWithPreloaded: ->
+    pushPreloadedWebViewWithKeep = =>
+      steroids.layers.push {
+        view: keepLoadingView
+        keepLoading: true
+      }
+
+    keepLoadingView = new steroids.views.WebView "/views/layers/keepLoading.html"
+
+    keepLoadingView.preload({}, {
+      onSuccess: pushPreloadedWebViewWithKeep
+    })
+
+
+
   @testKeepLoadingThis: ->
 
     removeLoading = () ->
