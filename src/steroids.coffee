@@ -20,7 +20,7 @@ window.steroids =
   debugMessages: []
   debugEnabled: false
 
-  debug: (options) ->
+  debug: (options={}) ->
     return unless steroids.debugEnabled
 
     msg = if options.constructor.name == "String"

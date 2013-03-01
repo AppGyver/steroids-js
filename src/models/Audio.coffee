@@ -1,7 +1,7 @@
 
 class Audio
 
-  play: (options, callbacks={})->
+  play: (options={}, callbacks={})->
 
     steroids.on "ready", ()=>
       relativeTo = options.relativeTo ? steroids.app.path

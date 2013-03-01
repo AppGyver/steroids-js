@@ -1,5 +1,5 @@
 class OAuth2Flow
-  constructor: (@options)->
+  constructor: (@options={})->
     @options.callbackUrl = "http://localhost:13101/#{@options.callbackPath}"
 
   authenticate: ()->
