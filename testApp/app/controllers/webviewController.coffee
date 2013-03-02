@@ -117,3 +117,13 @@ class window.WebviewController
     }, {
       onSuccess: -> alert "rotates to vertical directions"
     }
+
+  @testOpenWithCurlUp: ->
+    anim = new steroids.Animation("curlUp")
+
+    webView = new steroids.views.WebView "/views/webview/noNavigationBar.html"
+
+    steroids.layers.push {
+      view: webView,
+      animation: anim
+    }
