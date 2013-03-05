@@ -63,3 +63,8 @@ class window.WebviewController
       onSuccess: () -> andOpen()
       onFailure: () -> alert "preload failed"
     }
+
+  @testPopAll: ->
+
+    steroids.layers.popAll {}, {}
+
