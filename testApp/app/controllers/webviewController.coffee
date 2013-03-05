@@ -74,6 +74,10 @@ class window.WebviewController
       onFailure: () -> alert "preload failed"
     }
 
+  @testPopAll: ->
+
+    steroids.layers.popAll {}, {}
+
 
   @testShowParamsWhenNone: () ->
     alert JSON.stringify(steroids.view.params)

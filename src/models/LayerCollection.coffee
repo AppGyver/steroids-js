@@ -11,6 +11,13 @@ class LayerCollection
       successCallbacks: [defaultOnSuccess, callbacks.onSuccess]
       failureCallbacks: [callbacks.onFailure]
 
+  popAll: (options={}, callbacks={}) ->
+
+    steroids.nativeBridge.nativeCall
+      method: "popAllLayers"
+      successCallbacks: [callbacks.onSuccess]
+      failureCallbacks: [callbacks.onFailure]
+
 
   push: (options={}, callbacks={})->
     defaultOnSuccess = ()=>
