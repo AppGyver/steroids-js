@@ -2,12 +2,13 @@
 class Audio
 
   play: (options={}, callbacks={})->
+
     readyCapableDevice = false
 
     setTimeout =>
       return if readyCapableDevice
 
-      navigator.notification.alert("Audio playback requires a newer version of Scanner, please update from the App Store.", null, "Update Required");
+      navigator.notification.alert("Audio playback requires a newer version of Scanner, please update from the App Store.", null, "Update Required")
     , 500
 
     steroids.on "ready", ()=>
