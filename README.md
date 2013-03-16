@@ -14,13 +14,14 @@ and for docs
 ## Publishing:
 
     grunt
+    git submodule update  # ensure bower/
 
     sh ./bumb-plz.sh
     echo "VERSION=$(coffee sync-bower.coffee)"
 
     cp dist/steroids.js bower/steroids.js
     cd bower && git co master && git commit -am "$VERSION" && git tag "v$VERSION" && git push && git push --tags && cd ..
-    git add bower && git commit -m "$VERSION" && git push && git push --tags
+    git add bower && git commit -m "Updated submodule to $VERSION" && git push && git push --tags
 
     npm publish ./
 
