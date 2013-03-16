@@ -13,10 +13,11 @@ and for docs
 
 ## Publishing:
 
+    sh ./bumb-plz.sh
+
     grunt
     git submodule update  # ensure bower/
 
-    sh ./bumb-plz.sh
     echo "VERSION=$(coffee sync-bower.coffee)"
 
     cp dist/steroids.js bower/steroids.js
