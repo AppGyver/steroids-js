@@ -16,10 +16,18 @@ class Modal
           successCallbacks: [callbacks.onSuccess]
           failureCallbacks: [callbacks.onFailure]
       when "WebView"
+
+        parameters = if view.id?
+          { id: view.id }
+        else
+          { url: view.location }
+
+        if options.keepLoading == true
+          parameters.keepTransitionHelper = true
+
         steroids.nativeBridge.nativeCall
           method: "openModal"
-          parameters:
-            url: view.location
+          parameters: parameters
           successCallbacks: [callbacks.onSuccess]
           failureCallbacks: [callbacks.onFailure]
       else

@@ -33,3 +33,43 @@ class window.LayersController
       view: @createWebView(),
       animation: animation
     }
+
+  @testKeepLoading: ->
+    keepLoadingView = new steroids.views.WebView "/views/layers/keepLoading.html"
+
+    steroids.layers.push {
+      view: keepLoadingView
+      keepLoading: true
+    }
+
+  @testKeepLoadingWithPreloaded: ->
+    pushPreloadedWebViewWithKeep = =>
+      steroids.layers.push {
+        view: keepLoadingView
+        keepLoading: true
+      }
+
+    keepLoadingView = new steroids.views.WebView "/views/layers/keepLoading.html"
+
+    keepLoadingView.preload({}, {
+      onSuccess: pushPreloadedWebViewWithKeep
+    })
+
+
+
+  @testKeepLoadingThis: ->
+
+    removeLoading = () ->
+      setTimeout ->
+        steroids.view.removeLoading()
+      , 2000
+
+    keepLoadingView = new steroids.views.WebView "/views/layers/pop.html"
+
+    steroids.layers.push {
+      view: keepLoadingView
+      keepLoading: true
+    }, {
+      onSuccess: removeLoading
+    }
+

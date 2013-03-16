@@ -26,3 +26,25 @@ class window.AnimationController
   @testCurlDown: () ->
     animate("curlDown")
 
+  @testFlipVerticalFromBottom: ->
+    animate("flipVerticalFromBottom")
+
+  @testSlideFromLeft: () ->
+    anim = new steroids.Animation {
+      transition: "slideFromLeft"
+    }
+
+    anim.perform({}, {
+      onFailure: -> alert "..and it is failing with onFailure. great success."
+    })
+
+  @testDontPerformWhenOrientationNot0: () ->
+    nowRotate = ->
+      alert "now rotate the device off from 0 and try slideFromLeft"
+
+    steroids.view.setAllowedRotations {
+      allowedRotations: [-90, 90, 0, 180]
+    }, {
+      onSuccess: nowRotate
+    }
+

@@ -22,7 +22,7 @@ class Bridge
 
   constructor: ->
 
-  sendMessageToNative: (options)->
+  sendMessageToNative: (options={})->
     throw "ERROR: Bridge#sendMessageToNative not overridden by subclass!"
 
   @isUsable: ()->
@@ -37,7 +37,7 @@ class Bridge
         @callbacks[msg.callback].call(msg.parameters, msg.parameters)
 
 
-  nativeCall: (options) =>
+  nativeCall: (options={}) =>
     @send
       # options.method is the native API call name
       method: options.method
@@ -56,7 +56,7 @@ class Bridge
             callback.call(@, parameters, options)
 
 
-  send: (options)=>
+  send: (options={})=>
     callbacks = @storeCallbacks(options)
 
     # Build the request object for native API
@@ -69,11 +69,12 @@ class Bridge
     request.parameters["view"] = window.top.AG_VIEW_ID
     request.parameters["screen"] = window.top.AG_SCREEN_ID
     request.parameters["layer"] = window.top.AG_LAYER_ID
+    request.parameters["udid"] = window.top.AG_WEBVIEW_UDID
 
     #console.log(request)
     @sendMessageToNative JSON.stringify(request)
 
-  storeCallbacks: (options)->
+  storeCallbacks: (options={})->
     return {} unless options?.callbacks?
 
     # human readable names for callbacks

@@ -2,6 +2,16 @@ class window.WebviewController
   # always put everything inside PhoneGap deviceready
   document.addEventListener "deviceready", ->
 
+  @testOnSuccessWithOpen: () ->
+    webView = new steroids.views.WebView "/views/webview/noNavigationBar.html"
+
+    steroids.layers.push {
+      view: webView
+    }, {
+      onSuccess: -> alert "on success!"
+    }
+
+
   @testOpenWithoutNavigationBar: () ->
     webView = new steroids.views.WebView "/views/webview/noNavigationBar.html"
 
@@ -68,3 +78,56 @@ class window.WebviewController
 
     steroids.layers.popAll {}, {}
 
+
+  @testShowParamsWhenNone: () ->
+    alert JSON.stringify(steroids.view.params)
+
+  @testParamsInFileURL: () ->
+    fileURLWebView = new steroids.views.WebView "file://#{steroids.app.absolutePath}/views/webview/params.html"
+
+    steroids.layers.push fileURLWebView
+
+  @testDisableRotate: ->
+    steroids.view.setAllowedRotations {
+      allowedRotations: []
+    }, {
+      onSuccess: -> alert "disabled rotating"
+    }
+
+  @testEnableRotate90: ->
+    steroids.view.setAllowedRotations {
+      allowedRotations: [90]
+    }, {
+      onSuccess: -> alert "allowed rotate to 90"
+    }
+
+  @testEnableRotateAll: ->
+    steroids.view.setAllowedRotations {
+      allowedRotations: [0, 90, 180, -90]
+    }, {
+      onSuccess: -> alert "rotating to all directions"
+    }
+
+  @testEnableRotateHorizontal: ->
+    steroids.view.setAllowedRotations {
+      allowedRotations: [-90, 90]
+    }, {
+      onSuccess: -> alert "rotates to horizontal directions"
+    }
+
+  @testEnableRotateVertical: ->
+    steroids.view.setAllowedRotations {
+      allowedRotations: [0, 180]
+    }, {
+      onSuccess: -> alert "rotates to vertical directions"
+    }
+
+  @testOpenWithCurlUp: ->
+    anim = new steroids.Animation("curlUp")
+
+    webView = new steroids.views.WebView "/views/webview/noNavigationBar.html"
+
+    steroids.layers.push {
+      view: webView,
+      animation: anim
+    }

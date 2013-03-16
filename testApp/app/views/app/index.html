@@ -3,4 +3,17 @@
     path
     <span class="chevron"/>
   </li>
+
+  <li class="performsTest" data-test="testGetLaunchURL">
+    steroids.app.getLaunchURL()
+  </li>
+
+  <li class="performsTest" data-test="testOpenSteroidsScannerURL">
+    steroids.openURL("steroids-scanner://base/path?first=1&second=2")
+  </li>
+
+  <li class="performsTest" data-test="testAddEventListenerForResumeAndAlertGetLaunchURL">
+    document.addEventListener("resume") and alert steroids.app.getLaunchURL() there.
+  </li>
+
 </ul>

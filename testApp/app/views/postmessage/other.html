@@ -1,0 +1,15 @@
+<h1>Postmessage sender</h1>
+
+<button>Tap to send</button>
+
+<script>
+  steroids.on("ready", function() {
+    document.querySelector("button").addEventListener("touchend", function() {
+      var msg = { text: "hello!" };
+      window.postMessage(msg, "*");
+
+    });
+  });
+
+</script>
+

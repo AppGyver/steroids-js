@@ -1,7 +1,7 @@
 class TouchDB
   @baseURL: "http://.touchdb."
 
-  constructor: (@options) ->
+  constructor: (@options={}) ->
     throw "Database name required" unless @options.name
 
     @replicas = {}

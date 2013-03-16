@@ -20,7 +20,7 @@ window.steroids =
   debugMessages: []
   debugEnabled: false
 
-  debug: (options) ->
+  debug: (options={}) ->
     return unless steroids.debugEnabled
 
     msg = if options.constructor.name == "String"
@@ -62,7 +62,8 @@ window.steroids.nativeBridge = Bridge.getBestNativeBridge()
 window.steroids.waitingForComponents.push("App")
 window.steroids.app = new App
 
-window.steroids.waitingForComponents.push("Events")
+window.steroids.waitingForComponents.push("Events.focuslisteners")
+window.steroids.waitingForComponents.push("Events.initialVisibility")
 Events.extend()
 
 window.steroids.layers = new LayerCollection
@@ -84,3 +85,8 @@ window.steroids.device = new Device
 window.steroids.analytics = new Analytics
 
 window.steroids.screen = new Screen
+
+window.steroids.notifications = new Notifications
+window.steroids.PostMessage = PostMessage
+
+window.postMessage = PostMessage.postMessage

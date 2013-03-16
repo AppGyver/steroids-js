@@ -1,5 +1,5 @@
 class File
-  constructor: (options)->
+  constructor: (options={})->
     @path = if options.constructor.name == "String"
       options
     else

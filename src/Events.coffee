@@ -16,6 +16,7 @@ class Events
       msg: "set document.visibilityState to unloaded"
 
     document.visibilityState = "unloaded"
+    document.hidden = "true"
 
     document.addEventListener "DOMContentLoaded", () =>
       steroids.debug
@@ -23,10 +24,21 @@ class Events
 
       document.visibilityState = "prerender"
 
+  @checkInitialVisibility: (options={}, callbacks={}) =>
+    setVisibilityStatus = (event) ->
+      document.hidden = (event.currentVisibility == "hidden")
+      document.visibilityState = event.currentVisibility
+      steroids.markComponentReady("Events.initialVisibility")
+
+    steroids.nativeBridge.nativeCall
+      method: "getCurrentVisibility"
+      successCallbacks: [setVisibilityStatus, callbacks.onSuccess]
+      failureCallbacks: [callbacks.onFailure]
+
 
   @extend: (options={}, callbacks={}) ->
-
     @initializeVisibilityState()
+    @checkInitialVisibility()
 
     focusAdded = () =>
       steroids.debug
@@ -43,7 +55,7 @@ class Events
       steroids.debug
         msg: "lostfocus added"
 
-      steroids.markComponentReady("Events")
+      steroids.markComponentReady("Events.focuslisteners")
 
     becomeVisibleEvent = () =>
       steroids.debug

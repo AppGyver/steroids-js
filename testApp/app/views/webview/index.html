@@ -1,9 +1,12 @@
 <ul class="list">
-  <li class="performsTest" data-test="testAddVisibilitychangeEvent">
-    document.addEventListener("visibilitychange", cb)
+
+  <li class="opensLayer" data-location="/views/webview/orientation.html">
+    orientation
+    <span class="chevron"></span>
   </li>
-  <li class="performsTest" data-test="testPreloadVisibilityChange">
-    preload + visibilitychange
+
+  <li class="performsTest" data-test="testOnSuccessWithOpen">
+    open should trigger onsuccess
   </li>
 
   <li class="opensLayer" data-location="/views/navigationbar/index.html">
@@ -21,11 +24,20 @@
     open without navigation bar
   </li>
 
+  <li class="performsTest" data-test="testOpenWithCurlUp">
+    open with curlUp animation
+  </li>
+
   <li class="performsTest" data-test="testPreload">
     preload
   </li>
   <li class="performsTest" data-test="testPreloadAndOpen">
     preload + open
+  </li>
+
+  <li class="opensLayer" data-location="/views/webview/params.html">
+    params
+    <span class="chevron"></span>
   </li>
 
 </ul>

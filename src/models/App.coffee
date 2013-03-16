@@ -10,9 +10,12 @@ class App
       @absolutePath = params.applicationFullPath
       steroids.markComponentReady("App")
 
-  getPath: (options, callbacks)->
+  getPath: (options={}, callbacks={})->
     steroids.nativeBridge.nativeCall
       method: "getApplicationPath"
       parameters: {}
       successCallbacks: [callbacks.onSuccess]
       failureCallbacks: [callbacks.onFailure]
+
+  getLaunchURL: (options={}, callbacks={}) ->
+    return window.AG_STEROIDS_SCANNER_URL
