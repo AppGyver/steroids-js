@@ -23,3 +23,11 @@ class window.SteroidsController
       onSuccess: () -> alert "maps opened"
       onFailure: () -> alert "failed to open maps"
     }
+
+  @testOpenURLMapsAndroid: () ->
+    steroids.openURL {
+      url: "geo:42,2?z=8"
+    }, {
+      onSuccess: () -> alert "maps opened"
+      onFailure: () -> alert "failed to open maps"
+    }
