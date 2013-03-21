@@ -25,11 +25,11 @@ steroids.config.tabBar.tabs = [
   {
     title: "FUT"
     icon: "icons/telescope@2x.png"
-    location: "http://localhost:13101/views/layers/index.html"
+    location: "http://localhost/views/layers/index.html"
   }, {
     title: "HTTP"
     icon: "icons/pill@2x.png"
-    location: "http://localhost:13101/views/steroids/index.html"
+    location: "http://localhost/views/steroids/index.html"
   }, {
     title: "FileURL"
     icon: "icons/shoebox@2x.png"
