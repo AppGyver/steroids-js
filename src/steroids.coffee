@@ -18,7 +18,7 @@ window.steroids =
   waitingForComponents: []
 
   debugMessages: []
-  debugEnabled: false
+  debugEnabled: true
 
   debug: (options={}) ->
     return unless steroids.debugEnabled
@@ -34,24 +34,31 @@ window.steroids =
     console.log debugMessage
 
   on: (event, callback)->
+    @debug "on event #{event}"
     if @["#{event}_has_fired"]?
+      @debug "on event #{event}, alrueady fierd"
       callback()
     else
+      @debug "on event #{event}, waiting"
       @eventCallbacks[event] ||= []
       @eventCallbacks[event].push(callback)
 
 
   fireSteroidsEvent: (event)->
+    @debug "firign event #{event}"
     @["#{event}_has_fired"] = new Date().getTime()
 
     if @eventCallbacks[event]?
-      for callback in @eventCallbacks[event]
+      callbacks = @eventCallbacks[event].splice 0
+      for callback in callbacks
+        @debug "firing event callback"
         callback()
-        @eventCallbacks[event].splice @eventCallbacks[event].indexOf(callback), 1
 
   markComponentReady: (model)->
+    @debug "#{model} is ready"
     @waitingForComponents.splice @waitingForComponents.indexOf(model), 1
     if @waitingForComponents.length == 0
+      @debug "steroids is ready"
       @fireSteroidsEvent "ready"
 
 # Communication endpoint to native API
