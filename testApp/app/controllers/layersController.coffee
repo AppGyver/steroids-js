@@ -55,7 +55,38 @@ class window.LayersController
       onSuccess: pushPreloadedWebViewWithKeep
     })
 
+  @testPushAnimatedSlideFromLeftAndFade: ->
+    animation = new steroids.Animation
+      transition: "slideFromLeft"
+      reversedTransition: "fade"
 
+    steroids.layers.push {
+      view: @createWebView(),
+      animation: animation
+    }
+
+  @testPushAnimatedSlideFromLeftAndFadeFast: ->
+    animation = new steroids.Animation
+      transition: "slideFromLeft"
+      reversedTransition: "fade"
+      duration: 0.1
+
+    steroids.layers.push {
+      view: @createWebView(),
+      animation: animation
+    }
+
+  @testPushAnimatedSlideFromLeftAndFadeFastAndSlow: ->
+    animation = new steroids.Animation
+      transition: "slideFromLeft"
+      reversedTransition: "fade"
+      duration: 0.1
+      reversedDuration: 2.5
+
+    steroids.layers.push {
+      view: @createWebView(),
+      animation: animation
+    }
 
   @testKeepLoadingThis: ->
 

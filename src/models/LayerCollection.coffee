@@ -45,6 +45,10 @@ class LayerCollection
       parameters.popAnimation = options.animation.reversedTransition
       parameters.popAnimationDuration = options.animation.reversedDuration
 
+      parameters.pushAnimationCurve = options.animation.curve
+      parameters.popAnimationCurve = options.animation.reversedCurve
+
+
     steroids.nativeBridge.nativeCall
       method: "openLayer"
       parameters: parameters

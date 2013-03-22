@@ -21,12 +21,13 @@ class Animation
     throw "transition required" unless @transition?
 
 
-    @reversedTransition = @.constructor.TRANSITION_REVERSION_MAPPING[@transition]
+    @reversedTransition = options.reversedTransition ? @.constructor.TRANSITION_REVERSION_MAPPING[@transition]
 
-    @duration = options.duration || 0.7
-    @reversedDuration = @duration
+    @duration = options.duration ? 0.7
+    @reversedDuration = options.reversedDuration ? @duration
 
-    @curve = options.curve || "easeInOut"
+    @curve = options.curve ? "easeInOut"
+    @reversedCurve = options.reversedCurve ? "easeInOut"
 
   perform: (options={}, callbacks={}) =>
 
