@@ -18,7 +18,7 @@ window.steroids =
   waitingForComponents: []
 
   debugMessages: []
-  debugEnabled: true
+  debugEnabled: false
 
   debug: (options={}) ->
     return unless steroids.debugEnabled
