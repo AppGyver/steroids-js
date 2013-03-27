@@ -6,6 +6,7 @@ class WebView
   allowedRotations: null
 
   navigationBar: new NavigationBar
+  bounceShadow: new BounceShadow
 
   constructor: (options={})->
     @location = if options.constructor.name == "String"
@@ -67,3 +68,15 @@ class WebView
 
     callbacks.onSuccess?.call()
 
+  setBackgroundColor: (options={}, callbacks={}) ->
+    newColor = if options.constructor.name == "String"
+      options
+    else
+      options.color
+
+    steroids.nativeBridge.nativeCall
+      method: "setWebViewBackgroundColor"
+      parameters:
+        color: newColor
+      successCallbacks: [callbacks.onSuccess]
+      failureCallbacks: [callbacks.onFailure]
