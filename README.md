@@ -6,11 +6,6 @@ Steroids JS - html5 wrapper JS unfucked
 
   npm install
 
-and for docs
-
-  easy_install pygments
-
-
 ## Publishing:
 
     sh ./bumb-plz.sh
@@ -55,6 +50,3 @@ and to shut down buster
 ### automatically restart buster server and run tests (because it loses connections quite frequently)
 
   npm testloop
-
-## Generate Docs:
-  Grunt default task takes care of generating the docs.
