@@ -1,13 +1,19 @@
 class App
 
   path: undefined
-  userFilesPath: ""
+  userFilesPath: undefined
+
   absolutePath: undefined
+  absoluteUserFilesPath: undefined
 
   constructor: ->
     @getPath {}, onSuccess: (params)=>
       @path = params.applicationPath
+      @userFilesPath: params.userFilesPath
+
       @absolutePath = params.applicationFullPath
+      @absoluteUserFilesPath = params.userFilesFullPath
+
       steroids.markComponentReady("App")
 
   getPath: (options={}, callbacks={})->
