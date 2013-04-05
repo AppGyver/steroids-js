@@ -9,7 +9,7 @@ class App
   constructor: ->
     @getPath {}, onSuccess: (params)=>
       @path = params.applicationPath
-      @userFilesPath: params.userFilesPath
+      @userFilesPath = params.userFilesPath
 
       @absolutePath = params.applicationFullPath
       @absoluteUserFilesPath = params.userFilesFullPath
