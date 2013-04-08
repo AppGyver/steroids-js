@@ -17,7 +17,7 @@ class WebsocketBridge extends Bridge
     else
       @open "31337"
 
-  open: (port)->
+  open: (port) =>
     @websocket = new WebSocket "ws://localhost:#{port}"
     @websocket.onmessage = @message_handler
     @websocket.onclose = @reopen
