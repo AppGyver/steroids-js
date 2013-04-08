@@ -11,15 +11,21 @@ class WebsocketBridge extends Bridge
   reopen: ()=>
     window.steroids.debug "websocket reopen"
     @websocket = null
-    @requestWebSocketPort (port)=>
-      @websocket = new WebSocket "ws://localhost:#{port}"
-      @websocket.onmessage = @message_handler
-      @websocket.onclose = @reopen
-      @websocket.onopen = ()=>
-        window.steroids.debug "websocket websocket opened"
-        @map_context()
-        @markWebsocketUsable()
-      window.steroids.debug "websocket websocket connecting"
+    # AG_CLIENT_VERSION was introduced in 2.3.3 and first supported semver is 2.3.4
+    if window.AG_CLIENT_VERSION && window.AG_CLIENT_VERSION != "2.3.3"
+      @requestWebSocketPort @open
+    else
+      @open "31337"
+
+  open: (port)->
+    @websocket = new WebSocket "ws://localhost:#{port}"
+    @websocket.onmessage = @message_handler
+    @websocket.onclose = @reopen
+    @websocket.onopen = ()=>
+      window.steroids.debug "websocket websocket opened"
+      @map_context()
+      @markWebsocketUsable()
+    window.steroids.debug "websocket websocket connecting"
 
   requestWebSocketPort: (callback)->
     window.steroids.debug "websocket request port"
