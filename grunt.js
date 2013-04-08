@@ -3,21 +3,6 @@ execSync = require("exec-sync");
 module.exports = function(grunt) {
   grunt.file.defaultEncoding = 'utf8';
 
-  // Project configuration.
-  var documentationSourceFiles = [
-    'docs/App.html',
-    'docs/Animation.html',
-    'docs/Audio.html',
-    'docs/Button.html',
-    'docs/Camera.html',
-    'docs/Device.html',
-    'docs/Torch.html',
-    'docs/NavigationBar.html',
-    'docs/LayerCollection.html',
-    'docs/Layer.html',
-    'docs/Tab.html'
-  ]
-
   grunt.initConfig({
     pkg: '<json:package.json>',
     meta: {
@@ -57,6 +42,7 @@ module.exports = function(grunt) {
           '<file_strip_banner:lib/models/LayerCollection.js>',
           '<file_strip_banner:lib/models/buttons/NavigationBarButton.js>',
           '<file_strip_banner:lib/models/NavigationBar.js>',
+          '<file_strip_banner:lib/models/BounceShadow.js>',
           '<file_strip_banner:lib/models/views/WebView.js>',
           '<file_strip_banner:lib/models/views/PreviewFileView.js>',
           '<file_strip_banner:lib/models/Audio.js>',
@@ -76,22 +62,6 @@ module.exports = function(grunt) {
         ],
         dest: 'dist/steroids.js',
         separator: ';'
-      },
-      docs_by_version: {
-        src: documentationSourceFiles,
-        dest: 'docs/<%= pkg.name %>-<%= pkg.version %>.html',
-        separator: '<hr>'
-      },
-      docs_latest_version: {
-        src: documentationSourceFiles,
-        dest: 'docs/<%= pkg.name %>-latest.html',
-        separator: '<hr>'
-      }
-    },
-
-    shell: {
-      generate_documentation: {
-        command: 'npm run-script gdocs'
       }
     },
 

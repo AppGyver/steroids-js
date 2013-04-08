@@ -131,3 +131,18 @@ class window.WebviewController
       view: webView,
       animation: anim
     }
+
+  @testSetBackgroundCACCAA: ->
+    steroids.view.setBackgroundColor("#CACCAA")
+
+  @testSetBackgroundBlack: ->
+    steroids.view.setBackgroundColor("#000000")
+
+  @testSetBackgroundWhite: ->
+    steroids.view.setBackgroundColor("#FFFFFF")
+
+  @testHideBackgroundShadow: ->
+    steroids.view.bounceShadow.hide()
+
+  @testShowBackgroundShadow: ->
+    steroids.view.bounceShadow.show()

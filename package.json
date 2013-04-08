@@ -24,7 +24,6 @@
     "start": "./bin/server.sh",
     "test": "buster-test",
     "testloop": "./bin/testloop.sh",
-    "gdocs": "find ./src -name '*.coffee' |xargs echo|xargs docco",
     "prepublish": "grunt build"
   },
   "repository": {
@@ -44,7 +43,6 @@
     "grunt-replace": "0.3.x",
     "exec-sync": "0.1.x",
     "buster": "0.6.x",
-    "buster-coffee": "0.1.x",
-    "docco": "0.4.x"
+    "buster-coffee": "0.1.x"
   }
 }
