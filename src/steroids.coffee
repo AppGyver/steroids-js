@@ -66,11 +66,14 @@ window.steroids =
 # Valid values are subclasses of Bridge
 window.steroids.nativeBridge = Bridge.getBestNativeBridge()
 
+# All compnents that perform async operations are here
 window.steroids.waitingForComponents.push("App")
-window.steroids.app = new App
-
 window.steroids.waitingForComponents.push("Events.focuslisteners")
 window.steroids.waitingForComponents.push("Events.initialVisibility")
+
+
+window.steroids.app = new App
+
 Events.extend()
 
 window.steroids.layers = new LayerCollection
