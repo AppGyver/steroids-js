@@ -51,6 +51,21 @@ class window.WebviewController
       onFailure: () -> alert "failed to preload"
     }
 
+  @testPreloadThisAndOpen: () ->
+    andOpen = () =>
+      steroids.layers.push thisWebView
+
+    thisWebView = new steroids.views.WebView "/views/webview/index.html"
+
+    thisWebView.preload {
+    }, {
+      onSuccess: () -> andOpen()
+    }
+
+  @testOpenThis: () ->
+    thisWebView = new steroids.views.WebView "/views/webview/index.html"
+    steroids.layers.push thisWebView
+
   @testPreloadAndOpen: () ->
 
     andOpen = () ->
