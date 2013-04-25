@@ -5,14 +5,19 @@ window.steroids =
   Animation: Animation
   XHR: XHR
   File: File
+
   views:
     WebView: WebView
     PreviewFileView: PreviewFileView
+
   buttons:
     NavigationBarButton: NavigationBarButton
+
   data:
     TouchDB: TouchDB
     OAuth2: OAuth2
+
+  openURL: OpenURL.open
 
   eventCallbacks: {}
   waitingForComponents: []
@@ -76,6 +81,8 @@ window.steroids.app = new App
 
 Events.extend()
 
+window.steroids.drawers = new DrawerCollection
+
 window.steroids.layers = new LayerCollection
 
 window.steroids.view = new steroids.views.WebView { location: window.location.href }
@@ -86,9 +93,6 @@ window.steroids.audio = new Audio
 
 window.steroids.navigationBar = new NavigationBar
 
-
-window.steroids.openURL = OpenURL.open
-
 # Public Device singleton
 window.steroids.device = new Device
 
@@ -97,6 +101,6 @@ window.steroids.analytics = new Analytics
 window.steroids.screen = new Screen
 
 window.steroids.notifications = new Notifications
-window.steroids.PostMessage = PostMessage
 
+window.steroids.PostMessage = PostMessage
 window.postMessage = PostMessage.postMessage

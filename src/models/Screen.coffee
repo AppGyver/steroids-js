@@ -1,4 +1,10 @@
 class Screen
+  edges:
+    LEFT: "left"
+    RIGHT: "right"
+    TOP: "top"
+    BOTTOM: "bottom"
+
   freeze: (options={}, callbacks={})->
     steroids.nativeBridge.nativeCall
       method: "freeze"

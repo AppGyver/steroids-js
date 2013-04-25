@@ -103,4 +103,3 @@ class window.LayersController
     }, {
       onSuccess: removeLoading
     }
-
