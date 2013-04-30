@@ -93,3 +93,59 @@ class DrawerCollection
       parameters: parameters
       successCallbacks: [callbacks.onSuccess]
       failureCallbacks: [callbacks.onFailure]
+
+  enableGesture: (options={}, callbacks={}) ->
+    steroids.debug "steroids.drawers.enableGesture called"
+
+    view = if options.constructor.name == "WebView"
+      steroids.debug "steroids.drawers.enableGesture using view shorthand"
+      options
+    else
+      steroids.debug "steroids.drawers.enableGesture using longhand"
+      options.view
+
+    parameters = { edge: "left" }
+
+    if view.id?
+      steroids.debug "steroids.drawers.enableGesture using preloaded view"
+      parameters.id = view.id
+    else
+      steroids.debug "steroids.drawers.enableGesture using new view"
+      parameters.url = view.location
+
+    if options.keepLoading == true
+      steroids.debug "steroids.drawers.enableGesture using keepLoading"
+      parameters.keepTransitionHelper = true
+
+    if options.widthOfDrawerInPixels?
+      steroids.debug "steroids.drawers.enableGesture using custom width of drawer to determine cutoff point"
+      parameters.widthOfDrawerInPixels = options.widthOfDrawerInPixels
+    else
+      steroids.debug "steroids.drawers.enableGesture using default width of drawer to determine cutoff point"
+      parameters.widthOfDrawerInPixels = @defaultWidth
+
+    if options.widthOfLayerInPixels?
+      steroids.debug "steroids.drawers.enableGesture using custom width of layer to determine cutoff point"
+      parameters.widthOfLayerInPixels = options.widthOfLayerInPixels
+
+    if options.edge?
+      steroids.debug "steroids.drawers.enableGesture using custom edge to show drawer from"
+      parameters.edge = options.edge
+    else
+      steroids.debug "steroids.drawers.enableGesture using default edge to show drawer from"
+      parameters.edge = steroids.screen.edges.LEFT
+
+    steroids.nativeBridge.nativeCall
+      method: "enableDrawerGesture"
+      parameters: parameters
+      successCallbacks: [callbacks.onSuccess]
+      failureCallbacks: [callbacks.onFailure]
+
+  disableGesture: (options={}, callbacks={}) ->
+    steroids.debug "steroids.drawers.disableGesture called"
+
+    steroids.nativeBridge.nativeCall
+      method: "disableDrawerGesture"
+      parameters: {}
+      successCallbacks: [callbacks.onSuccess]
+      failureCallbacks: [callbacks.onFailure]

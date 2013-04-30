@@ -28,3 +28,21 @@ class window.DrawersController
     steroids.drawers.hide {}, {
       onSuccess: success
     }
+
+  @testEnableGesture: ->
+    success = ->
+      console.log "SUCCESS"
+
+    steroids.drawers.enableGesture {
+      view: @webView
+    }, {
+      onSuccess: success
+    }
+
+  @testDisableGesture: ->
+    success = ->
+      console.log "SUCCESS"
+
+    steroids.drawers.disableGesture {}, {
+      onSuccess: success
+    }
