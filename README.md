@@ -13,6 +13,8 @@ Steroids JS - html5 wrapper JS unfucked
     grunt
     git submodule update  # ensure bower/
 
+    cd bower && git co master && cd ..
+
     echo "VERSION=$(coffee sync-bower.coffee)"
 
     cp dist/steroids.js bower/steroids.js
