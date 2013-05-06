@@ -52,3 +52,7 @@ and to shut down buster
 ### automatically restart buster server and run tests (because it loses connections quite frequently)
 
   npm testloop
+  
+## License
+
+Steroids.js is released under the [MIT License](http://www.opensource.org/licenses/MIT).
