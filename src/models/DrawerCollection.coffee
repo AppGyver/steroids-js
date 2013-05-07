@@ -2,7 +2,10 @@ class DrawerCollection
 
   constructor: ->
     @defaultAnimations = {
-      LEFT: new Animation("slideFromLeft")
+      LEFT: new Animation({
+        transition: "slideFromLeft"
+        duration: 0.2
+      })
       RIGHT: new Animation("slideFromRight")
       TOP: new Animation("slideFromTop")
       BOTTOM: new Animation("slideFromBottom")
