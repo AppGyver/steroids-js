@@ -1,6 +1,6 @@
 ## 0.7.1 (2013-05-07)
 
-Tuned drawers.
+Tuned drawers animations.
 
 Changes:
  - Left drawer animation is snappier
