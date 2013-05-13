@@ -17,7 +17,7 @@
     }
 
     STEROIDS = {};
-    STEROIDS.controllerName = capitaliseFirstLetter("<%= yield.controller %>");
+    STEROIDS.controllerName = capitaliseFirstLetter("<%= yield.controller %>") + "Controller";
   </script>
 
 
@@ -32,7 +32,7 @@
 
 
 
-  <script src="../../controllers/applicationController.js"></script>
+  <script src="../../controllers/application.js"></script>
 
   <script src="../../controllers/<%= yield.controller %>.js"></script>
 
