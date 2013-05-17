@@ -75,6 +75,28 @@ describe "steroids.device", ->
       runs ->
         expect( toggled ).toBeTruthy()
 
+    it "should turn on", ->
+      turnedOn = false
+
+      steroids.device.torch.turnOn {},
+        onSuccess: -> turnedOn = true
+
+      waitsFor -> turnedOn
+
+      runs ->
+        expect( turnedOn ).toBeTruthy()
+
+    it "should turn off", ->
+      turnedOff = false
+
+      steroids.device.torch.turnOff {},
+        onSuccess: -> turnedOff = true
+
+      waitsFor -> turnedOff
+
+      runs ->
+        expect( turnedOff ).toBeTruthy()
+
 
 describe "steroids.layers", ->
 
