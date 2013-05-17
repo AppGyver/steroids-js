@@ -1,8 +1,29 @@
-
 describe "steroids", ->
 
   it "should exists", ->
     expect( typeof steroids ).toBeDefined()
+
+  describe "openURL", ->
+
+    it "opens external url that returns back to the application", ->
+      urlOpened = false
+      returnedBack = false
+
+      window.addEventListener "visibilitychange", () ->
+        returnedBack = true
+
+      steroids.openURL {
+        url: "https://dl.dropboxusercontent.com/u/184446/steroidsjscloser.html"
+      }, {
+        onSuccess: -> urlOpened = true
+      }
+
+      waitsFor ->
+        urlOpened and returnedBack
+
+      runs ->
+        expect( urlOpened ).toBeTruthy()
+        expect( returnedBack ).toBeTruthy()
 
 
 describe "steroids.Animation", ->
