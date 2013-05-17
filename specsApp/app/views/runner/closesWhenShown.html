@@ -1,0 +1,26 @@
+<h1>closesWhenShown.html</h1>
+
+<script>
+  var messageToSend = {
+    who: "closesWhenShown",
+    status: "loaded"
+  };
+
+  window.postMessage(messageToSend, "*");
+
+  window.addEventListener("visibilitychange", function () {
+    if ( document.hidden )
+      return
+
+    steroids.layers.pop();
+  });
+
+  // TODO: try harder on device ??
+  setInterval( function() {
+    if (document.hidden)
+      return;
+
+    steroids.layers.pop();
+  }, 10);
+
+</script>

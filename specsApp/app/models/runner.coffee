@@ -103,12 +103,14 @@ describe "steroids.layers", ->
   it "should be defined", ->
     expect( steroids.layers ).toBeDefined()
 
-  it "should open a new layer", ->
-    googleLayer = new steroids.views.WebView("http://google.com")
+  it "should call success when opened a new layer", ->
+
+    closingLayer = new steroids.views.WebView("/views/runner/closesWhenShown.html")
+
     pushed = false
 
     steroids.layers.push {
-      view: googleLayer
+      view: closingLayer
     }, {
       onSuccess: -> pushed = true
     }
@@ -117,9 +119,27 @@ describe "steroids.layers", ->
 
     runs ->
       expect( pushed ).toBeTruthy()
-      setTimeout ->
-        steroids.layers.pop()
-      , 1000
+
+
+  it "should open a a new layer and that layer should close it", ->
+
+    messageReceivedFromClosingLayer = false
+
+    addEventListener "message", (msg) ->
+      return unless msg.data.who and msg.data.status
+
+      if msg.data.who == "closesWhenShown" and msg.data.status == "loaded"
+        messageReceivedFromClosingLayer = true
+
+    closingLayer = new steroids.views.WebView("/views/runner/closesWhenShown.html")
+    steroids.layers.push(closingLayer)
+
+
+    waitsFor -> messageReceivedFromClosingLayer
+
+    runs ->
+      expect( messageReceivedFromClosingLayer ).toBeTruthy()
+
 
 
 describe "steroids.modal", ->
@@ -157,28 +177,27 @@ describe "steroids.view.navigationBar", ->
         shown = true
     }
 
-    waitsFor ->
-      shown
+    waitsFor -> shown
 
     runs ->
       expect( shown ).toBeTruthy()
+
+  # TODO: bug no success
+  xit "should be hidden with callback", ->
+    navigationBarHided = false
+
+    steroids.view.navigationBar.hide {}, {
+      onSuccess: -> navigationBarHided = true
+    }
+
+    waitsFor -> navigationBarHided
+
+    runs ->
+      expect navigationBarHided.toBeTruthy()
 
   describe "rightbutton", ->
 
     xit "should show button"
 
 
-jasmineEnv = jasmine.getEnv()
 
-jasmineEnv.updateInterval = 1000
-
-
-htmlReporter = new jasmine.HtmlReporter()
-
-jasmineEnv.addReporter(htmlReporter)
-
-jasmineEnv.specFilter = (spec) =>
-  return htmlReporter.specFilter(spec)
-
-window.onload = () =>
-  jasmineEnv.execute()
