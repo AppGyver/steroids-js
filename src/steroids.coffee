@@ -24,6 +24,7 @@ window.steroids =
 
   debugMessages: []
   debugEnabled: false
+  debugConsole: console
 
   debug: (options={}) ->
     return unless steroids.debugEnabled
@@ -36,7 +37,7 @@ window.steroids =
     debugMessage = "#{window.location.href} - #{msg}"
 
     window.steroids.debugMessages.push debugMessage
-    console.log debugMessage
+    @debugConsole.log debugMessage
 
   on: (event, callback)->
     @debug "on event #{event}"
@@ -48,16 +49,20 @@ window.steroids =
       @eventCallbacks[event] ||= []
       @eventCallbacks[event].push(callback)
 
-
   fireSteroidsEvent: (event)->
     @debug "firign event #{event}"
     @["#{event}_has_fired"] = new Date().getTime()
 
     if @eventCallbacks[event]?
+      @debug "firign event #{event} callbacks"
       callbacks = @eventCallbacks[event].splice 0
       for callback in callbacks
-        @debug "firing event callback"
+        @debug "firing event #{event} callback"
         callback()
+
+  resetSteroidsEvent: (event)->
+    @debug "resettign event #{event}"
+    @["#{event}_has_fired"] = undefined
 
   markComponentReady: (model)->
     @debug "#{model} is ready"
