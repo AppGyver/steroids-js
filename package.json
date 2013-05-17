@@ -20,10 +20,6 @@
   ],
   "main": "main.js",
   "scripts": {
-    "stop": "./bin/kill-server.sh",
-    "start": "./bin/server.sh",
-    "test": "buster-test",
-    "testloop": "./bin/testloop.sh",
     "prepublish": "grunt build"
   },
   "repository": {
@@ -41,8 +37,6 @@
     "grunt-concat": "0.1.x",
     "grunt-shell": "0.1.x",
     "grunt-replace": "0.3.x",
-    "exec-sync": "0.1.x",
-    "buster": "0.6.x",
-    "buster-coffee": "0.1.x"
+    "exec-sync": "0.1.x"
   }
 }

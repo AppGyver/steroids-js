@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf8">
+  <title>Steroids App</title>
+
+  <link rel="stylesheet" href="/stylesheets/ratchet-steroids.css" />
+  <link rel="stylesheet" href="/stylesheets/application.css" />
+
+  <script src="/javascripts/onerror.js"></script>
+
+  <script src="/appgyver/cordova.js"></script>
+  <script src="/components/steroids-js/steroids.js"></script>
+
+  <script src="/vendor/jasmine/jasmine.js"></script>
+  <script src="/vendor/jasmine/jasmine-html.js"></script>
+  <link rel="stylesheet" href="/vendor/jasmine/jasmine.css" />
+
+  <script src="/models/models.js"></script>
+
+  <script src="/controllers/application.js"></script>
+  <script src="/controllers/<%= yield.controller %>.js"></script>
+</head>
+<body>
+
+  <%= yield.view %>
+
+</body>
+</html>
