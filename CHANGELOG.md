@@ -1,3 +1,7 @@
+## 2.7.0 (TODO)
+
+Public beta release
+
 ## 0.7.1 (2013-05-07)
 
 Tuned drawers animations.
