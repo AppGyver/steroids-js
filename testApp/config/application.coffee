@@ -25,7 +25,7 @@ steroids.config.tabBar.tabs = [
   {
     title: "FUT"
     icon: "icons/telescope@2x.png"
-    location: "http://localhost/views/drawers/index.html"
+    location: "http://localhost/views/device/index.html"
   }
   {
     title: "HTTP"

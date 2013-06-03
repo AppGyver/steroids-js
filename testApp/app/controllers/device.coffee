@@ -41,3 +41,13 @@ class window.DeviceController
     }, {
       onSuccess: () -> alert "toggled"
     }
+
+  @testEnableSleep: ()->
+    steroids.device.enableSleep {}, {
+      onSuccess: () -> alert "enabled"
+    }
+
+  @testDisableSleep: ()->
+    steroids.device.disableSleep {}, {
+      onSuccess: () -> alert "disabled"
+    }
