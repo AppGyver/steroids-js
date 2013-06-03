@@ -24,35 +24,16 @@ Steroids JS - html5 wrapper JS unfucked
     npm publish ./
 
 
-## Testing:
+## Testing
 
-First, remember to GRUNT
+### Automated
 
-  grunt
+There is a jasmine test project in specsApp/ that has steroids.js symlinked from dist/
 
-becase this inserts your IP to testSlave/www/index.html (and creates that file)
+### Explorative
 
-To start buster server
+There is a separate steroids project in testApp/ that has steroids.js symlinked from dist/
 
-  npm start
-
-connect real clients
-
-  cd testSlave && steroids connect
-
-then, run tests
-
-  npm test
-
-and to shut down buster
-
-  npm stop
-
-
-### automatically restart buster server and run tests (because it loses connections quite frequently)
-
-  npm testloop
-  
 ## License
 
 Steroids.js is released under the [MIT License](http://www.opensource.org/licenses/MIT).

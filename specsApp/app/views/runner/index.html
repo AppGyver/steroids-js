@@ -1,0 +1,21 @@
+<script>
+
+jasmineEnv = jasmine.getEnv();
+
+jasmineEnv.updateInterval = 1000;
+
+
+htmlReporter = new jasmine.HtmlReporter();
+
+jasmineEnv.addReporter(htmlReporter);
+
+jasmineEnv.specFilter = function (spec) {
+  return htmlReporter.specFilter(spec);
+}
+
+window.onload = function() {
+  jasmineEnv.execute()
+}
+
+</script>
+
