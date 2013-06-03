@@ -76,8 +76,7 @@ module.exports = function(grunt) {
           }
         },
         files: {
-          'dist/steroids.js': [ 'dist/steroids.js'],
-          'testSlave/www/index.html': ['testSlave/www/index.html.template']
+          'dist/steroids.js': [ 'dist/steroids.js']
         }
       }
     }
