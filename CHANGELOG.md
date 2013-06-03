@@ -1,4 +1,4 @@
-## 2.7.0 (TODO)
+## 2.7.0 (2013-06-03)
 
 Public beta release
 
