@@ -1,3 +1,12 @@
+## 2.7.1 (2013-06-04)
+
+Sleep modes and layer stack replacing
+
+Changes:
+  - steroids.layers.replace all layers with a preloaded webview
+  - steroids.device.disableSleep - prevent device's screen from sleeping
+  - steroids.device.enableSleep - allow device's screen to sleep
+
 ## 2.7.0 (2013-06-03)
 
 Public beta release
