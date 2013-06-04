@@ -103,3 +103,9 @@ class window.LayersController
     }, {
       onSuccess: removeLoading
     }
+
+  @testReplace: ->
+    view = new steroids.views.WebView "/views/layers/index.html"
+    view.preload {},
+      onSuccess: =>
+        steroids.layers.replace view

@@ -54,3 +54,32 @@ class LayerCollection
       parameters: parameters
       successCallbacks: [defaultOnSuccess, callbacks.onSuccess]
       failureCallbacks: [callbacks.onFailure]
+
+  replace: (options={}, callbacks={})->
+    steroids.debug "steroids.layers.replace called"
+
+    defaultOnSuccess = ()=>
+      steroids.debug "steroids.layers.replace defaultOnSuccess"
+      @array = [view]
+
+    view = if options.constructor.name == "WebView"
+      steroids.debug "steroids.layers.replace using view shorthand"
+      options
+    else
+      steroids.debug "steroids.layers.replace using longhand"
+      options.view
+
+    parameters = {}
+
+    if view.id?
+      steroids.debug "steroids.layers.replace using preloaded view"
+      parameters.id = view.id
+    else
+      steroids.debug "steroids.layers.replace using new view"
+      parameters.url = view.location
+
+    steroids.nativeBridge.nativeCall
+      method: "replaceLayers"
+      parameters: parameters
+      successCallbacks: [defaultOnSuccess, callbacks.onSuccess]
+      failureCallbacks: [callbacks.onFailure]
