@@ -1,3 +1,8 @@
+## 2.7.2 (2013-07-12)
+
+Bugfixes:
+  - fixed rare issue with websocket state handling
+
 ## 2.7.1 (2013-06-04)
 
 Sleep modes and layer stack replacing
