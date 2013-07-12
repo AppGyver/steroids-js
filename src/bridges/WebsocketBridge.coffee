@@ -33,7 +33,7 @@ class WebsocketBridge extends Bridge
 
     xmlhttp = new XMLHttpRequest()
     xmlhttp.onreadystatechange = ()=>
-      if xmlhttp.readyState == 4
+      if xmlhttp.readyState == XMLHttpRequest.DONE
         window.steroids.debug "websocket request port success: #{xmlhttp.responseText}"
         callback xmlhttp.responseText
 
@@ -53,11 +53,16 @@ class WebsocketBridge extends Bridge
 
   sendMessageToNative:(message)->
     # Ensure websocket is open before sending anything
-    if @websocket?.readyState is 1
+    if @websocket?.readyState is WebSocket.OPEN
       @websocket.send message
     else
       window.steroids.on "websocketUsable", ()=>
-        @websocket.send message
+        if @websocket?.readyState is WebSocket.OPEN
+          # still ok!
+          @websocket.send message
+        else
+          # retry later
+          @sendMessageToNative message
 
   message_handler: (e)=>
     super(e.data)
