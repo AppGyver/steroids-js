@@ -1,17 +1,14 @@
 class PostMessage
 
   @postMessage: (message, targetOrigin) =>
-
-    callbacks = {}
-
     escapedJSONMessage = escape(JSON.stringify(message))
 
     steroids.nativeBridge.nativeCall
       method: "broadcastJavascript"
       parameters:
         javascript: "steroids.PostMessage.dispatchMessageEvent('#{escapedJSONMessage}', '*');"
-      successCallbacks: [callbacks.onSuccess]
-      recurringCallbacks: [callbacks.onFailure]
+      successCallbacks: []
+      recurringCallbacks: []
 
 
 
