@@ -9,4 +9,5 @@ class window.DataController
     alert("establish conn")
 
   @testRSSFetch: ->
-    alert("fetch")
+    lol = new steroids.data.RSS("url")
+    console.log(lol)

@@ -15,6 +15,7 @@ window.steroids =
 
   data:
     TouchDB: TouchDB
+    RSS: RSS
     OAuth2: OAuth2
 
   openURL: OpenURL.open
