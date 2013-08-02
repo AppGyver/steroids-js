@@ -7,6 +7,30 @@ class TouchDB
     @replicas = {}
     @baseURL = "#{TouchDB.baseURL}/#{@options.name}"
 
+    @eventCallbacks = {}
+
+    @createDB {},
+      onSuccess: =>
+        @fireCallbacks 'ready'
+      onFailure: (error) =>
+        if error.status == 412
+          @fireCallbacks 'ready'
+        else
+          console.log "unable to initialize database: " + error.error
+
+    @startMonitoringChanges {},
+      onChange: =>
+        @fireCallbacks 'change'
+
+  fireCallbacks: (name) =>
+    return unless @eventCallbacks[name]
+
+    for callback in @eventCallbacks[name]
+      callback.call()
+
+  on: (eventName, callback)->
+    @eventCallbacks[eventName] ||= []
+    @eventCallbacks[eventName].push callback
 
   startMonitoringChanges: (options={}, callbacks={}) ->
     request = new XMLHttpRequest();
@@ -55,6 +79,14 @@ class TouchDB
 
     @startReplication({source: @options.name, target: options.url}, {onSuccess: toCloudAdded, onFailure: toCloudFailed})
 
+  replicateFrom: (options={}, callbacks={}) =>
+    @startReplication {
+      source: options.url
+      target: @options.name
+    }, {
+      onSuccess: callbacks.onSuccess
+      onFailure: callbacks.onFailure
+    }
 
   startReplication: (options={}, callbacks={}) ->
     request = new XMLHttpRequest();
