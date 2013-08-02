@@ -1,3 +1,10 @@
+## 2.7.3 (2013-08-02)
+
+Experimental TouchDB API
+
+Changes:
+  - steroids.data.TouchDB secret APIs
+
 ## 2.7.2 (2013-07-12)
 
 Bugfixes:
