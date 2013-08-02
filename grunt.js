@@ -36,6 +36,7 @@ module.exports = function(grunt) {
           '<file_strip_banner:lib/Events.js>',
           '<file_strip_banner:lib/models/device/Torch.js>',
           '<file_strip_banner:lib/models/Device.js>',
+          '<file_strip_banner:lib/models/Data.js>',
           '<file_strip_banner:lib/models/Animation.js>',
           '<file_strip_banner:lib/models/App.js>',
           '<file_strip_banner:lib/models/Modal.js>',

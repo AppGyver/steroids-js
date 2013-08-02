@@ -5,5 +5,8 @@ class window.DataController
     # Make Navigation Bar to appear with a custom title text
     steroids.navigationBar.show { title: "data" }
 
-  @testPlay: ->
-    alert("play")
+  @testTouchDBEstablishConnection: ->
+    alert("establish conn")
+
+  @testRSSFetch: ->
+    alert("fetch")
