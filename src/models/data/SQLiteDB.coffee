@@ -41,17 +41,21 @@ class SQLiteDB
     else
       opts.statement
 
+    steroids.debug "stament to execute: #{statement}"
+
     @db.transaction (tx) =>
-      steroids.debug "execute statement #{statement}"
+      steroids.debug "execute transaction started"
 
       success = (stx, res) =>
         rows = []
         for i in [0..res.rows.length-1]
           rows.push res.rows.item(i)
 
+        steroids.debug "execute success, returned #{rows.length} rows"
         callbacks.onSuccess(rows, res, stx) if callbacks.onSuccess
 
       failure = (tx, err) =>
+        steroids.debug "execute failure -- err.message: #{err.message}"
         callbacks.onFailure(err, tx) if callbacks.onFailure
 
       tx.executeSql statement, [], success, failure
