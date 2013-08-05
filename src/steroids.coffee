@@ -27,19 +27,16 @@ window.steroids =
   debugMessages: []
   debugEnabled: false
 
-  debug: (options={}) ->
+  debug: (msg) ->
     return unless steroids.debugEnabled
 
-    msg = if options.constructor.name == "String"
-      options
-    else
-      options.msg
+    msgJSON = JSON.stringify(msg)
 
     red   = '\u001b[31m'
     blue  = '\u001b[34m'
     reset = '\u001b[0m'
 
-    debugMessage = "[#{red}DEBUG#{reset}] - #{msg} - #{blue} #{window.location.href}#{reset}"
+    debugMessage = "[#{red}DEBUG#{reset}] - #{msgJSON} - #{blue} #{window.location.href}#{reset}"
 
     window.steroids.debugMessages.push debugMessage
     console.log debugMessage
