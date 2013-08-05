@@ -1,0 +1,32 @@
+<script src="../../javascripts/sqliteplugin.js"></script>
+
+<h1>SQLite tests should have started</h1>
+
+<script>
+steroids.debugEnabled = true
+
+var db = new steroids.data.SQLiteDB("appdb");
+
+var afterInserted = function() {
+  db.execute("SELECT COUNT(id) as bananacount FROM bananas", {
+    onSuccess: function(rows) {
+      alert(rows[0]["bananacount"])
+    }
+  });
+
+}
+var whenCreatedOrExists = function() {
+  db.execute("INSERT INTO bananas (name, age) VALUES ('lol', 1)", {
+    onSuccess: afterInserted
+  });
+}
+
+db.createTable({
+  name: "bananas",
+  columnDefinitionString: "id INTEGER PRIMARY KEY, name TEXT, age INTEGER"
+}, {
+  onSuccess: whenCreatedOrExists,
+  onFailure: whenCreatedOrExists
+});
+
+</script>

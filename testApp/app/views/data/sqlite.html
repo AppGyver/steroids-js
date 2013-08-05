@@ -3,9 +3,9 @@
     steroids.debugEnabled = true;
 </script>
 <ul class="list">
+
   <li class="performsTest" data-test="testSQLiteDB">
     new SQLiteDB("cars")
-
   </li>
 
   <li class="performsTest" data-test="testSQLiteDBDropTable">
@@ -18,6 +18,11 @@
 
   <li class="performsTest" data-test="testSQLiteDBexecute">
     INSERT + COUNT
+  </li>
+
+  <li class="opensLayer" data-location="views/data/sqliteImmediate.html">
+    Start tests without actions
+    <span class="chevron"/>
   </li>
 
 </ul>

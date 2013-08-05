@@ -6,10 +6,8 @@ class SQLiteDB
     else
       options.name
 
-    throw "window.sqlitePlugin is undefined, load plugin" unless window.sqlitePlugin
+    throw "window.sqlitePlugin is undefined, please load plugin" unless window.sqlitePlugin
     throw "database name required" unless @databaseName
-
-    @db = window.sqlitePlugin.openDatabase(@databaseName)
 
   dropTable: (opts={}, callbacks={}) =>
     tableName = if opts.constructor.name == "String"
@@ -43,20 +41,25 @@ class SQLiteDB
 
     steroids.debug "stament to execute: #{statement}"
 
-    @db.transaction (tx) =>
-      steroids.debug "execute transaction started"
+    document.addEventListener 'deviceready', ()=>
 
-      success = (stx, res) =>
-        rows = []
-        for i in [0..res.rows.length-1]
-          rows.push res.rows.item(i)
+      unless @db
+        @db = window.sqlitePlugin.openDatabase(@databaseName)
 
-        steroids.debug "execute success, returned #{rows.length} rows"
-        callbacks.onSuccess(rows, res, stx) if callbacks.onSuccess
+      @db.transaction (tx) =>
+        steroids.debug "execute transaction started"
 
-      failure = (tx, err) =>
-        steroids.debug "execute failure -- err.message: #{err.message}"
-        callbacks.onFailure(err, tx) if callbacks.onFailure
+        success = (stx, res) =>
+          rows = []
+          for i in [0..res.rows.length-1]
+            rows.push res.rows.item(i)
 
-      tx.executeSql statement, [], success, failure
+          steroids.debug "execute success, returned #{rows.length} rows"
+          callbacks.onSuccess(rows, res, stx) if callbacks.onSuccess
+
+        failure = (tx, err) =>
+          steroids.debug "execute failure -- err.message: #{err.message}"
+          callbacks.onFailure(err, tx) if callbacks.onFailure
+
+        tx.executeSql statement, [], success, failure
 
