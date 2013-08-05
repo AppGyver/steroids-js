@@ -25,7 +25,6 @@ window.steroids =
 
   debugMessages: []
   debugEnabled: false
-  debugConsole: console
 
   debug: (options={}) ->
     return unless steroids.debugEnabled
@@ -35,10 +34,14 @@ window.steroids =
     else
       options.msg
 
-    debugMessage = "#{window.location.href} - #{msg}"
+    red   = '\u001b[31m'
+    blue  = '\u001b[34m'
+    reset = '\u001b[0m'
+
+    debugMessage = "[#{red}DEBUG#{reset}] - #{msg} - #{blue} #{window.location.href}#{reset}"
 
     window.steroids.debugMessages.push debugMessage
-    @debugConsole.log debugMessage
+    console.log debugMessage
 
   on: (event, callback)->
     @debug "on event #{event}"
