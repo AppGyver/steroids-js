@@ -1,0 +1,23 @@
+<script src="../../javascripts/sqliteplugin.js"></script>
+<script>
+    steroids.debugEnabled = true;
+</script>
+<ul class="list">
+  <li class="performsTest" data-test="testSQLiteDB">
+    new SQLiteDB("cars")
+
+  </li>
+
+  <li class="performsTest" data-test="testSQLiteDBDropTable">
+    sqlitedb.dropTable("cars")
+  </li>
+
+  <li class="performsTest" data-test="testSQLiteDBCreateTable">
+    sqlitedb.createTable("cars")
+  </li>
+
+  <li class="performsTest" data-test="testSQLiteDBexecute">
+    INSERT + COUNT
+  </li>
+
+</ul>

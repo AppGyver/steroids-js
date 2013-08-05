@@ -14,6 +14,7 @@ window.steroids =
     NavigationBarButton: NavigationBarButton
 
   data:
+    SQLiteDB: SQLiteDB
     TouchDB: TouchDB
     RSS: RSS
     OAuth2: OAuth2

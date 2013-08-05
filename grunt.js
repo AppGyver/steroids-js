@@ -53,6 +53,7 @@ module.exports = function(grunt) {
           '<file_strip_banner:lib/models/OAuth2.js>',
           '<file_strip_banner:lib/models/data/RSS.js>',
           '<file_strip_banner:lib/models/data/TouchDB.js>',
+          '<file_strip_banner:lib/models/data/SQLiteDB.js>',
           '<file_strip_banner:lib/models/XHR.js>',
           '<file_strip_banner:lib/models/analytics/Analytics.js>',
           '<file_strip_banner:lib/models/Screen.js>',

@@ -1,3 +1,10 @@
+## 2.7.4 (TODO)
+
+Expirimental SQLite API
+
+Changes:
+  - steroids.data.SQLliteDB secret APIs
+
 ## 2.7.3 (2013-08-02)
 
 Experimental TouchDB API
