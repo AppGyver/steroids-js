@@ -1,3 +1,6 @@
 [submodule "bower"]
 	path = bower
 	url = git@github.com:steroidsjs/steroids-js.git
+[submodule "testApp/www/javascripts/persistencejs"]
+	path = testApp/www/javascripts/persistencejs
+	url = git://github.com/zefhemel/persistencejs.git
