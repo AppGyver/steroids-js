@@ -1,0 +1,37 @@
+<script src="../../javascripts/sqliteplugin.js"></script>
+
+<script src="../../javascripts/persistencejs/lib/persistence.js"></script>
+<script src="../../javascripts/persistencejs/lib/persistence.store.sql.js"></script>
+<script src="../../javascripts/persistencejs/lib/persistence.store.websql.js"></script>
+
+<script>
+    steroids.debugEnabled = true;
+</script>
+
+<ul class="list">
+
+  <li class="performsTest" data-test="testPersistenceOverrideNativeSQL">
+    window.openDatabase = window.sqlitePlugin.openDatabase
+  </li>
+
+  <li class="performsTest" data-test="testPersistenceJSConfigure">
+    persistence.js configure
+  </li>
+
+  <li class="performsTest" data-test="testPersistenceJSDefineTask">
+    define Task + createTable
+  </li>
+
+  <li class="performsTest" data-test="testPersistenceJSDropTestDB">
+    drop table "Task"
+  </li>
+
+  <li class="performsTest" data-test="testPersistenceJSInsertTask">
+    insert Task
+  </li>
+
+  <li class="performsTest" data-test="testPersistenceJSListAllTasks">
+    Task.all()
+  </li>
+
+</ul>

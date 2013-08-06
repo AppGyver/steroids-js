@@ -5,6 +5,62 @@ class window.DataController
     # Make Navigation Bar to appear with a custom title text
     steroids.navigationBar.show { title: "data" }
 
+  @testPersistenceOverrideNativeSQL: ->
+    unless window.sqlitePlugin.openDatabase
+      alert "SQLitePlugin not loaded"
+      return
+
+    window.openDatabase = window.sqlitePlugin.openDatabase
+    alert "done"
+
+  @testPersistenceJSDropTestDB: ->
+    persistencedb = new steroids.data.SQLiteDB("persistencedb")
+
+    persistencedb.dropTable "Task", {
+      onSuccess: ->
+        alert "dropped"
+      onFailure: ->
+        alert "could not drop"
+    }
+
+  @getTask: ->
+    Task = persistence.define('Task', {
+      name: "TEXT",
+      description: "TEXT",
+      done: "BOOL"
+    })
+
+    return Task
+
+  @testPersistenceJSDefineTask: ->
+    @getTask()
+
+    persistence.schemaSync ->
+      alert "defined"
+
+  @testPersistenceJSConfigure: ->
+    persistence.store.websql.config(persistence, 'persistencedb', 'A database description', 5 * 1024 * 1024)
+    alert "configured"
+
+  @testPersistenceJSInsertTask: ->
+    Task = @getTask()
+
+    t = new Task()
+    t.name = "taskname"
+    t.description = "taskdescription"
+    t.done = false
+
+    persistence.add(t)
+    persistence.flush () ->
+      alert "inserted"
+
+  @testPersistenceJSListAllTasks: ->
+    Task = @getTask()
+
+    Task.all().list (tasks) ->
+      steroids.debug(tasks)
+      alert "see console debug"
+
   @testSQLiteDB: ->
     sqlitedb = new steroids.data.SQLiteDB("testdb")
 
