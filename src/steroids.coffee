@@ -54,11 +54,14 @@ window.steroids =
   fireSteroidsEvent: (event)->
     @debug "firign event #{event}"
     @["#{event}_has_fired"] = new Date().getTime()
-
+    console.log "lolbug 1"
+    console.log "lolbug", @eventCallbacks
     if @eventCallbacks[event]?
       @debug "firign event #{event} callbacks"
       callbacks = @eventCallbacks[event].splice 0
       for callback in callbacks
+        console.log "lolbug 3"
+
         @debug "firing event #{event} callback"
         callback()
 

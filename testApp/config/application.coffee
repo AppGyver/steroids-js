@@ -25,7 +25,7 @@ steroids.config.tabBar.tabs = [
   {
     title: "FUT"
     icon: "icons/telescope@2x.png"
-    location: "http://localhost/views/data/persistencejs.html"
+    location: "http://localhost/views/steroids/serve.html"
   }
   {
     title: "HTTP"
@@ -78,3 +78,13 @@ steroids.config.statusBar.enabled = Math.random() > 0.5
 # Default: "default"
 #
 # steroids.config.theme = "default"
+
+# The preMake command is run before `steroids make`, the process where `app/` and `www/` folders are processed into the `dist/` folder.
+steroids.config.hooks.preMake.cmd = "grunt"
+steroids.config.hooks.preMake.args = ["build"]
+#
+# The postMake command is run right after `steroids make`, before running `steroids package`, the process that packages the app before sending it to client devices.
+# steroids.config.hooks.postMake.cmd = "echo"
+# steroids.config.hooks.postMake.args = ["cleaning up files"]
+
+

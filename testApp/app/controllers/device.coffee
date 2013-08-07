@@ -6,7 +6,6 @@ class window.DeviceController
     steroids.navigationBar.show { title: "device" }
 
   @testPing: () ->
-
     gotPong = (e) ->
       alert e.message
 

@@ -32,6 +32,7 @@ module.exports = function(grunt) {
           '<banner>',
           '<file_strip_banner:lib/bridges/Bridge.js>',
           '<file_strip_banner:lib/bridges/AndroidBridge.js>',
+          '<file_strip_banner:lib/bridges/WebBridge.js>',
           '<file_strip_banner:lib/bridges/WebsocketBridge.js>',
           '<file_strip_banner:lib/Events.js>',
           '<file_strip_banner:lib/models/device/Torch.js>',

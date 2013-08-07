@@ -9,7 +9,8 @@ class Bridge
   @getBestNativeBridge: ()->
     # Add new native bridges here
     prioritizedList =
-    [ AndroidBridge
+    [ WebBridge
+    , AndroidBridge
     , WebsocketBridge
     ]
 
