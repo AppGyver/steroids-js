@@ -1,9 +1,10 @@
-## 2.7.4 (TODO)
+## 2.7.4 (2013-08-08)
 
-Expirimental SQLite API
+Expirimental SQLite API and browser support
 
 Changes:
   - steroids.data.SQLliteDB secret APIs
+  - Experimental support for browser debugging
 
 ## 2.7.3 (2013-08-02)
 
