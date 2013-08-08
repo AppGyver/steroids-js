@@ -9,15 +9,29 @@ class WebBridge extends Bridge
       id: null
       timestamp: (new Date()).getTime()
 
-    pollForRefresh = ()->
-      xhr = new XMLHttpRequest()
-      xhr.onload = ()->
-        window.location.reload() if @readyState is 4 and @status is 200 and @responseText is "true"
+    if window.EventSource?
+      source = new EventSource("http://localhost:4567/refresh_client_events?#{refresh.timestamp}")
+      source.addEventListener "refresh", (e)->
+        window.location.reload() if e.data == "true"
+      , false
 
-      xhr.open("GET", "http://localhost:4567/refresh_client?#{refresh.timestamp}")
-      xhr.send()
+      source.addEventListener "open", (e)->
+        console.log "Monitoring updates from steroids npm."
+      , false
 
-    refresh.id = setInterval pollForRefresh, 1000
+      source.addEventListener "error", (e)->
+        if e.readyState == EventSource.CLOSED
+          console.log "No longer monitoring updates from steroids npm."
+    else
+      pollForRefresh = ()->
+        xhr = new XMLHttpRequest()
+        xhr.onload = ()->
+          window.location.reload() if @readyState is 4 and @status is 200 and @responseText is "true"
+
+        xhr.open("GET", "http://localhost:4567/refresh_client?#{refresh.timestamp}")
+        xhr.send()
+
+      refresh.id = setInterval pollForRefresh, 1000
 
     return @
 
