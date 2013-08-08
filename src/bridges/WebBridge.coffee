@@ -43,6 +43,14 @@ class WebBridge extends Bridge
 
     console.log "WebBridge: ", message
 
+    ripplefyURL = (url)->
+      if location.search.indexOf("enableripple")
+        message.parameters.url += if message.parameters.url.split('?').length > 1
+          "&enableripple=cordova"
+        else
+          "?enableripple=cordova"
+
+
     failed = false
 
     successOptions = {}
@@ -52,12 +60,13 @@ class WebBridge extends Bridge
       when "ping"
         successOptions.message = "PONG"
       when "openLayer"
-        window.open message.parameters.url, "_blank"
+
+        window.open ripplefyURL(message.parameters.url), "_blank"
       when "openURL"
-        window.open message.parameters.url, "_blank"
+        window.open ripplefyURL(message.parameters.url), "_blank"
       when "openModal"
         modal = document.createElement "iframe"
-        modal.src = message.parameters.url
+        modal.src = ripplefyURL(message.parameters.url)
         modal.width = "100%"
         modal.height = "100%"
         modal.style.position = "absolute"
