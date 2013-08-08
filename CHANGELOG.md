@@ -1,3 +1,10 @@
+## 2.7.5 (2013-08-08)
+
+Experimental EventSource support for refreshing browser when project is changed
+
+Changes:
+  - WebBridge polls steroids npm for changes and refreshes
+
 ## 2.7.4 (2013-08-08)
 
 Expirimental SQLite API and browser support
