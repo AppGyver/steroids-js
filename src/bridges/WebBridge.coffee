@@ -5,6 +5,20 @@ class WebBridge extends Bridge
     window.AG_LAYER_ID = 0
     window.AG_VIEW_ID = 0
 
+    refresh =
+      id: null
+      timestamp: (new Date()).getTime()
+
+    pollForRefresh = ()->
+      xhr = new XMLHttpRequest()
+      xhr.onload = ()->
+        window.location.reload() if @readyState is 4 and @status is 200 and @responseText is "true"
+
+      xhr.open("GET", "http://localhost:4567/refresh_client?#{refresh.timestamp}")
+      xhr.send()
+
+    refresh.id = setInterval pollForRefresh, 1000
+
     return @
 
   @isUsable: ()->
