@@ -41,14 +41,15 @@ class WebBridge extends Bridge
   sendMessageToNative:(messageString)->
     message = JSON.parse(messageString)
 
-    console.log "WebBridge: ", message
+    console.log "WebBridge: #{JSON.stringify(message)}"
 
     ripplefyURL = (url)->
-      if location.search.indexOf("enableripple")
-        message.parameters.url += if message.parameters.url.split('?').length > 1
-          "&enableripple=cordova"
+      if window.top.location.search.indexOf("enableripple")
+        url += if url.split('?').length > 1
+          "&enableripple=#{window.top.steroids.view.params.enableripple}"
         else
-          "?enableripple=cordova"
+          "?enableripple=#{window.top.steroids.view.params.enableripple}"
+      return url
 
 
     failed = false
@@ -61,9 +62,9 @@ class WebBridge extends Bridge
         successOptions.message = "PONG"
       when "openLayer"
 
-        window.open ripplefyURL(message.parameters.url), "_blank"
+        window.top.open ripplefyURL(message.parameters.url), "_blank"
       when "openURL"
-        window.open ripplefyURL(message.parameters.url), "_blank"
+        window.top.open ripplefyURL(message.parameters.url), "_blank"
       when "openModal"
         modal = document.createElement "iframe"
         modal.src = ripplefyURL(message.parameters.url)
