@@ -13,7 +13,23 @@
   </li>
 
   <li class="performsTest" data-test="testSQLiteDBCreateTable">
-    sqlitedb.createTable("cars")
+    sqlitedb.createTable({
+      name: "cars",
+      columns: {
+        car_id: "integer",
+        name: "text",
+        description: "text",
+        img: "blob",
+        price: "real"
+      }
+    }, {
+      onSuccess: function() {
+        alert("Created table");
+      },
+      onFailure: function() {
+        alert("Failed creating table");
+      }
+    });
   </li>
 
   <li class="performsTest" data-test="testSQLiteDBexecute">
@@ -24,5 +40,6 @@
     Start tests without actions
     <span class="chevron"/>
   </li>
+
 
 </ul>
