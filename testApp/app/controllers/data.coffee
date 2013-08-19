@@ -5,6 +5,10 @@ class window.DataController
     # Make Navigation Bar to appear with a custom title text
     steroids.navigationBar.show { title: "data" }
 
+
+  # PERSISTENCE
+
+
   @testPersistenceOverrideNativeSQL: ->
     unless window.sqlitePlugin.openDatabase
       alert "SQLitePlugin not loaded"
@@ -61,6 +65,9 @@ class window.DataController
       steroids.debug(tasks)
       alert "see console debug"
 
+
+  # SQLITE
+
   @testSQLiteDB: ->
     sqlitedb = new steroids.data.SQLiteDB("testdb")
 
@@ -70,14 +77,21 @@ class window.DataController
       alert "not ok"
 
   @testSQLiteDBCreateTable: ->
-    testdb = new steroids.data.SQLiteDB("testdb")
-    testdb.createTable {
+    sqlitedb = new steroids.data.SQLiteDB("testdb")
+
+    sqlitedb.createTable
       name: "cars"
-      columnDefinitionString: "id INTEGER PRIMARY KEY, name TEXT, age INTEGER"
-    }, {
-      onSuccess: -> alert "created"
-      onFailure: -> alert "create failed"
-    }
+      columns:
+        car_id: "integer"
+        name: "text"
+        description: "text"
+        img: "blob"
+        price: "real"
+    ,
+      onSuccess: ->
+        alert "Created table"
+      onFailure: ->
+        alert "Failed creating table"
 
   @testSQLiteDBDropTable: ->
     testdb = new steroids.data.SQLiteDB("testdb")
@@ -88,18 +102,21 @@ class window.DataController
 
   @testSQLiteDBexecute: ->
     testdb = new steroids.data.SQLiteDB("testdb")
-    testdb.execute "INSERT INTO cars (name, age) VALUES ('lol', 1)",
+    testdb.execute "INSERT INTO cars (car_id, name, description, img, price) VALUES (1, 'toyota', 'good car', 'somebase64image', 2.50)",
       onSuccess: (rows, res, tx) ->
         steroids.debug res
       onFailure: (err) =>
         alert err.message
 
-    testdb.execute "SELECT COUNT(id) as carcount FROM cars",
+    testdb.execute "SELECT COUNT(*) FROM cars",
       onSuccess: (rows, res, tx) =>
-        carCount = rows[0]["carcount"]
-        alert "COUNT = #{carCount}"
+        alert "COUNT = #{rows[0]['COUNT(*)']}"
       onFailure: (err) =>
         alert err.message
+
+
+  # TOUCHDB
+
 
   @testTouchDBOnReadyExisting: ->
     touchdb = new steroids.data.TouchDB
@@ -120,6 +137,9 @@ class window.DataController
 
     touchdb.on 'change', =>
       alert('changed, always fired when set -- needs more thinking, cuz is currently required for ng-touchdb')
+
+
+  # RSS
 
   @testRSSFetch: ->
     lol = new steroids.data.RSS("url")

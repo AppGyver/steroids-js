@@ -27,10 +27,19 @@ class SQLiteDB
     else
       opts.name
 
-    steroids.debug "creating table #{tableName} with #{opts.columnDefinitionString}"
+    statement = "CREATE TABLE #{tableName}"
+
+    if opts.columns?
+      columnsString = ("#{key} #{type.toUpperCase()}" for key, type of opts.columns)
+
+      columnDefinitionString = columnsString.join(", ")
+
+    steroids.debug "creating table #{tableName} with #{columnDefinitionString}"
+
+    statement += " (#{columnDefinitionString})" if columnDefinitionString?
 
     @execute
-      statement: "CREATE TABLE #{tableName} (#{opts.columnDefinitionString})"
+      statement: statement
     , callbacks
 
   execute: (opts={}, callbacks={}) =>
