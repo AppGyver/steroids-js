@@ -1,3 +1,10 @@
+## 2.7.6 (2013-08-19)
+
+SQLite API no longer experimental
+
+Changes:
+  - steroids.data.SQLiteDB.createTable supports defining columns as an object
+
 ## 2.7.5 (2013-08-08)
 
 Experimental EventSource support for refreshing browser when project is changed
