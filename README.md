@@ -1,10 +1,22 @@
-Steroids JS - html5 wrapper JS unfucked
+# Steroids JS
 ---------------------------------------
 
+JavaScript library to be with [AppGyver Steroids](http://appgyver.com/steroids) and [Steroids npm](//github.com/AppGyver/steroids).
 
 ## Development:
 
   npm install
+
+
+## Testing
+
+### Automated
+
+There is a jasmine test project in specsApp/ that has steroids.js symlinked from dist/
+
+### Explorative
+
+There is a separate steroids project in testApp/ that has steroids.js symlinked from dist/
 
 ## Publishing:
 
@@ -22,17 +34,6 @@ Steroids JS - html5 wrapper JS unfucked
     git add bower && git commit -m "Updated submodule to $VERSION" && git push && git push --tags
 
     npm publish ./
-
-
-## Testing
-
-### Automated
-
-There is a jasmine test project in specsApp/ that has steroids.js symlinked from dist/
-
-### Explorative
-
-There is a separate steroids project in testApp/ that has steroids.js symlinked from dist/
 
 ## License
 
