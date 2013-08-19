@@ -1,6 +1,6 @@
 # Steroids JS
 
-A JavaScript library to be with [AppGyver Steroids](http://appgyver.com/steroids) and [Steroids npm](//github.com/AppGyver/steroids).
+A JavaScript library to be used with [AppGyver Steroids](http://appgyver.com/steroids) and [Steroids npm](//github.com/AppGyver/steroids).
 
 ## Development:
 
