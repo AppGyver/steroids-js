@@ -102,16 +102,15 @@ class window.DataController
 
   @testSQLiteDBexecute: ->
     testdb = new steroids.data.SQLiteDB("testdb")
-    testdb.execute "INSERT INTO cars (car_id, name, description, img, price) VALUES (1, 'toyota', 'good car', 'imagedata', 2.5)",
+    testdb.execute "INSERT INTO cars (car_id, name, description, img, price) VALUES (1, 'toyota', 'good car', 'somebase64image', 2.50)",
       onSuccess: (rows, res, tx) ->
         steroids.debug res
       onFailure: (err) =>
         alert err.message
 
-    testdb.execute "SELECT COUNT(id) as carcount FROM cars",
+    testdb.execute "SELECT COUNT(*) FROM cars",
       onSuccess: (rows, res, tx) =>
-        carCount = rows[0]["carcount"]
-        alert "COUNT = #{carCount}"
+        alert "COUNT = #{rows[0]['COUNT(*)']}"
       onFailure: (err) =>
         alert err.message
 
