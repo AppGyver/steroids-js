@@ -1,3 +1,10 @@
+## 2.7.7 (TODO)
+
+Fixed WebBridge being erroneously used instead of NativeBridge on some Android versions.
+
+Bugfixes:
+  - Use `navigator.userAgent` instead of `window.chrome` to see if WebBridge should be used instead of Native Bridge
+
 ## 2.7.6 (2013-08-19)
 
 SQLite API no longer experimental

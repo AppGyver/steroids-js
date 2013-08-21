@@ -36,7 +36,7 @@ class WebBridge extends Bridge
     return @
 
   @isUsable: ()->
-    return typeof window.chrome != 'undefined'
+    return navigator.userAgent.indexOf("AppGyverSteroids") == -1
 
   sendMessageToNative:(messageString)->
     message = JSON.parse(messageString)
