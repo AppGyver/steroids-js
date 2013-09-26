@@ -22,11 +22,11 @@ steroids.config.tabBar.enabled = true
 #   - http://www.google.com (directly from internet)
 #
 steroids.config.tabBar.tabs = [
-  {
-    title: "FUT"
-    icon: "icons/telescope@2x.png"
-    location: "http://localhost/views/steroids/serve.html"
-  }
+  # {
+  #   title: "FUT"
+  #   icon: "icons/telescope@2x.png"
+  #   location: "http://localhost/views/steroids/serve.html"
+  # }
   {
     title: "HTTP"
     icon: "icons/pill@2x.png"
