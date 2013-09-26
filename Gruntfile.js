@@ -1,5 +1,3 @@
-execSync = require("exec-sync");
-
 module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-coffee');
   grunt.loadNpmTasks('grunt-contrib-concat');
@@ -7,9 +5,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
 
   grunt.loadNpmTasks('grunt-replace');
-
-//  grunt.loadNpmTasks('grunt-shell');
-//  grunt.loadNpmTasks('grunt-replace');
 
   grunt.file.defaultEncoding = 'utf8';
 
