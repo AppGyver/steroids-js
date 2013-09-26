@@ -1,3 +1,8 @@
+## 2.7.8 (TODO)
+
+Changes:
+  - Updated `grunt` break things
+
 ## 2.7.7 (2013-08-21)
 
 Fixed a bug that prevented Steroids API calls from functioning on certain Android versions.
