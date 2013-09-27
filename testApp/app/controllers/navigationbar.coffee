@@ -24,6 +24,13 @@ class window.NavigationbarController
       onSuccess: -> alert "showed with title"
       onFailure: -> alert "failed to show with title"
 
+  @testShowWithTitleImagePath: ->
+    steroids.view.navigationBar.show {
+      titleImagePath: "/icons/pill@2x.png"
+    },
+    onSuccess: -> alert "showed with titleImagePath"
+    onFailure: -> alert "failed to show with titleImagePath"
+
   @testSetButtonsWithOneRightButton: ->
     button = new steroids.buttons.NavigationBarButton
     button.title = "TEST"

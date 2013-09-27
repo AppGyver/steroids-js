@@ -1,7 +1,10 @@
-## 2.7.8 (TODO)
+## 2.7.8 (2013-09-27)
+
+Grunt tasks updated to latest Node.js version, support for images in navigation bar (iOS only)
 
 Changes:
-  - Updated `grunt` break things
+  - Added support for images in navigation bar with steroids.view.navigationBar.show({titleImagePath: imagePath})
+  - Cleaned up and updated `grunt` tasks to support Node.js 0.10.x/0.11.x
 
 ## 2.7.7 (2013-08-21)
 
