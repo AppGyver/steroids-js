@@ -42,6 +42,30 @@ class window.NavigationbarController
       onSuccess: => alert "buttons set"
       onFailure: => alert "failed to set buttons"
 
+  @testSetButtonsWithManyButtons: ->
+    button1 = new steroids.buttons.NavigationBarButton
+    button1.title = "EKA"
+    button1.onTap = => alert "EKA BUTTON TAPPED"
+
+    button2 = new steroids.buttons.NavigationBarButton
+    button2.title = "Toka"
+    button2.onTap = => alert "TOKA BUTTON TAPPED"
+
+    button3 = new steroids.buttons.NavigationBarButton
+    button3.title = "kOLI"
+    button3.onTap = => alert "KOLI BUTTON TAPPED"
+
+    button4 = new steroids.buttons.NavigationBarButton
+    button4.title = "NeLi"
+    button4.onTap = => alert "NELI BUTTON TAPPED"
+
+    steroids.view.navigationBar.setButtons {
+      left: [button1, button2]
+      right: [button3, button4]
+    },
+      onSuccess: => alert "many buttons set"
+      onFailure: => alert "failed to set many buttons"
+
   @testSetButtonsWithoutButtons: ->
     steroids.view.navigationBar.setButtons {},
       onSuccess: => alert "all buttons removed"

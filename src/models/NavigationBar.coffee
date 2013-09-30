@@ -25,19 +25,38 @@ class NavigationBar
 
   setButtons: (options={}, callbacks={}) ->
     steroids.debug "steroids.navigationBar.setButtons options: #{JSON.stringify options} callbacks: #{JSON.stringify callbacks}"
-    if options.right? && options.right != []
-      steroids.debug "steroids.navigationBar.setButtons showing right button title: #{options.right[0].title} callback: #{options.right[0].onTap}"
-      steroids.nativeBridge.nativeCall
-        method: "showNavigationBarRightButton"
-        parameters:
-          title: options.right[0].title
-        successCallbacks: [callbacks.onSuccess]
-        recurringCallbacks: [options.right[0].onTap]
-        failureCallbacks: [callbacks.onFailure]
-    else
-      steroids.debug "steroids.navigationBar.setButtons hiding right button"
-      steroids.nativeBridge.nativeCall
-        method: "hideNavigationBarRightButton"
-        parameters: {}
-        successCallbacks: [callbacks.onSuccess]
-        failureCallbacks: [callbacks.onFailure]
+
+    @buttonCallbacks =
+      right: []
+      left: []
+
+    params =
+      right: []
+      left: []
+
+    if options.right?
+      for button in options.right
+        @buttonCallbacks.right.push(button.onTap ? ->)
+
+        params.right.push {
+          title: button.title
+        }
+
+    if options.left?
+      for button in options.left
+        @buttonCallbacks.left.push(button.onTap ? ->)
+
+        params.left.push {
+          title: button.title
+        }
+
+
+    steroids.nativeBridge.nativeCall
+      method: "setNavigationBarButtons"
+      parameters: options
+      successCallbacks: [callbacks.onSuccess]
+      recurringCallbacks: [@buttonTapped]
+      failureCallbacks: [callbacks.onFailure]
+
+  buttonTapped: (options)=>
+    @buttonCallbacks[options.side][options.index]()
