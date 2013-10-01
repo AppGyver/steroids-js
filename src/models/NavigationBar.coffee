@@ -25,38 +25,39 @@ class NavigationBar
 
   setButtons: (options={}, callbacks={}) ->
     steroids.debug "steroids.navigationBar.setButtons options: #{JSON.stringify options} callbacks: #{JSON.stringify callbacks}"
+    relativeTo = options.relativeTo ? steroids.app.path
 
-    @buttonCallbacks =
-      right: []
-      left: []
-
+    @buttonCallbacks = {}
     params =
-      right: []
-      left: []
+      overrideBackButton: options.overrideBackButton
+    buttonParametersFrom = (obj)->
+      if obj.title?
+        title: obj.title
+      else
+        imagePath: relativeTo + obj.imagePath
 
-    if options.right?
-      for button in options.right
-        @buttonCallbacks.right.push(button.onTap ? ->)
+    locations = ["right", "left"]
 
-        params.right.push {
-          title: button.title
-        }
+    for location in locations
+      steroids.debug "steroids.navigationBar.setButtons constructing location #{location}"
+      @buttonCallbacks[location] = []
+      params[location] = []
 
-    if options.left?
-      for button in options.left
-        @buttonCallbacks.left.push(button.onTap ? ->)
+      if options[location]?
+        for button in options[location]
+          buttonParameters = buttonParametersFrom(button)
+          callback = button.onTap ? ->
 
-        params.left.push {
-          title: button.title
-        }
-
+          steroids.debug "steroids.navigationBar.setButtons adding button #{JSON.stringify(buttonParameters)} to location #{location}"
+          @buttonCallbacks[location].push callback
+          params[location].push buttonParameters
 
     steroids.nativeBridge.nativeCall
       method: "setNavigationBarButtons"
-      parameters: options
+      parameters: params
       successCallbacks: [callbacks.onSuccess]
       recurringCallbacks: [@buttonTapped]
       failureCallbacks: [callbacks.onFailure]
 
   buttonTapped: (options)=>
-    @buttonCallbacks[options.side][options.index]()
+    @buttonCallbacks[options.location][options.index]()
