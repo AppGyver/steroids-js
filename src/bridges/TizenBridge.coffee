@@ -39,6 +39,10 @@ class TizenBridge extends Bridge
         window.open(message.parameters.url)
       when "popLayer"
         window.close()
+      when "openModal"
+        window.open(message.parameters.url)
+      when "closeModal"
+        window.close()
       else
         console.log "TizenBridge: unsupported API method: #{message.method}"
         failed = true
