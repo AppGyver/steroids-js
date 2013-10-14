@@ -37,6 +37,7 @@ module.exports = function(grunt) {
             'src/bridges/AndroidBridge.coffee',
             'src/bridges/WebBridge.coffee',
             'src/bridges/WebsocketBridge.coffee',
+            'src/bridges/TizenBridge.coffee',
             'src/Events.coffee',
             'src/models/device/Torch.coffee',
             'src/models/Device.coffee',
