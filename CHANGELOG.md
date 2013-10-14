@@ -1,8 +1,8 @@
-## 2.7.9 (TODO)
+## 2.7.9 (2013-10-14)
 
-Initial support for Steroids.js on Tizen.
+Initial Tizen support.
 
-Changes:
+Features:
   - TizenBridge for handling API calls and auto-refresh of client on Tizen devices.
 
 ## 2.7.8 (2013-09-27)
