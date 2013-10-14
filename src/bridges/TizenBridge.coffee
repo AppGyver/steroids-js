@@ -10,7 +10,9 @@ class TizenBridge extends Bridge
       xhr.onload = ()->
         window.location.reload() if @readyState is 4 and @status is 200 and @responseText is "true"
 
-      xhr.open("GET", "http://192.168.1.193:4567/refresh_client?#{refresh.timestamp}")
+      getURL = "http://#{location.hostname}:4567/refresh_client?#{refresh.timestamp}"
+
+      xhr.open("GET", getURL)
       xhr.send()
 
       refresh.id = setTimeout pollForRefresh, 1000

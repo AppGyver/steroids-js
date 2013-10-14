@@ -1,3 +1,10 @@
+## 2.7.9 (TODO)
+
+Initial support for Steroids.js on Tizen.
+
+Changes:
+  - TizenBridge for handling API calls and auto-refresh of client on Tizen devices.
+
 ## 2.7.8 (2013-09-27)
 
 Grunt tasks updated to latest Node.js version, support for images in navigation bar (iOS only)
