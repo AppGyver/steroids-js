@@ -5,7 +5,7 @@ class window.NavigationbarController
     document.addEventListener "deviceready", ->
 
       # Make Navigation Bar to appear with a custom title text
-      steroids.view.navigationBar.show { title: "navigationbar" }
+      steroids.view.navigationBar.show { title: "navbar" }
 
   @testHide: ->
     steroids.view.navigationBar.hide {},
@@ -41,6 +41,33 @@ class window.NavigationbarController
     },
       onSuccess: => alert "buttons set"
       onFailure: => alert "failed to set buttons"
+
+  @testSetButtonsWithManyButtons: (options={override:false})->
+    button1 = new steroids.buttons.NavigationBarButton
+    button1.title = "EKA"
+    button1.onTap = => alert "EKA BUTTON TAPPED"
+
+    button2 = new steroids.buttons.NavigationBarButton
+    button2.title = "TOKA"
+    button2.onTap = => alert "TOKA BUTTON TAPPED"
+
+    button3 = new steroids.buttons.NavigationBarButton
+    button3.title = "NoCB"
+
+    button4 = new steroids.buttons.NavigationBarButton
+    button4.imagePath = "/icons/pill@2x.png"
+    button4.onTap = => alert "ICON BUTTON TAPPED"
+
+    steroids.view.navigationBar.setButtons {
+      overrideBackButton: options.override
+      left: [button1, button2]
+      right: [button3, button4]
+    },
+      onSuccess: => alert "many buttons set"
+      onFailure: => alert "failed to set many buttons"
+
+  @testSetButtonsWithManyButtonsWithoutBack: ->
+    @testSetButtonsWithManyButtons { override: true }
 
   @testSetButtonsWithoutButtons: ->
     steroids.view.navigationBar.setButtons {},
