@@ -4,9 +4,9 @@ Multiple navigation bar buttons, ability to hide the back button.
 
 Features:
   - `steroids.view.navigationBar.setButtons()` API expanded, see the [API docs](http://docs.appgyver.com/en/edge/steroids_Steroids%20Native%20UI_steroids.view.navigationBar_navigationBar.setButtons.md.html#steroids.view.navigationBar.setButtons) for more information
-    - Hide/show the back button
-    - Multiple buttons on the left and right side of the navigation bar
-    - Buttons can use images or text
+    - Hide/show the back button.
+    - Multiple buttons on the left and right side of the navigation bar.
+    - Buttons can use images or text.
 
 ## 2.7.9 (2013-10-14)
 
