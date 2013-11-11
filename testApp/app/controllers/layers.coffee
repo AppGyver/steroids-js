@@ -34,6 +34,18 @@ class window.LayersController
       animation: animation
     }
 
+  @testPushHideNavBar: ->
+    steroids.layers.push {
+      view: @createWebView(),
+      navigationBar: false
+    }
+
+  @testPushHideTabBar: ->
+    steroids.layers.push {
+      view: @createWebView(),
+      tabBar: false
+    }
+
   @testKeepLoading: ->
     keepLoadingView = new steroids.views.WebView "/views/layers/keepLoading.html"
 
