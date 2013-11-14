@@ -2,6 +2,7 @@
 
 Bugfixes:
 - Fixes the issue Android right button not showing.
+- Navigation bar title image and image buttons now wait for the Steroids `ready` event internally.
 
 ## 2.7.10 (2013-10-17)
 
