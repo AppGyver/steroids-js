@@ -36,21 +36,42 @@ class NavigationBar
       else
         imagePath: relativeTo + obj.imagePath
 
-    locations = ["right", "left"]
 
-    for location in locations
-      steroids.debug "steroids.navigationBar.setButtons constructing location #{location}"
-      @buttonCallbacks[location] = []
-      params[location] = []
+    if typeof AndroidAPIBridge is 'undefined' # no AndroidAPIBridge on iOS
+      locations = ["right", "left"]
 
-      if options[location]?
-        for button in options[location]
-          buttonParameters = buttonParametersFrom(button)
-          callback = button.onTap ? ->
+      for location in locations
+        steroids.debug "steroids.navigationBar.setButtons constructing location #{location}"
+        @buttonCallbacks[location] = []
+        params[location] = []
 
-          steroids.debug "steroids.navigationBar.setButtons adding button #{JSON.stringify(buttonParameters)} to location #{location}"
-          @buttonCallbacks[location].push callback
-          params[location].push buttonParameters
+        if options[location]?
+          for button in options[location]
+            buttonParameters = buttonParametersFrom(button)
+            callback = button.onTap ? ->
+
+            steroids.debug "steroids.navigationBar.setButtons adding button #{JSON.stringify(buttonParameters)} to location #{location}"
+            @buttonCallbacks[location].push callback
+            params[location].push buttonParameters
+
+    else # is android, using legacy
+      if options.right? && options.right != []
+        steroids.debug "steroids.navigationBar.setButtons showing right button title: #{options.right[0].title} callback: #{options.right[0].onTap}"
+        steroids.nativeBridge.nativeCall
+          method: "showNavigationBarRightButton"
+          parameters:
+            title: options.right[0].title
+          successCallbacks: [callbacks.onSuccess]
+          recurringCallbacks: [options.right[0].onTap]
+          failureCallbacks: [callbacks.onFailure]
+      else
+        steroids.debug "steroids.navigationBar.setButtons hiding right button"
+        steroids.nativeBridge.nativeCall
+          method: "hideNavigationBarRightButton"
+          parameters: {}
+          successCallbacks: [callbacks.onSuccess]
+          failureCallbacks: [callbacks.onFailure]
+
 
     steroids.nativeBridge.nativeCall
       method: "setNavigationBarButtons"

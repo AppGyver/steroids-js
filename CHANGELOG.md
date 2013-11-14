@@ -1,3 +1,8 @@
+## 2.7.11 (TODO)
+
+Bugfixes:
+- Fixes the issue Android right button not showing.
+
 ## 2.7.10 (2013-10-17)
 
 Multiple navigation bar buttons, ability to hide the back button.
