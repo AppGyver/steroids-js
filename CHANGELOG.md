@@ -1,4 +1,6 @@
-## 2.7.11 (TODO)
+## 2.7.11 (2013-11-15)
+
+Tab improvements, navigation bar bugfixes
 
 Features:
   - Adds support for tabBar parameter in steroids.layers.push
