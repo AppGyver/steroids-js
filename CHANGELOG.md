@@ -1,8 +1,11 @@
 ## 2.7.11 (TODO)
 
+Features:
+  - Adds support for tabBar parameter in steroids.layers.push
+
 Bugfixes:
-- Fixes the issue Android right button not showing.
-- Navigation bar title image and image buttons now wait for the Steroids `ready` event internally.
+  - Fixes the issue Android right button not showing.
+  - Navigation bar title image and image buttons now wait for the Steroids `ready` event internally.
 
 ## 2.7.10 (2013-10-17)
 
