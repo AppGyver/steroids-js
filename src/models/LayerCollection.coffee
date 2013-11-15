@@ -36,6 +36,9 @@ class LayerCollection
     if options.navigationBar == false
       parameters.hidesNavigationBar = true
 
+    if options.tabBar == false
+      parameters.hidesTabBar = true
+
     if options.keepLoading == true
       parameters.keepTransitionHelper = true
 
