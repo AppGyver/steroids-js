@@ -1,3 +1,11 @@
+##2.7.12 (TODO)
+
+Features:
+  - `sterois.views.WebView.prototype.unload` to unload preloaded webView from memory
+  
+Changes:
+  - `steroids.views.webView` constructor supports `id` parameter (defaults to `location`if not given)
+
 ## 2.7.11 (2013-11-15)
 
 Tab improvements, navigation bar bugfixes
