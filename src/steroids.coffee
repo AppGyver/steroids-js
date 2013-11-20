@@ -100,6 +100,8 @@ window.steroids.audio = new Audio
 
 window.steroids.navigationBar = new NavigationBar
 
+window.steroids.statusBar = new StatusBar
+
 # Public Device singleton
 window.steroids.device = new Device
 

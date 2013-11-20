@@ -7,6 +7,7 @@ class WebView
 
   navigationBar: new NavigationBar
   bounceShadow: new BounceShadow
+  statusBar: new StatusBar
 
   constructor: (options={})->
     @location = if options.constructor.name == "String"
