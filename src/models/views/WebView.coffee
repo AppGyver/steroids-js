@@ -14,6 +14,11 @@ class WebView
     else
       options.location
 
+    @id = if options.id?
+      options.id
+    else
+      @location
+
     if @location.indexOf("://") == -1 # if a path
       if window.location.href.indexOf("file://") == -1 # if not currently on file protocol
         @location = "#{window.location.protocol}//#{window.location.host}/#{@location}"
@@ -25,7 +30,7 @@ class WebView
   preload: (options={}, callbacks={}) ->
     steroids.debug "preload called for WebView #{JSON.stringify @}"
 
-    proposedId = options.id || @location
+    proposedId = options.id || @id
 
     setIdOnSuccess = () =>
       steroids.debug "preload success: setting id"
@@ -37,6 +42,16 @@ class WebView
         id: proposedId
         url: options.location || @location
       successCallbacks: [setIdOnSuccess, callbacks.onSuccess]
+      failureCallbacks: [callbacks.onFailure]
+
+  unload: (options={}, callbacks={}) ->
+    steroids.debug "unload called for WebView #{JSON.stringify @}"
+
+    steroids.nativeBridge.nativeCall
+      method: "unloadLayer"
+      parameters:
+        id: @id
+      successCallbacks: [callbacks.onSuccess]
       failureCallbacks: [callbacks.onFailure]
 
   getParams: ()->
