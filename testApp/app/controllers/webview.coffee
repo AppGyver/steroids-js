@@ -41,14 +41,24 @@ class window.WebviewController
 
   @testPreload: () ->
 
-    webView = new steroids.views.WebView {
+    webView = new steroids.views.WebView
       location: "/views/webview/preload.html"
-    }
+      id: "myPreloaded"
 
     webView.preload {
     }, {
-      onSuccess: () -> alert "preload call success"
-      onFailure: () -> alert "failed to preload"
+      onSuccess: -> alert "preload call success"
+      onFailure: (error) -> alert "failed to preload: " + error.errorDescription
+    }
+
+  @testUnload: () ->
+    preloadedView = new steroids.views.WebView
+      location: "myPreloaded"
+    
+    preloadedView.unload {
+    }, {
+      onSuccess: -> alert "unload call success"
+      onFailure: (error)  -> alert "failed to unload: " + error.errorDescription
     }
 
   @testPreloadThisAndOpen: () ->
