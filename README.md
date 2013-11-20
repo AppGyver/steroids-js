@@ -4,8 +4,9 @@ A JavaScript library to be used with [AppGyver Steroids](http://appgyver.com/ste
 
 ## Development:
 
-  npm install
+    npm install
 
+(This installs required dependencies, including testApp/ Grunt.js)
 
 ## Testing
 
@@ -16,6 +17,10 @@ There is a jasmine test project in specsApp/ that has steroids.js symlinked from
 ### Explorative
 
 There is a separate steroids project in testApp/ that has steroids.js symlinked from dist/
+
+Make sure you have grunt-cli installed:
+
+    npm install grunt-cli -g
 
 ## Publishing:
 
