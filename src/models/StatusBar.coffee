@@ -1,6 +1,8 @@
 class StatusBar
   
   hide: (options={}, callbacks={}) ->
+    steroids.debug "steroids.statusBar.hide options: #{JSON.stringify options} callbacks: #{JSON.stringify callbacks}"
+    
     steroids.nativeBridge.nativeCall
       method: "hideStatusBar"
       parameters: {}
@@ -8,19 +10,15 @@ class StatusBar
       failureCallbacks: [callbacks.onFailure]
 
   show: (options={}, callbacks={}) ->
-    steroids.debug "steroids.view.statusBar.show options: #{JSON.stringify options} callbacks: #{JSON.stringify callbacks}"
+    steroids.debug "steroids.statusBar.show options: #{JSON.stringify options} callbacks: #{JSON.stringify callbacks}"
 
     parameters = if options.constructor.name == "Object"
-      if options is "light"
-        style: "light"
+      style: options.style
     else
-      style: "default"
+      style: options
 
     steroids.nativeBridge.nativeCall
       method: "showStatusBar"
       parameters: parameters
       successCallbacks: [callbacks.onSuccess]
       failureCallbacks: [callbacks.onFailure]
-      
-      
-

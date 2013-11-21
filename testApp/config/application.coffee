@@ -30,7 +30,7 @@ steroids.config.tabBar.tabs = [
   {
     title: "HTTP"
     icon: "icons/pill@2x.png"
-    location: "http://localhost/views/steroids/index.html"
+    location: "http://localhost/views/statusbar/index.html"
   }
   {
     title: "FileURL"
