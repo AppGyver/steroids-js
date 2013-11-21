@@ -16,8 +16,6 @@ class WebView
 
     @id = if options.id?
       options.id
-    else
-      @location
 
     if @location.indexOf("://") == -1 # if a path
       if window.location.href.indexOf("file://") == -1 # if not currently on file protocol
@@ -30,7 +28,7 @@ class WebView
   preload: (options={}, callbacks={}) ->
     steroids.debug "preload called for WebView #{JSON.stringify @}"
 
-    proposedId = options.id || @id
+    proposedId = options.id || @id || @location
 
     setIdOnSuccess = () =>
       steroids.debug "preload success: setting id"
@@ -47,12 +45,15 @@ class WebView
   unload: (options={}, callbacks={}) ->
     steroids.debug "unload called for WebView #{JSON.stringify @}"
 
-    steroids.nativeBridge.nativeCall
-      method: "unloadLayer"
-      parameters:
-        id: @id
-      successCallbacks: [callbacks.onSuccess]
-      failureCallbacks: [callbacks.onFailure]
+    if @id?
+      steroids.nativeBridge.nativeCall
+        method: "unloadLayer"
+        parameters:
+          id: @id
+        successCallbacks: [callbacks.onSuccess]
+        failureCallbacks: [callbacks.onFailure]
+    else
+      callbacks.onFailure?.call @, { errorDescription: "Cannot unload WebView with no id property" }
 
   getParams: ()->
     params = {}

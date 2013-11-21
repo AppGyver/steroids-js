@@ -53,8 +53,9 @@ class window.WebviewController
 
   @testUnload: () ->
     preloadedView = new steroids.views.WebView
-      location: "myPreloaded"
-    
+      location: "/views/webview/preload.html"
+      id: "myPreloaded"
+
     preloadedView.unload {
     }, {
       onSuccess: -> alert "unload call success"
