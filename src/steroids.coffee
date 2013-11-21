@@ -102,6 +102,8 @@ window.steroids.navigationBar = new NavigationBar
 
 window.steroids.statusBar = new StatusBar
 
+window.steroids.tabBar = new TabBar
+
 # Public Device singleton
 window.steroids.device = new Device
 
