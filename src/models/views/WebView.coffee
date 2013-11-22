@@ -55,7 +55,7 @@ class WebView
         successCallbacks: [callbacks.onSuccess]
         failureCallbacks: [callbacks.onFailure]
     else
-      callbacks.onFailure?.call @, { errorDescription: "Cannot unload WebView with no id property" }
+      callbacks.onFailure?.call @, { errorDescription: "Cannot unload a WebView that is not preloaded" }
 
   getParams: ()->
     params = {}
