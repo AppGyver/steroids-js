@@ -8,17 +8,17 @@ class window.StatusbarController
       steroids.view.navigationBar.show { title: "statusbar" }
 
   @testHide: ->
-    steroids.view.statusBar.hide {},
+    steroids.statusBar.hide {},
       onSuccess: -> alert "hided"
       onFailure: -> alert "failed to hide"
 
   @testShow: ->
-    steroids.view.statusBar.show {},
+    steroids.statusBar.show {},
       onSuccess: -> alert "showed"
       onFailure: -> alert "failed to show"
 
   @testShowLight: ->
-    steroids.view.statusBar.show "light",
+    steroids.statusBar.show "light",
       onSuccess: -> alert "showed light"
       onFailure: -> alert "failed to show light"
       

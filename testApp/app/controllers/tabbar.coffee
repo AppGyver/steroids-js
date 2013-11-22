@@ -8,12 +8,12 @@ class window.TabbarController
       steroids.view.navigationBar.show { title: "tabbar" }
 
   @testHide: ->
-    steroids.view.tabBar.hide {},
+    steroids.tabBar.hide {},
       onSuccess: -> alert "hided"
       onFailure: -> alert "failed to hide"
 
   @testShow: ->
-    steroids.view.tabBar.show {},
+    steroids.tabBar.show {},
       onSuccess: -> alert "showed"
       onFailure: -> alert "failed to show"
 
