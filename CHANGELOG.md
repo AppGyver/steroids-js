@@ -2,6 +2,8 @@
 
 Features:
   - `sterois.views.WebView.prototype.unload` to unload preloaded webView from memory
+  - `steroids.statusBar.hide` and `steroids.statusBar.show` to hide and show the native status bar
+  - `steroids.tabBar.hide` and `steroids.tabBar.show` to hide and show the native tabBar
   
 Changes:
   - `steroids.views.webView` constructor supports `id` parameter (defaults to `location`if not given)
