@@ -1,4 +1,6 @@
-##2.7.12 (TODO)
+##3.1.0 (TODO)
+
+Support for unloading preloaded webviews, tab bar improvements, show and hide status bar  
 
 Features:
   - `sterois.views.WebView.prototype.unload` to unload preloaded webView from memory
