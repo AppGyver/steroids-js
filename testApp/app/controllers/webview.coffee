@@ -20,6 +20,13 @@ class window.WebviewController
       navigationBar: false
     }
 
+  @testOpenWithoutTabBar: () ->
+    webView = new steroids.views.WebView "/views/webview/noTabBar.html"
+
+    steroids.layers.push {
+      view: webView,
+      tabBar: false
+    }
 
   @testPreloadVisibilityChange: () ->
 
