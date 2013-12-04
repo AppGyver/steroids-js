@@ -6,9 +6,9 @@ class window.AnalyticsController
     # Make Navigation Bar to appear with a custom title text
     steroids.navigationBar.show { title: "analytics" }
 
-  @testRecordEvent: () ->
+  @testTrack: () ->
 
-    steroids.analytics.recordEvent {
+    steroids.analytics.track {
       event: {
         hello: "world"
       }

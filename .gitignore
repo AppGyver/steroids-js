@@ -7,3 +7,4 @@ lib
 docs
 npm-debug.log
 /testSlave/www/index.html
+config/cloud.json
