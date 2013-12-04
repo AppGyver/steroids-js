@@ -1,14 +1,14 @@
-##3.1.0 (TODO)
+##3.1.0 (2013-12-04)
 
-Support for unloading preloaded webviews, tab bar improvements, show and hide status bar  
+Support for unloading preloaded webviews, show/hide tab bar, show/hide status bar.
 
 Features:
-  - `sterois.views.WebView.prototype.unload` to unload preloaded webView from memory
-  - `steroids.statusBar.hide` and `steroids.statusBar.show` to hide and show the native status bar
-  - `steroids.tabBar.hide` and `steroids.tabBar.show` to hide and show the native tabBar
-  
+  - `sterois.views.WebView.prototype.unload` to unload preloaded webView from memory (iOS)
+  - `steroids.statusBar.hide` and `steroids.statusBar.show` to hide and show the native status bar (iOS)
+  - `steroids.tabBar.hide` and `steroids.tabBar.show` to hide and show the native tab bar (iOS)
+
 Changes:
-  - `steroids.views.webView` constructor supports `id` parameter (defaults to `location`if not given)
+  - `steroids.views.webView` constructor supports `id` parameter (defaults to `location` if not given)
 
 ## 2.7.11 (2013-11-15)
 
