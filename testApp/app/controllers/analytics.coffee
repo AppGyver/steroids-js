@@ -16,3 +16,15 @@ class window.AnalyticsController
       onSuccess: () -> alert "recorded"
     }
 
+
+  @testTrackCustomEventCollection: () ->
+
+    steroids.analytics.track {
+      event: {
+        hello: "world"
+        appgyver_event_name: "customeventcollection"
+      }
+    }, {
+      onSuccess: () -> alert "recorded"
+    }
+
