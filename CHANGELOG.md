@@ -1,4 +1,11 @@
-##3.1.0 (2013-12-04)
+## 3.1.1 (TODO)
+
+Analytics
+
+Features:
+  - `steroids.analytics.track` records analytic events (iOS)
+
+## 3.1.0 (2013-12-04)
 
 Support for unloading preloaded webviews, show/hide tab bar, show/hide status bar.
 
