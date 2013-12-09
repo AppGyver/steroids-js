@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widget xmlns="http://www.w3.org/ns/widgets" xmlns:tizen="http://tizen.org/ns/widgets" id="http://yourdomain/myapp" version="1.0.0" viewmodes="maximized">
+
+<!--
+ # Change your package id to a string which matches the following criteria:
+ #  - exactly 10 characters
+ #  - characters may consist of upper and lower case letters and numbers.
+ #
+ # Package id must be unique in the context of Tizen Application Store.
+ # Application id must begin with your package id.
+ #
+ # For example: id="abcDE12345.MySteroidsApp" package="abcDE12345"
+ #
+-->
+  <tizen:application id="ChangeThis.MySteroidsApp" package="ChangeThis" required_version="2.2"/>
+
+  <content src="index.html"/>
+  <icon src="icons/steroids.png"/>
+  <name>My Steroids App</name>
+
+  <feature name="http://tizen.org/feature/screen.size.normal.720.1280"/>
+
+  <tizen:privilege name="http://tizen.org/privilege/application.launch"/>
+  <tizen:privilege name="http://tizen.org/privilege/contact.read"/>
+  <tizen:privilege name="http://tizen.org/privilege/contact.write"/>
+  <tizen:privilege name="http://tizen.org/privilege/filesystem.read"/>
+  <tizen:privilege name="http://tizen.org/privilege/filesystem.write"/>
+  <tizen:privilege name="http://tizen.org/privilege/unlimitedstorage"/>
+  <tizen:privilege name="http://tizen.org/privilege/setting"/>
+  <tizen:privilege name="http://tizen.org/privilege/package.info"/>
+  <tizen:privilege name="http://tizen.org/privilege/notification"/>
+  <tizen:privilege name="http://tizen.org/privilege/system"/>
+  <tizen:privilege name="http://tizen.org/privilege/content"/>
+  <tizen:privilege name="http://tizen.org/privilege/content.read"/>
+  <tizen:privilege name="http://tizen.org/privilege/content.write"/>
+  <tizen:privilege name="http://tizen.org/privilege/mediacapture"/>
+
+  <tizen:setting screen-orientation="auto-rotation" context-menu="enable" background-support="enable" encryption="disable" install-location="auto" hwkey-event="enable"/>
+  <tizen:allow-navigation>*</tizen:allow-navigation>
+  <access origin="*" subdomains="true"></access>
+
+</widget>

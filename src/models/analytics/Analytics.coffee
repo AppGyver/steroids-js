@@ -2,12 +2,7 @@ class Analytics
 
   constructor: ->
 
-  track: (options={}, callbacks={}) ->
-
-    event = if options.constructor.name == "String"
-      options
-    else
-      options.event
+  track: (event={}, callbacks={}) ->
 
     steroids.nativeBridge.nativeCall
       method: "recordEvent"

@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.appgyver.helloSteroids" version="2.0.0" xmlns="http://www.w3.org/ns/widgets">
+    <name>Hello Steroids</name>
+    <description>
+        A sample Steroids application.
+    </description>
+    <author email="contact@appgyver.com" href="http://www.appgyver.com/steroids">
+        AppGyver Steroids Team
+    </author>
+    <access origin="*" />
+    <preference name="AllowInlineMediaPlayback" value="false" />
+    <preference name="DisallowOverscroll" value="false" />
+    <preference name="EnableViewportScale" value="false" />
+    <preference name="HideKeyboardFormAccessoryBar" value="false" />
+    <preference name="KeyboardDisplayRequiresUserAction" value="false" />
+    <preference name="KeyboardShrinksView" value="false" />
+    <preference name="SuppressesIncrementalRendering" value="false" />
+
+
+    <preference name="PaginationMode" value="unpaginated"/>
+    <preference name="PageLength" value="0"/>
+    <preference name="PaginationBreakingMode" value="page"/>
+    <preference name="GapBetweenPages" value="0"/>
+</widget>

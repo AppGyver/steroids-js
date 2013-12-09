@@ -1,0 +1,15 @@
+{
+  "name": "mySteroidsProject",
+  "version": "0.1.0",
+  "description": "My awesome AppGyver Steroids project.",
+  "repository": "N/A",
+  "readme":"N/A",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "engines": {
+    "steroids": "3.1.0"
+  }
+}

@@ -1,0 +1,6 @@
+<!-- Required for Cordova CLI commands to work. Use config.android.xml and config.ios.xml` to set up your Steroids app. -->
+
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="io.cordova.hellocordova" version="2.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>HelloCordova</name>
+</widget>
