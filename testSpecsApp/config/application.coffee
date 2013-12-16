@@ -48,8 +48,8 @@ steroids.config.statusBar.style = "default"
 # steroids.config.watch.exclude = ["www/my_excluded_file.js", "www/my_excluded_dir"]
 
 # -- Pre- and Post-Make hooks --
-steroids.config.hooks.preMake.cmd = "grunt"
-steroids.config.hooks.preMake.args = ["build"]
+# steroids.config.hooks.preMake.cmd = "grunt"
+# steroids.config.hooks.preMake.args = ["build"]
 #steroids.config.hooks.postMake.cmd = "echo"
 #steroids.config.hooks.postMake.args = ["cleaning up files"]
 

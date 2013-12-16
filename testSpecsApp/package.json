@@ -1,15 +1,25 @@
 {
-  "name": "mySteroidsProject",
-  "version": "0.1.0",
-  "description": "My awesome AppGyver Steroids project.",
-  "repository": "N/A",
-  "readme":"N/A",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
-  "license": "MIT",
-  "engines": {
-    "steroids": "3.1.0"
-  }
+    "name": "mySteroidsProject",
+    "version": "0.1.0",
+    "description": "My awesome AppGyver Steroids project.",
+    "repository": "N/A",
+    "readme": "N/A",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "",
+    "license": "MIT",
+    "engines": {
+        "steroids": "3.1.4"
+    },
+    "devDependencies": {
+        "grunt-extend-config": "~0.9.1",
+        "grunt-contrib-clean": "~0.4.0",
+        "grunt-contrib-concat": "~0.3.0",
+        "grunt-contrib-copy": "~0.4.1",
+        "grunt-contrib-sass": "~0.5.0",
+        "grunt-contrib-coffee": "~0.7.0",
+        "grunt": "~0.4.1",
+        "grunt-steroids": "~0.1.1"
+    }
 }
