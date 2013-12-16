@@ -37,6 +37,13 @@ class Events
 
 
   @extend: (options={}, callbacks={}) ->
+
+    # Mark initialVisibility and focuslisteners components always ready on iOS
+    unless navigator.userAgent.match(/Android/i)
+      steroids.markComponentReady("Events.initialVisibility")
+      steroids.markComponentReady("Events.focuslisteners")
+      return
+
     @initializeVisibilityState()
     @checkInitialVisibility()
 
