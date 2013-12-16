@@ -80,8 +80,8 @@ steroids.config.statusBar.enabled = Math.random() > 0.5
 # steroids.config.theme = "default"
 
 # The preMake command is run before `steroids make`, the process where `app/` and `www/` folders are processed into the `dist/` folder.
-steroids.config.hooks.preMake.cmd = "grunt"
-steroids.config.hooks.preMake.args = ["build"]
+# steroids.config.hooks.preMake.cmd = "grunt"
+# steroids.config.hooks.preMake.args = ["build"]
 #
 # The postMake command is run right after `steroids make`, before running `steroids package`, the process that packages the app before sending it to client devices.
 # steroids.config.hooks.postMake.cmd = "echo"
