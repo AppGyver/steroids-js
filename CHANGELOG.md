@@ -1,9 +1,12 @@
-## 3.1.1 (TODO)
+## 3.1.1 (2013-12-16)
 
-Analytics
+Fixed `visibilitychange` firing twice on iOS, Steroids Analytics API to record analytics events
+
+Bugfixes:
+  - `visibilitychange` events no longer fire twice on iOS.
 
 Features:
-  - `steroids.analytics.track` records analytic events (iOS)
+  - `steroids.analytics.track` records analytics events (iOS-only).
 
 ## 3.1.0 (2013-12-04)
 
