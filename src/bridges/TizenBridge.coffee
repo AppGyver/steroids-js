@@ -22,7 +22,10 @@ class TizenBridge extends Bridge
     return @
 
   @isUsable: ()->
-    return navigator.userAgent.indexOf("Tizen") != -1
+    userAgentHasTizen = navigator.userAgent.indexOf("Tizen") != -1
+
+    return window.tizen? || userAgentHasTizen
+
 
   sendMessageToNative:(messageString)->
     message = JSON.parse(messageString)

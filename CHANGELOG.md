@@ -1,3 +1,10 @@
+## 3.1.2 (2013-12-18)
+
+Fixed to work in Tizen Web Simulator.
+
+Bugfixes:
+  - Use TizenBridge if window.tizen is defined.
+
 ## 3.1.1 (2013-12-16)
 
 Fixed `visibilitychange` firing twice on iOS, Steroids Analytics API to record analytics events
