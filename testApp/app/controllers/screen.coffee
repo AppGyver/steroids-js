@@ -30,7 +30,17 @@ class window.ScreenController
 
 
   @testTap: ->
-    steroids.screen.tap {
-      x: 10
-      y: 80
-    }
+    console.log "firing tap soon"
+    window.setTimeout ->
+      steroids.screen.tap {
+        x: 30
+        y: 70
+      }
+    , 750
+
+    window.setTimeout ->
+      steroids.screen.tap {
+        x: 160
+        y: 260
+      }
+    , 1100
