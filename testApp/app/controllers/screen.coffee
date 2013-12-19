@@ -27,3 +27,10 @@ class window.ScreenController
         img.setAttribute 'src', params.screenshot
         captureResult.innerHTML = ""
         captureResult.appendChild img
+
+
+  @testTap: ->
+    steroids.screen.tap {
+      x: 10
+      y: 80
+    }

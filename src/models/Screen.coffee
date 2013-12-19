@@ -25,3 +25,10 @@ class Screen
       parameters: options
       successCallbacks: [callbacks.onSuccess]
       failureCallbacks: [callbacks.onFailure]
+
+  tap: (options={}, callbacks={}) ->
+    steroids.nativeBridge.nativeCall
+      method: "sendTouchEvent"
+      parameters: options
+      successCallbacks: [callbacks.onSuccess]
+      failureCallbacks: [callbacks.onFailure]

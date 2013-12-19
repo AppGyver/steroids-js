@@ -2,7 +2,7 @@
   ScreenController.index();
 </script>
 
-<h1>screen</h1>
+<h1 onclick="alert('touched')">screen</h1>
 
 <ul class="list">
   <li class="performsTest" data-test="testFreeze">
@@ -12,6 +12,11 @@
   <li class="performsTest" data-test="testCapture">
     steroids.screen.capture(filename)
   </li>
+
+  <li class="performsTest" data-test="testTap">
+    steroids.screen.tap({x: 30, y: 70}) (should tap h1 screen)
+  </li>
+
 </ul>
 
 <div id="captureResult"></div>
