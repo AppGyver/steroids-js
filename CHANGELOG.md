@@ -1,3 +1,8 @@
+##3.1.3 (TODO)
+
+Features:
+  - Adds support for updating tab titles and icons to new ones with `steroids.tabBar.update`.
+
 ## 3.1.2 (2013-12-18)
 
 Fixed to work in Tizen Web Simulator.
