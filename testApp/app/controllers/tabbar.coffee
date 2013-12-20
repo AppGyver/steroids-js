@@ -17,5 +17,24 @@ class window.TabbarController
       onSuccess: -> alert "showed"
       onFailure: -> alert "failed to show"
 
- 
-      
+  @testUpdate: ->
+    steroids.tabBar.update({
+      tabs:
+        [
+          {
+            title: "http"
+            icon: "icons/telescope@2x.png"
+          },
+          {
+            title: "FILEurl"
+            icon: "icons/telescope@2x.png"
+          },
+          {
+            title: "NOjs"
+            icon: "icons/telescope@2x.png"
+          }
+        ]
+      },
+      onSuccess: -> alert "updated"
+      onFailure: -> alert "failed to update"
+    )
