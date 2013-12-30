@@ -3,7 +3,6 @@ window.steroids =
 
   # Child Classes
   Animation: Animation
-  XHR: XHR
   File: File
 
   views:
