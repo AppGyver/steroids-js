@@ -173,9 +173,3 @@ class window.WebviewController
 
   @testSetBackgroundWhite: ->
     steroids.view.setBackgroundColor("#FFFFFF")
-
-  @testHideBackgroundShadow: ->
-    steroids.view.bounceShadow.hide()
-
-  @testShowBackgroundShadow: ->
-    steroids.view.bounceShadow.show()

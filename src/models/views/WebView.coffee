@@ -6,7 +6,6 @@ class WebView
   allowedRotations: null
 
   navigationBar: new NavigationBar
-  bounceShadow: new BounceShadow
 
   constructor: (options={})->
     @location = if options.constructor.name == "String"

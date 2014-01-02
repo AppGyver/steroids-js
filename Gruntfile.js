@@ -48,7 +48,6 @@ module.exports = function(grunt) {
             'src/models/LayerCollection.coffee',
             'src/models/buttons/NavigationBarButton.coffee',
             'src/models/NavigationBar.coffee',
-            'src/models/BounceShadow.coffee',
             'src/models/StatusBar.coffee',
             'src/models/TabBar.coffee',
             'src/models/views/WebView.coffee',
