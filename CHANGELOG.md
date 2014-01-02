@@ -1,3 +1,8 @@
+##3.1.4 (TO DO)
+
+Changes:
+  - Removed deprecated `steroids.view.bounceShadow`.
+
 ##3.1.3 (2014-01-02)
 
 Programmatic updating of tab bar icons and titles with `steroids.tabBar.update`.
