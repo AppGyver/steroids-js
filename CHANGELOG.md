@@ -1,7 +1,12 @@
-##3.1.3 (TODO)
+##3.1.3 (2014-01-02)
+
+Programmatic updating of tab bar icons and titles with `steroids.tabBar.update`.
 
 Features:
   - Adds support for updating tab titles and icons to new ones with `steroids.tabBar.update`.
+
+Changes:
+  - Removed deprecated `steroids.XHR`.
 
 ## 3.1.2 (2013-12-18)
 
