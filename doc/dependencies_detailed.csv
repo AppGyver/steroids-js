@@ -1,0 +1,24 @@
+bundler,1.3.5,MIT,The best way to manage your application's dependencies,"Bundler manages an application's dependencies through its entire life, across many machines, systematically and repeatably"
+grunt,0.4.2,MIT,"",""
+grunt-cli,0.1.11,MIT,"",""
+grunt-contrib-coffee,0.8.0,MIT,"",""
+grunt-contrib-concat,0.3.0,MIT,"",""
+grunt-contrib-uglify,0.2.7,MIT,"",""
+grunt-contrib-watch,0.5.3,MIT,"",""
+grunt-replace,0.5.1,Apache-2.0,"",""
+httparty,0.11.0,MIT,"Makes http fun! Also, makes consuming restful web services dead easy.","Makes http fun! Also, makes consuming restful web services dead easy."
+license_finder,0.9.4,MIT,Audit the OSS licenses of your application's dependencies.,"Do you know the licenses of all your application's dependencies? What open source software licenses will your business accept?
+
+  LicenseFinder culls your Gemfile, detects the licenses of the gems in it, and gives you a report that you can act on. If you already know
+  what licenses your business is comfortable with, you can whitelist them, leaving you with an action report of only those dependencies that have
+  licenses that fall outside of the whitelist."
+multi_json,1.8.4,MIT,A common interface to multiple JSON libraries.,"A common interface to multiple JSON libraries, including Oj, Yajl, the JSON gem (with C-extensions), the pure-Ruby JSON gem, NSJSONSerialization, gson.rb, JrJackson, and OkJson."
+multi_xml,0.5.5,MIT,A generic swappable back-end for XML parsing,"Provides swappable XML backends utilizing LibXML, Nokogiri, Ox, or REXML."
+rake,10.1.1,MIT,Ruby based make-like utility.,Rake is a Make-like program implemented in Ruby. Tasks and dependencies arespecified in standard Ruby syntax.
+sequel,4.6.0,MIT,The Database Toolkit for Ruby,The Database Toolkit for Ruby
+sqlite3,1.3.8,MIT,This module allows Ruby programs to interface with the SQLite3 database engine (http://www.sqlite.org),"This module allows Ruby programs to interface with the SQLite3
+database engine (http://www.sqlite.org).  You must have the
+SQLite engine installed in order to build this module.
+
+Note that this module is only compatible with SQLite 3.6.16 or newer."
+thor,0.18.1,MIT,"A scripting framework that replaces rake, sake and rubigen","A scripting framework that replaces rake, sake and rubigen"

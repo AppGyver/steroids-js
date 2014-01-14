@@ -1,0 +1,8 @@
+---
+whitelist:
+- MIT
+- BSD
+- Apache 2.0
+ignore_groups: []
+dependencies_file_dir: ./doc/
+project_name: js
