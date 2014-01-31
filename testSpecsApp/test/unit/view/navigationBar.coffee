@@ -20,6 +20,53 @@ describe "steroids", ->
         runs ->
           expect(shown).toBeTruthy()
 
+      it "should be updated with title", ->
+
+        updated= false
+
+        steroids.view.navigationBar.update {title: "Title"},
+          onSuccess: ->
+            updated = true
+
+        waitsFor -> updated
+
+        runs ->
+          expect(updated).toBeTruthy()
+
+      it "should be updated with title image", ->
+
+        updated= false
+
+        steroids.view.navigationBar.update {titleImagePath: "/icons/pill@2x.png"},
+          onSuccess: ->
+            updated = true
+
+        waitsFor -> updated
+
+        runs ->
+          expect(updated).toBeTruthy()
+
+      it "should be updated with buttons", ->
+
+        updated= false
+
+        button = new steroids.buttons.NavigationBarButton
+        button.title = "Button"
+        button.onTap = => alert "RIGHT BUTTON TAPPED"
+
+        steroids.view.navigationBar.update {
+          buttons: {
+            right: [button]
+          }
+        },
+          onSuccess: ->
+            updated = true
+
+        waitsFor -> updated
+
+        runs ->
+          expect(updated).toBeTruthy()
+
       it "should be hided", ->
 
         hided = false
