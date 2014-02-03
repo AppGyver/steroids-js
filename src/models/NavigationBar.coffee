@@ -109,11 +109,6 @@ class NavigationBar
         params.buttons = {}
 
         @buttonCallbacks = {}
-        buttonParametersFrom = (obj)->
-          if obj.title?
-            title: obj.title
-          else
-            imagePath: relativeTo + obj.imagePath
 
         locations = ["right", "left"]
 
@@ -124,12 +119,13 @@ class NavigationBar
 
           if options.buttons[location]?
             for button in options.buttons[location]
-              buttonParameters = buttonParametersFrom(button)
-              callback = button.onTap ? ->
+              navButton = new NavigationBarButton(button)
+              parameters = navButton.toParams()
+              callback = navButton.getCallback()
 
-              steroids.debug "steroids.navigationBar.update adding button #{JSON.stringify(buttonParameters)} to location #{location}"
+              steroids.debug "steroids.navigationBar.update adding button #{JSON.stringify(parameters)} to location #{location}"
+              params.buttons[location].push parameters
               @buttonCallbacks[location].push callback
-              params.buttons[location].push buttonParameters
 
       steroids.nativeBridge.nativeCall
         method: "updateNavigationBar"
