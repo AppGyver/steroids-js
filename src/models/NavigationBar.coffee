@@ -90,8 +90,10 @@ class NavigationBar
     steroids.on "ready", ()=>
 
       relativeTo = steroids.app.path
-      params =
-        overrideBackButton: options.overrideBackButton
+      params = {}
+
+      if options.overrideBackButton?
+        params.overrideBackButton = options.overrideBackButton
 
       if options.constructor.name == "String"
         params.title = options
