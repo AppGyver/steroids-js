@@ -107,22 +107,23 @@ class NavigationBar
         params.titleImagePath = ""
 
       if options.buttons?
-        params.buttons = {}
-
-        @buttonCallbacks = {}
 
         locations = ["right", "left"]
 
         for location in locations
-          steroids.debug "steroids.navigationBar.update constructing location #{location}"
-          @buttonCallbacks[location] = []
-          params.buttons[location] = []
 
           if options.buttons[location]?
+            if not params.buttons?
+              params.buttons = {}
+            if not @buttonCallbacks?
+              @buttonCallbacks = {}
+            steroids.debug "steroids.navigationBar.update constructing location #{location}"
+            @buttonCallbacks[location] = []
+            params.buttons[location] = []
+
             for button in options.buttons[location]
-              navButton = new NavigationBarButton(button)
-              parameters = navButton.toParams()
-              callback = navButton.getCallback()
+              parameters = button.toParams()
+              callback = button.getCallback()
 
               steroids.debug "steroids.navigationBar.update adding button #{JSON.stringify(parameters)} to location #{location}"
               params.buttons[location].push parameters
