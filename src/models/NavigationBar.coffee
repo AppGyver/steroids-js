@@ -113,10 +113,8 @@ class NavigationBar
         for location in locations
 
           if options.buttons[location]?
-            if not params.buttons?
-              params.buttons = {}
-            if not @buttonCallbacks?
-              @buttonCallbacks = {}
+            params.buttons ?= {}
+            @buttonCallbacks ?= {}
             steroids.debug "steroids.navigationBar.update constructing location #{location}"
             @buttonCallbacks[location] = []
             params.buttons[location] = []
