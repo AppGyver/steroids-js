@@ -97,14 +97,15 @@ class NavigationBar
 
       if options.constructor.name == "String"
         params.title = options
-      else
+
+      if options.title?
         params.title = options.title
+        params.titleImagePath = ""
 
       if options.titleImagePath?
-        params.titleImagePath = relativeTo + options.titleImagePath
-        params.title = ""
-      else
-        params.titleImagePath = ""
+        if not options.title?
+          params.titleImagePath = relativeTo + options.titleImagePath
+          params.title = ""
 
       if options.buttons?
 
