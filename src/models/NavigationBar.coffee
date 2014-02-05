@@ -92,9 +92,6 @@ class NavigationBar
       relativeTo = steroids.app.path
       params = {}
 
-      if options.overrideBackButton?
-        params.overrideBackButton = options.overrideBackButton
-
       if options.constructor.name == "String"
         params.title = options
 
@@ -106,6 +103,9 @@ class NavigationBar
         if not options.title?
           params.titleImagePath = relativeTo + options.titleImagePath
           params.title = ""
+
+      if options.overrideBackButton?
+        params.overrideBackButton = options.overrideBackButton
 
       if options.buttons?
 
