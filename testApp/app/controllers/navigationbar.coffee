@@ -73,3 +73,54 @@ class window.NavigationbarController
     steroids.view.navigationBar.setButtons {},
       onSuccess: => alert "all buttons removed"
       onFailure: => alert "failed to remove all buttons"
+
+  @testUpdateTitle: ->
+    steroids.view.navigationBar.update {
+      title: "New title"
+    },
+      onSuccess: -> alert "title updated"
+      onFailure: -> alert "failed to update title"
+
+  @testUpdateTitleImage: ->
+    steroids.view.navigationBar.update {
+      titleImagePath: "/icons/pill@2x.png"
+    },
+      onSuccess: -> alert "title image updated"
+      onFailure: -> alert "failed to update image title"
+
+  @testUpdateWithButtons: ->
+    button1 = new steroids.buttons.NavigationBarButton
+    button1.title = "RIGHT"
+    button1.onTap = => alert "RIGHT BUTTON TAPPED"
+
+    button2 = new steroids.buttons.NavigationBarButton
+    button2.imagePath = "/icons/pill@2x.png"
+    button2.onTap = => alert "LEFT BUTTON TAPPED"
+
+    steroids.view.navigationBar.update {
+      buttons: {
+        right: [button1]
+        left: [button2]
+      }
+    },
+      onSuccess: -> alert "nav bar buttons updated"
+      onFailure: -> alert "failed to update nav bar buttons"
+
+  @testUpdateButtonsWithoutBackButton: ->
+    button1 = new steroids.buttons.NavigationBarButton
+    button1.title = "RIGHT"
+    button1.onTap = => alert "RIGHT BUTTON TAPPED"
+
+    button2 = new steroids.buttons.NavigationBarButton
+    button2.imagePath = "/icons/pill@2x.png"
+    button2.onTap = => alert "LEFT BUTTON TAPPED"
+
+    steroids.view.navigationBar.update {
+      overrideBackButton: true
+      buttons: {
+        right: [button1]
+        left: [button2]
+      }
+    },
+      onSuccess: -> alert "nav bar buttons updated"
+      onFailure: -> alert "failed to update nav bar buttons"
