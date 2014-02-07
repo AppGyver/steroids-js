@@ -7,6 +7,22 @@ class window.NavigationbarController
       # Make Navigation Bar to appear with a custom title text
       steroids.view.navigationBar.show { title: "navbar" }
 
+  @testHideAnimated: ->
+    steroids.view.navigationBar.hide {
+      animated: true
+    }, {
+      onSuccess: -> alert "hided with animation"
+      onFailure: -> alert "failed to hide"
+    }
+
+  @testShowAnimated: ->
+    steroids.view.navigationBar.show {
+      animated: true
+    }, {
+      onSuccess: -> alert "showed with animation"
+      onFailure: -> alert "failed to show"
+    }
+
   @testHide: ->
     steroids.view.navigationBar.hide {},
       onSuccess: -> alert "hided"

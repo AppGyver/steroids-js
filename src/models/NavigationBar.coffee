@@ -1,27 +1,44 @@
 class NavigationBar
   hide: (options={}, callbacks={}) ->
+
+    options.animated = options.animated?
+    options.visible = false
+
     steroids.nativeBridge.nativeCall
-      method: "hideNavigationBar"
-      parameters: {}
+      method: "setNavigationBarVisibility"
+      parameters: options
       successCallbacks: [callbacks.onSuccess]
       failureCallbacks: [callbacks.onFailure]
+
 
   show: (options={}, callbacks={}) ->
     steroids.debug "steroids.navigationBar.show options: #{JSON.stringify options} callbacks: #{JSON.stringify callbacks}"
 
-    steroids.on "ready", ()=>
-      relativeTo = options.relativeTo ? steroids.app.path
-      parameters = if options.constructor.name == "Object"
-        if options.title?
-          title: options.title
+    title = if options.constructor.name == "String"
+      options
+    else
+      options.title
+
+    if title or options.titleImagePath
+      steroids.on "ready", ()=>
+        relativeTo = options.relativeTo ? steroids.app.path
+
+        parameters = if title
+          title: title
         else
           titleImagePath: relativeTo + options.titleImagePath
-      else
-        title: options
 
+        steroids.nativeBridge.nativeCall
+          method: "showNavigationBar"
+          parameters: parameters
+          successCallbacks: [callbacks.onSuccess]
+          failureCallbacks: [callbacks.onFailure]
+    else
       steroids.nativeBridge.nativeCall
-        method: "showNavigationBar"
-        parameters: parameters
+        method: "setNavigationBarVisibility"
+        parameters:
+          visible: true
+          animated: options.animated?
         successCallbacks: [callbacks.onSuccess]
         failureCallbacks: [callbacks.onFailure]
 

@@ -7,76 +7,150 @@ describe "steroids", ->
       it "should be defined", ->
         expect(steroids.view.navigationBar).toBeDefined()
 
-      it "should be shown", ->
+      describe "show", ->
 
-        shown = false
+        describe "with title text", ->
 
-        steroids.view.navigationBar.show {},
-          onSuccess: ->
-            shown = true
+          it "should appear with text", ->
 
-        waitsFor -> shown
+            shown = false
 
-        runs ->
-          expect(shown).toBeTruthy()
+            steroids.view.navigationBar.show {
+              title: "title"
+            }, {
+              onSuccess: ->
+                shown = true
+            }
 
-      it "should be updated with title", ->
+            runs ->
+              expect(shown).toBeTruthy()
 
-        updated= false
+        describe "with title image", ->
 
-        steroids.view.navigationBar.update {title: "Title"},
-          onSuccess: ->
-            updated = true
+          # TODO: how to test with karma?
+          xit "should appear title image", ->
 
-        waitsFor -> updated
+            shown = false
 
-        runs ->
-          expect(updated).toBeTruthy()
+            steroids.view.navigationBar.show {
+              titleImage: "dolan.png"
+            }, {
+              onSuccess: ->
+                shown = true
+            }
 
-      it "should be updated with title image", ->
+            waitsFor -> shown
 
-        updated= false
+            runs ->
+              expect(shown).toBeTruthy()
 
-        steroids.view.navigationBar.update {titleImagePath: "/icons/pill@2x.png"},
-          onSuccess: ->
-            updated = true
+        describe "without title text or title image", ->
 
-        waitsFor -> updated
+          it "should become visible", ->
 
-        runs ->
-          expect(updated).toBeTruthy()
+            shown = false
 
-      it "should be updated with buttons", ->
+            steroids.view.navigationBar.show {},
+              onSuccess: ->
+                shown = true
 
-        updated= false
+            waitsFor -> shown
 
-        button = new steroids.buttons.NavigationBarButton
-        button.title = "Button"
-        button.onTap = => alert "RIGHT BUTTON TAPPED"
+            runs ->
+              expect(shown).toBeTruthy()
 
-        steroids.view.navigationBar.update {
-          buttons: {
-            right: [button]
+          it "should become visible with animation", ->
+
+            shownWithAnimation = false
+
+            steroids.view.navigationBar.show {
+              animated: true
+            }, {
+              onSuccess: ->
+                shownWithAnimation = true
+            }
+
+            waitsFor -> shownWithAnimation
+
+            runs ->
+              expect(shownWithAnimation ).toBeTruthy()
+
+      describe "update", ->
+
+        it "should be updated with title", ->
+
+          updated= false
+
+          steroids.view.navigationBar.update {title: "Title"},
+            onSuccess: ->
+              updated = true
+
+          waitsFor -> updated
+
+          runs ->
+            expect(updated).toBeTruthy()
+
+        it "should be updated with title image", ->
+
+          imageUpdated= false
+
+          steroids.view.navigationBar.update {titleImagePath: "/icons/pill@2x.png"},
+            onSuccess: ->
+              imageUpdated= true
+
+          waitsFor -> imageUpdated
+
+          runs ->
+            expect(imageUpdated).toBeTruthy()
+
+        it "should be updated with buttons", ->
+
+          buttonsUpdated = false
+
+          button = new steroids.buttons.NavigationBarButton
+          button.title = "Button"
+          button.onTap = => alert "RIGHT BUTTON TAPPED"
+
+          steroids.view.navigationBar.update {
+            buttons: {
+              right: [button]
+            }
+          },
+            onSuccess: ->
+              buttonsUpdated = true
+
+          waitsFor -> buttonsUpdated
+
+          runs ->
+            expect(buttonsUpdated).toBeTruthy()
+
+      describe "hide", ->
+
+        it "should be hided", ->
+
+          hided = false
+
+          steroids.view.navigationBar.hide {},
+            onSuccess: ->
+              hided = true
+
+          waitsFor -> hided
+
+          runs ->
+            expect(hided).toBeTruthy()
+
+        it "should be hided with animation", ->
+
+          hidedWithAnimation = false
+
+          steroids.view.navigationBar.hide {
+            animated: true
+          }, {
+            onSuccess: ->
+              hidedWithAnimation = true
           }
-        },
-          onSuccess: ->
-            updated = true
 
-        waitsFor -> updated
+          waitsFor -> hidedWithAnimation
 
-        runs ->
-          expect(updated).toBeTruthy()
-
-      it "should be hided", ->
-
-        hided = false
-
-        steroids.view.navigationBar.hide {},
-          onSuccess: ->
-            hided = true
-
-        waitsFor -> hided
-
-        runs ->
-          expect(hided).toBeTruthy()
-
+          runs ->
+            expect(hidedWithAnimation ).toBeTruthy()
