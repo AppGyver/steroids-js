@@ -3,6 +3,7 @@
 Features:
   - Support for updating navigation bar contents (title, title image, buttons) per webview with `steroids.view.navigationBar.update`
   - Support for showing and hiding navigation bar with animation using `animated` option
+  - Support for showing and hiding splashscreen programmatically with `steroids.splashscreen.show` and `steroids.splashscreen.hide`
 
 Changes:
   - Removed deprecated `steroids.view.bounceShadow`.
