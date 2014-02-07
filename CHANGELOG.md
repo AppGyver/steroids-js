@@ -1,5 +1,9 @@
 ##3.1.4 (TO DO)
 
+Features:
+  - Support for updating navigation bar contents (title, title image, buttons) per webview with `steroids.view.navigationBar.update`
+  - Support for showing and hiding navigation bar with animation using `animated` option
+
 Changes:
   - Removed deprecated `steroids.view.bounceShadow`.
 
