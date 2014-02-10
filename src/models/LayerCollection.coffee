@@ -1,14 +1,11 @@
 class LayerCollection
   constructor: ->
-    @array = []
 
-  pop: (options={}, callbacks={})->
-    defaultOnSuccess = ()=>
-      @array.pop()
+  pop: (options={}, callbacks={}) ->
 
     steroids.nativeBridge.nativeCall
       method: "popLayer"
-      successCallbacks: [defaultOnSuccess, callbacks.onSuccess]
+      successCallbacks: [callbacks.onSuccess]
       failureCallbacks: [callbacks.onFailure]
 
   popAll: (options={}, callbacks={}) ->
@@ -19,10 +16,7 @@ class LayerCollection
       failureCallbacks: [callbacks.onFailure]
 
 
-  push: (options={}, callbacks={})->
-    defaultOnSuccess = ()=>
-      @array.push view
-
+  push: (options={}, callbacks={}) ->
     view = if options.constructor.name == "WebView"
       options
     else
@@ -55,15 +49,11 @@ class LayerCollection
     steroids.nativeBridge.nativeCall
       method: "openLayer"
       parameters: parameters
-      successCallbacks: [defaultOnSuccess, callbacks.onSuccess]
+      successCallbacks: [callbacks.onSuccess]
       failureCallbacks: [callbacks.onFailure]
 
-  replace: (options={}, callbacks={})->
+  replace: (options={}, callbacks={}) ->
     steroids.debug "steroids.layers.replace called"
-
-    defaultOnSuccess = ()=>
-      steroids.debug "steroids.layers.replace defaultOnSuccess"
-      @array = [view]
 
     view = if options.constructor.name == "WebView"
       steroids.debug "steroids.layers.replace using view shorthand"
@@ -84,5 +74,5 @@ class LayerCollection
     steroids.nativeBridge.nativeCall
       method: "replaceLayers"
       parameters: parameters
-      successCallbacks: [defaultOnSuccess, callbacks.onSuccess]
+      successCallbacks: [callbacks.onSuccess]
       failureCallbacks: [callbacks.onFailure]
