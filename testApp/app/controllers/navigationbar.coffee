@@ -122,6 +122,26 @@ class window.NavigationbarController
       onSuccess: -> alert "nav bar buttons updated"
       onFailure: -> alert "failed to update nav bar buttons"
 
+  @testUpdateWithNoButtons: ->
+    steroids.view.navigationBar.update {
+      buttons: {
+        right: []
+        left: []
+      }
+    },
+      onSuccess: -> alert "nav bar buttons updated"
+      onFailure: -> alert "failed to update nav bar buttons"
+
+  @testOverrideBackbuttonTrue: ->
+    steroids.view.navigationBar.update {
+      overrideBackButton: true
+    }
+
+  @testOverrideBackbuttonFalse: ->
+    steroids.view.navigationBar.update {
+      overrideBackButton: false
+    }
+
   @testUpdateButtonsWithoutBackButton: ->
     button1 = new steroids.buttons.NavigationBarButton
     button1.title = "RIGHT"
