@@ -100,7 +100,7 @@ class NavigationBar
             failureCallbacks: [callbacks.onFailure]
 
   buttonTapped: (options)=>
-    @buttonCallbacks[options.location][options.index]()
+    @buttonCallbacks[options.location]?[options.index]?()
 
   update: (options={}, callbacks={}) ->
     steroids.debug "steroids.navigationBar.update options: #{JSON.stringify options} callbacks: #{JSON.stringify callbacks}"

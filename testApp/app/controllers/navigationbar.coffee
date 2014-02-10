@@ -144,8 +144,8 @@ class window.NavigationbarController
 
   @testUpdateButtonsWithoutBackButton: ->
     button1 = new steroids.buttons.NavigationBarButton
-    button1.title = "RIGHT"
-    button1.onTap = => alert "RIGHT BUTTON TAPPED"
+    button1.title = "NEW RIGHT"
+    button1.onTap = => alert "NEW RIGHT BUTTON TAPPED"
 
     button2 = new steroids.buttons.NavigationBarButton
     button2.imagePath = "/icons/pill@2x.png"
