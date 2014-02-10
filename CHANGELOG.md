@@ -1,12 +1,15 @@
-##3.1.4 (TO DO)
+##3.1.4 (2014-02-10)
+
+New `steroids.navigationBar.update` API on iOS (deprecates `steroids.navigationBar.setButtons` on iOS), added option to animate showing/hiding navigation bar, programmatic show/hide of splashscreen, deprecated methods removed.
 
 Features:
-  - Support for updating navigation bar contents (title, title image, buttons) per webview with `steroids.view.navigationBar.update`
-  - Support for showing and hiding navigation bar with animation using `animated` option
-  - Support for showing and hiding splashscreen programmatically with `steroids.splashscreen.show` and `steroids.splashscreen.hide`
+  - Support for updating navigation bar contents (title, title image, buttons) per webview with `steroids.view.navigationBar.update` on iOS.
+  - Support for showing and hiding navigation bar with animation using `animated` option on iOS.
+  - Support for showing and hiding splashscreen programmatically with `steroids.splashscreen.show` and `steroids.splashscreen.hide` on iOS.
 
 Changes:
   - Removed deprecated `steroids.view.bounceShadow`.
+  - Deprecated and removed `steroids.layers.array`.
 
 ##3.1.3 (2014-01-02)
 
