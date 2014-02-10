@@ -1,6 +1,11 @@
+##3.1.5 (TO DO)
+
+Bugfixes:
+  - `steroids.view.navigationBar.update` no longer gives an error regarding undefined callbacks when updating buttons only on one side.
+
 ##3.1.4 (2014-02-10)
 
-New `steroids.navigationBar.update` API on iOS (deprecates `steroids.navigationBar.setButtons` on iOS), added option to animate showing/hiding navigation bar, programmatic show/hide of splashscreen, deprecated methods removed.
+New `steroids.view.navigationBar.update` API on iOS (deprecates `steroids.view.navigationBar.setButtons` on iOS), added option to animate showing/hiding navigation bar, programmatic show/hide of splashscreen, deprecated methods removed.
 
 Features:
   - Support for updating navigation bar contents (title, title image, buttons) per webview with `steroids.view.navigationBar.update` on iOS.
