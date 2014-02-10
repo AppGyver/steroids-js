@@ -27,6 +27,7 @@ Make sure you have grunt-cli installed:
     sh ./bumb-plz.sh
 
     grunt
+    git submodule init # not needed if already done
     git submodule update  # ensure bower/
 
     cd bower && git co master && cd ..
