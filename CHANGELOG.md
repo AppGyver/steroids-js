@@ -1,7 +1,8 @@
-##3.1.5 (TO DO)
+##3.1.5 (2014-02-10)
+Bugfix for `steroids.view.navigationBar.update`.
 
 Bugfixes:
-  - `steroids.view.navigationBar.update` no longer gives an error regarding undefined callbacks when updating buttons only on one side.
+  - `steroids.view.navigationBar.update` no longer gives an error regarding undefined button callbacks when updating buttons only on one side.
 
 ##3.1.4 (2014-02-10)
 
