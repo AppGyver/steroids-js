@@ -1,6 +1,6 @@
-# Steroids JS
+# Steroids.js
 
-A JavaScript library to be used with [AppGyver Steroids](http://appgyver.com/steroids) and [Steroids npm](//github.com/AppGyver/steroids). Steroids JS requires AppGyver Scanner application (available in Apple App Store and Google Play Store) or custom Scanner build from AppGyver Build Service.
+A JavaScript library to be used with [AppGyver Steroids](http://appgyver.com/steroids) and [Steroids npm](//github.com/AppGyver/steroids). Steroids.js requires AppGyver Scanner application (available in Apple App Store and Google Play Store) or custom Scanner build from AppGyver Build Service.
 
 ## Development:
 
@@ -12,7 +12,7 @@ A JavaScript library to be used with [AppGyver Steroids](http://appgyver.com/ste
 
 ### Automated
 
-There is a jasmine test project in specsApp/ that has steroids.js symlinked from dist/
+There is a Jasmine test project in specsApp/ that has steroids.js symlinked from dist/
 
 ### Explorative
 
