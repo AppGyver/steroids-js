@@ -8,6 +8,7 @@ class PostMessage
       parameters:
         javascript: "steroids.PostMessage.dispatchMessageEvent('#{escapedJSONMessage}', '*');"
       successCallbacks: []
+      failureCallbacks: []
       recurringCallbacks: []
 
 
