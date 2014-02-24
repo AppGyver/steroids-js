@@ -5,6 +5,9 @@ Features:
   - `steroids.tabBar.update` now supports setting a badge for a tab.
   - Added `steroids.tabBar.selectTab(index)` for programmatically setting the active tab.
 
+Bugfixes:
+  - Fixed an issue where `window.postMessage` gave false error messages on Android.
+
 ##3.1.5 (2014-02-10)
 Bugfix for `steroids.view.navigationBar.update`.
 
