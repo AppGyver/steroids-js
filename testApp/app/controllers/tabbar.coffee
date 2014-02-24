@@ -24,10 +24,12 @@ class window.TabbarController
           {
             title: "http"
             icon: "icons/telescope@2x.png"
+            badge: "1"
           },
           {
             title: "FILEurl"
             icon: "icons/telescope@2x.png"
+            badge: "lol"
           },
           {
             title: "NOjs"
@@ -38,3 +40,6 @@ class window.TabbarController
       onSuccess: -> alert "updated"
       onFailure: -> alert "failed to update"
     )
+
+  @testSelectTab: ->
+    steroids.tabBar.selectTab 1

@@ -18,6 +18,21 @@ class TabBar
       successCallbacks: [callbacks.onSuccess]
       failureCallbacks: [callbacks.onFailure]
 
+  selectTab: (options={}, callbacks={}) ->
+    steroids.debug "steroids.tabBar.selectTab options: #{JSON.stringify options} callbacks: #{JSON.stringify callbacks}"
+
+    @index = if options.constructor.name is "Number"
+      options
+    else
+      options.index
+
+    steroids.nativeBridge.nativeCall
+      method: "selectTab"
+      parameters:
+        index: @index
+      successCallbacks: [callbacks.onSuccess]
+      failureCallbacks: [callbacks.onFailure]
+
   update: (options={}, callbacks={}) ->
     steroids.debug "steroids.tabBar.update options: #{JSON.stringify options} callbacks: #{JSON.stringify callbacks}"
 
@@ -29,6 +44,7 @@ class TabBar
           {
             title: options.tabs[scale].title
             image_path: options.tabs[scale].icon
+            badge: options.tabs[scale].badge
           }
         )
 
