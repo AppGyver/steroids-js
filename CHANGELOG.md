@@ -1,3 +1,10 @@
+##3.1.6 (TODO)
+Added methods for setting tab bar badges and programmatically selecting a tab.
+
+Features:
+  - `steroids.tabBar.update` now supports setting a badge for a tab.
+  - Added `steroids.tabBar.selectTab(index)` for programmatically setting the active tab.
+
 ##3.1.5 (2014-02-10)
 Bugfix for `steroids.view.navigationBar.update`.
 
