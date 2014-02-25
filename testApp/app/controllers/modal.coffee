@@ -54,11 +54,38 @@ class window.ModalController
 
   @testHide: () ->
 
-    hided = () ->
-      alert "hided"
+    hidden = () ->
+      alert "hidden"
 
     steroids.modal.hide {
     }, {
-      onSuccess: hided
+      onSuccess: hidden
     }
+
+  @testHideDisableAnimation: () ->
+
+    hidden = () ->
+      alert "hidden without animation"
+
+    steroids.modal.hide {
+      disableAnimation: true
+    }, {
+      onSuccess: hidden
+    }
+
+  @testShowDisableAnimation: () ->
+    opened = () ->
+      alert "opened"
+
+    hideView = new steroids.views.WebView {
+      location: "/views/modal/hide.html"
+    }
+
+    steroids.modal.show {
+      view: hideView
+      disableAnimation: true
+    }, {
+      onSuccess: opened
+    }
+
 
