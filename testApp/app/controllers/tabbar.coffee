@@ -41,5 +41,24 @@ class window.TabbarController
       onFailure: -> alert "failed to update"
     )
 
+  @resetBadges: ->
+    steroids.tabBar.update({
+      tabs:
+        [
+          {
+            badge: ""
+          },
+          {
+            badge: ""
+          },
+          {
+            badge: ""
+          }
+        ]
+      },
+      onSuccess: -> alert "updated"
+      onFailure: -> alert "failed to update"
+    )
+
   @testSelectTab: ->
     steroids.tabBar.selectTab 1
