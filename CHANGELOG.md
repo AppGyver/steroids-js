@@ -1,8 +1,10 @@
 ##3.1.6 (TODO)
-Added methods for setting tab bar badges and programmatically selecting a tab.
+Added methods for setting tab bar badges and programmatically selecting a tab. Added support for replacing the layer stack with a WebView already in the layer stack. Added a parameter to disable animation for modal screen show/hide.
 
 Features:
   - `steroids.tabBar.update` now supports setting a badge for a tab.
+  - `steroids.layers.replace` can now target preloaded WebViews that already exist in the layer stack.
+  - `steroids.modal.show` and `steroids.modal.hide` now have a `disableAnimation` parameter to show/hide the modal screen immediately, without an animation.
   - Added `steroids.tabBar.selectTab(index)` for programmatically setting the active tab.
 
 Bugfixes:
