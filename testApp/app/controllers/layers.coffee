@@ -121,3 +121,13 @@ class window.LayersController
     view.preload {},
       onSuccess: =>
         steroids.layers.replace view
+
+  @testReplaceToRoot: ->
+    view = new steroids.views.WebView {
+      location: "/views/layers/index.html"
+      id: "http://localhost/views/steroids/index.html"
+    }
+
+    steroids.layers.replace view
+
+
