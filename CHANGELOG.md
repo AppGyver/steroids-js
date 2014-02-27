@@ -1,5 +1,7 @@
-##3.1.6 (TODO)
+##3.1.6 (2014-02-10)
 Added methods for setting tab bar badges and programmatically selecting a tab. Added support for replacing the layer stack with a WebView already in the layer stack. Added a parameter to disable animation for modal screen show/hide.
+
+New API methods requires Scanner v3.1.3.
 
 Features:
   - `steroids.tabBar.update` now supports setting a badge for a tab.
