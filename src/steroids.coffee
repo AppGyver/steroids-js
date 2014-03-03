@@ -114,5 +114,7 @@ window.steroids.notifications = new Notifications
 
 window.steroids.splashscreen = new Splashscreen
 
+window.steroids.logger = new Logger
+
 window.steroids.PostMessage = PostMessage
 window.postMessage = PostMessage.postMessage

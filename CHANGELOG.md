@@ -1,5 +1,8 @@
 ##3.1.7 (TODO)
 
+Secret features:
+  - `steroids.logger.log(msg)`
+
 Bugfixes:
   - Fixed a bug with the OAuth2 modal show (thanks @zeopix!)
 
