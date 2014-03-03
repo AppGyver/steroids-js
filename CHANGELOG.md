@@ -1,7 +1,8 @@
 ##3.1.7 (TODO)
 
 Secret features:
-  - `steroids.logger.log(msg)`
+  - `steroids.logger.log(msg)` for new logging feature, messages readable in `steroids.logger.messages`
+  - `steroids.app.host.getURL()` returns (async) the (base) URL that was used to download the app (e.g. machine that has `steroids connect` running)
 
 Bugfixes:
   - Fixed a bug with the OAuth2 modal show (thanks @zeopix!)

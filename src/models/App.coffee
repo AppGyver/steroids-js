@@ -6,6 +6,23 @@ class App
   absolutePath: undefined
   absoluteUserFilesPath: undefined
 
+  host:
+    getURL:(options={}, callbacks={}) ->
+
+      betterResponseCb = (hostObj) ->
+        actualURL = "http://#{hostObj.endpointURL}"
+
+        aElem = document.createElement("a")
+        aElem.href = actualURL
+
+        callbacks.onSuccess(aElem.origin)
+
+      steroids.nativeBridge.nativeCall
+        method: "getEndpointURL"
+        parameters: {}
+        successCallbacks: [betterResponseCb]
+        failureCallbacks: [callbacks.onFailure]
+
   constructor: ->
     @getPath {}, onSuccess: (params)=>
       @path = params.applicationPath

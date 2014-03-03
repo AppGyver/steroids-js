@@ -30,3 +30,8 @@ class window.AppController
 
     document.addEventListener "resume", () ->
       alert steroids.app.getLaunchURL()
+
+  @testHostGetURL: ->
+    steroids.app.host.getURL {},
+      onSuccess: (msg) ->
+        alert msg
