@@ -10,7 +10,7 @@ class AuthorizationCodeFlow extends OAuth2Flow
     authorizationUrl = @options.authorizationUrl.concat @concatenateUrlParams(@xhrAuthorizationParams)
 
     authenticationLayer = new steroids.views.WebView { location: authorizationUrl }
-    steroids.modal.show({ layer: authenticationLayer })
+    steroids.modal.show({ view: authenticationLayer })
 
   finish: (callback)=>
     @xhrAccessTokenParams =
