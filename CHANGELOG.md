@@ -1,3 +1,8 @@
+##3.1.7 (TODO)
+
+Bugfixes:
+  - Fixed a bug with the OAuth2 modal show (thanks @zeopix!)
+
 ##3.1.6 (2014-02-10)
 Added methods for setting tab bar badges and programmatically selecting a tab. Added support for replacing the layer stack with a WebView already in the layer stack. Added a parameter to disable animation for modal screen show/hide.
 
