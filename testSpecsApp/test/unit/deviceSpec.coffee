@@ -19,7 +19,23 @@ describe "steroids", ->
         runs ->
           expect( ponged ).toBeTruthy()
 
+    describe "platform", ->
 
+      it "should be defined", ->
+        expect(steroids.device.platform).toBeDefined()
+
+      it "should get the platform name", ->
+
+        name = null
+
+        steroids.device.platform.getName {},
+          onSuccess: (gotName) -> name = gotName
+
+        waitsFor -> name?
+
+        runs ->
+          if navigator.userAgent.match(/(iPod|iPhone|iPad)/)
+            expect( name ).toBe("ios")
 
     describe "torch", ->
 

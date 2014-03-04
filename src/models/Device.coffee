@@ -1,6 +1,18 @@
 class Device
 
   torch: new Torch()
+  platform:
+    getName: (options={}, callbacks={}) ->
+      name = if ( typeof AndroidAPIBridge != 'undefined' )
+        "android"
+      else if ( navigator.userAgent.indexOf("Tizen") != -1 )
+        "tizen"
+      else if ( navigator.userAgent.match(/(iPod|iPhone|iPad)/) )
+        "ios"
+      else
+        undefined
+
+      callbacks.onSuccess(name) if callbacks.onSuccess?
 
   ping: (options={}, callbacks={}) =>
     data = if options.constructor.name == "String"

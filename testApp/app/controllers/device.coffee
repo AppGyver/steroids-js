@@ -50,3 +50,7 @@ class window.DeviceController
     steroids.device.disableSleep {}, {
       onSuccess: () -> alert "disabled"
     }
+
+  @testPlatformGetName: () ->
+    steroids.device.platform.getName {},
+      onSuccess: (gotName)-> alert gotName
