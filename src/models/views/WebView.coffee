@@ -83,6 +83,19 @@ class WebView
 
     callbacks.onSuccess?.call()
 
+  rotateTo: (options={}, callbacks={}) ->
+    degrees = if options.constructor.name == "String"
+      options
+    else
+      options.degrees
+
+    steroids.nativeBridge.nativeCall
+      method: "rotateTo"
+      parameters:
+        orientation: degrees
+      successCallbacks: [callbacks.onSuccess]
+      failureCallbacks: [callbacks.onFailure]
+
   setBackgroundColor: (options={}, callbacks={}) ->
     newColor = if options.constructor.name == "String"
       options

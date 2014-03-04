@@ -12,6 +12,18 @@ class window.WebviewController
     }
 
 
+  @testRotateTo: () ->
+    steroids.view.rotateTo(0)
+
+  @testRotateTo90: () ->
+    steroids.view.rotateTo(90)
+
+  @testRotateTo180: () ->
+    steroids.view.rotateTo(180)
+
+  @testRotateToNeg90: () ->
+    steroids.view.rotateTo(-90)
+
   @testOpenWithoutNavigationBar: () ->
     webView = new steroids.views.WebView "/views/webview/noNavigationBar.html"
 
