@@ -1,4 +1,4 @@
-##3.1.7 (TODO)
+##3.1.7 (2014-03-05)
 
 Secret features:
   - `steroids.logger.log(msg)` for new logging feature, messages readable in `steroids.logger.messages`
