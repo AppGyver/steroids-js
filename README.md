@@ -4,7 +4,13 @@ A JavaScript library to be used with [AppGyver Steroids](http://appgyver.com/ste
 
 ## Development:
 
-    npm install
+Setup Steroids project "testApp":
+
+    1) npm install
+    2) npm install -g grunt-cli
+    3) grunt
+    4) cd testApp && npm install
+
 
 (This installs required dependencies, including testApp/ Grunt.js)
 
