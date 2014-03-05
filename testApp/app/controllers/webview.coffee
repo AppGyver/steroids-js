@@ -199,3 +199,8 @@ class window.WebviewController
     }, {
       onSuccess: -> alert "keyboardy accesssory disabled"
     }
+
+  @testKeyboardAccessoryWithEmptyParams: () ->
+    steroids.view.updateKeyboard null, {
+      onSuccess: -> alert "keyboardy accesssory enabled (default value)"
+    }

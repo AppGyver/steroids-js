@@ -110,11 +110,10 @@ class WebView
       failureCallbacks: [callbacks.onFailure]
 
   updateKeyboard: (options={}, callbacks={}) ->
-    console.log('options.constructor.name : ' + options.constructor.name);
-    accessoryBarEnabled = if options.constructor.name == "Boolean"
-      options
-    else
+    accessoryBarEnabled = if options.accessoryBarEnabled?
       options.accessoryBarEnabled
+    else
+      true
     
     steroids.nativeBridge.nativeCall
       method: "updateKeyboard"
