@@ -117,7 +117,7 @@ class WebView
       options.accessoryBarEnabled
     
     steroids.nativeBridge.nativeCall
-      method: "updateWebViewKeyboardSettings"
+      method: "updateKeyboard"
       parameters:
         accessoryBarEnabled: accessoryBarEnabled
       successCallbacks: [callbacks.onSuccess]
