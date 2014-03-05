@@ -91,7 +91,7 @@ class window.WebviewController
     }, {
       onSuccess: () -> andOpen()
     }
-
+  
   @testOpenThis: () ->
     thisWebView = new steroids.views.WebView "/views/webview/index.html"
     steroids.layers.push thisWebView
@@ -185,3 +185,17 @@ class window.WebviewController
 
   @testSetBackgroundWhite: ->
     steroids.view.setBackgroundColor("#FFFFFF")
+
+  @testEnableKeyboardAccessory: () ->
+    steroids.view.updateKeyboard {
+      accessoryBarEnabled:true
+    }, {
+      onSuccess: -> alert "keyboardc accesssory enabled"
+    }
+    
+  @testDisableKeyboardAccessory: () ->
+    steroids.view.updateKeyboard {
+      accessoryBarEnabled:false
+    }, {
+      onSuccess: -> alert "keyboardy accesssory disabled"
+    }

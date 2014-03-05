@@ -108,3 +108,17 @@ class WebView
         color: newColor
       successCallbacks: [callbacks.onSuccess]
       failureCallbacks: [callbacks.onFailure]
+
+  updateKeyboard: (options={}, callbacks={}) ->
+    console.log('options.constructor.name : ' + options.constructor.name);
+    accessoryBarEnabled = if options.constructor.name == "Boolean"
+      options
+    else
+      options.accessoryBarEnabled
+    
+    steroids.nativeBridge.nativeCall
+      method: "updateWebViewKeyboardSettings"
+      parameters:
+        accessoryBarEnabled: accessoryBarEnabled
+      successCallbacks: [callbacks.onSuccess]
+      failureCallbacks: [callbacks.onFailure]
