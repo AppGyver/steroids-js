@@ -3,7 +3,7 @@ class window.DeviceController
   document.addEventListener "deviceready", ->
 
     # Make Navigation Bar to appear with a custom title text
-    steroids.navigationBar.show { title: "device" }
+    steroids.navigationBar.show { title: "platform" }
 
   @testPing: () ->
     gotPong = (e) ->
@@ -50,3 +50,7 @@ class window.DeviceController
     steroids.device.disableSleep {}, {
       onSuccess: () -> alert "disabled"
     }
+
+  @testPlatformGetName: () ->
+    steroids.device.platform.getName {},
+      onSuccess: (gotName)-> alert gotName

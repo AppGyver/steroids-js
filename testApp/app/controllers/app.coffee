@@ -35,3 +35,8 @@ class window.AppController
     steroids.app.host.getURL {},
       onSuccess: (msg) ->
         alert msg
+
+  @testGetMode: ->
+    steroids.app.getMode {},
+      onSuccess: (msg) ->
+        alert msg
