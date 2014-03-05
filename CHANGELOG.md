@@ -7,6 +7,7 @@ Secret features:
   - `steroids.view.rotateTo(deg)` rotates current view to deg somehow, someday
   - `steroids.device.platform` namespace and `steroids.device.platform.getName()` to determine the platform (e.g. "ios", "android", "tizen")
   - `steroids.app.getMode()` returns "standalone" if the build is an ad-hoc or production build. Otherwise returns "scanner".
+  - `steroids.logger` automatically sends logs to Steroids CLI when running as a scanner.
 
 Bugfixes:
   - Fixed a bug with the OAuth2 modal show (thanks @zeopix!)
