@@ -5,6 +5,7 @@ describe "steroids", ->
     it "should be defined", ->
       expect( steroids.logger ).toBeDefined()
 
+
     describe "messages", ->
 
       it "should be defined", ->
@@ -12,6 +13,7 @@ describe "steroids", ->
 
       it "should be initialized as an Array", ->
         expect( steroids.logger.messages.constructor.name ).toBe("Array")
+
 
     describe "log", ->
 
@@ -24,6 +26,7 @@ describe "steroids", ->
         steroids.logger.log "hello"
 
         expect( steroids.logger.messages.length ).toBe(beforeLoggingLength+1)
+
 
     describe "logged message", ->
 
@@ -74,12 +77,34 @@ describe "steroids", ->
         expect( steroids.logger.queue ).toBeDefined()
 
 
-      it "should add the message to the queue", ->
-        beforeQueueingLength = steroids.logger.queue.getLength()
+      describe "when in scanner", ->
 
-        steroids.logger.log("to be queued")
+        it "should add the message to the queue", ->
+          beforeQueueingLength = steroids.logger.queue.getLength()
 
-        expect( steroids.logger.queue.getLength() ).toBe(beforeQueueingLength + 1)
+          steroids.logger.log("to be queued")
+
+          expect( steroids.logger.queue.getLength() ).toBe(beforeQueueingLength + 1)
+
+
+      describe "when in standalone", ->
+
+        beforeEach ->
+          steroids.app.getMode = (options={}, callbacks={}) ->
+            callbacks.onSuccess("standalone")
+
+
+        it "should not fill the queue", ->
+          steroids.logger.queue.messageQueue = []
+
+          for msg in ["a","b","c"]
+            steroids.logger.log(msg)
+
+          waits(300)
+
+          runs ->
+            expect( steroids.logger.queue.getLength() ).toBe(0)
+
 
 
       describe "flush", ->
@@ -87,52 +112,79 @@ describe "steroids", ->
         it "should be defined", ->
           expect( steroids.logger.queue.flush ).toBeDefined()
 
+        describe "in scanner mode", ->
 
-        it "should flush", ->
+          beforeEach ->
+            steroids.app.getMode = (options={}, callbacks={}) ->
+              callbacks.onSuccess("scanner")
 
-          steroids.logger.log("a")
-          steroids.logger.log("b")
-          steroids.logger.log("c")
+          it "should flush", ->
 
-          waitsFor ->
-            steroids.logger.queue.flush()
-
-          runs ->
-            expect( steroids.logger.queue.getLength() ).toBe(0)
-
-        describe "autoflushing", ->
-
-          it "should not flush", ->
-
-            for msg in ["a","b","c"]
-              steroids.logger.log(msg)
-
-            waits(300)
-
-            runs ->
-              expect( steroids.logger.queue.getLength() ).not.toBe(0)
-
-          it "should flush after flushing is set to interval", ->
-
-            steroids.logger.queue.startFlushing(100)
-
-            for msg in ["a","b","c"]
-              steroids.logger.log(msg)
-
-            waits(300)
-
-            runs ->
-              expect( steroids.logger.queue.getLength() ).toBe(0)
-
-          it "should stop flushing", ->
-
-            steroids.logger.queue.startFlushing(100)
             steroids.logger.queue.stopFlushing()
 
             for msg in ["a","b","c"]
               steroids.logger.log(msg)
 
+            expect( steroids.logger.queue.getLength() ).toBe(3)
+
+            steroids.logger.queue.flush()
+
             waits(300)
 
+
             runs ->
-              expect( steroids.logger.queue.getLength() ).toBe(3)
+              expect( steroids.logger.queue.getLength() ).toBe(0)
+              # set autoflushin back
+              steroids.logger.queue.autoFlush(100)
+
+
+        describe "autoflushing", ->
+
+          describe "in scanner mode", ->
+
+            beforeEach ->
+              steroids.app.getMode = (options={}, callbacks={}) ->
+                callbacks.onSuccess("scanner")
+
+            it "should flush automatically", ->
+              window.steroids.logger.queue.autoFlush(100)
+
+              for msg in ["a","b","c"]
+                steroids.logger.log(msg)
+
+              waits(300)
+
+              runs ->
+                expect( steroids.logger.queue.getLength() ).toBe(0)
+
+            it "should stop flushing", ->
+
+              steroids.logger.queue.stopFlushing()
+
+              for msg in ["a","b","c"]
+                steroids.logger.log(msg)
+
+              waits(300)
+
+              runs ->
+                expect( steroids.logger.queue.getLength() ).toBe(3)
+
+
+          describe "in standalone", ->
+
+            beforeEach ->
+              steroids.app.getMode = (options={}, callbacks={}) ->
+                callbacks.onSuccess("standalone")
+
+            it "should not autostart flushing", ->
+
+              steroids.logger.queue.messageQueue = []
+              steroids.logger.queue.autoFlush(100)
+
+              for msg in ["a","b","c"]
+                steroids.logger.log(msg)
+
+              waits(300)
+
+              runs ->
+                expect( steroids.logger.queue.getLength() ).toBe(0)

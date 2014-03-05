@@ -34,7 +34,7 @@ describe "steroids", ->
         waitsFor -> name?
 
         runs ->
-          if not navigator.userAgent.match(/(iPod|iPhone|iPad)/)
+          if navigator.userAgent.match(/(iPod|iPhone|iPad)/)
             expect( name ).toBe("ios")
           else
             expect( "you" ).toBe("fixing this test for that device you are using")

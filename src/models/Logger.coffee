@@ -47,6 +47,13 @@ class Logger
 
       return true
 
+    autoFlush: (every) ->
+      steroids.app.getMode {},
+        onSuccess: (mode) =>
+          return unless mode == "scanner"
+
+          steroids.logger.queue.startFlushing(every)
+
     startFlushing: (every) ->
       return false if @flushingInterval?
 
@@ -80,5 +87,9 @@ class Logger
     logMessage = new LogMessage(message)
 
     @messages.push logMessage
-    @queue.push logMessage
+
+    steroids.app.getMode {},
+      onSuccess: (mode) =>
+        return unless mode == "scanner"
+        @queue.push logMessage
 
