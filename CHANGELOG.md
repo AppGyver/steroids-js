@@ -6,6 +6,7 @@ Secret features:
   - `steroids.app.host.getURL()` returns (async) the (base) URL that was used to download the app (e.g. machine that has `steroids connect` running)
   - `steroids.view.rotateTo(deg)` rotates current view to deg somehow, someday
   - `steroids.device.platform` namespace and `steroids.device.platform.getName()` to determine the platform (e.g. "ios", "android", "tizen")
+  - `steroids.app.getMode()` returns "standalone" if the build is an ad-hoc or production build. Otherwise returns "scanner".
 
 Bugfixes:
   - Fixed a bug with the OAuth2 modal show (thanks @zeopix!)
