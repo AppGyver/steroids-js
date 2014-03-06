@@ -7,3 +7,5 @@ class MapView
       options.mapType
     
     @region = options.region
+    
+    @location = options.location

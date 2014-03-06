@@ -23,29 +23,7 @@ class Modal extends EventsSupport
         Screen.mapDegreesToOrientations value
 
     switch view.constructor.name
-      when "MapView"
-      
-        # any reason why i should not send the view object as part of the
-        # parameters for the native call?
-        parameters = if view.id?
-          { id: view.id }
-        else
-          { url: view.location }
-        
-        parameters.keepTransitionHelper = options.keepLoading
-        parameters.disableAnimation = options.disableAnimation
-        
-        # map view options
-        parameters.map = {}
-        parameters.map.mapType = view.mapType
-        parameters.map.region = view.region
-        
-        steroids.nativeBridge.nativeCall
-          method: "mapViewModal"
-          parameters: params
-          successCallbacks: [callbacks.onSuccess]
-          failureCallbacks: [callbacks.onFailure]
-      
+
       when "PreviewFileView"
         steroids.nativeBridge.nativeCall
           method: "previewFile"
@@ -53,8 +31,8 @@ class Modal extends EventsSupport
             filenameWithPath: view.getNativeFilePath()
           successCallbacks: [callbacks.onSuccess]
           failureCallbacks: [callbacks.onFailure]
-      
-      when "WebView"
+
+      when "WebView", "MapView"
 
         parameters = if view.id?
           { id: view.id }
@@ -75,6 +53,10 @@ class Modal extends EventsSupport
         else
           #default is modal without nav bar
           parameters.hidesNavigationBar = true
+          
+        # map view options
+        if view.constructor.name == "MapView"
+          parameters.map = view
 
         steroids.nativeBridge.nativeCall
           method: "openModal"

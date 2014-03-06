@@ -48,7 +48,9 @@ class LayerCollection extends EventsSupport
       parameters.pushAnimationCurve = options.animation.curve
       parameters.popAnimationCurve = options.animation.reversedCurve
 
-
+    if view.constructor.name == "MapView"
+      parameters.map = view
+    
     steroids.nativeBridge.nativeCall
       method: "openLayer"
       parameters: parameters
