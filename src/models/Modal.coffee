@@ -23,6 +23,20 @@ class Modal extends EventsSupport
         Screen.mapDegreesToOrientations value
 
     switch view.constructor.name
+      when "MapView"
+      
+        # any reason why i should not send the view object as the
+        # parameter for the native call?
+        params = {}
+        params.mapType = view.mapType
+        params.region = view.region
+        
+        steroids.nativeBridge.nativeCall
+          method: "mapView"
+          parameters: params
+          successCallbacks: [callbacks.onSuccess]
+          failureCallbacks: [callbacks.onFailure]
+      
       when "PreviewFileView"
         steroids.nativeBridge.nativeCall
           method: "previewFile"
@@ -30,6 +44,7 @@ class Modal extends EventsSupport
             filenameWithPath: view.getNativeFilePath()
           successCallbacks: [callbacks.onSuccess]
           failureCallbacks: [callbacks.onFailure]
+      
       when "WebView"
 
         parameters = if view.id?
