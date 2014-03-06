@@ -202,5 +202,5 @@ class window.WebviewController
 
   @testKeyboardAccessoryWithEmptyParams: () ->
     steroids.view.updateKeyboard null, {
-      onSuccess: -> alert "keyboardy accesssory enabled (default value)"
+      onSuccess: -> alert "updateKeyboard called with no parameters (no change)"
     }

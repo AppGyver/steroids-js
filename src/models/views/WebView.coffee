@@ -110,14 +110,14 @@ class WebView
       failureCallbacks: [callbacks.onFailure]
 
   updateKeyboard: (options={}, callbacks={}) ->
-    accessoryBarEnabled = if options.accessoryBarEnabled?
-      options.accessoryBarEnabled
-    else
-      true
+    
+    params = {}
+    
+    if options.accessoryBarEnabled?
+      params.accessoryBarEnabled = options.accessoryBarEnabled
     
     steroids.nativeBridge.nativeCall
       method: "updateKeyboard"
-      parameters:
-        accessoryBarEnabled: accessoryBarEnabled
+      parameters: params
       successCallbacks: [callbacks.onSuccess]
       failureCallbacks: [callbacks.onFailure]
