@@ -19,8 +19,8 @@ class window.MapviewController
     
     # create a new mapView
     mapView = new steroids.views.MapView {
-      # mapType can be: Map, Sattelite or Hybrid
-      mapType: "Map"
+      # mapType can be: Standard, Sattelite or Hybrid
+      mapType: "Standard"
       # region to be displayed displayed in the mapView
       region: {
         center: {

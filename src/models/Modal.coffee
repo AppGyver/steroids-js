@@ -25,14 +25,23 @@ class Modal extends EventsSupport
     switch view.constructor.name
       when "MapView"
       
-        # any reason why i should not send the view object as the
-        # parameter for the native call?
-        params = {}
-        params.mapType = view.mapType
-        params.region = view.region
+        # any reason why i should not send the view object as part of the
+        # parameters for the native call?
+        parameters = if view.id?
+          { id: view.id }
+        else
+          { url: view.location }
+        
+        parameters.keepTransitionHelper = options.keepLoading
+        parameters.disableAnimation = options.disableAnimation
+        
+        # map view options
+        parameters.map = {}
+        parameters.map.mapType = view.mapType
+        parameters.map.region = view.region
         
         steroids.nativeBridge.nativeCall
-          method: "mapView"
+          method: "mapViewModal"
           parameters: params
           successCallbacks: [callbacks.onSuccess]
           failureCallbacks: [callbacks.onFailure]

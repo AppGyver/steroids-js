@@ -5,5 +5,5 @@ class MapView
       options
     else
       options.mapType
-
+    
     @region = options.region
