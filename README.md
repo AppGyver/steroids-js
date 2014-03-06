@@ -11,8 +11,9 @@ Setup Steroids project "testApp":
     3) grunt
     4) cd testApp && npm install
 
+NOTE!
+  You need to manually run "grunt" before reloading Steroids in testApp!
 
-(This installs required dependencies, including testApp/ Grunt.js)
 
 ## Testing
 
