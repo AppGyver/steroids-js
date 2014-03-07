@@ -33,6 +33,14 @@ class TabBar
       successCallbacks: [callbacks.onSuccess]
       failureCallbacks: [callbacks.onFailure]
 
+  currentTab:
+    update: (options={}, callbacks={}) ->
+      steroids.nativeBridge.nativeCall
+        method: "updateTab"
+        parameters: options
+        successCallbacks: [callbacks.onSuccess]
+        failureCallbacks: [callbacks.onFailure]
+
   update: (options={}, callbacks={}) ->
     steroids.debug "steroids.tabBar.update options: #{JSON.stringify options} callbacks: #{JSON.stringify callbacks}"
 

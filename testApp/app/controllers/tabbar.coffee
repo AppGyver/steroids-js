@@ -62,3 +62,16 @@ class window.TabbarController
 
   @testSelectTab: ->
     steroids.tabBar.selectTab 1
+
+  @testUpdateTab: ->
+    steroids.tabBar.currentTab.update({
+      title: "New Title"
+      image_path: "icons/shoebox@2x.png"
+      badge: "1"
+    },
+    onSuccess: ->
+      alert "Success updating curent tab"
+    onFailure: (failure) ->
+      console.log "Failed to update current tab", failure
+      alert "Failed to update current tab"
+    )
