@@ -46,11 +46,32 @@ class window.MapviewController
 
     steroids.layers.push 
       view: mapView
-
+  
+    # add some markers to the map
+    mapView.addMarkers [
+        {
+          latitude: 41.2889
+          longitude: 174.7772
+          title: "marker 1"
+          subtitle: "subtitle marker 1"
+        },
+        {
+          latitude: 41.2889
+          longitude: 174.7772
+          title: "marker 2"
+          subtitle: "subtitle marker 2"
+        }
+      ],
+      onSuccess: -> alert "markers added to map!"
+      
+      
   @testMapViewHybvridWithOverlay: () ->
     mapView = new steroids.views.MapView 
       mapType: "Hybrid"
       location: "/views/mapview/mapoverlay.html"
+    
     steroids.layers.push 
       view: mapView
+    
+    
     
