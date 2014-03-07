@@ -31,8 +31,8 @@ class Modal extends EventsSupport
             filenameWithPath: view.getNativeFilePath()
           successCallbacks: [callbacks.onSuccess]
           failureCallbacks: [callbacks.onFailure]
-
-      when "WebView", "MapView"
+      
+      when "MapView", "WebView"
 
         parameters = if view.id?
           { id: view.id }
@@ -53,7 +53,7 @@ class Modal extends EventsSupport
         else
           #default is modal without nav bar
           parameters.hidesNavigationBar = true
-          
+
         # map view options
         if view.constructor.name == "MapView"
           parameters.map = view

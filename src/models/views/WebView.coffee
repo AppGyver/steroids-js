@@ -19,8 +19,9 @@ class WebView extends EventsSupport
 
     @id = if options.id?
       options.id
-
-    if @location.indexOf("://") == -1 # if a path
+    
+    # MapView inherits from WebView .. and it can be created without a webview overlay .. so the location might be null
+    if @location and @location.indexOf("://") == -1 # if a path
       if window.location.href.indexOf("file://") == -1 # if not currently on file protocol
         @location = "#{window.location.protocol}//#{window.location.host}/#{@location}"
 

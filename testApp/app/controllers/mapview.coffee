@@ -9,17 +9,22 @@ class window.MapviewController
 
   @testMapViewAsModal: () ->
     # create a new mapView with simple parameters
-    mapView = new steroids.views.MapView "Sattelite"
+    mapView = new steroids.views.MapView "Satellite"
     
-    steroids.modal.show {
+    steroids.modal.show
       view: mapView
-    }
 
+
+  @testOverlayPage: () ->
+    webView = new steroids.views.WebView "/views/mapview/mapoverlay.html"
+    steroids.layers.push 
+      view: webView
+    
   @testMapViewFullParams: () ->
     
     # create a new mapView
     mapView = new steroids.views.MapView 
-      # mapType can be: Standard, Sattelite or Hybrid
+      # mapType can be: Standard, Satellite or Hybrid
       mapType: "Standard"
       
       # Doing so causes the map view to use Core Location to find the user’s location and add an annotation of type MKUserLocation to the map.
