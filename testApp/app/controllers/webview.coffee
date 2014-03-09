@@ -187,4 +187,8 @@ class window.WebviewController
     steroids.view.setBackgroundColor("#FFFFFF")
     
   @testDisplayLoading: ->
-    steroids.view.displayLoading
+    steroids.view.displayLoading()
+    setTimeout ->
+      #auto hide the loading screen after 3 seconds
+      steroids.view.removeLoading()
+    , 3000
