@@ -185,3 +185,6 @@ class window.WebviewController
 
   @testSetBackgroundWhite: ->
     steroids.view.setBackgroundColor("#FFFFFF")
+    
+  @testDisplayLoading: ->
+    steroids.view.displayLoading
