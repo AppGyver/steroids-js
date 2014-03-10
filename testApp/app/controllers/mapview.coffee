@@ -24,6 +24,10 @@ class window.MapviewController
     
     # create a new mapView
     mapView = new steroids.views.MapView 
+      
+      # overlay location
+      location: "/views/mapview/mapoverlay.html"
+      
       # mapType can be: Standard, Satellite or Hybrid
       mapType: "Standard"
       
@@ -44,25 +48,26 @@ class window.MapviewController
           # The amount of east-to-west distance (measured in meters) to use for the span.
           longitudinalMeters: 2000
 
-    steroids.layers.push 
+    steroids.layers.push {
       view: mapView
-  
-    # add some markers to the map
-    mapView.addMarkers [
-        {
-          latitude: 41.2889
-          longitude: 174.7772
-          title: "marker 1"
-          subtitle: "subtitle marker 1"
-        },
-        {
-          latitude: 41.2889
-          longitude: 174.7772
-          title: "marker 2"
-          subtitle: "subtitle marker 2"
-        }
-      ],
-      onSuccess: -> alert "markers added to map!"
+      },
+      onSuccess: ->
+        # add some markers to the map
+        mapView.addMarkers [
+            {
+              latitude: 41.2889
+              longitude: 174.7772
+              title: "marker 1"
+              subtitle: "subtitle marker 1"
+            },
+            {
+              latitude: 41.2889
+              longitude: 174.7772
+              title: "marker 2"
+              subtitle: "subtitle marker 2"
+            }
+          ],
+          onSuccess: -> alert "markers added to map!"
       
       
   @testMapViewHybvridWithOverlay: () ->
