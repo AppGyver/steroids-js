@@ -48,16 +48,13 @@ class LayerCollection extends EventsSupport
       parameters.pushAnimationCurve = options.animation.curve
       parameters.popAnimationCurve = options.animation.reversedCurve
     
-    mapLayerCreatedCallback = (result) ->
-        view.id = result.id;
-    
     switch view.constructor.name
       when "MapView"
         parameters.map = view
         steroids.nativeBridge.nativeCall
           method: "openMapLayer"
           parameters: parameters
-          successCallbacks: [mapLayerCreatedCallback, callbacks.onSuccess]
+          successCallbacks: [callbacks.onSuccess]
           failureCallbacks: [callbacks.onFailure]
       else
         steroids.nativeBridge.nativeCall
