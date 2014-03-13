@@ -42,5 +42,6 @@ class Animation
         curve: options.curve || @curve
         duration: options.duration || @duration
       }
-      successCallbacks: [callbacks.onSuccess]
+      successCallbacks: [callbacks.onSuccess, callbacks.onAnimationStarted]
+      recurringCallbacks: [callbacks.onAnimationEnded]
       failureCallbacks: [callbacks.onFailure]

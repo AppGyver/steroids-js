@@ -41,10 +41,21 @@ class window.AnimationController
   @testDontPerformWhenOrientationNot0: () ->
     nowRotate = ->
       alert "now rotate the device off from 0 and try slideFromLeft"
-
+  
     steroids.view.setAllowedRotations {
       allowedRotations: [-90, 90, 0, 180]
     }, {
       onSuccess: nowRotate
     }
+    
+  @testMoreCallBacks: () ->
+    anim = new steroids.Animation {
+      transition: "slideFromLeft"
+    }
+    
+    anim.perform({}, {
+      onAnimationStarted: -> alert "animation started"
+      onAnimationEnded: -> alert "animation ended"
+      onFailure: -> alert "..and it is failing with onFailure. great success."
+    })
 
