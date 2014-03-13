@@ -141,7 +141,10 @@ class window.NavigationbarController
     steroids.view.navigationBar.update {
       overrideBackButton: false
     }
-
+  
+  @testSetBackButtonTitle: ->
+    steroids.view.navigationBar.setBackButtonTitle "go back"
+  
   @testUpdateButtonsWithoutBackButton: ->
     button1 = new steroids.buttons.NavigationBarButton
     button1.title = "NEW RIGHT"

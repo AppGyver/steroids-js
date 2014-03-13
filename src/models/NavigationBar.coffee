@@ -102,6 +102,22 @@ class NavigationBar
   buttonTapped: (options)=>
     @buttonCallbacks[options.location]?[options.index]?()
 
+  setBackButtonTitle: (options={}, callbacks={}) ->
+    steroids.on "ready", ()=>
+      params = {}
+      
+      if options.constructor.name == "String"
+        params.title = options
+      
+      if options.title?
+        params.title = options.title
+        
+      steroids.nativeBridge.nativeCall
+        method: "setBackButtonTitle"
+        parameters: params
+        successCallbacks: [callbacks.onSuccess]
+        failureCallbacks: [callbacks.onFailure]
+
   update: (options={}, callbacks={}) ->
     steroids.debug "steroids.navigationBar.update options: #{JSON.stringify options} callbacks: #{JSON.stringify callbacks}"
     steroids.on "ready", ()=>
