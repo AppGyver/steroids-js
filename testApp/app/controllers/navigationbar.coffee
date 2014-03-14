@@ -148,8 +148,8 @@ class window.NavigationbarController
     steroids.view.navigationBar.update
       border: {
         size: 1
-        color: '#FFCC00'
-      },
+        color: '#CCCCFF'
+      }
       removeShadow: true
   
   @testUpdateButtonsWithoutBackButton: ->

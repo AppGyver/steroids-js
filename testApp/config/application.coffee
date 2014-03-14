@@ -57,7 +57,12 @@ steroids.config.statusBar.enabled = Math.random() > 0.5
 # Setting these values override values set by the application theme in steroids.config.theme
 # Default for all attributes: ""
 
- steroids.config.navigationBar.tintColor = "#FFF"
+steroids.config.navigationBar.tintColor = "#FFF"
+# TODO: find where this obj structure is created and add border
+# steroids.config.navigationBar.border = {}
+# steroids.config.navigationBar.border.size = 2
+# steroids.config.navigationBar.border.color = "#FFCC00"
+
 # steroids.config.navigationBar.titleColor = ""
 # steroids.config.navigationBar.titleShadowColor = ""
 
