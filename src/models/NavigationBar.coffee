@@ -118,8 +118,6 @@ class NavigationBar
         
       params.border = options.border
       
-      params.removeShadow = options.removeShadow
-
       if options.titleImagePath?
         if not options.title?
           params.titleImagePath = relativeTo + options.titleImagePath
