@@ -22,11 +22,11 @@ steroids.config.tabBar.enabled = true
 #   - http://www.google.com (directly from internet)
 #
 steroids.config.tabBar.tabs = [
-  # {
-  #   title: "FUT"
-  #   icon: "icons/telescope@2x.png"
-  #   location: "http://localhost/views/steroids/serve.html"
-  # }
+  {
+    title: "FUT"
+    icon: "icons/telescope@2x.png"
+    location: "http://localhost/views/navigationbar/index.html"
+  }
   {
     title: "HTTP"
     icon: "icons/pill@2x.png"
@@ -57,7 +57,7 @@ steroids.config.statusBar.enabled = Math.random() > 0.5
 # Setting these values override values set by the application theme in steroids.config.theme
 # Default for all attributes: ""
 
-# steroids.config.navigationBar.tintColor = ""
+ steroids.config.navigationBar.tintColor = "#FFF"
 # steroids.config.navigationBar.titleColor = ""
 # steroids.config.navigationBar.titleShadowColor = ""
 

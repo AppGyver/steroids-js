@@ -115,6 +115,10 @@ class NavigationBar
       if options.title?
         params.title = options.title
         params.titleImagePath = ""
+        
+      params.border = options.border
+      
+      params.removeShadow = options.removeShadow
 
       if options.titleImagePath?
         if not options.title?

@@ -6,6 +6,8 @@ class window.NavigationbarController
 
       # Make Navigation Bar to appear with a custom title text
       steroids.view.navigationBar.show { title: "navbar" }
+      
+      steroids.view.setBackgroundColor("#FFF")
 
   @testHideAnimated: ->
     steroids.view.navigationBar.hide {
@@ -141,7 +143,15 @@ class window.NavigationbarController
     steroids.view.navigationBar.update {
       overrideBackButton: false
     }
-
+  
+  @testSetBorderBlue: ->
+    steroids.view.navigationBar.update
+      border: {
+        size: 1
+        color: '#FFCC00'
+      },
+      removeShadow: true
+  
   @testUpdateButtonsWithoutBackButton: ->
     button1 = new steroids.buttons.NavigationBarButton
     button1.title = "NEW RIGHT"
