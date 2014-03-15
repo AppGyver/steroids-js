@@ -150,7 +150,6 @@ class window.NavigationbarController
         size: 1
         color: '#CCCCFF'
       }
-      removeShadow: true
   
   @testUpdateButtonsWithoutBackButton: ->
     button1 = new steroids.buttons.NavigationBarButton
