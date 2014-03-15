@@ -63,7 +63,7 @@ steroids.config.navigationBar.tintColor = "#FFF"
 # steroids.config.navigationBar.border.size = 2
 # steroids.config.navigationBar.border.color = "#FFCC00"
 
-# steroids.config.navigationBar.titleColor = ""
+steroids.config.navigationBar.titleColor = "#CCC"
 # steroids.config.navigationBar.titleShadowColor = ""
 
 # steroids.config.navigationBar.buttonTintColor = ""
