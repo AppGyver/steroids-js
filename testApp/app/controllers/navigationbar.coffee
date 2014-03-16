@@ -150,11 +150,11 @@ class window.NavigationbarController
     }
   
   @testSetBackButtonImage: ->
-      customBack = new steroids.buttons.NavigationBarButton
-      customBack.imagePath = "/icons/pill@2x.png"
-      steroids.view.navigationBar.update {
-        backButton: customBack
-      }  
+    customBack = new steroids.buttons.NavigationBarButton
+    customBack.imagePath = "/icons/pill@2x.png"
+    steroids.view.navigationBar.update {
+      backButton: customBack
+    }  
   
   @testUpdateButtonsWithoutBackButton: ->
     button1 = new steroids.buttons.NavigationBarButton
