@@ -3,7 +3,7 @@ class window.ModalController
   document.addEventListener "deviceready", ->
 
     # Make Navigation Bar to appear with a custom title text
-    steroids.navigationBar.show { title: "modal" }
+    # steroids.navigationBar.show { title: "modal" }
 
   @testShow: () ->
     opened = () ->
@@ -25,7 +25,32 @@ class window.ModalController
 
     steroids.modal.show(hideView)
 
-
+  @testShowWithNavBar: () ->
+  
+    modalWithNavBar = new steroids.views.WebView "/views/modal/modalWithNavBar.html"
+      
+    steroids.modal.show(modalWithNavBar)
+  
+  @testDisplayNavigationBar: () ->
+    steroids.view.navigationBar.show 
+      title: "Modal Title",
+      animated: true
+      
+    rightButton = new steroids.buttons.NavigationBarButton();
+    
+    rightButton.title = "Right"
+    
+    steroids.view.navigationBar.setButtons {
+      right: [rightButton]
+    }, 
+    {
+      onSuccess: alert "Buttons set!" ;
+    }
+  
+  @testHideNavigationBar: () ->
+    steroids.view.navigationBar.hide()
+    
+      
   @testShowPreloaded: () ->
 
     window.addEventListener "message", (message) =>
