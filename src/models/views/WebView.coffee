@@ -69,6 +69,13 @@ class WebView
       successCallbacks: [callbacks.onSuccess]
       failureCallbacks: [callbacks.onFailure]
 
+  displayLoading: (options={}, callbacks={}) ->
+  
+    steroids.nativeBridge.nativeCall
+      method: "displayTransitionHelper"
+      successCallbacks: [callbacks.onSuccess]
+      failureCallbacks: [callbacks.onFailure]
+
   setAllowedRotations: (options={}, callbacks={}) ->
     @allowedRotations = if options.constructor.name == "Array"
       options
