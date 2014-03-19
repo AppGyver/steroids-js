@@ -1,5 +1,15 @@
 class StatusBar
   
+  onTap: (options={}, callbacks={}) ->
+    @onTap = options
+    
+    steroids.nativeBridge.nativeCall
+      method: "setupStatusBarOnTap"
+      parameters: {}
+      successCallbacks: [callbacks.onSuccess]
+      recurringCallbacks: [@onTap]
+      failureCallbacks: [callbacks.onFailure]
+  
   hide: (options={}, callbacks={}) ->
     steroids.debug "steroids.statusBar.hide options: #{JSON.stringify options} callbacks: #{JSON.stringify callbacks}"
     
