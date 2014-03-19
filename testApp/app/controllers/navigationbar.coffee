@@ -141,7 +141,21 @@ class window.NavigationbarController
     steroids.view.navigationBar.update {
       overrideBackButton: false
     }
-
+  
+  @testSetBackButtonTitle: ->
+    customBack = new steroids.buttons.NavigationBarButton
+    customBack.title = "custom back"
+    steroids.view.navigationBar.update {
+      backButton: customBack
+    }
+  
+  @testSetBackButtonImage: ->
+    customBack = new steroids.buttons.NavigationBarButton
+    customBack.imagePath = "/icons/pill@2x.png"
+    steroids.view.navigationBar.update {
+      backButton: customBack
+    }  
+  
   @testUpdateButtonsWithoutBackButton: ->
     button1 = new steroids.buttons.NavigationBarButton
     button1.title = "NEW RIGHT"

@@ -124,6 +124,10 @@ class NavigationBar
       if options.overrideBackButton?
         params.overrideBackButton = options.overrideBackButton
 
+
+      if options.backButton?
+        params.backButton = options.backButton.toParams()
+
       if options.buttons?
 
         locations = ["right", "left"]
