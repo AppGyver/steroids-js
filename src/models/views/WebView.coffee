@@ -115,3 +115,16 @@ class WebView
         color: newColor
       successCallbacks: [callbacks.onSuccess]
       failureCallbacks: [callbacks.onFailure]
+
+  updateKeyboard: (options={}, callbacks={}) ->
+    
+    params = {}
+    
+    if options.accessoryBarEnabled?
+      params.accessoryBarEnabled = options.accessoryBarEnabled
+    
+    steroids.nativeBridge.nativeCall
+      method: "updateKeyboard"
+      parameters: params
+      successCallbacks: [callbacks.onSuccess]
+      failureCallbacks: [callbacks.onFailure]

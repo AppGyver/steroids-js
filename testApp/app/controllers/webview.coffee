@@ -192,3 +192,22 @@ class window.WebviewController
       #auto hide the loading screen after 3 seconds
       steroids.view.removeLoading()
     , 3000
+
+  @testEnableKeyboardAccessory: () ->
+    steroids.view.updateKeyboard {
+      accessoryBarEnabled:true
+    }, {
+      onSuccess: -> alert "keyboardc accesssory enabled"
+    }
+    
+  @testDisableKeyboardAccessory: () ->
+    steroids.view.updateKeyboard {
+      accessoryBarEnabled:false
+    }, {
+      onSuccess: -> alert "keyboardy accesssory disabled"
+    }
+
+  @testKeyboardAccessoryWithEmptyParams: () ->
+    steroids.view.updateKeyboard null, {
+      onSuccess: -> alert "updateKeyboard called with no parameters (no change)"
+    }
