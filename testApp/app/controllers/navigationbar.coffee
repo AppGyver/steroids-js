@@ -174,3 +174,16 @@ class window.NavigationbarController
     },
       onSuccess: -> alert "nav bar buttons updated"
       onFailure: -> alert "failed to update nav bar buttons"
+
+  @testSetAppearanceToRainbow: ->
+    steroids.view.navigationBar.setAppearance {
+      tintColor: '#FF0000'
+      titleTextColor: '#0000FF'
+      titleShadowColor: '#8F00FF'
+      buttonTintColor: '#00FF00'
+      buttonTitleTextColor: '#FF7F00'
+      buttonTitleShadowColor: '#FFFF00'
+    }, {
+      onSuccess: -> alert "taste the rainbow"
+      onFailure: -> alert "failed set nav bar appearance"
+    }
