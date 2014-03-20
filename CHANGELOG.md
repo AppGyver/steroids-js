@@ -1,3 +1,8 @@
+##3.1.8 (TODO)
+
+Secret features:
+  - `steroids.view.navigationBar.setAppearance` changes navigation bar appearance.
+
 ##3.1.7 (2014-03-05)
 
 Secret features:

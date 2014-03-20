@@ -102,6 +102,43 @@ class NavigationBar
   buttonTapped: (options)=>
     @buttonCallbacks[options.location]?[options.index]?()
 
+  setAppearance: do ->
+    appearancePropertyNames = [
+      'portraitBackgroundImage'
+      'landscapeBackgroundImage'
+      'tintColor'
+      'titleTextColor'
+      'titleShadowColor'
+      'buttonTintColor'
+      'buttonTitleTextColor'
+      'buttonTitleShadowColor'
+    ]
+    camelcasedNavBarAppearancePropertyName = (appearancePropertyName) ->
+      'navBar' + ucfirst appearancePropertyName
+    ucfirst = (string) ->
+      if string?.length > 0
+        string.charAt(0).toUpperCase() + string.slice(1)
+      else
+        ""
+    optionsToAppearanceParams = (options) ->
+      appearance = {}
+      for propertyName in appearancePropertyNames
+        if options[propertyName]?
+          appearance[camelcasedNavBarAppearancePropertyName propertyName] = options[propertyName]
+      {
+        appearance
+      }
+
+    (options = {}, callbacks = {}) ->
+      steroids.debug "steroids.navigationBar.setAppearance options: #{JSON.stringify options} callbacks: #{JSON.stringify callbacks}"
+
+      steroids.on "ready", ->
+        steroids.nativeBridge.nativeCall
+          method: "setAppearance"
+          parameters: optionsToAppearanceParams options
+          successCallbacks: [callbacks.onSuccess]
+          failureCallbacks: [callbacks.onFailure]
+
   update: (options={}, callbacks={}) ->
     steroids.debug "steroids.navigationBar.update options: #{JSON.stringify options} callbacks: #{JSON.stringify callbacks}"
     steroids.on "ready", ()=>
