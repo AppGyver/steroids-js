@@ -112,6 +112,20 @@ class window.ModalController
     }, {
       onSuccess: opened
     }
+    
+  @testUpdateNavBar: ->
+    closeButton = new steroids.buttons.NavigationBarButton
+    closeButton.title = "Close"
+    closeButton.onTap = => steroids.modal.hide()
+      
+    steroids.view.navigationBar.update {
+      titleImagePath: "/icons/telescope@2x.png"
+      buttons: {
+        right: [closeButton]
+      }
+    },
+      onSuccess: -> alert "nav bar buttons updated"
+      onFailure: -> alert "failed to update nav bar buttons"
 
   @testSetAppearanceToRainbow: ->
     steroids.view.navigationBar.setAppearance {
