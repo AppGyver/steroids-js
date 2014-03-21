@@ -5,6 +5,22 @@ describe "steroids", ->
     it "should be defined", ->
       expect( steroids.app ).toBeDefined()
 
+    describe "getNSUserDefaults", ->
+
+      # (secret api) waiting for release
+      xit "should return defaults in iOS", ->
+
+        defaults = null
+
+        steroids.app.getNSUserDefaults {},
+          onSuccess: (gotDefaults) -> defaults = gotDefaults
+
+        waitsFor -> defaults?
+
+        runs ->
+          expect( defaults ).toBe("lol")
+
+
     describe "app mode", ->
 
       it "should return the mode", ->

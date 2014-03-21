@@ -1,3 +1,8 @@
+##3.1.8 (TODO)
+
+Secret features:
+  - `steroids.app.getNSUserDefaults()` returns current NSUserDefaults in iOS
+
 ##3.1.7 (2014-03-05)
 
 Secret features:
