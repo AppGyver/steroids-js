@@ -37,6 +37,33 @@ class window.AnimationController
     anim.perform({}, {
       onFailure: -> alert "..and it is failing with onFailure. great success."
     })
+    
+  @testSlideFromRight: () ->
+    anim = new steroids.Animation {
+      transition: "slideFromRight"
+    }
+  
+    anim.perform({}, {
+      onFailure: -> alert "..and it is failing with onFailure. great success."
+    })
+    
+  @testSlideFromTop: () ->
+     anim = new steroids.Animation {
+       transition: "slideFromTop"
+     }
+   
+     anim.perform({}, {
+       onFailure: -> alert "..and it is failing with onFailure. great success."
+     })
+     
+  @testSlideFromBottom: () ->
+    anim = new steroids.Animation {
+      transition: "slideFromBottom"
+    }
+  
+    anim.perform({}, {
+      onFailure: -> alert "..and it is failing with onFailure. great success."
+    })
 
   @testDontPerformWhenOrientationNot0: () ->
     nowRotate = ->
