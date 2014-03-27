@@ -1,9 +1,11 @@
 class window.WebviewController
   # always put everything inside PhoneGap deviceready
   document.addEventListener "deviceready", ->
+    return if window.location.href.match "noNavigationBar.html"
+
     steroids.view.navigationBar.show { title: "webview" }
-    
-    
+
+
   @testOnSuccessWithOpen: () ->
     webView = new steroids.views.WebView "/views/webview/noNavigationBar.html"
 
@@ -187,7 +189,7 @@ class window.WebviewController
 
   @testSetBackgroundWhite: ->
     steroids.view.setBackgroundColor("#FFFFFF")
-    
+
   @testDisplayLoading: ->
     steroids.view.displayLoading()
     setTimeout ->
@@ -201,7 +203,7 @@ class window.WebviewController
     }, {
       onSuccess: -> alert "keyboardc accesssory enabled"
     }
-    
+
   @testDisableKeyboardAccessory: () ->
     steroids.view.updateKeyboard {
       accessoryBarEnabled:false
