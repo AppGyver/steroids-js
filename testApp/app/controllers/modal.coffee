@@ -19,6 +19,10 @@ class window.ModalController
       onSuccess: opened
     }
 
+  @testOpenAnotherModal: () ->
+
+    steroids.modal.show(new steroids.views.WebView("/views/modal/index.html"))
+
   @testShowShorthand: () ->
 
     hideView = new steroids.views.WebView "/views/modal/hide.html"
@@ -78,11 +82,21 @@ class window.ModalController
 
 
   @testHide: () ->
-
+  
     hidden = () ->
       alert "hidden"
-
+  
     steroids.modal.hide {
+    }, {
+      onSuccess: hidden
+    }
+    
+  @testCloseAll: () ->
+  
+    hidden = () ->
+      alert "all closed"
+  
+    steroids.modal.closeAll {
     }, {
       onSuccess: hidden
     }
