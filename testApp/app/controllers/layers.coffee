@@ -2,13 +2,17 @@ class window.LayersController
   # always put everything inside PhoneGap deviceready
   document.addEventListener "deviceready", ->
 
-    # Make Navigation Bar to appear with a custom title text
+  # Make Navigation Bar to appear with a custom title text
+  unless window.location.href.match("pop.html")
     steroids.navigationBar.show { title: "layers" }
 
   @createWebView: ->
     new steroids.views.WebView {
       location: "/views/layers/pop.html"
     }
+
+  @testShowNavBar: ->
+    steroids.navigationBar.show "layers"
 
   @testPushPop: ->
     pushed = ->
