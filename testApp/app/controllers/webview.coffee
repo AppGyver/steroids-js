@@ -179,6 +179,13 @@ class window.WebviewController
       animation: anim
     }
 
+  @testSetBackgroundImage: ->
+    steroids.view.setBackgroundImage("/img/space-background.png")
+    
+  @testSetBackgroundImageMontain: ->
+    steroids.view.setBackgroundImage("/img/montain-bg.png")
+    document.body.style.backgroundColor = 'transparent';
+
   @testSetBackgroundCACCAA: ->
     steroids.view.setBackgroundColor("#CACCAA")
 
