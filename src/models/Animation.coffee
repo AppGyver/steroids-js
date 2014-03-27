@@ -30,10 +30,6 @@ class Animation
     @reversedCurve = options.reversedCurve ? "easeInOut"
 
   perform: (options={}, callbacks={}) =>
-    # AnimatioService has been fixed to work under any rotation, so no need for this anymore.
-    #if window.orientation != 0 and @transition in ["slideFromRight", "slideFromLeft", "slideFromTop", "slideFromBottom"]
-    #  callbacks.onFailure?.call()
-    #  return
 
     steroids.nativeBridge.nativeCall
       method: "performTransition"
