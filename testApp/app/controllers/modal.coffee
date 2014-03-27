@@ -26,31 +26,32 @@ class window.ModalController
     steroids.modal.show(hideView)
 
   @testShowWithNavBar: () ->
-  
+
     modalWithNavBar = new steroids.views.WebView "/views/modal/modalWithNavBar.html"
-      
+
     steroids.modal.show(modalWithNavBar)
-  
+
   @testDisplayNavigationBar: () ->
-    steroids.view.navigationBar.show 
+    steroids.view.navigationBar.show
       title: "Modal Title",
       animated: true
-      
+
     rightButton = new steroids.buttons.NavigationBarButton();
-    
+
     rightButton.title = "Right"
-    
+    rightButton.onTap = => alert('touched Right')
+
     steroids.view.navigationBar.setButtons {
       right: [rightButton]
-    }, 
+    },
     {
       onSuccess: alert "Buttons set!" ;
     }
-  
+
   @testHideNavigationBar: () ->
     steroids.view.navigationBar.hide()
-    
-      
+
+
   @testShowPreloaded: () ->
 
     window.addEventListener "message", (message) =>
@@ -112,12 +113,12 @@ class window.ModalController
     }, {
       onSuccess: opened
     }
-    
+
   @testUpdateNavBar: ->
     closeButton = new steroids.buttons.NavigationBarButton
     closeButton.title = "Close"
     closeButton.onTap = => steroids.modal.hide()
-      
+
     steroids.view.navigationBar.update {
       titleImagePath: "/icons/telescope@2x.png"
       buttons: {
