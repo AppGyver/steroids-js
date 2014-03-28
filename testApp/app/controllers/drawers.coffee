@@ -46,3 +46,35 @@ class window.DrawersController
     steroids.drawers.disableGesture {}, {
       onSuccess: success
     }
+  
+  @testEnableGestureWithFullParams: ->
+    success = ->
+      console.log "SUCCESS"
+    
+    steroids.drawers.enableGesture {
+      view: @webView,
+      closeMode: "QuickClose",
+      showShadow: false,
+      openGestures: ["PanBezelCenterView"],
+      closeGestures: ["PanCenterView", "PanDrawerView"],
+      strechDrawer: false,
+      centerViewInteractionMode: "NavBar"
+    }, {
+      onSuccess: success
+    }
+  
+  @testShowWithFullParams: ->
+    success = ->
+      console.log "SUCCESS"
+  
+    steroids.drawers.show {
+      view: @webView,
+      closeMode: "FullChange",
+      showShadow: true,
+      openGestures: ["PanCenterView"],
+      closeGestures: ["PanCenterView", "PanDrawerView"],
+      strechDrawer: true,
+      centerViewInteractionMode: "Full"
+    }, {
+      onSuccess: success
+    }
