@@ -51,6 +51,10 @@ class window.DrawersController
     success = ->
       console.log "SUCCESS"
     
+    # steroids.drawers.enableGesture {
+    #  side: ['left']
+    # }
+    
     steroids.drawers.enableGesture {
       view: @webView,
       closeMode: "QuickClose",
