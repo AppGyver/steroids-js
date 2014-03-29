@@ -46,15 +46,15 @@ class window.DrawersController
     steroids.drawers.disableGesture {}, {
       onSuccess: success
     }
-  
+
   @testEnableGestureWithFullParams: ->
     success = ->
       console.log "SUCCESS"
-    
+
     # steroids.drawers.enableGesture {
     #  side: ['left']
     # }
-    
+
     steroids.drawers.enableGesture {
       view: @webView,
       closeMode: "QuickClose",
@@ -66,11 +66,35 @@ class window.DrawersController
     }, {
       onSuccess: success
     }
-  
+
+  @testEnableGestureWithParallax: ->
+    success = ->
+      console.log "SUCCESS"
+
+    # steroids.drawers.enableGesture {
+    #  side: ['left']
+    # }
+
+    steroids.drawers.enableGesture {
+      view: @webView,
+      closeMode: "QuickClose",
+      showShadow: false,
+      openGestures: ["PanBezelCenterView"],
+      closeGestures: ["PanCenterView", "PanDrawerView"],
+      strechDrawer: false,
+      centerViewInteractionMode: "NavBar",
+      animation: new steroids.Animation
+        transition: "parallax"
+        duration: 1.2
+        parallaxFactor: 3.0
+    }, {
+      onSuccess: success
+    }
+
   @testShowWithFullParams: ->
     success = ->
       console.log "SUCCESS"
-  
+
     steroids.drawers.show {
       view: @webView,
       closeMode: "FullChange",

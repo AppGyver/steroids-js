@@ -11,6 +11,11 @@ class Animation
     flipVerticalFromTop: "flipVerticalFromBottom"
     flipHorizontalFromLeft: "flipHorizontalFromRight"
     flipHorizontalFromRight: "flipHorizontalFromLeft"
+    # Drawer animations
+    slide: "slide"
+    slideAndScale: "slideAndScale"
+    swingingDoor: "swingingDoor"
+    parallax: "parallax"
 
   constructor: (options={}) ->
     @transition = if options.constructor.name == "String"
@@ -28,6 +33,9 @@ class Animation
 
     @curve = options.curve ? "easeInOut"
     @reversedCurve = options.reversedCurve ? "easeInOut"
+
+    #parallax drawer animation
+    @parallaxFactor = options.parallaxFactor ? 2.0
 
   perform: (options={}, callbacks={}) =>
 
