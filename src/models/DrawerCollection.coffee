@@ -2,13 +2,23 @@ class DrawerCollection
 
   constructor: ->
     @defaultAnimations = {
-      LEFT: new Animation({
-        transition: "slideFromLeft"
-        duration: 0.2
+      SLIDE: new Animation({
+        transition: "slide"
+        duration: 0.8
       })
-      RIGHT: new Animation("slideFromRight")
-      # TOP: new Animation("slideFromTop")
-      # BOTTOM: new Animation("slideFromBottom")
+      SLIDE_AND_SCALE: new Animation({
+        transition: "slideAndScale"
+        duration: 0.8
+      })
+      SWINGING_DOOR: new Animation({
+        transition: "swingingDoor"
+        duration: 0.8
+      })
+      PARALLAX: new Animation({
+        transition: "parallax"
+        duration: 0.8
+        parallaxFactor: 2.0
+      })
     }
 
     @defaultWidth = Math.floor(75/100 * window.screen.width)
@@ -19,11 +29,13 @@ class DrawerCollection
 
     @showShadow = false
 
+    # None -> Disable any gesture for open
     # PanNavBar -> open the drawer by panning the NavBar
     # PanCenterView -> open the drawer by panning anywhere in the center view
     # PanBezelCenterView -> open the drawer by panning starting from the edge (bezel). the distance from the bezel is defined by the property XXX
     @openGestures = ["PanNavBar", "PanCenterView", "PanBezelCenterView"]
 
+    # None -> Disable any gesture for close
     # PanNavBar -> close the drawer by panning the NavBar
     # PanCenterView -> close the drawer by panning anywhere in the center view
     # PanBezelCenterView -> close the drawer by panning starting from the edge (bezel). the distance from the bezel is defined by the property XXX
@@ -44,23 +56,9 @@ class DrawerCollection
     parameters.animation = animation.transition
     parameters.animationDuration = animation.duration
     parameters.parallaxFactor = animation.parallaxFactor
-    # parameters.popAnimation = animation.reversedTransition
-    # parameters.popAnimationDuration = animation.reversedDuration
-
-    # parameters.pushAnimationCurve = animation.curve
-    # parameters.popAnimationCurve = animation.reversedCurve
 
   hide: (options={}, callbacks={}) ->
     steroids.debug "steroids.drawers.hide called"
-
-    parameters = { edge: "left" }
-
-    if options.animation?
-      steroids.debug "steroids.drawers.show using custom animation"
-      @takeParamsFromAnimation(options.animation, parameters)
-    else
-      steroids.debug "steroids.drawers.show using default animation"
-      @takeParamsFromAnimation(window.steroids.drawers.defaultAnimations.LEFT, parameters)
 
     steroids.nativeBridge.nativeCall
       method: "closeDrawer"
@@ -68,55 +66,16 @@ class DrawerCollection
       successCallbacks: [callbacks.onSuccess]
       failureCallbacks: [callbacks.onFailure]
 
-  hideAll: (options={}, callbacks={}) ->
-    @hide(options, callbacks)
-
   show: (options={}, callbacks={}) ->
     steroids.debug "steroids.drawers.show called"
-
-    view = if options.constructor.name == "WebView"
-      steroids.debug "steroids.drawers.show using view shorthand"
-      options
-    else
-      steroids.debug "steroids.drawers.show using longhand"
-      options.view
-
-    parameters = { edge: "left" }
-
-    if view.id?
-      steroids.debug "steroids.drawers.show using preloaded view"
-      parameters.id = view.id
-    else
-      steroids.debug "steroids.drawers.show using new view"
-      parameters.url = view.location
 
     if options.keepLoading == true
       steroids.debug "steroids.drawers.show using keepLoading"
       parameters.keepTransitionHelper = true
 
-    if options.animation?
-      steroids.debug "steroids.drawers.show using custom animation"
-      @takeParamsFromAnimation(options.animation, parameters)
-    else
-      steroids.debug "steroids.drawers.show using default animation"
-      @takeParamsFromAnimation(@defaultAnimations.LEFT, parameters)
-
-    if options.widthOfDrawerInPixels?
-      steroids.debug "steroids.drawers.show using custom width of drawer to determine cutoff point"
-      parameters.widthOfDrawerInPixels = options.widthOfDrawerInPixels
-    else
-      steroids.debug "steroids.drawers.show using default width of drawer to determine cutoff point"
-      parameters.widthOfDrawerInPixels = @defaultWidth
-
-    if options.widthOfLayerInPixels?
-      steroids.debug "steroids.drawers.show using custom width of layer to determine cutoff point"
-      parameters.widthOfLayerInPixels = options.widthOfLayerInPixels
-
     if options.edge?
-      steroids.debug "steroids.drawers.show using custom edge to show drawer from"
       parameters.edge = options.edge
     else
-      steroids.debug "steroids.drawers.show using default edge to show drawer from"
       parameters.edge = steroids.screen.edges.LEFT
 
     @applyDrawerSettings options, parameters
@@ -127,51 +86,31 @@ class DrawerCollection
       successCallbacks: [callbacks.onSuccess]
       failureCallbacks: [callbacks.onFailure]
 
-  enableGesture: (options={}, callbacks={}) ->
+  update: (options={}, callbacks={}) ->
     steroids.debug "steroids.drawers.enableGesture called"
 
-    view = if options.constructor.name == "WebView"
-      steroids.debug "steroids.drawers.enableGesture using view shorthand"
-      options
-    else
-      steroids.debug "steroids.drawers.enableGesture using longhand"
-      options.view
+    parameters = {}
 
-    parameters = { edge: "left" }
+    if options.leftView?
+      if options.leftView.id?
+        parameters.id = options.leftView.id
+      else
+        parameters.url = options.leftView.location
 
-    if view.id?
-      steroids.debug "steroids.drawers.enableGesture using preloaded view"
-      parameters.id = view.id
-    else
-      steroids.debug "steroids.drawers.enableGesture using new view"
-      parameters.url = view.location
+    if options.rightView?
+      if options.rightView.id?
+        parameters.id = options.rightView.id
+      else
+        parameters.url = options.rightView.location
 
     if options.keepLoading == true
       steroids.debug "steroids.drawers.enableGesture using keepLoading"
       parameters.keepTransitionHelper = true
 
-    if options.widthOfDrawerInPixels?
-      steroids.debug "steroids.drawers.enableGesture using custom width of drawer to determine cutoff point"
-      parameters.widthOfDrawerInPixels = options.widthOfDrawerInPixels
-    else
-      steroids.debug "steroids.drawers.enableGesture using default width of drawer to determine cutoff point"
-      parameters.widthOfDrawerInPixels = @defaultWidth
-
-    if options.widthOfLayerInPixels?
-      steroids.debug "steroids.drawers.enableGesture using custom width of layer to determine cutoff point"
-      parameters.widthOfLayerInPixels = options.widthOfLayerInPixels
-
-    if options.edge?
-      steroids.debug "steroids.drawers.enableGesture using custom edge to show drawer from"
-      parameters.edge = options.edge
-    else
-      steroids.debug "steroids.drawers.enableGesture using default edge to show drawer from"
-      parameters.edge = steroids.screen.edges.LEFT
-
     @applyDrawerSettings options, parameters
 
     steroids.nativeBridge.nativeCall
-      method: "enableDrawerGesture"
+      method: "updateDrawer"
       parameters: parameters
       successCallbacks: [callbacks.onSuccess]
       failureCallbacks: [callbacks.onFailure]
@@ -179,9 +118,14 @@ class DrawerCollection
   disableGesture: (options={}, callbacks={}) ->
     steroids.debug "steroids.drawers.disableGesture called"
 
+    parameters = {
+      openGestures: "None"
+      closeGestures: "None"
+    }
+
     steroids.nativeBridge.nativeCall
-      method: "disableDrawerGesture"
-      parameters: {}
+      method: "updateDrawer"
+      parameters: parameters
       successCallbacks: [callbacks.onSuccess]
       failureCallbacks: [callbacks.onFailure]
 
@@ -216,5 +160,23 @@ class DrawerCollection
       parameters.centerViewInteractionMode = options.centerViewInteractionMode
     else
       parameters.centerViewInteractionMode = @centerViewInteractionMode
+
+    if options.animation?
+      steroids.debug "steroids.drawers.show using custom animation"
+      @takeParamsFromAnimation(options.animation, parameters)
+    else
+      steroids.debug "steroids.drawers.show using default animation"
+      @takeParamsFromAnimation(@defaultAnimations.SLIDE, parameters)
+
+    if options.widthOfDrawerInPixels?
+      steroids.debug "steroids.drawers.enableGesture using custom width of drawer to determine cutoff point"
+      parameters.widthOfDrawerInPixels = options.widthOfDrawerInPixels
+    else
+      steroids.debug "steroids.drawers.enableGesture using default width of drawer to determine cutoff point"
+      parameters.widthOfDrawerInPixels = @defaultWidth
+
+    if options.widthOfLayerInPixels?
+      steroids.debug "steroids.drawers.enableGesture using custom width of layer to determine cutoff point"
+      parameters.widthOfLayerInPixels = options.widthOfLayerInPixels
 
     parameters

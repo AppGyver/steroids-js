@@ -1,6 +1,10 @@
 class window.DrawersController
-  @webView: new steroids.views.WebView {
-    location: "/views/drawers/drawer.html"
+  @leftDrawer: new steroids.views.WebView {
+    location: "/views/drawers/leftDrawer.html"
+  }
+
+  @rightDrawer: new steroids.views.WebView {
+    location: "/views/drawers/rightDrawer.html"
   }
 
   # always put everything inside PhoneGap deviceready
@@ -9,14 +13,37 @@ class window.DrawersController
     # Make Navigation Bar to appear with a custom title text
     steroids.navigationBar.show { title: "drawers" }
 
-    DrawersController.webView.preload()
+    # update the drawer with the webview and default parameters
+    DrawersController.leftDrawer.preload {}, {
+      onSuccess: =>
+        steroids.drawers.update {
+          leftView: DrawersController.leftDrawer
+        }
+    }
 
-  @testShow: ->
+    DrawersController.rightDrawer.preload {}, {
+      onSuccess: =>
+        steroids.drawers.update {
+          rightView: DrawersController.rightDrawer
+        }
+    }
+
+  @testShowLeft: ->
     success = ->
       console.log "SUCCESS"
 
     steroids.drawers.show {
-      view: @webView
+      edge: steroids.screen.edges.LEFT
+    }, {
+      onSuccess: success
+    }
+
+  @testShowRight: ->
+    success = ->
+      console.log "SUCCESS"
+
+    steroids.drawers.show {
+      edge: steroids.screen.edges.RIGHT
     }, {
       onSuccess: success
     }
@@ -29,12 +56,13 @@ class window.DrawersController
       onSuccess: success
     }
 
-  @testEnableGesture: ->
+  @testEnableAllGestures: ->
     success = ->
       console.log "SUCCESS"
 
-    steroids.drawers.enableGesture {
-      view: @webView
+    steroids.drawers.update {
+      openGestures: ["PanNavBar", "PanCenterView", "PanBezelCenterView"],
+      closeGestures: ["PanNavBar", "PanCenterView", "PanBezelCenterView", "TapNavBar", "TapCenterView", "PanDrawerView"]
     }, {
       onSuccess: success
     }
@@ -43,31 +71,29 @@ class window.DrawersController
     success = ->
       console.log "SUCCESS"
 
-    steroids.drawers.disableGesture {}, {
-      onSuccess: success
+    steroids.drawers.update {}, {
+      #both ways are valid
+      openGestures: ["None"],
+      #empty array is also valid
+      closeGestures: []
     }
 
-  @testEnableGestureWithFullParams: ->
+  @testUpdateWithFullParams: ->
     success = ->
       console.log "SUCCESS"
 
-    # steroids.drawers.enableGesture {
-    #  side: ['left']
-    # }
-
-    steroids.drawers.enableGesture {
-      view: @webView,
-      closeMode: "QuickClose",
-      showShadow: false,
-      openGestures: ["PanBezelCenterView"],
-      closeGestures: ["PanCenterView", "PanDrawerView"],
-      strechDrawer: false,
+    steroids.drawers.update {
+      closeMode: "QuickClose"
+      showShadow: false
+      openGestures: ["PanBezelCenterView"]
+      closeGestures: ["PanCenterView", "PanDrawerView"]
+      strechDrawer: false
       centerViewInteractionMode: "NavBar"
     }, {
       onSuccess: success
     }
 
-  @testEnableGestureWithParallax: ->
+  @testUpdateWithParallax: ->
     success = ->
       console.log "SUCCESS"
 
@@ -75,14 +101,7 @@ class window.DrawersController
     #  side: ['left']
     # }
 
-    steroids.drawers.enableGesture {
-      view: @webView,
-      closeMode: "QuickClose",
-      showShadow: false,
-      openGestures: ["PanBezelCenterView"],
-      closeGestures: ["PanCenterView", "PanDrawerView"],
-      strechDrawer: false,
-      centerViewInteractionMode: "NavBar",
+    steroids.drawers.update {
       animation: new steroids.Animation
         transition: "parallax"
         duration: 1.2
@@ -91,17 +110,17 @@ class window.DrawersController
       onSuccess: success
     }
 
-  @testShowWithFullParams: ->
+  @testShowLeftWithFullParams: ->
     success = ->
       console.log "SUCCESS"
 
     steroids.drawers.show {
-      view: @webView,
-      closeMode: "FullChange",
-      showShadow: true,
-      openGestures: ["PanCenterView"],
-      closeGestures: ["PanCenterView", "PanDrawerView"],
-      strechDrawer: true,
+      edge: steroids.screen.edges.LEFT
+      closeMode: "FullChange"
+      showShadow: true
+      openGestures: ["PanCenterView"]
+      closeGestures: ["PanCenterView", "PanDrawerView"]
+      strechDrawer: true
       centerViewInteractionMode: "Full"
     }, {
       onSuccess: success
