@@ -7,6 +7,12 @@ class window.DrawersController
     location: "/views/drawers/rightDrawer.html"
   }
 
+  @center1: null
+
+  @center2: new steroids.views.WebView {
+    location: "/views/drawers/index2.html"
+  }
+
   # always put everything inside PhoneGap deviceready
   document.addEventListener "deviceready", =>
 
@@ -27,6 +33,13 @@ class window.DrawersController
           rightView: DrawersController.rightDrawer
         }
     }
+
+    #center1 is the current view (index.html)
+    DrawersController.center1 = steroids.view
+
+    #preload center2
+    DrawersController.center2.preload()
+
 
   @testShowLeft: ->
     success = ->
@@ -56,6 +69,28 @@ class window.DrawersController
       onSuccess: success
     }
 
+  @testHideWithFullChangeCenter1: ->
+    success = ->
+      console.log "SUCCESS"
+
+    steroids.drawers.hide {
+      fullChange: true
+      centerView: DrawersController.center1
+    }, {
+      onSuccess: success
+    }
+
+  @testHideWithFullChangeCenter2: ->
+    success = ->
+      console.log "SUCCESS"
+
+    steroids.drawers.hide {
+      fullChange: true
+      centerView: DrawersController.center2
+    }, {
+      onSuccess: success
+    }
+
   @testEnableAllGestures: ->
     success = ->
       console.log "SUCCESS"
@@ -71,24 +106,25 @@ class window.DrawersController
     success = ->
       console.log "SUCCESS"
 
-    steroids.drawers.update {}, {
+    steroids.drawers.update {
       #both ways are valid
       openGestures: ["None"],
       #empty array is also valid
       closeGestures: []
+    }, {
+      onSuccess: success
     }
 
-  @testUpdateWithFullParams: ->
+  @testUpdateWithParameters: ->
     success = ->
       console.log "SUCCESS"
 
     steroids.drawers.update {
-      closeMode: "QuickClose"
-      showShadow: false
+      closeMode: "FullChange"
+      showShadow: true
       openGestures: ["PanBezelCenterView"]
       closeGestures: ["PanCenterView", "PanDrawerView"]
-      strechDrawer: false
-      centerViewInteractionMode: "NavBar"
+      strechDrawer: true
     }, {
       onSuccess: success
     }
@@ -104,8 +140,32 @@ class window.DrawersController
     steroids.drawers.update {
       animation: new steroids.Animation
         transition: "parallax"
-        duration: 1.2
-        parallaxFactor: 3.0
+        duration: 0.9
+        parallaxFactor: 2.1
+    }, {
+      onSuccess: success
+    }
+
+  @testUpdateWithSlideAndScale: ->
+    success = ->
+      console.log "SUCCESS"
+
+    steroids.drawers.update {
+      animation: new steroids.Animation
+        transition: "slideAndScale"
+        duration: 0.5
+    }, {
+      onSuccess: success
+    }
+
+  @testUpdateWithSwingingDoor: ->
+    success = ->
+      console.log "SUCCESS"
+
+    steroids.drawers.update {
+      animation: new steroids.Animation
+        transition: "swingingDoor"
+        duration: 0.5
     }, {
       onSuccess: success
     }
@@ -116,7 +176,6 @@ class window.DrawersController
 
     steroids.drawers.show {
       edge: steroids.screen.edges.LEFT
-      closeMode: "FullChange"
       showShadow: true
       openGestures: ["PanCenterView"]
       closeGestures: ["PanCenterView", "PanDrawerView"]
