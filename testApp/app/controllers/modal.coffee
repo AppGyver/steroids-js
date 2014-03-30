@@ -19,13 +19,28 @@ class window.ModalController
       onSuccess: opened
     }
 
+  @testShowWithNavBar: () ->
+    opened = () ->
+      alert "opened"
+
+    hideView = new steroids.views.WebView {
+      location: "/views/modal/hide.html"
+    }
+
+    steroids.modal.show {
+      view: hideView
+      hidesNavigationBar: false
+    }, {
+      onSuccess: opened
+    }
+
   @testShowShorthand: () ->
 
     hideView = new steroids.views.WebView "/views/modal/hide.html"
 
     steroids.modal.show(hideView)
 
-  @testShowWithNavBar: () ->
+  @testShowModalWithNavBar: () ->
 
     modalWithNavBar = new steroids.views.WebView "/views/modal/modalWithNavBar.html"
 
