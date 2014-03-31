@@ -35,31 +35,8 @@ class Events
       successCallbacks: [setVisibilityStatus, callbacks.onSuccess]
       failureCallbacks: [callbacks.onFailure]
 
-  @dispatchEvents: (event, params) =>
-    steroids.debug
-      msg: "dispatchEvents - eventName: #{event.name}"
-
-    customEvent = new CustomEvent(event.name, {detail: event})
-
-    document.dispatchEvent(customEvent)
 
   @extend: (options={}, callbacks={}) ->
-
-    eventsAdded = () =>
-      steroids.debug
-        msg: "events [layerWillChange, layerDidChange] added"
-
-      steroids.markComponentReady("Events.layerEvents")
-
-    # register the layers events
-    steroids.nativeBridge.nativeCall
-      method: "addEventListener"
-      parameters:
-        events: ["layerwillchange", "layerdidchange", "tabwillchange", "tabdidchange"]
-      successCallbacks: [eventsAdded, callbacks.onSuccess]
-      recurringCallbacks: [@dispatchEvents]
-      failureCallbacks: [callbacks.onFailure]
-
 
     # Mark initialVisibility and focuslisteners components always ready on iOS
     unless navigator.userAgent.match(/Android/i)
