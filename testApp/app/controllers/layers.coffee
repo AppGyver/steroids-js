@@ -144,39 +144,39 @@ class window.LayersController
   @didChangeHandlers = []
   @willChangeHandlers = []
 
-  @testLayerWillChangeEvent: ->
-    eventHandler = steroids.layers.on 'layerwillchange', (event) ->
-      alert "layerwillchange event -> eventName: #{event.name} targetWebView: #{event.targetWebView} sourceWebView: #{event.sourceWebView}"
+  @testwillchangeEvent: ->
+    eventHandler = steroids.layers.on 'willchange', (event) ->
+      alert "willchange event -> eventName: #{event.name} targetWebView: #{event.targetWebView} sourceWebView: #{event.sourceWebView}"
 
     @willChangeHandlers.push eventHandler
 
     alert "event listener added"
 
-  @testLayerDidChangeEvent: ->
-    eventHandler = steroids.layers.on 'layerdidchange', (event) ->
-      alert "layerdidchange event -> eventName: #{event.name} targetWebView: #{event.targetWebView} sourceWebView: #{event.sourceWebView}"
+  @testdidchangeEvent: ->
+    eventHandler = steroids.layers.on 'didchange', (event) ->
+      alert "didchange event -> eventName: #{event.name} targetWebView: #{event.targetWebView} sourceWebView: #{event.sourceWebView}"
 
     @didChangeHandlers.push eventHandler
 
     alert "event listener added"
 
   @testRemoveAllEventHandlers: ->
-    @didChangeHandlers.forEach (handlerId) -> steroids.layers.off 'layerdidchange', handlerId
+    @didChangeHandlers.forEach (handlerId) -> steroids.layers.off 'didchange', handlerId
 
-    @willChangeHandlers.forEach (handlerId) -> steroids.layers.off 'layerwillchange', handlerId
+    @willChangeHandlers.forEach (handlerId) -> steroids.layers.off 'willchange', handlerId
 
     @willChangeHandlers = []
     @didChangeHandlers = []
 
     alert "event handlers removed"
 
-  @testRemoveLayerDidChangeEvents: ->
-    steroids.layers.off 'layerdidchange'
+  @testRemovedidchangeEvents: ->
+    steroids.layers.off 'didchange'
 
-    alert "layerdidchange events handlers removed"
+    alert "didchange events handlers removed"
 
-  @testRemoveLayerWillChangeEvents: ->
-    steroids.layers.off 'layerwillchange'
+  @testRemovewillchangeEvents: ->
+    steroids.layers.off 'willchange'
 
-    alert "layerwillchange events handlers removed"
+    alert "willchange events handlers removed"
 

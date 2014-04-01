@@ -2,7 +2,7 @@ class TabBar extends EventsSupport
 
   constructor: ->
     #setup the events support
-    super ["tabwillchange", "tabdidchange"]
+    super "tab", ["willchange", "didchange"]
 
   hide: (options={}, callbacks={}) ->
     steroids.debug "steroids.tabBar.hide options: #{JSON.stringify options} callbacks: #{JSON.stringify callbacks}"

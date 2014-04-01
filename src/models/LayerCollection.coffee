@@ -1,7 +1,7 @@
 class LayerCollection extends EventsSupport
   constructor: ->
     #setup the events support
-    super ["layerwillchange", "layerdidchange"]
+    super "layer", ["willchange", "didchange"]
 
   pop: (options={}, callbacks={}) ->
 

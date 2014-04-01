@@ -79,26 +79,26 @@ class window.TabbarController
   @willChangeHandlers = []
   @didChangeHandlers = []
 
-  @testTabWillChangeEvent: ->
-    eventHandler = steroids.tabBar.on 'tabwillchange', (event) ->
-      alert "tabwillchange event -> eventName: #{event.name} targetTabTitle: #{event.targetTabTitle} sourceTabTitle: #{event.sourceTabTitle}"
+  @testwillchangeEvent: ->
+    eventHandler = steroids.tabBar.on 'willchange', (event) ->
+      alert "willchange event -> eventName: #{event.name} targetTabTitle: #{event.targetTabTitle} sourceTabTitle: #{event.sourceTabTitle}"
 
     @willChangeHandlers.push eventHandler
 
     alert "event listener added"
 
-  @testTabDidChangeEvent: ->
-    eventHandler = steroids.tabBar.on 'tabdidchange', (event) ->
-      alert "tabdidchange event -> eventName: #{event.name} targetTabTitle: #{event.targetTabTitle} sourceTabTitle: #{event.sourceTabTitle}"
+  @testdidchangeEvent: ->
+    eventHandler = steroids.tabBar.on 'didchange', (event) ->
+      alert "didchange event -> eventName: #{event.name} targetTabTitle: #{event.targetTabTitle} sourceTabTitle: #{event.sourceTabTitle}"
 
     @didChangeHandlers.push eventHandler
 
     alert "event listener added"
 
   @testRemoveAllEventHandlers: ->
-    @didChangeHandlers.forEach (handlerId) -> steroids.tabBar.off 'tabdidchange', handlerId
+    @didChangeHandlers.forEach (handlerId) -> steroids.tabBar.off 'didchange', handlerId
 
-    @willChangeHandlers.forEach (handlerId) -> steroids.tabBar.off 'tabwillchange', handlerId
+    @willChangeHandlers.forEach (handlerId) -> steroids.tabBar.off 'willchange', handlerId
 
     @willChangeHandlers = []
     @didChangeHandlers = []
@@ -106,12 +106,12 @@ class window.TabbarController
     alert "event handlers removed"
 
   @testRemoveDidChangeEvents: ->
-    steroids.tabBar.off 'tabdidchange'
+    steroids.tabBar.off 'didchange'
 
-    alert "tabdidchange events handlers removed"
+    alert "didchange events handlers removed"
 
   @testRemoveWillChangeEvents: ->
-    steroids.tabBar.off 'tabwillchange'
+    steroids.tabBar.off 'willchange'
 
-    alert "tabwillchange events handlers removed"
+    alert "willchange events handlers removed"
 
