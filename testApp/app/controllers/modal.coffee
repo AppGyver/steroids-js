@@ -81,7 +81,9 @@ class window.ModalController
   @testHide: () ->
 
     hidden = () ->
-      alert "hidden"
+      # causes the app to crash if closed after 2 seconds.. that is because
+      #the source webview where the aler originates is no longer on memory
+      #alert "hidden"
 
     steroids.modal.hide {
     }, {
