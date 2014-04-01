@@ -59,15 +59,12 @@ steroids.config.statusBar.enabled = Math.random() > 0.5
 
 # steroids.config.navigationBar.tintColor = ""
 # steroids.config.navigationBar.titleColor = ""
-# steroids.config.navigationBar.titleShadowColor = ""
 
 # steroids.config.navigationBar.buttonTintColor = ""
 # steroids.config.navigationBar.buttonTitleColor = ""
-# steroids.config.navigationBar.buttonShadowColor = ""
 
 # steroids.config.tabBar.tintColor = ""
 # steroids.config.tabBar.tabTitleColor = ""
-# steroids.config.tabBar.tabTitleShadowColor = ""
 # steroids.config.tabBar.selectedTabTintColor = ""
 
 # Can be used to set an indicator image for the selected tab (can be bigger than the tab)

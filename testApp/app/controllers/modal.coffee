@@ -132,10 +132,10 @@ class window.ModalController
     steroids.view.navigationBar.setAppearance {
       tintColor: '#FF0000'
       titleTextColor: '#0000FF'
-      titleShadowColor: '#8F00FF'
       buttonTintColor: '#00FF00'
       buttonTitleTextColor: '#FF7F00'
-      buttonTitleShadowColor: '#FFFF00'
+      portraitBackgroundImage: steroids.app.path + '/images/navbar-bg@2x.png'
+      landscapeBackgroundImage: steroids.app.path + '/images/navbar-bg@2x.png'
     }, {
       onSuccess: -> alert "taste the rainbow"
       onFailure: -> alert "failed set nav bar appearance"
