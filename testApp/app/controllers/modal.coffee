@@ -141,3 +141,41 @@ class window.ModalController
       onFailure: -> alert "failed set nav bar appearance"
     }
 
+  #event tests
+
+  @testWillShowChangeEvent: ->
+    eventHandler = steroids.modal.on 'willshow', (event) ->
+      alert "willshow event -> eventName: #{event.name} targetWebView: #{event.targetWebView}"
+
+    alert "event listener added"
+
+  @testDidShowChangeEvent: ->
+    eventHandler = steroids.modal.on 'didshow', (event) ->
+      alert "didshow event -> eventName: #{event.name} targetWebView: #{event.targetWebView}"
+
+    alert "event listener added"
+
+  @testWillCloseChangeEvent: ->
+    eventHandler = steroids.modal.on 'willclose', (event) ->
+      alert "willclose event -> eventName: #{event.name} targetWebView: #{event.targetWebView}"
+
+    alert "event listener added"
+
+  @testDidCloseChangeEvent: ->
+    eventHandler = steroids.modal.on 'didclose', (event) ->
+      alert "didclose event -> eventName: #{event.name} targetWebView: #{event.targetWebView}"
+
+    alert "event listener added"
+
+  @testRemoveShowEvents: ->
+    steroids.modal.off 'willshow'
+    steroids.modal.off 'didshow'
+
+    alert "modal show events handlers removed"
+
+  @testRemoveCloseEvents: ->
+    steroids.modal.off 'willclose'
+    steroids.modal.off 'didclose'
+
+    alert "modal close events handlers removed"
+

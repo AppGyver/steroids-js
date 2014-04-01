@@ -1,5 +1,9 @@
 
-class Modal
+class Modal extends EventsSupport
+
+  constructor: ->
+    #setup the events support
+    super "modal", ["willshow", "didshow", "willclose", "didclose"]
 
   show: (options={}, callbacks={})->
     view = if options.constructor.name == "Object"

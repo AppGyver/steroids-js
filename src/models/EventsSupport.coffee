@@ -1,6 +1,6 @@
 class EventsSupport
 
-  constructor: (@validEvents) ->
+  constructor: (@prefixName, @validEvents) ->
 
 
   # used to generate a unique event handler id
@@ -12,6 +12,9 @@ class EventsSupport
     # validate the event name
     unless @validEvents.indexOf(event) >= 0
       throw new Error("Invalid event name!")
+
+    if @prefixName?
+      event = @prefixName + event
 
     eventHandlerId = ++EventsSupport.eventCounter;
 
@@ -42,6 +45,9 @@ class EventsSupport
     # validate the eventHandlerId
     if eventHandlerId? and eventHandlerId <= 0
         throw new Error("Invalid event handler id!")
+
+    if @prefixName?
+      event = @prefixName + event
 
     eventListenerRemoved = (params) ->
       steroids.debug
