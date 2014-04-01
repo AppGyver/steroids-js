@@ -1,6 +1,6 @@
 ##3.1.8 (TODO)
 
-Various new APIs for iOS, multiple modals supported.
+Various new APIs for iOS, multiple modals supported, navigation bar in modals supported.
 
 Features:
   - Navigation bar can now be used in modal windows also.
@@ -13,6 +13,9 @@ Features:
   - `steroids.tabBar.currentTab.update` functions like `steroids.tabBar.update` for the currently active tab.
   - `steroids.view.updateKeyboard` with support for showing/hiding the keyboard accessory bar on a per-view basis.
   - `steroids.view.navigationBar.setAppearance` changes navigation bar appearance.
+
+Secret features:
+  - `steroids.app.getNSUserDefaults()` returns current NSUserDefaults in iOS
 
 ##3.1.7 (2014-03-05)
 
@@ -28,7 +31,7 @@ Secret features:
 Bugfixes:
   - Fixed a bug with the OAuth2 modal show (thanks @zeopix!)
 
-##3.1.6 (2014-02-10)
+##3.1.6 (2014-02-27)
 Added methods for setting tab bar badges and programmatically selecting a tab. Added support for replacing the layer stack with a WebView already in the layer stack. Added a parameter to disable animation for modal screen show/hide.
 
 New API methods requires Scanner v3.1.3.

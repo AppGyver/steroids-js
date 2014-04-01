@@ -40,3 +40,8 @@ class window.AppController
     steroids.app.getMode {},
       onSuccess: (msg) ->
         alert msg
+
+  @testGetNSUserDefaults: ->
+    steroids.app.getNSUserDefaults {},
+      onSuccess: (obj) ->
+        steroids.logger.log obj

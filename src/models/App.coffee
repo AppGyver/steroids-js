@@ -50,3 +50,10 @@ class App
       "scanner"
 
     callbacks.onSuccess(mode) if callbacks.onSuccess?
+
+  getNSUserDefaults: (options={}, callbacks={}) ->
+    steroids.nativeBridge.nativeCall
+      method: "getNSUserDefaults"
+      parameters: {}
+      successCallbacks: [callbacks.onSuccess]
+      failureCallbacks: [callbacks.onFailure]
