@@ -181,8 +181,8 @@ class window.NavigationbarController
       titleTextColor: '#0000FF'
       buttonTintColor: '#00FF00'
       buttonTitleTextColor: '#FF7F00'
-      portraitBackgroundImage: steroids.app.path + '/images/navbar-bg@2x.png'
-      landscapeBackgroundImage: steroids.app.path + '/images/navbar-bg@2x.png'
+      portraitBackgroundImage: '/images/navbar-bg@2x.png'
+      landscapeBackgroundImage: '/images/navbar-bg@2x.png'
     }, {
       onSuccess: -> alert "taste the rainbow"
       onFailure: -> alert "failed set nav bar appearance"
