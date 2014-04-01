@@ -1,6 +1,17 @@
 ##3.1.8 (TODO)
 
-Secret features:
+Various new APIs for iOS, multiple modals supported.
+
+Features:
+  - Navigation bar can now be used in modal windows also.
+  - Multiple modal windows are supported.
+  - `steroids.view.navigationBar.setAppearance` to change the global color/background image settings of the navigation bar
+  - `steroids.statusBar.onTap` event listener for triggering a function when the status bar is tapped.
+  - `steroids.Animation` has new `onAnimationStarted` and `onAnimationEnded` callbacks.
+  - `steroids.view.navigationBar.update` has a new `backButton` parameter for setting a custom button to replace the native back button.
+  - `steroids.view.displayLoading` to show `loading.html` programmatically.
+  - `steroids.tabBar.currentTab.update` functions like `steroids.tabBar.update` for the currently active tab.
+  - `steroids.view.updateKeyboard` with support for showing/hiding the keyboard accessory bar on a per-view basis.
   - `steroids.view.navigationBar.setAppearance` changes navigation bar appearance.
 
 ##3.1.7 (2014-03-05)
