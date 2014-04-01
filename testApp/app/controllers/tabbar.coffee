@@ -75,3 +75,43 @@ class window.TabbarController
       console.log "Failed to update current tab", failure
       alert "Failed to update current tab"
     )
+
+  @willChangeHandlers = []
+  @didChangeHandlers = []
+
+  @testTabWillChangeEvent: ->
+    eventHandler = steroids.tabBar.on 'tabwillchange', (event) ->
+      alert "tabwillchange event -> eventName: #{event.name} targetTabTitle: #{event.targetTabTitle} sourceTabTitle: #{event.sourceTabTitle}"
+
+    @willChangeHandlers.push eventHandler
+
+    alert "event listener added"
+
+  @testTabDidChangeEvent: ->
+    eventHandler = steroids.tabBar.on 'tabdidchange', (event) ->
+      alert "tabdidchange event -> eventName: #{event.name} targetTabTitle: #{event.targetTabTitle} sourceTabTitle: #{event.sourceTabTitle}"
+
+    @didChangeHandlers.push eventHandler
+
+    alert "event listener added"
+
+  @testRemoveAllEventHandlers: ->
+    @didChangeHandlers.forEach (handlerId) -> steroids.tabBar.off 'tabdidchange', handlerId
+
+    @willChangeHandlers.forEach (handlerId) -> steroids.tabBar.off 'tabwillchange', handlerId
+
+    @willChangeHandlers = []
+    @didChangeHandlers = []
+
+    alert "event handlers removed"
+
+  @testRemoveDidChangeEvents: ->
+    steroids.tabBar.off 'tabdidchange'
+
+    alert "tabdidchange events handlers removed"
+
+  @testRemoveWillChangeEvents: ->
+    steroids.tabBar.off 'tabwillchange'
+
+    alert "tabwillchange events handlers removed"
+
