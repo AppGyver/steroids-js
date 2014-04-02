@@ -147,25 +147,25 @@ class window.ModalController
 
   @testWillShowChangeEvent: ->
     eventHandler = steroids.modal.on 'willshow', (event) ->
-      alert "willshow event -> eventName: #{event.name} targetWebView: #{event.targetWebView}"
+      alert "willshow event -> eventName: #{event.name} target.webview.id: #{event.target.webview.id}"
 
     alert "event listener added"
 
   @testDidShowChangeEvent: ->
     eventHandler = steroids.modal.on 'didshow', (event) ->
-      alert "didshow event -> eventName: #{event.name} targetWebView: #{event.targetWebView}"
+      alert "didshow event -> eventName: #{event.name} target.webview.id: #{event.target.webview.id}"
 
     alert "event listener added"
 
   @testWillCloseChangeEvent: ->
     eventHandler = steroids.modal.on 'willclose', (event) ->
-      alert "willclose event -> eventName: #{event.name} targetWebView: #{event.targetWebView}"
+      alert "willclose event -> eventName: #{event.name} target.webview.id: #{event.target.webview.id}"
 
     alert "event listener added"
 
   @testDidCloseChangeEvent: ->
     eventHandler = steroids.modal.on 'didclose', (event) ->
-      alert "didclose event -> eventName: #{event.name} targetWebView: #{event.targetWebView}"
+      alert "didclose event -> eventName: #{event.name} target.webview.id: #{event.target.webview.id}"
 
     alert "event listener added"
 

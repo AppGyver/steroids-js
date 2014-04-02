@@ -146,7 +146,7 @@ class window.LayersController
 
   @testwillchangeEvent: ->
     eventHandler = steroids.layers.on 'willchange', (event) ->
-      alert "willchange event -> eventName: #{event.name} targetWebView: #{event.targetWebView} sourceWebView: #{event.sourceWebView}"
+      alert "willchange event -> eventName: #{event.name} target.webview.id: #{event.target.webview.id} source.webview.id: #{event.source.webview.id}"
 
     @willChangeHandlers.push eventHandler
 
@@ -154,7 +154,7 @@ class window.LayersController
 
   @testdidchangeEvent: ->
     eventHandler = steroids.layers.on 'didchange', (event) ->
-      alert "didchange event -> eventName: #{event.name} targetWebView: #{event.targetWebView} sourceWebView: #{event.sourceWebView}"
+      alert "didchange event -> eventName: #{event.name} target.webview.id: #{event.target.webview.id} source.webview.id: #{event.source.webview.id}"
 
     @didChangeHandlers.push eventHandler
 

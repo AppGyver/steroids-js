@@ -81,7 +81,7 @@ class window.TabbarController
 
   @testwillchangeEvent: ->
     eventHandler = steroids.tabBar.on 'willchange', (event) ->
-      alert "willchange event -> eventName: #{event.name} targetTabTitle: #{event.targetTabTitle} sourceTabTitle: #{event.sourceTabTitle}"
+      alert "willchange event -> eventName: #{event.name} target.tab title - index: #{event.target.tab.title} - #{event.target.tab.index} \n source.tab title - index: #{event.source.tab.title} - #{event.source.tab.index}"
 
     @willChangeHandlers.push eventHandler
 
@@ -89,7 +89,7 @@ class window.TabbarController
 
   @testdidchangeEvent: ->
     eventHandler = steroids.tabBar.on 'didchange', (event) ->
-      alert "didchange event -> eventName: #{event.name} targetTabTitle: #{event.targetTabTitle} sourceTabTitle: #{event.sourceTabTitle}"
+      alert "didchange event -> eventName: #{event.name} target.tab title - index: #{event.target.tab.title} - #{event.target.tab.index} \n source.tab title - index: #{event.source.tab.title} - #{event.source.tab.index}"
 
     @didChangeHandlers.push eventHandler
 

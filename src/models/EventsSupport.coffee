@@ -26,13 +26,39 @@ class EventsSupport
       steroids.debug
         msg: "Error on addEventListener event: #{event} error: #{error}"
 
+    fireEventHandler = (params) ->
+      event = {
+        name: params.name
+        target:
+          webview: new steroids.views.WebView
+            location: params.target.webview.location
+            id: params.target.webview.id
+            uiid: params.target.webview.uiid
+      }
+
+      if params.source? and params.source.webview?
+        event.source = {
+          webview: new steroids.views.WebView
+            location: params.source.webview.location
+            id: params.source.webview.id
+            uiid: params.source.webview.uiid
+        }
+
+      if params.target.tab?
+        event.target.tab = params.target.tab
+
+      if params.source and params.source.tab?
+        event.source.tab = params.source.tab
+
+      callback(event);
+
     steroids.nativeBridge.nativeCall
       method: "addEventListener"
       parameters:
         event: event
         eventHandlerId: "#{event}_#{eventHandlerId}"
       successCallbacks: [eventListenerAdded]
-      recurringCallbacks: [callback]
+      recurringCallbacks: [fireEventHandler]
       failureCallbacks: [errorAddingEventListener]
 
     #return the eventHandlerId
