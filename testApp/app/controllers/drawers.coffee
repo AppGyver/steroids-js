@@ -7,10 +7,14 @@ class window.DrawersController
     location: "/views/drawers/rightDrawer.html"
   }
 
-  @center1: null
+  @center1: new steroids.views.WebView {
+    location: "/views/drawers/index.html"
+    id: "center1"
+  }
 
   @center2: new steroids.views.WebView {
     location: "/views/drawers/index2.html"
+    id: "center2"
   }
 
   # always put everything inside PhoneGap deviceready
@@ -35,10 +39,12 @@ class window.DrawersController
     }
 
     #center1 is the current view (index.html)
-    DrawersController.center1 = steroids.view
+    DrawersController.center1.preload
+      id: "center1"
 
     #preload center2
-    DrawersController.center2.preload()
+    DrawersController.center2.preload
+      id: "center2"
 
 
   @testShowLeft: ->
