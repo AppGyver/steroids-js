@@ -39,9 +39,9 @@ class DrawerCollection
       parameters.fullChange = options.fullChange
 
     # when fullChange = true specify a webview to be replaced in the center
-    if options.centerView? and options.centerView.id?
-      parameters.centerView = {
-        id: options.centerView.id
+    if options.center? and options.center.id?
+      parameters.center = {
+        id: options.center.id
       }
 
     steroids.nativeBridge.nativeCall
@@ -53,18 +53,24 @@ class DrawerCollection
   show: (options={}, callbacks={}) ->
     steroids.debug "steroids.drawers.show called"
 
-    parameters = {}
+    parameters = {
+      edge: steroids.screen.edges.LEFT
+      left:{}
+      right:{}
+      options:{}
+    }
 
-    if options.keepLoading == true
-      steroids.debug "steroids.drawers.show using keepLoading"
-      parameters.keepTransitionHelper = true
+    if options.left?
+      @applyViewOptions options.left parameters.left
+
+    if options.right?
+      @applyViewOptions options.right parameters.right
+
+    if options.options?
+      @applyDrawerSettings options.options, parameters.options
 
     if options.edge?
       parameters.edge = options.edge
-    else
-      parameters.edge = steroids.screen.edges.LEFT
-
-    @applyDrawerSettings options, parameters
 
     steroids.nativeBridge.nativeCall
       method: "openDrawer"
@@ -76,27 +82,19 @@ class DrawerCollection
     steroids.debug "steroids.drawers.enableGesture called"
 
     parameters = {
-      leftView:{}
-      rightView:{}
+      left:{}
+      right:{}
+      options:{}
     }
 
-    if options.leftView?
-      if options.leftView.id?
-        parameters.leftView.id = options.leftView.id
-      else
-        parameters.leftView.url = options.leftView.location
+    if options.left?
+      @applyViewOptions options.left parameters.left
 
-    if options.rightView?
-      if options.rightView.id?
-        parameters.rightView.id = options.rightView.id
-      else
-        parameters.rightView.url = options.rightView.location
+    if options.right?
+      @applyViewOptions options.right parameters.right
 
-    if options.keepLoading == true
-      steroids.debug "steroids.drawers.enableGesture using keepLoading"
-      parameters.keepTransitionHelper = true
-
-    @applyDrawerSettings options, parameters
+    if options.options?
+      @applyDrawerSettings options.options, parameters.options
 
     steroids.nativeBridge.nativeCall
       method: "updateDrawer"
@@ -118,8 +116,19 @@ class DrawerCollection
       successCallbacks: [callbacks.onSuccess]
       failureCallbacks: [callbacks.onFailure]
 
-  # TODO: make it private.. ne need to expose in the object
-  applyDrawerSettings: (options={}, parameters={}) ->
+  @applyViewOptions: (view={}, parameters={}) ->
+    if view.id?
+      parameters.id = view.id
+    else
+      parameters.url = view.location
+
+    if view.keepLoading == true
+      steroids.debug "steroids.drawers using keepLoading"
+      parameters.keepTransitionHelper = true
+
+    parameters
+
+  @applyDrawerSettings: (options={}, parameters={}) ->
 
     if options.showShadow?
       parameters.showShadow = options.showShadow
