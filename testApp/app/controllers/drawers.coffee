@@ -23,14 +23,14 @@ class window.DrawersController
     DrawersController.leftDrawer.preload {}, {
       onSuccess: =>
         steroids.drawers.update {
-          leftView: DrawersController.leftDrawer
+          left: DrawersController.leftDrawer
         }
     }
 
     DrawersController.rightDrawer.preload {}, {
       onSuccess: =>
         steroids.drawers.update {
-          rightView: DrawersController.rightDrawer
+          right: DrawersController.rightDrawer
         }
     }
 
@@ -75,7 +75,7 @@ class window.DrawersController
 
     steroids.drawers.hide {
       fullChange: true
-      centerView: DrawersController.center1
+      center: DrawersController.center1
     }, {
       onSuccess: success
     }
@@ -86,7 +86,7 @@ class window.DrawersController
 
     steroids.drawers.hide {
       fullChange: true
-      centerView: DrawersController.center2
+      center: DrawersController.center2
     }, {
       onSuccess: success
     }
@@ -96,8 +96,9 @@ class window.DrawersController
       console.log "SUCCESS"
 
     steroids.drawers.update {
-      openGestures: ["PanNavBar", "PanCenterView", "PanBezelCenterView"],
-      closeGestures: ["PanNavBar", "PanCenterView", "PanBezelCenterView", "TapNavBar", "TapCenterView", "PanDrawerView"]
+      options:
+        openGestures: ["PanNavBar", "PanCenterView", "PanBezelCenterView"],
+        closeGestures: ["PanNavBar", "PanCenterView", "PanBezelCenterView", "TapNavBar", "TapCenterView", "PanDrawerView"]
     }, {
       onSuccess: success
     }
@@ -107,10 +108,60 @@ class window.DrawersController
       console.log "SUCCESS"
 
     steroids.drawers.update {
-      #both ways are valid
-      openGestures: ["None"],
-      #empty array is also valid
-      closeGestures: []
+      options:
+        #both ways are valid
+        openGestures: ["None"],
+        #empty array is also valid
+        closeGestures: []
+    }, {
+      onSuccess: success
+    }
+
+  @testUpdateWithWidthOfLayerInPixels: ->
+    success = ->
+      console.log "SUCCESS"
+
+    steroids.drawers.update {
+      options:
+        widthOfLayerInPixels: 160
+    }, {
+      onSuccess: success
+    }
+
+  @testDiffSizes: ->
+    success = ->
+      console.log "SUCCESS"
+
+    steroids.drawers.update {
+      options:
+        #reset, since this overrides the widthOfDrawerInPixels values
+        widthOfLayerInPixels: 0
+      left:
+        widthOfDrawerInPixels: 200
+      right:
+        widthOfDrawerInPixels: 100
+    }, {
+      onSuccess: success
+    }
+
+  @testHideShadow: ->
+    success = ->
+      console.log "SUCCESS"
+
+    steroids.drawers.update {
+      options:
+        showShadow: false
+    }, {
+      onSuccess: success
+    }
+
+  @testShowShadow: ->
+    success = ->
+      console.log "SUCCESS"
+
+    steroids.drawers.update {
+      options:
+        showShadow: true
     }, {
       onSuccess: success
     }
@@ -120,11 +171,12 @@ class window.DrawersController
       console.log "SUCCESS"
 
     steroids.drawers.update {
-      closeMode: "FullChange"
-      showShadow: true
-      openGestures: ["PanBezelCenterView"]
-      closeGestures: ["PanCenterView", "PanDrawerView"]
-      strechDrawer: true
+      options:
+        closeMode: "FullChange"
+        showShadow: true
+        openGestures: ["PanBezelCenterView"]
+        closeGestures: ["PanCenterView", "PanDrawerView"]
+        strechDrawer: true
     }, {
       onSuccess: success
     }
@@ -133,15 +185,12 @@ class window.DrawersController
     success = ->
       console.log "SUCCESS"
 
-    # steroids.drawers.enableGesture {
-    #  side: ['left']
-    # }
-
     steroids.drawers.update {
-      animation: new steroids.Animation
-        transition: "parallax"
-        duration: 0.9
-        parallaxFactor: 2.1
+      options:
+        animation: new steroids.Animation
+          transition: "parallax"
+          duration: 0.9
+          parallaxFactor: 2.1
     }, {
       onSuccess: success
     }
@@ -151,9 +200,10 @@ class window.DrawersController
       console.log "SUCCESS"
 
     steroids.drawers.update {
-      animation: new steroids.Animation
-        transition: "slideAndScale"
-        duration: 0.5
+      options:
+        animation: new steroids.Animation
+          transition: "slideAndScale"
+          duration: 0.5
     }, {
       onSuccess: success
     }
@@ -163,9 +213,10 @@ class window.DrawersController
       console.log "SUCCESS"
 
     steroids.drawers.update {
-      animation: new steroids.Animation
-        transition: "swingingDoor"
-        duration: 0.5
+      options:
+        animation: new steroids.Animation
+          transition: "swingingDoor"
+          duration: 0.5
     }, {
       onSuccess: success
     }
@@ -176,11 +227,12 @@ class window.DrawersController
 
     steroids.drawers.show {
       edge: steroids.screen.edges.LEFT
-      showShadow: true
-      openGestures: ["PanCenterView"]
-      closeGestures: ["PanCenterView", "PanDrawerView"]
-      strechDrawer: true
-      centerViewInteractionMode: "Full"
+      options:
+        showShadow: true
+        openGestures: ["PanCenterView"]
+        closeGestures: ["PanCenterView", "PanDrawerView"]
+        strechDrawer: true
+        centerViewInteractionMode: "Full"
     }, {
       onSuccess: success
     }

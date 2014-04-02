@@ -21,15 +21,11 @@ class DrawerCollection
       })
     }
 
-  takeParamsFromAnimation: (animation, parameters) ->
-    parameters.animation = animation.transition
-    parameters.animationDuration = animation.duration
-    parameters.parallaxFactor = animation.parallaxFactor
-
   hide: (options={}, callbacks={}) ->
     steroids.debug "steroids.drawers.hide called"
 
     parameters = {
+      center:{}
       fullChange: false
     }
 
@@ -39,10 +35,8 @@ class DrawerCollection
       parameters.fullChange = options.fullChange
 
     # when fullChange = true specify a webview to be replaced in the center
-    if options.center? and options.center.id?
-      parameters.center = {
-        id: options.center.id
-      }
+    if options.center?
+      DrawerCollection.applyViewOptions options.center, parameters.center
 
     steroids.nativeBridge.nativeCall
       method: "closeDrawer"
@@ -61,13 +55,13 @@ class DrawerCollection
     }
 
     if options.left?
-      @applyViewOptions options.left parameters.left
+      DrawerCollection.applyViewOptions options.left, parameters.left
 
     if options.right?
-      @applyViewOptions options.right parameters.right
+      DrawerCollection.applyViewOptions options.right, parameters.right
 
     if options.options?
-      @applyDrawerSettings options.options, parameters.options
+      DrawerCollection.applyDrawerSettings options.options, parameters.options
 
     if options.edge?
       parameters.edge = options.edge
@@ -79,7 +73,7 @@ class DrawerCollection
       failureCallbacks: [callbacks.onFailure]
 
   update: (options={}, callbacks={}) ->
-    steroids.debug "steroids.drawers.enableGesture called"
+    steroids.debug "steroids.drawers.update called"
 
     parameters = {
       left:{}
@@ -88,13 +82,13 @@ class DrawerCollection
     }
 
     if options.left?
-      @applyViewOptions options.left parameters.left
+      DrawerCollection.applyViewOptions options.left, parameters.left
 
     if options.right?
-      @applyViewOptions options.right parameters.right
+      DrawerCollection.applyViewOptions options.right, parameters.right
 
     if options.options?
-      @applyDrawerSettings options.options, parameters.options
+      DrawerCollection.applyDrawerSettings options.options, parameters.options
 
     steroids.nativeBridge.nativeCall
       method: "updateDrawer"
@@ -125,6 +119,10 @@ class DrawerCollection
     if view.keepLoading == true
       steroids.debug "steroids.drawers using keepLoading"
       parameters.keepTransitionHelper = true
+
+    if view.widthOfDrawerInPixels?
+      steroids.debug "steroids.drawers using custom width of drawer to determine cutoff point"
+      parameters.widthOfDrawerInPixels = view.widthOfDrawerInPixels
 
     parameters
 
@@ -169,14 +167,12 @@ class DrawerCollection
 
     if options.animation?
       steroids.debug "steroids.drawers.show using custom animation"
-      @takeParamsFromAnimation(options.animation, parameters)
-
-    if options.widthOfDrawerInPixels?
-      steroids.debug "steroids.drawers.enableGesture using custom width of drawer to determine cutoff point"
-      parameters.widthOfDrawerInPixels = options.widthOfDrawerInPixels
+      parameters.animation = options.animation.transition
+      parameters.animationDuration = options.animation.duration
+      parameters.parallaxFactor = options.animation.parallaxFactor
 
     if options.widthOfLayerInPixels?
-      steroids.debug "steroids.drawers.enableGesture using custom width of layer to determine cutoff point"
+      steroids.debug "steroids.drawers using custom width of layer to determine cutoff point"
       parameters.widthOfLayerInPixels = options.widthOfLayerInPixels
 
     parameters
