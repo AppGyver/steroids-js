@@ -1,6 +1,6 @@
-##3.1.8 (TODO)
+##3.1.8 (2014-04-03)
 
-Various new APIs for iOS, multiple modals supported, navigation bar in modals supported.
+Various new APIs for iOS, multiple consequtive modals supported, navigation bar in modals supported.
 
 Features:
   - Navigation bar can now be used in modal windows also.
@@ -15,7 +15,7 @@ Features:
   - `steroids.view.navigationBar.setAppearance` changes navigation bar appearance.
 
 Secret features:
-  - `steroids.app.getNSUserDefaults()` returns current NSUserDefaults in iOS
+  - `steroids.app.getNSUserDefaults()` returns current NSUserDefaults in iOS.
 
 ##3.1.7 (2014-03-05)
 
