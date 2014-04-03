@@ -31,7 +31,7 @@ Make sure you have grunt-cli installed:
 
 ## Publishing:
 
-    sh ./bumb-plz.sh
+    sh ./bump-plz.sh
 
     grunt
     git submodule init # not needed if already done
