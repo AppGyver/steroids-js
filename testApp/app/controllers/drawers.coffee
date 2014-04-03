@@ -23,6 +23,21 @@ class window.DrawersController
     # Make Navigation Bar to appear with a custom title text
     steroids.navigationBar.show { title: "drawers" }
 
+    # check for center 2
+    #add a custom button
+    if window.location.href.match("index2.html")
+      rightDrawerBtn = new steroids.buttons.NavigationBarButton
+      rightDrawerBtn.title = "->"
+      rightDrawerBtn.onTap = =>
+        steroids.drawers.show
+          edge: steroids.screen.edges.RIGHT
+
+      # add button to nav bar
+      DrawersController.center2.navigationBar.update
+        title: "Center 2"
+        buttons:
+          right: [rightDrawerBtn]
+
     # update the drawer with the webview and default parameters
     DrawersController.leftDrawer.preload {}, {
       onSuccess: =>
@@ -46,26 +61,35 @@ class window.DrawersController
     DrawersController.center2.preload
       id: "center2"
 
+  @testAddRightButton: ->
+    rightDrawerBtn = new steroids.buttons.NavigationBarButton
+    rightDrawerBtn.title = "==>"
+    rightDrawerBtn.onTap = =>
+      steroids.drawers.show
+        edge: steroids.screen.edges.RIGHT
+
+    # add button to nav bar
+    steroids.navigationBar.update
+      buttons:
+        right: [rightDrawerBtn]
 
   @testShowLeft: ->
     success = ->
       console.log "SUCCESS"
 
-    steroids.drawers.show {
+    steroids.drawers.show
       edge: steroids.screen.edges.LEFT
-    }, {
+    ,
       onSuccess: success
-    }
 
   @testShowRight: ->
     success = ->
       console.log "SUCCESS"
 
-    steroids.drawers.show {
+    steroids.drawers.show
       edge: steroids.screen.edges.RIGHT
-    }, {
+    ,
       onSuccess: success
-    }
 
   @testHide: ->
     success = ->
@@ -90,12 +114,9 @@ class window.DrawersController
     success = ->
       console.log "SUCCESS"
 
-    steroids.drawers.hide {
+    steroids.drawers.hide
       fullChange: true
       center: DrawersController.center2
-    }, {
-      onSuccess: success
-    }
 
   @testEnableAllGestures: ->
     success = ->
@@ -242,3 +263,7 @@ class window.DrawersController
     }, {
       onSuccess: success
     }
+
+  @testReplaceLayers: ->
+    steroids.layers.replace DrawersController.center2
+
