@@ -159,7 +159,7 @@ class DrawerCollection
 
     # None -> The user can not interact with any content in the center view.
     # Full -> The user can interact with all content in the center view.
-    # NavBar -> The user can interact with only content on the navigation bar. The setting allows the menu button to still respond, allowing you to toggle the drawer closed when it is open. This is the default setting.
+    # NavBar -> The user can interact with only content on the navigation bar. The setting allows the menu button to still respond, allowing you to toggle the drawer closed when it is open.
     # Sample:
     # centerViewInteractionMode : "None"
     if options.centerViewInteractionMode?

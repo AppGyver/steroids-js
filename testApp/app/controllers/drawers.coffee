@@ -197,30 +197,27 @@ class window.DrawersController
     success = ->
       console.log "SUCCESS"
 
-    steroids.drawers.update {
+    steroids.drawers.update
       options:
-        closeMode: "FullChange"
         showShadow: true
         openGestures: ["PanBezelCenterView"]
         closeGestures: ["PanCenterView", "PanDrawerView"]
         strechDrawer: true
-    }, {
+    ,
       onSuccess: success
-    }
 
   @testUpdateWithParallax: ->
     success = ->
       console.log "SUCCESS"
 
-    steroids.drawers.update {
+    steroids.drawers.update
       options:
         animation: new steroids.Animation
           transition: "parallax"
           duration: 0.9
           parallaxFactor: 2.1
-    }, {
+    ,
       onSuccess: success
-    }
 
   @testUpdateWithSlideAndScale: ->
     success = ->
