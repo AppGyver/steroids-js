@@ -29,6 +29,10 @@ Make sure you have grunt-cli installed:
 
     npm install grunt-cli -g
 
+## Bower distribution
+
+Due to Bower limitations (cannot exclude certain files from a repository), the Bower distribution of Steroids.js resides in a different GitHub repository (https://github.com/steroidsjs/steroids-js) and is included as a submodule. Thus, to update the Bower distribution, you need GitHub access to the steroidsjs organization too.
+
 ## Publishing:
 
     sh ./bump-plz.sh
@@ -39,7 +43,7 @@ Make sure you have grunt-cli installed:
 
     cd bower && git co master && cd ..
 
-    echo "VERSION=$(coffee sync-bower.coffee)"
+    echo "VERSION=$(coffee sync-bower.coffee)" # this sets $VERSION to match current version, for use in below scripts
 
     cp dist/steroids.js bower/steroids.js
     cd bower && git co master && git commit -am "$VERSION" && git tag "v$VERSION" && git push && git push --tags && cd ..
