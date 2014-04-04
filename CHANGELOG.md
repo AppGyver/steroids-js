@@ -1,3 +1,8 @@
+##Next version
+
+Secret features:
+ - steroids.getApplicationState returns the application state including all preloaded webviews, tabs, modals and drawer controllers
+
 ##3.1.8 (TODO)
 
 Various new APIs for iOS, multiple modals supported, navigation bar in modals supported.
