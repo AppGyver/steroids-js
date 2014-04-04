@@ -26,6 +26,12 @@ class Modal
 
         parameters.disableAnimation = options.disableAnimation
 
+        if options.hidesNavigationBar?
+          parameters.hidesNavigationBar = options.hidesNavigationBar
+        else
+          #default is modal without nav bar
+          parameters.hidesNavigationBar = true
+
         steroids.nativeBridge.nativeCall
           method: "openModal"
           parameters: parameters
