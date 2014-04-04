@@ -108,11 +108,24 @@ class WebView
       options
     else
       options.color
-
+  
     steroids.nativeBridge.nativeCall
       method: "setWebViewBackgroundColor"
       parameters:
         color: newColor
+      successCallbacks: [callbacks.onSuccess]
+      failureCallbacks: [callbacks.onFailure]
+  
+  setBackgroundImage: (options={}, callbacks={}) ->
+    newImage = if options.constructor.name == "String"
+      options
+    else
+      options.image
+  
+    steroids.nativeBridge.nativeCall
+      method: "setWebViewBackgroundImage"
+      parameters:
+        image: newImage
       successCallbacks: [callbacks.onSuccess]
       failureCallbacks: [callbacks.onFailure]
 
