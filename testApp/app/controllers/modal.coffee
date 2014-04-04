@@ -141,3 +141,8 @@ class window.ModalController
       onFailure: -> alert "failed set nav bar appearance"
     }
 
+  @testGetApplicationState: ->
+    steroids.getApplicationState {}
+    ,
+      onSuccess: (appState) ->
+        alert "application state received :-)"
