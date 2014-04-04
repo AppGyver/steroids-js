@@ -174,6 +174,26 @@ class window.NavigationbarController
     },
       onSuccess: -> alert "nav bar buttons updated"
       onFailure: -> alert "failed to update nav bar buttons"
+      
+  @testButtonWithImageAsOriginal: ->
+    btoImgOriginal = new steroids.buttons.NavigationBarButton
+    btoImgOriginal.imagePath = "/icons/apple_colorfull.png"
+    btoImgOriginal.imageAsOriginal = "true"
+    btoImgOriginal.onTap = => alert "BUTTON WITH ORIGINAL IMAGE TAPPED"
+    
+    btoTintedImg = new steroids.buttons.NavigationBarButton
+    btoTintedImg.imagePath = "/icons/apple_colorfull.png"
+    # btoTintedImg.imageAsOriginal = "true"
+    btoTintedImg.onTap = => alert "BUTTON WITH TINTED IMAGE TAPPED"
+  
+    steroids.view.navigationBar.update {
+      buttons: {
+        right: [btoImgOriginal]
+        left: [btoTintedImg]
+      }
+    },
+      onSuccess: -> alert "nav bar buttons updated"
+      onFailure: -> alert "failed to update nav bar buttons"
 
   @testSetAppearanceToRainbow: ->
     steroids.view.navigationBar.setAppearance {
