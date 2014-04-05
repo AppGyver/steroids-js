@@ -41,12 +41,10 @@ class Modal
       parameters: options
       successCallbacks: [callbacks.onSuccess]
       failureCallbacks: [callbacks.onFailure]
-  
+
   closeAll: (options={}, callbacks={})->
-    options.closeAll = true
     steroids.nativeBridge.nativeCall
-      method: "closeModal"
+      method: "closeAllModal"
       parameters: options
       successCallbacks: [callbacks.onSuccess]
       failureCallbacks: [callbacks.onFailure]
-      
