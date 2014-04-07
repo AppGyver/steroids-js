@@ -51,3 +51,10 @@ class Modal extends EventsSupport
       parameters: options
       successCallbacks: [callbacks.onSuccess]
       failureCallbacks: [callbacks.onFailure]
+
+  closeAll: (options={}, callbacks={})->
+    steroids.nativeBridge.nativeCall
+      method: "closeAllModal"
+      parameters: options
+      successCallbacks: [callbacks.onSuccess]
+      failureCallbacks: [callbacks.onFailure]
