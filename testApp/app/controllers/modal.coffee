@@ -96,7 +96,9 @@ class window.ModalController
   @testHide: () ->
 
     hidden = () ->
-      alert "hidden"
+      # causes the app to crash if closed after 2 seconds.. that is because
+      #the source webview where the aler originates is no longer on memory
+      #alert "hidden"
 
     steroids.modal.hide {
     }, {
@@ -155,4 +157,42 @@ class window.ModalController
       onSuccess: -> alert "taste the rainbow"
       onFailure: -> alert "failed set nav bar appearance"
     }
+
+  #event tests
+
+  @testWillShowChangeEvent: ->
+    eventHandler = steroids.modal.on 'willshow', (event) ->
+      alert "willshow event -> eventName: #{event.name} target.webview.id: #{event.target.webview.id}"
+
+    alert "event listener added"
+
+  @testDidShowChangeEvent: ->
+    eventHandler = steroids.modal.on 'didshow', (event) ->
+      alert "didshow event -> eventName: #{event.name} target.webview.id: #{event.target.webview.id}"
+
+    alert "event listener added"
+
+  @testWillCloseChangeEvent: ->
+    eventHandler = steroids.modal.on 'willclose', (event) ->
+      alert "willclose event -> eventName: #{event.name} target.webview.id: #{event.target.webview.id}"
+
+    alert "event listener added"
+
+  @testDidCloseChangeEvent: ->
+    eventHandler = steroids.modal.on 'didclose', (event) ->
+      alert "didclose event -> eventName: #{event.name} target.webview.id: #{event.target.webview.id}"
+
+    alert "event listener added"
+
+  @testRemoveShowEvents: ->
+    steroids.modal.off 'willshow'
+    steroids.modal.off 'didshow'
+
+    alert "modal show events handlers removed"
+
+  @testRemoveCloseEvents: ->
+    steroids.modal.off 'willclose'
+    steroids.modal.off 'didclose'
+
+    alert "modal close events handlers removed"
 
