@@ -33,7 +33,7 @@ class EventsSupport
           webview: new steroids.views.WebView
             location: params.target.webview.location
             id: params.target.webview.id
-            uiid: params.target.webview.uiid
+            uuid: params.target.webview.uuid
       }
 
       if params.source? and params.source.webview?
@@ -41,7 +41,7 @@ class EventsSupport
           webview: new steroids.views.WebView
             location: params.source.webview.location
             id: params.source.webview.id
-            uiid: params.source.webview.uiid
+            uuid: params.source.webview.uuid
         }
 
       if params.target.tab?
