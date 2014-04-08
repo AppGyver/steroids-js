@@ -8,6 +8,9 @@ class window.SteroidsController
   @testSteroidsDefined: () ->
     alert steroids?
 
+  @testCordovaDefined: () ->
+    alert cordova?
+
   @testOpenURLGoogle: () ->
     steroids.openURL {
       url: "http://www.google.com"

@@ -16,7 +16,7 @@ class AuthorizationCodeFlow extends OAuth2Flow
     @xhrAccessTokenParams =
       client_id: @options.clientID
       client_secret: @options.clientSecret
-      redirect_uri: @callbackUrl
+      redirect_uri: @options.callbackUrl
       grant_type: "authorization_code"
 
     request = new XMLHttpRequest()

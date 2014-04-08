@@ -1,4 +1,23 @@
-##3.1.7 (TODO)
+##3.1.8 (2014-04-03)
+
+Various new APIs for iOS, multiple consequtive modals supported, navigation bar in modals supported.
+
+Features:
+  - Navigation bar can now be used in modal windows also.
+  - Multiple modal windows are supported.
+  - `steroids.view.navigationBar.setAppearance` to change the global color/background image settings of the navigation bar
+  - `steroids.statusBar.onTap` event listener for triggering a function when the status bar is tapped.
+  - `steroids.Animation` has new `onAnimationStarted` and `onAnimationEnded` callbacks.
+  - `steroids.view.navigationBar.update` has a new `backButton` parameter for setting a custom button to replace the native back button.
+  - `steroids.view.displayLoading` to show `loading.html` programmatically.
+  - `steroids.tabBar.currentTab.update` functions like `steroids.tabBar.update` for the currently active tab.
+  - `steroids.view.updateKeyboard` with support for showing/hiding the keyboard accessory bar on a per-view basis.
+  - `steroids.view.navigationBar.setAppearance` changes navigation bar appearance.
+
+Secret features:
+  - `steroids.app.getNSUserDefaults()` returns current NSUserDefaults in iOS.
+
+##3.1.7 (2014-03-05)
 
 Secret features:
   - `steroids.logger.log(msg)` for new logging feature, messages readable in `steroids.logger.messages`
@@ -6,11 +25,13 @@ Secret features:
   - `steroids.app.host.getURL()` returns (async) the (base) URL that was used to download the app (e.g. machine that has `steroids connect` running)
   - `steroids.view.rotateTo(deg)` rotates current view to deg somehow, someday
   - `steroids.device.platform` namespace and `steroids.device.platform.getName()` to determine the platform (e.g. "ios", "android", "tizen")
+  - `steroids.app.getMode()` returns "standalone" if the build is an ad-hoc or production build. Otherwise returns "scanner".
+  - `steroids.logger` automatically sends logs to Steroids CLI when running as a scanner.
 
 Bugfixes:
   - Fixed a bug with the OAuth2 modal show (thanks @zeopix!)
 
-##3.1.6 (2014-02-10)
+##3.1.6 (2014-02-27)
 Added methods for setting tab bar badges and programmatically selecting a tab. Added support for replacing the layer stack with a WebView already in the layer stack. Added a parameter to disable animation for modal screen show/hide.
 
 New API methods requires Scanner v3.1.3.

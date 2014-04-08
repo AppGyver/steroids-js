@@ -1,6 +1,10 @@
 class window.WebviewController
   # always put everything inside PhoneGap deviceready
   document.addEventListener "deviceready", ->
+    return if window.location.href.match "noNavigationBar.html"
+
+    steroids.view.navigationBar.show { title: "webview" }
+
 
   @testOnSuccessWithOpen: () ->
     webView = new steroids.views.WebView "/views/webview/noNavigationBar.html"
@@ -177,6 +181,13 @@ class window.WebviewController
       animation: anim
     }
 
+  @testSetBackgroundImage: ->
+    steroids.view.setBackgroundImage("/img/space-background.png")
+    
+  @testSetBackgroundImageMontain: ->
+    steroids.view.setBackgroundImage("/img/montain-bg.png")
+    document.body.style.backgroundColor = 'transparent';
+
   @testSetBackgroundCACCAA: ->
     steroids.view.setBackgroundColor("#CACCAA")
 
@@ -185,3 +196,29 @@ class window.WebviewController
 
   @testSetBackgroundWhite: ->
     steroids.view.setBackgroundColor("#FFFFFF")
+
+  @testDisplayLoading: ->
+    steroids.view.displayLoading()
+    setTimeout ->
+      #auto hide the loading screen after 3 seconds
+      steroids.view.removeLoading()
+    , 3000
+
+  @testEnableKeyboardAccessory: () ->
+    steroids.view.updateKeyboard {
+      accessoryBarEnabled:true
+    }, {
+      onSuccess: -> alert "keyboardc accesssory enabled"
+    }
+
+  @testDisableKeyboardAccessory: () ->
+    steroids.view.updateKeyboard {
+      accessoryBarEnabled:false
+    }, {
+      onSuccess: -> alert "keyboardy accesssory disabled"
+    }
+
+  @testKeyboardAccessoryWithEmptyParams: () ->
+    steroids.view.updateKeyboard null, {
+      onSuccess: -> alert "updateKeyboard called with no parameters (no change)"
+    }

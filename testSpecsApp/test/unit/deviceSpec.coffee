@@ -36,6 +36,8 @@ describe "steroids", ->
         runs ->
           if navigator.userAgent.match(/(iPod|iPhone|iPad)/)
             expect( name ).toBe("ios")
+          else
+            expect( "you" ).toBe("fixing this test for that device you are using")
 
     describe "torch", ->
 

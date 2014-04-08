@@ -1,7 +1,7 @@
 # -- Required settings --
 
-steroids.config.name = "Hello World"
-steroids.config.location = "http://localhost:13101/views/steroids/index.html"
+steroids.config.name = "Steroids.js test app"
+steroids.config.location = "http://localhost/views/steroids/index.html"
 
 # -- Tabs --
 
@@ -57,22 +57,14 @@ steroids.config.statusBar.enabled = Math.random() > 0.5
 # Setting these values override values set by the application theme in steroids.config.theme
 # Default for all attributes: ""
 
-steroids.config.navigationBar.tintColor = "#FFF"
-# TODO: find where this obj structure is created and add border
-# steroids.config.navigationBar.border = {}
-# steroids.config.navigationBar.border.size = 2
-# steroids.config.navigationBar.border.color = "#FFCC00"
-
-steroids.config.navigationBar.titleColor = "#CCC"
-# steroids.config.navigationBar.titleShadowColor = ""
+# steroids.config.navigationBar.tintColor = ""
+# steroids.config.navigationBar.titleColor = ""
 
 # steroids.config.navigationBar.buttonTintColor = ""
 # steroids.config.navigationBar.buttonTitleColor = ""
-# steroids.config.navigationBar.buttonShadowColor = ""
 
 # steroids.config.tabBar.tintColor = ""
 # steroids.config.tabBar.tabTitleColor = ""
-# steroids.config.tabBar.tabTitleShadowColor = ""
 # steroids.config.tabBar.selectedTabTintColor = ""
 
 # Can be used to set an indicator image for the selected tab (can be bigger than the tab)

@@ -114,7 +114,11 @@ window.steroids.notifications = new Notifications
 
 window.steroids.splashscreen = new Splashscreen
 
-window.steroids.logger = new Logger
-
 window.steroids.PostMessage = PostMessage
 window.postMessage = PostMessage.postMessage
+
+window.steroids.logger = new Logger
+window.steroids.logger.queue.autoFlush(100)
+
+window.addEventListener "error", (error, url, lineNumber) ->
+  steroids.logger.log "#{error.message} - #{url}:#{lineNumber}"

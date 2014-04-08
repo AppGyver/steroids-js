@@ -11,6 +11,11 @@ class Animation
     flipVerticalFromTop: "flipVerticalFromBottom"
     flipHorizontalFromLeft: "flipHorizontalFromRight"
     flipHorizontalFromRight: "flipHorizontalFromLeft"
+    # Drawer animations
+    slide: "slide"
+    slideAndScale: "slideAndScale"
+    swingingDoor: "swingingDoor"
+    parallax: "parallax"
 
   constructor: (options={}) ->
     @transition = if options.constructor.name == "String"
@@ -29,11 +34,10 @@ class Animation
     @curve = options.curve ? "easeInOut"
     @reversedCurve = options.reversedCurve ? "easeInOut"
 
-  perform: (options={}, callbacks={}) =>
+    #parallax drawer animation
+    @parallaxFactor = options.parallaxFactor ? 2.0
 
-    if window.orientation != 0 and @transition in ["slideFromRight", "slideFromLeft", "slideFromTop", "slideFromBottom"]
-      callbacks.onFailure?.call()
-      return
+  perform: (options={}, callbacks={}) =>
 
     steroids.nativeBridge.nativeCall
       method: "performTransition"
@@ -42,5 +46,6 @@ class Animation
         curve: options.curve || @curve
         duration: options.duration || @duration
       }
-      successCallbacks: [callbacks.onSuccess]
+      successCallbacks: [callbacks.onSuccess, callbacks.onAnimationStarted]
+      recurringCallbacks: [callbacks.onAnimationEnded]
       failureCallbacks: [callbacks.onFailure]

@@ -1,4 +1,8 @@
-class TabBar
+class TabBar extends EventsSupport
+
+  constructor: ->
+    #setup the events support
+    super "tab", ["willchange", "didchange"]
 
   hide: (options={}, callbacks={}) ->
     steroids.debug "steroids.tabBar.hide options: #{JSON.stringify options} callbacks: #{JSON.stringify callbacks}"
@@ -32,6 +36,14 @@ class TabBar
         index: @index
       successCallbacks: [callbacks.onSuccess]
       failureCallbacks: [callbacks.onFailure]
+
+  currentTab:
+    update: (options={}, callbacks={}) ->
+      steroids.nativeBridge.nativeCall
+        method: "updateTab"
+        parameters: options
+        successCallbacks: [callbacks.onSuccess]
+        failureCallbacks: [callbacks.onFailure]
 
   update: (options={}, callbacks={}) ->
     steroids.debug "steroids.tabBar.update options: #{JSON.stringify options} callbacks: #{JSON.stringify callbacks}"

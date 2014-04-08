@@ -5,7 +5,7 @@ class window.NavigationbarController
     document.addEventListener "deviceready", ->
       # Make Navigation Bar to appear with a custom title text
       steroids.view.navigationBar.show { title: "navbar" }
-      
+
   @testHideAnimated: ->
     steroids.view.navigationBar.hide {
       animated: true
@@ -140,14 +140,28 @@ class window.NavigationbarController
     steroids.view.navigationBar.update {
       overrideBackButton: false
     }
-  
+
   @testSetBorderBlue: ->
     steroids.view.navigationBar.update
       border: {
         size: 1
         color: '#CCCCFF'
       }
-  
+
+  @testSetBackButtonTitle: ->
+    customBack = new steroids.buttons.NavigationBarButton
+    customBack.title = "custom back"
+    steroids.view.navigationBar.update {
+      backButton: customBack
+    }
+
+  @testSetBackButtonImage: ->
+    customBack = new steroids.buttons.NavigationBarButton
+    customBack.imagePath = "/icons/pill@2x.png"
+    steroids.view.navigationBar.update {
+      backButton: customBack
+    }
+
   @testUpdateButtonsWithoutBackButton: ->
     button1 = new steroids.buttons.NavigationBarButton
     button1.title = "NEW RIGHT"
@@ -166,3 +180,35 @@ class window.NavigationbarController
     },
       onSuccess: -> alert "nav bar buttons updated"
       onFailure: -> alert "failed to update nav bar buttons"
+
+  @testButtonWithImageAsOriginal: ->
+    btoImgOriginal = new steroids.buttons.NavigationBarButton
+    btoImgOriginal.imagePath = "/icons/apple_colorfull.png"
+    btoImgOriginal.imageAsOriginal = "true"
+    btoImgOriginal.onTap = => alert "BUTTON WITH ORIGINAL IMAGE TAPPED"
+
+    btoTintedImg = new steroids.buttons.NavigationBarButton
+    btoTintedImg.imagePath = "/icons/apple_colorfull.png"
+    # btoTintedImg.imageAsOriginal = "true"
+    btoTintedImg.onTap = => alert "BUTTON WITH TINTED IMAGE TAPPED"
+
+    steroids.view.navigationBar.update {
+      buttons: {
+        right: [btoImgOriginal]
+        left: [btoTintedImg]
+      }
+    },
+      onSuccess: -> alert "nav bar buttons updated"
+      onFailure: -> alert "failed to update nav bar buttons"
+
+  @testSetAppearanceToRainbow: ->
+    steroids.view.navigationBar.setAppearance {
+      tintColor: '#FF0000'
+      titleTextColor: '#0000FF'
+      buttonTintColor: '#00FF00'
+      portraitBackgroundImage: steroids.app.path + '/images/navbar-bg@2x.png'
+      landscapeBackgroundImage: steroids.app.path + '/images/navbar-bg@2x.png'
+    }, {
+      onSuccess: -> alert "taste the rainbow"
+      onFailure: -> alert "failed set nav bar appearance"
+    }

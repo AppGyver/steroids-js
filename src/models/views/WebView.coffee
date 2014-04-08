@@ -69,6 +69,13 @@ class WebView
       successCallbacks: [callbacks.onSuccess]
       failureCallbacks: [callbacks.onFailure]
 
+  displayLoading: (options={}, callbacks={}) ->
+  
+    steroids.nativeBridge.nativeCall
+      method: "displayTransitionHelper"
+      successCallbacks: [callbacks.onSuccess]
+      failureCallbacks: [callbacks.onFailure]
+
   setAllowedRotations: (options={}, callbacks={}) ->
     @allowedRotations = if options.constructor.name == "Array"
       options
@@ -101,10 +108,36 @@ class WebView
       options
     else
       options.color
-
+  
     steroids.nativeBridge.nativeCall
       method: "setWebViewBackgroundColor"
       parameters:
         color: newColor
+      successCallbacks: [callbacks.onSuccess]
+      failureCallbacks: [callbacks.onFailure]
+  
+  setBackgroundImage: (options={}, callbacks={}) ->
+    newImage = if options.constructor.name == "String"
+      options
+    else
+      options.image
+  
+    steroids.nativeBridge.nativeCall
+      method: "setWebViewBackgroundImage"
+      parameters:
+        image: newImage
+      successCallbacks: [callbacks.onSuccess]
+      failureCallbacks: [callbacks.onFailure]
+
+  updateKeyboard: (options={}, callbacks={}) ->
+    
+    params = {}
+    
+    if options.accessoryBarEnabled?
+      params.accessoryBarEnabled = options.accessoryBarEnabled
+    
+    steroids.nativeBridge.nativeCall
+      method: "updateKeyboard"
+      parameters: params
       successCallbacks: [callbacks.onSuccess]
       failureCallbacks: [callbacks.onFailure]

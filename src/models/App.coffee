@@ -42,3 +42,18 @@ class App
 
   getLaunchURL: (options={}, callbacks={}) ->
     return window.AG_STEROIDS_SCANNER_URL
+
+  getMode: (options={}, callbacks={}) ->
+    mode = if navigator.userAgent.match(/(StandAlonePackage)/)
+      "standalone"
+    else
+      "scanner"
+
+    callbacks.onSuccess(mode) if callbacks.onSuccess?
+
+  getNSUserDefaults: (options={}, callbacks={}) ->
+    steroids.nativeBridge.nativeCall
+      method: "getNSUserDefaults"
+      parameters: {}
+      successCallbacks: [callbacks.onSuccess]
+      failureCallbacks: [callbacks.onFailure]

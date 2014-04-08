@@ -38,6 +38,33 @@ class window.AnimationController
       onFailure: -> alert "..and it is failing with onFailure. great success."
     })
 
+  @testSlideFromRight: () ->
+    anim = new steroids.Animation {
+      transition: "slideFromRight"
+    }
+
+    anim.perform({}, {
+      onFailure: -> alert "..and it is failing with onFailure. great success."
+    })
+
+  @testSlideFromTop: () ->
+     anim = new steroids.Animation {
+       transition: "slideFromTop"
+     }
+
+     anim.perform({}, {
+       onFailure: -> alert "..and it is failing with onFailure. great success."
+     })
+
+  @testSlideFromBottom: () ->
+    anim = new steroids.Animation {
+      transition: "slideFromBottom"
+    }
+
+    anim.perform({}, {
+      onFailure: -> alert "..and it is failing with onFailure. great success."
+    })
+
   @testDontPerformWhenOrientationNot0: () ->
     nowRotate = ->
       alert "now rotate the device off from 0 and try slideFromLeft"
@@ -48,3 +75,14 @@ class window.AnimationController
       onSuccess: nowRotate
     }
 
+  @testMoreCallBacks: () ->
+    anim = new steroids.Animation {
+      transition: "slideFromLeft"
+    }
+
+    anim.perform({}, {
+      onSuccess: ->
+      onAnimationStarted: -> alert "animation started"
+      onAnimationEnded: -> alert "animation ended"
+      onFailure: -> alert "..and it is failing with onFailure. great success."
+    })

@@ -3,6 +3,7 @@ class NavigationBarButton
     @title = options.title
     @onTap = options.onTap
     @imagePath = options.imagePath
+    @imageAsOriginal = options.imageAsOriginal
 
   toParams: () ->
     params = {}
@@ -11,6 +12,9 @@ class NavigationBarButton
     else
       relativeTo = steroids.app.path
       params.imagePath = relativeTo + @imagePath
+      
+    params.imageAsOriginal = @imageAsOriginal
+      
     return params
 
   getCallback: () ->
