@@ -1,4 +1,4 @@
-class WebView
+class WebView extends EventsSupport
 
   params: {}
   id: null
@@ -8,6 +8,10 @@ class WebView
   navigationBar: new NavigationBar
 
   constructor: (options={})->
+
+    #setup the events support
+    super "webview", ["created", "preloaded", "unloaded"]
+
     @location = if options.constructor.name == "String"
       options
     else
@@ -70,7 +74,7 @@ class WebView
       failureCallbacks: [callbacks.onFailure]
 
   displayLoading: (options={}, callbacks={}) ->
-  
+
     steroids.nativeBridge.nativeCall
       method: "displayTransitionHelper"
       successCallbacks: [callbacks.onSuccess]
@@ -108,20 +112,20 @@ class WebView
       options
     else
       options.color
-  
+
     steroids.nativeBridge.nativeCall
       method: "setWebViewBackgroundColor"
       parameters:
         color: newColor
       successCallbacks: [callbacks.onSuccess]
       failureCallbacks: [callbacks.onFailure]
-  
+
   setBackgroundImage: (options={}, callbacks={}) ->
     newImage = if options.constructor.name == "String"
       options
     else
       options.image
-  
+
     steroids.nativeBridge.nativeCall
       method: "setWebViewBackgroundImage"
       parameters:
@@ -130,12 +134,12 @@ class WebView
       failureCallbacks: [callbacks.onFailure]
 
   updateKeyboard: (options={}, callbacks={}) ->
-    
+
     params = {}
-    
+
     if options.accessoryBarEnabled?
       params.accessoryBarEnabled = options.accessoryBarEnabled
-    
+
     steroids.nativeBridge.nativeCall
       method: "updateKeyboard"
       parameters: params

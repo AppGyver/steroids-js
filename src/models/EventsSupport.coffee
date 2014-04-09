@@ -28,12 +28,21 @@ class EventsSupport
     fireEventHandler = (params) ->
       event = {
         name: params.name
-        target:
+      }
+
+      if params.webview?
+        event.webview = new steroids.views.WebView
+          location: params.webview.location
+          id: params.webview.id
+          uuid: params.webview.uuid
+
+      if params.target? and params.target.webview?
+        event.target = {
           webview: new steroids.views.WebView
             location: params.target.webview.location
             id: params.target.webview.id
             uuid: params.target.webview.uuid
-      }
+        }
 
       if params.source? and params.source.webview?
         event.source = {
@@ -44,7 +53,7 @@ class EventsSupport
         }
 
       # tab info
-      if params.target.tab?
+      if params.target? and params.target.tab?
         event.target.tab = params.target.tab
 
       if params.source and params.source.tab?
