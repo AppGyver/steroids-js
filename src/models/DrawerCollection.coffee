@@ -1,6 +1,9 @@
-class DrawerCollection
+class DrawerCollection extends EventsSupport
 
   constructor: ->
+    #setup the events support
+    super "drawer", ["willshow", "didshow", "willclose", "didclose"]
+
     @defaultAnimations = {
       SLIDE: new Animation({
         transition: "slide"

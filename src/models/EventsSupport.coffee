@@ -2,7 +2,6 @@ class EventsSupport
 
   constructor: (@prefixName, @validEvents) ->
 
-
   # used to generate a unique event handler id
   # that can be used to de-register the handler later
   @eventCounter = Date.now()
@@ -44,11 +43,16 @@ class EventsSupport
             uuid: params.source.webview.uuid
         }
 
+      # tab info
       if params.target.tab?
         event.target.tab = params.target.tab
 
       if params.source and params.source.tab?
         event.source.tab = params.source.tab
+
+      # drawer info
+      if params.drawer?
+        event.drawer = params.drawer
 
       callback(event);
 
