@@ -183,7 +183,7 @@ class window.WebviewController
 
   @testSetBackgroundImage: ->
     steroids.view.setBackgroundImage("/img/space-background.png")
-    
+
   @testSetBackgroundImageMontain: ->
     steroids.view.setBackgroundImage("/img/montain-bg.png")
     document.body.style.backgroundColor = 'transparent';
@@ -222,3 +222,31 @@ class window.WebviewController
     steroids.view.updateKeyboard null, {
       onSuccess: -> alert "updateKeyboard called with no parameters (no change)"
     }
+
+
+  #event tests
+  @testCreatedEvent: ->
+    eventHandler = steroids.view.on 'created', (event) ->
+      alert "created event -> eventName: #{event.name} webview.location: #{event.webview.location}"
+
+    alert "event listener added"
+
+  @testPreloadedEvent: ->
+    eventHandler = steroids.view.on 'preloaded', (event) ->
+      alert "preloaded event -> eventName: #{event.name} webview.location: #{event.webview.location}"
+
+    alert "event listener added"
+
+  @testUnloadedEvent: ->
+    eventHandler = steroids.view.on 'unloaded', (event) ->
+      alert "unloaded event -> eventName: #{event.name} webview.location: #{event.webview.location}"
+
+    alert "event listener added"
+
+
+  @testOffAllEvents: ->
+    steroids.view.off 'created'
+    steroids.view.off 'preloaded'
+    steroids.view.off 'unloaded'
+
+    alert "all event listeners removed"
