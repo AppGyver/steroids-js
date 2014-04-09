@@ -146,11 +146,11 @@ class window.LayersController
 
   @testwillchangeEvent: ->
     eventHandler = steroids.layers.on 'willchange', (event) ->
-      targetId = if event.target.webview.id?
+      targetId = if event.target? and event.target.webview.id?
         event.target.webview.id
       else
         ""
-      sourceId = if event.source.webview.id?
+      sourceId = if event.source? and event.source.webview.id?
         event.source.webview.id
       else
         ""
@@ -163,11 +163,11 @@ class window.LayersController
 
   @testdidchangeEvent: ->
     eventHandler = steroids.layers.on 'didchange', (event) ->
-      targetId = if event.target.webview.id?
+      targetId = if event.target? and event.target.webview.id?
         event.target.webview.id
       else
         ""
-      sourceId = if event.source.webview.id?
+      sourceId = if event.source? and event.source.webview.id?
         event.source.webview.id
       else
         ""
