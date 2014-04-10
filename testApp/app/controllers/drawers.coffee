@@ -1,11 +1,11 @@
 class window.DrawersController
-  @leftDrawer: new steroids.views.WebView {
+  @leftDrawer: new steroids.views.WebView
     location: "/views/drawers/leftDrawer.html"
-  }
+    id: "leftDrawer"
 
-  @rightDrawer: new steroids.views.WebView {
+  @rightDrawer: new steroids.views.WebView
     location: "/views/drawers/rightDrawer.html"
-  }
+    id: "rightDrawer"
 
   @center1: new steroids.views.WebView {
     location: "/views/drawers/index.html"
@@ -263,4 +263,18 @@ class window.DrawersController
 
   @testReplaceLayers: ->
     steroids.layers.replace DrawersController.center2
+
+  @testTryToReusePreloadedAsModal: ->
+    success = ->
+      alert "should not have sucessed :-("
+
+    fail = ->
+      alert "could not open the modal !"
+
+    steroids.modal.show
+      view: DrawersController.leftDrawer
+    ,
+      onSuccess: success
+      onFailure: fail
+
 
