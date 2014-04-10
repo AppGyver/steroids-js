@@ -1,6 +1,9 @@
 
 ##Next version
 
+Changes:
+ - setAllowedRotations now has a default of [0] instead of []
+
 Secret features:
  - steroids.getApplicationState returns the application state including all preloaded webviews, tabs, modals and drawer controllers
 
