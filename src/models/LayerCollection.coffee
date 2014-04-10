@@ -15,6 +15,7 @@ class LayerCollection extends EventsSupport
     steroids.nativeBridge.nativeCall
       method: "popAllLayers"
       successCallbacks: [callbacks.onSuccess]
+      recurringCallbacks: [callbacks.onTransitionEnd]
       failureCallbacks: [callbacks.onFailure]
 
 
