@@ -210,3 +210,8 @@ class window.ModalController
 
     alert "modal close events handlers removed"
 
+  @testGetApplicationState: ->
+    steroids.getApplicationState {}
+    ,
+      onSuccess: (appState) ->
+        alert "application state received :-)"
