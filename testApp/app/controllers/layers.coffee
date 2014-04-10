@@ -211,7 +211,7 @@ class window.LayersController
 
     steroids.layers.popAll {}
     ,
-      onSuccess: ->
+      onTransitionStarted: ->
         console.log "pop all invoked"
       onTransitionEnd: ->
         console.log "pop all finished"
