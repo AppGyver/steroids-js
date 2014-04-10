@@ -197,3 +197,22 @@ class window.LayersController
 
     alert "willchange events handlers removed"
 
+  @testAnotherLayer: ->
+    pushed = ->
+      console.log "PUSHED"
+
+    steroids.layers.push {
+      view: @createWebView()
+    }, {
+      onSuccess: pushed
+    }
+
+  @testPopAll: ->
+
+    steroids.layers.popAll {}
+    ,
+      onSuccess: ->
+        console.log "pop all invoked"
+      onTransitionEnd: ->
+        console.log "pop all finished"
+
