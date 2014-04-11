@@ -1,3 +1,9 @@
+##Next version
+
+Features:
+ - New steroids.screen.rotate API that allows for the device orientation to be set programatically.
+   Examples: steroids.screen.rotate "portrait", steroids.screen.rotate "landscapeLeft"
+
 ##3.1.8 (2014-04-03)
 
 Various new APIs for iOS, multiple consequtive modals supported, navigation bar in modals supported.
