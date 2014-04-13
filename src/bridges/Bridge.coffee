@@ -13,6 +13,7 @@ class Bridge
       TizenBridge
       WebBridge
       AndroidBridge
+      JSCoreBridge
       WebsocketBridge
     ]
 
