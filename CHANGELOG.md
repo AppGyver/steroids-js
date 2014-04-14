@@ -7,6 +7,9 @@ Changes:
 Secret features:
  - steroids.getApplicationState returns the application state including all preloaded webviews, tabs, modals and drawer controllers
 
+Internal stuff:
+ - New iOS JavaScriptCore bridge - more awesome, faster and etc.
+
 ##3.1.8 (2014-04-03)
 
 Various new APIs for iOS, multiple consecutive modals supported, navigation bar in modals supported.
