@@ -1,8 +1,11 @@
-
 ##Next version
 
 Changes:
  - setAllowedRotations now has a default of [0] instead of []
+
+Features:
+ - New steroids.screen.rotate API that allows for the device orientation to be set programatically.
+   Examples: steroids.screen.rotate "portrait", steroids.screen.rotate "landscapeLeft"
 
 Secret features:
  - steroids.getApplicationState returns the application state including all preloaded webviews, tabs, modals and drawer controllers

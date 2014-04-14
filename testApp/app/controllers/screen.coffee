@@ -8,6 +8,8 @@ class window.ScreenController
       # Make Navigation Bar to appear with a custom title text
       steroids.navigationBar.show { title: "screen" }
 
+      steroids.view.setAllowedRotations [0, 90, -90, 180]
+
   @testFreeze: ->
     steroids.screen.freeze {},
       onSuccess: console.log "freeze success"
@@ -44,3 +46,20 @@ class window.ScreenController
         y: 260
       }
     , 1100
+
+  @testRotatePortrait: ->
+    steroids.screen.rotate "portrait"
+    ,
+      onTransitionStarted: ->
+        console.log "rotation started"
+      onTransitionEnded: ->
+        console.log "rotation ended"
+
+  @testRotatePortraitUpsideDown: ->
+    steroids.screen.rotate "portraitUpsideDown"
+
+  @testRotateLandscapeLeft: ->
+    steroids.screen.rotate "landscapeLeft"
+
+  @testRotateLandscapeRight: ->
+    steroids.screen.rotate "landscapeRight"

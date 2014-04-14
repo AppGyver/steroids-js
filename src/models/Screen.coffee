@@ -32,3 +32,29 @@ class Screen
       parameters: options
       successCallbacks: [callbacks.onSuccess]
       failureCallbacks: [callbacks.onFailure]
+
+  #orientation:
+  #  portrait
+  #  portraitUpsideDown
+  #  landscapeLeft
+  #  landscapeRight
+  rotate: (options={}, callbacks={}) ->
+
+    params = {}
+
+    params.orientation = if options.constructor.name == "String"
+      options
+    else
+      if options.orientation?
+        options.orientation
+      else
+        "portrait"
+
+    steroids.nativeBridge.nativeCall
+      method: "setOrientation"
+      parameters: params
+      successCallbacks: [callbacks.onSuccess, callbacks.onTransitionStarted]
+      recurringCallbacks: [callbacks.onTransitionEnded]
+      failureCallbacks: [callbacks.onFailure]
+
+
