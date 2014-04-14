@@ -152,7 +152,9 @@ class NavigationBar
       if options.title?
         params.title = options.title
         params.titleImagePath = ""
-
+        
+      params.border = options.border
+      
       if options.titleImagePath?
         if not options.title?
           params.titleImagePath = relativeTo + options.titleImagePath

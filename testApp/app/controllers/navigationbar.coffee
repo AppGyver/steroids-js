@@ -3,7 +3,6 @@ class window.NavigationbarController
 
     # always put everything inside PhoneGap deviceready
     document.addEventListener "deviceready", ->
-
       # Make Navigation Bar to appear with a custom title text
       steroids.view.navigationBar.show { title: "navbar" }
 
@@ -142,6 +141,13 @@ class window.NavigationbarController
       overrideBackButton: false
     }
 
+  @testSetBorderBlue: ->
+    steroids.view.navigationBar.update
+      border: {
+        size: 1
+        color: '#CCCCFF'
+      }
+
   @testSetBackButtonTitle: ->
     customBack = new steroids.buttons.NavigationBarButton
     customBack.title = "custom back"
@@ -174,18 +180,18 @@ class window.NavigationbarController
     },
       onSuccess: -> alert "nav bar buttons updated"
       onFailure: -> alert "failed to update nav bar buttons"
-      
+
   @testButtonWithImageAsOriginal: ->
     btoImgOriginal = new steroids.buttons.NavigationBarButton
     btoImgOriginal.imagePath = "/icons/apple_colorfull.png"
     btoImgOriginal.imageAsOriginal = "true"
     btoImgOriginal.onTap = => alert "BUTTON WITH ORIGINAL IMAGE TAPPED"
-    
+
     btoTintedImg = new steroids.buttons.NavigationBarButton
     btoTintedImg.imagePath = "/icons/apple_colorfull.png"
     # btoTintedImg.imageAsOriginal = "true"
     btoTintedImg.onTap = => alert "BUTTON WITH TINTED IMAGE TAPPED"
-  
+
     steroids.view.navigationBar.update {
       buttons: {
         right: [btoImgOriginal]
