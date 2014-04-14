@@ -34,7 +34,11 @@ class Bridge
 
   # Handles incoming API messages
   message_handler: (e)=>
-    msg = JSON.parse(e)
+    msg = if e.constructor.name == "String"
+      JSON.parse(e)
+    else
+      # iOS parameters come as objects and not String
+      e
 
     if msg?.callback?
       if @callbacks[msg.callback]?
@@ -76,7 +80,13 @@ class Bridge
     request.parameters["udid"] = window.top.AG_WEBVIEW_UDID
 
     #console.log(request)
-    @sendMessageToNative JSON.stringify(request)
+    request = @parseMessage request
+    @sendMessageToNative request
+
+  #allow for the implementation to override and decide
+  #to call stringify or not (iOS we pass as objects)
+  parseMessage: (message={})->
+    JSON.stringify(message)
 
   storeCallbacks: (options={})->
     return {} unless options?.callbacks?
