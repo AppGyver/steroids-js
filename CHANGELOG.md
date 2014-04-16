@@ -1,7 +1,8 @@
 ##Next version
 
 Changes:
- - setAllowedRotations now has a default of [0] instead of []
+ - `setAllowedRotations` now has a default of `[0]` instead of `[]` for new WebViews
+ - `steroids.drawers` is completely reworked on the native side, with support for drawers on both sides, more open gestures, different animations for displaying the drawer, native events for the drawer and more.
 
 Features:
  - New steroids.screen.rotate API that allows for the device orientation to be set programatically.
