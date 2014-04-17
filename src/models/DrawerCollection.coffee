@@ -134,7 +134,7 @@ class DrawerCollection
     # None -> Disable any gesture for open
     # PanNavBar -> open the drawer by panning the NavBar
     # PanCenterView -> open the drawer by panning anywhere in the center view
-    # PanBezelCenterView -> open the drawer by panning starting from the edge (bezel). the distance from the bezel is defined by the property XXX
+    # PanBezelCenterView -> open the drawer by panning starting from the edge (bezel). the distance from the bezel is 20 device pixels
     # Sample :
     # openGestures : ["PanNavBar", "PanCenterView", "PanBezelCenterView"]
     if options.openGestures?
@@ -143,7 +143,7 @@ class DrawerCollection
     # None -> Disable any gesture for close
     # PanNavBar -> close the drawer by panning the NavBar
     # PanCenterView -> close the drawer by panning anywhere in the center view
-    # PanBezelCenterView -> close the drawer by panning starting from the edge (bezel). the distance from the bezel is defined by the property XXX
+    # PanBezelCenterView -> close the drawer by panning starting from the edge (bezel). the distance from the bezel is 20 device pixels
     # TapNavBar -> closes the drawer then the user taps on the navbar of the center view
     # TapCenterView -> closes the drawer then the user taps anywhere on the center view
     # PanDrawerView -> close the drawer by panning the drawer view
