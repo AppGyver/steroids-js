@@ -12,10 +12,10 @@ class InitialView
 
 
 		steroids.nativeBridge.nativeCall
-          method: "dismissInitialView"
-          parameters: parameters
-          successCallbacks: [callbacks.onSuccess]
-          failureCallbacks: [callbacks.onFailure]
+			method: "dismissInitialView"
+			parameters: parameters
+			successCallbacks: [callbacks.onSuccess]
+			failureCallbacks: [callbacks.onFailure]
 
 
 	show: (options={}, callbacks={})->
@@ -29,8 +29,8 @@ class InitialView
 				transition: "fade"
 
 		steroids.nativeBridge.nativeCall
-		  method: "showInitialView"
-		  parameters: parameters
-		  successCallbacks: [callbacks.onSuccess]
-		  failureCallbacks: [callbacks.onFailure]
+			method: "showInitialView"
+			parameters: parameters
+			successCallbacks: [callbacks.onSuccess]
+			failureCallbacks: [callbacks.onFailure]
 
