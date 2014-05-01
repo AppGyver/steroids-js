@@ -1,6 +1,10 @@
 {
 	"appearance": {
-		 "nav_bar_border_size": "2",
-		 "nav_bar_border_color": "#FFCC00"
+		"nav_bar_border_size": "2",
+		"nav_bar_border_color": "#FFCC00"
+	},
+	"initialView": {
+		"id": "login",
+		"location": "http://localhost/views/initview/index.html"
 	}
 }
