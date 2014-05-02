@@ -6,7 +6,7 @@ class window.InitviewController
   @testDismissInitialView: ->
     console.log "@testDismissInitialView called"
     myAnimation = new steroids.Animation
-      transition: "curlUp"
+      transition: "flipHorizontalFromRight"
       duration: 1.0
       curve: "easeInOut"
 
