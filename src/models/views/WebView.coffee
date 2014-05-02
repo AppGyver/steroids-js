@@ -21,9 +21,12 @@ class WebView
         @location = "#{window.location.protocol}//#{window.location.host}/#{@location}"
 
     @params = @getParams()
-    # Having the Portrait orientation allow for the
-    # webview to go back to Portrait when rotated by another view
-    # e.g when doing video playback
+
+    # Sets the WebView to rotate to portait orientation only by default.
+    # User can override this behavior by setting window.AG_allowedRotationsDefaults
+    # before loading Steroids.js.
+
+    allowedRotations = window.AG_allowedRotationsDefaults ? [0]
     @setAllowedRotations([0])
 
 
