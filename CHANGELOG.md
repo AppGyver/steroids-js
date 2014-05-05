@@ -1,6 +1,19 @@
+##Next version
+
+Changes:
+ - `setAllowedRotations` now has a default of `[0]` instead of `[]` for new WebViews
+ - `steroids.drawers` is completely reworked on the native side, with support for drawers on both sides, more open gestures, different animations for displaying the drawer, native events for the drawer and more.
+
+Features:
+ - New steroids.screen.rotate API that allows for the device orientation to be set programatically.
+   Examples: steroids.screen.rotate "portrait", steroids.screen.rotate "landscapeLeft"
+
+Secret features:
+ - steroids.getApplicationState returns the application state including all preloaded webviews, tabs, modals and drawer controllers
+
 ##3.1.8 (2014-04-03)
 
-Various new APIs for iOS, multiple consequtive modals supported, navigation bar in modals supported.
+Various new APIs for iOS, multiple consecutive modals supported, navigation bar in modals supported.
 
 Features:
   - Navigation bar can now be used in modal windows also.

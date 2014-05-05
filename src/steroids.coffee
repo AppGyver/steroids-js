@@ -26,6 +26,13 @@ window.steroids =
   debugMessages: []
   debugEnabled: false
 
+  getApplicationState: (options={}, callbacks={}) ->
+    steroids.nativeBridge.nativeCall
+        method: "getApplicationState"
+        parameters: {}
+        successCallbacks: [callbacks.onSuccess]
+        failureCallbacks: [callbacks.onFailure]
+
   debug: (msg) ->
     return unless steroids.debugEnabled
 
