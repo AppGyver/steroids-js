@@ -183,7 +183,7 @@ class window.WebviewController
 
   @testSetBackgroundImage: ->
     steroids.view.setBackgroundImage("/img/space-background.png")
-    
+
   @testSetBackgroundImageMontain: ->
     steroids.view.setBackgroundImage("/img/montain-bg.png")
     document.body.style.backgroundColor = 'transparent';
@@ -222,3 +222,10 @@ class window.WebviewController
     steroids.view.updateKeyboard null, {
       onSuccess: -> alert "updateKeyboard called with no parameters (no change)"
     }
+
+  @testPreloadViaArray: () ->
+    preloadedView = new steroids.views.WebView
+      id: "preloadedViaPreloadsArray"
+      location: "notUsed"
+
+    steroids.layers.push preloadedView
