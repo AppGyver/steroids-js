@@ -2,7 +2,6 @@ class EventsSupport
 
   constructor: (@prefixName, @validEvents) ->
 
-
   # used to generate a unique event handler id
   # that can be used to de-register the handler later
   @eventCounter = Date.now()
@@ -29,12 +28,21 @@ class EventsSupport
     fireEventHandler = (params) ->
       event = {
         name: params.name
-        target:
+      }
+
+      if params.webview?
+        event.webview = new steroids.views.WebView
+          location: params.webview.location
+          id: params.webview.id
+          uuid: params.webview.uuid
+
+      if params.target? and params.target.webview?
+        event.target = {
           webview: new steroids.views.WebView
             location: params.target.webview.location
             id: params.target.webview.id
             uuid: params.target.webview.uuid
-      }
+        }
 
       if params.source? and params.source.webview?
         event.source = {
@@ -44,11 +52,16 @@ class EventsSupport
             uuid: params.source.webview.uuid
         }
 
-      if params.target.tab?
+      # tab info
+      if params.target? and params.target.tab?
         event.target.tab = params.target.tab
 
       if params.source and params.source.tab?
         event.source.tab = params.source.tab
+
+      # drawer info
+      if params.drawer?
+        event.drawer = params.drawer
 
       callback(event);
 

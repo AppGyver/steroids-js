@@ -1,4 +1,4 @@
-class WebView
+class WebView extends EventsSupport
 
   params: {}
   id: null
@@ -8,6 +8,10 @@ class WebView
   navigationBar: new NavigationBar
 
   constructor: (options={})->
+
+    #setup the events support
+    super "webview", ["created", "preloaded", "unloaded"]
+
     @location = if options.constructor.name == "String"
       options
     else
