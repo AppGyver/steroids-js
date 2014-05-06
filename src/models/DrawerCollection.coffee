@@ -51,24 +51,8 @@ class DrawerCollection extends EventsSupport
   show: (options={}, callbacks={}) ->
     steroids.debug "steroids.drawers.show called"
 
-    parameters = {
-      edge: steroids.screen.edges.LEFT
-      left:{}
-      right:{}
-      options:{}
-    }
-
-    if options.left?
-      DrawerCollection.applyViewOptions options.left, parameters.left
-
-    if options.right?
-      DrawerCollection.applyViewOptions options.right, parameters.right
-
-    if options.options?
-      DrawerCollection.applyDrawerSettings options.options, parameters.options
-
-    if options.edge?
-      parameters.edge = options.edge
+    parameters =
+      edge: options.edge || steroids.screen.edges.LEFT
 
     steroids.nativeBridge.nativeCall
       method: "openDrawer"

@@ -73,6 +73,14 @@ class window.DrawersController
       buttons:
         right: [rightDrawerBtn]
 
+  @testShow: ->
+    success = ->
+      console.log "SUCCESS"
+
+    steroids.drawers.show {}, {
+      onSuccess: success
+    }
+
   @testShowLeft: ->
     success = ->
       console.log "SUCCESS"
@@ -248,22 +256,6 @@ class window.DrawersController
         animation: new steroids.Animation
           transition: "swingingDoor"
           duration: 0.5
-    }, {
-      onSuccess: success
-    }
-
-  @testShowLeftWithFullParams: ->
-    success = ->
-      console.log "SUCCESS"
-
-    steroids.drawers.show {
-      edge: steroids.screen.edges.LEFT
-      options:
-        showShadow: true
-        openGestures: ["PanCenterView"]
-        closeGestures: ["PanCenterView", "PanDrawerView"]
-        strechDrawer: true
-        centerViewInteractionMode: "Full"
     }, {
       onSuccess: success
     }
