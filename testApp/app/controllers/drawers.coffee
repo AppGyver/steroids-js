@@ -138,6 +138,20 @@ class window.DrawersController
       onSuccess: success
     }
 
+  @testEnableGesture: ->
+
+    googleView = new steroids.views.WebView("http://www.google.com")
+    googleView.preload {},
+    {
+      onSuccess: =>
+        steroids.drawers.enableGesture
+          view: googleView
+          edge: steroids.screen.edges.LEFT
+          keepLoading: true
+          widthOfDrawerInPixels: 200
+    }
+
+
   @testDisableGestureViaUpdate: ->
     success = ->
       console.log "SUCCESS"

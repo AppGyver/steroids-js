@@ -84,6 +84,7 @@ class DrawerCollection extends EventsSupport
       successCallbacks: [callbacks.onSuccess]
       failureCallbacks: [callbacks.onFailure]
 
+  # DEPRECATED, legacy support only
   disableGesture: (options={}, callbacks={}) ->
     steroids.debug "steroids.drawers.disableGesture called"
 
@@ -91,6 +92,41 @@ class DrawerCollection extends EventsSupport
       options:
         openGestures: ["None"]
         closeGestures: ["None"]
+
+    steroids.nativeBridge.nativeCall
+      method: "updateDrawer"
+      parameters: parameters
+      successCallbacks: [callbacks.onSuccess]
+      failureCallbacks: [callbacks.onFailure]
+
+  # DEPRECATED, legacy support only
+  enableGesture: (options={}, callbacks={}) ->
+    steroids.debug "steroids.drawers.enableGesture called"
+
+    parameters =
+      left: {}
+      right: {}
+      options: {}
+
+    if options.keepLoading?
+      options.view.keepLoading = options.keepLoading
+
+    if options.widthOfDrawerInPixels?
+      options.view.widthOfDrawerInPixels = options.widthOfDrawerInPixels
+    else if options.widthOfLayerInPixels?
+      parameters.options.widthOfLayerInPixels = options.widthOfLayerInPixels
+
+    edge = options.edge || steroids.screen.edges.LEFT
+
+    if edge is steroids.screen.edges.RIGHT
+      DrawerCollection.applyViewOptions options.view, parameters.right
+    else # default to left edge
+      DrawerCollection.applyViewOptions options.view, parameters.left
+
+    parameters.options.openGestures = ["PanNavBar", "PanCenterView"]
+    parameters.options.closeGestures = ["PanNavBar", "PanCenterView", "TapNavBar", "TapCenterView", "PanDrawerView"]
+
+    console.log parameters
 
     steroids.nativeBridge.nativeCall
       method: "updateDrawer"
