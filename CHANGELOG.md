@@ -19,7 +19,7 @@ Changes:
   - `setAllowedRotations` now has a default of `[0]` instead of `[]` for new WebViews. This can be overridden by setting a `window.AG_allowedRotationsDefaults` variable before Steroids.js is loaded.
 
 Secret features:
-  - `steroids.getApplicationState` returns the application state including all preloaded webviews, tabs, modals and drawer controllers.
+  - `steroids.getApplicationState()` returns the application state including all preloaded webviews, tabs, modals and drawer controllers.
   - `steroids.modal.closeAll()` closes all currently open modals.
   - New `steroids.screen.rotate` API that allows for the device orientation to be set programatically. Examples: `steroids.screen.rotate("portrait")`, `steroids.screen.rotate("landscapeLeft")`.
   - New native UI events for `steroids.drawers`, `steroids.layers`, `steroids.tabBar`, `steroids.modal` and `steroids.views.WebView`
