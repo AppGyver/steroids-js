@@ -1,19 +1,19 @@
 class window.DrawersController
   @leftDrawer: new steroids.views.WebView
-    location: "/views/drawers/leftDrawer.html"
+    location: "views/drawers/leftDrawer.html"
     id: "leftDrawer"
 
   @rightDrawer: new steroids.views.WebView
-    location: "/views/drawers/rightDrawer.html"
+    location: "views/drawers/rightDrawer.html"
     id: "rightDrawer"
 
   @center1: new steroids.views.WebView {
-    location: "/views/drawers/index.html"
+    location: "views/drawers/index.html"
     id: "center1"
   }
 
   @center2: new steroids.views.WebView {
-    location: "/views/drawers/index2.html"
+    location: "views/drawers/index2.html"
     id: "center2"
   }
 
@@ -99,6 +99,54 @@ class window.DrawersController
     ,
       onSuccess: success
 
+  @testShowNonPreloadedDrawerRight: ->
+    success = ->
+      alert "SUCCESS"
+    failure = ->
+      alert "FAILED"
+
+    newDrawer = new steroids.views.WebView("views/drawers/extraDrawer.html")
+
+    steroids.drawers.update
+      right: newDrawer
+    ,
+      onSuccess: success
+      onFailure: failure
+
+  @testShowNonPreloadedDrawerWithIdRight: ->
+    success = ->
+      alert "SUCCESS"
+    failure = ->
+      alert "FAILED"
+
+    newDrawer = new steroids.views.WebView
+      location: "views/drawers/extraDrawer.html"
+      id: "extraDrawer"
+
+    steroids.drawers.update
+      right: newDrawer
+    ,
+      onSuccess: success
+      onFailure: failure
+
+  @testShowPreloadedDrawerRight: ->
+    success = ->
+      alert "SUCCESS"
+    failure = ->
+      alert "FAILED"
+
+    newDrawer = new steroids.views.WebView("views/drawers/extraDrawer.html")
+
+    newDrawer.preload {},
+    {
+      onSuccess: =>
+        steroids.drawers.update
+          right: newDrawer
+        ,
+          onSuccess: success
+          onFailure: failure
+    }
+
   @testHide: ->
     success = ->
       console.log "SUCCESS"
@@ -150,7 +198,6 @@ class window.DrawersController
           keepLoading: true
           widthOfDrawerInPixels: 200
     }
-
 
   @testDisableGestureViaUpdate: ->
     success = ->
