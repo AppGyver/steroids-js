@@ -186,7 +186,7 @@ class window.DrawersController
       onSuccess: success
     }
 
-  @testEnableGesture: ->
+  @testLegacyEnableGesture: ->
 
     googleView = new steroids.views.WebView("http://www.google.com")
     googleView.preload {},
@@ -195,8 +195,15 @@ class window.DrawersController
         steroids.drawers.enableGesture
           view: googleView
           edge: steroids.screen.edges.LEFT
-          keepLoading: true
           widthOfDrawerInPixels: 200
+    }
+
+  @testLegacyEnableGestureShorthand: ->
+    appleView = new steroids.views.WebView("http://www.apple.com")
+    appleView.preload {},
+    {
+      onSuccess: =>
+        steroids.drawers.enableGesture(appleView)
     }
 
   @testDisableGestureViaUpdate: ->
@@ -213,7 +220,7 @@ class window.DrawersController
       onSuccess: success
     }
 
-  @testDisableGesture: ->
+  @testLegacyDisableGesture: ->
     success = ->
       console.log "SUCCESS"
 

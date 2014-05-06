@@ -108,6 +108,11 @@ class DrawerCollection extends EventsSupport
       right: {}
       options: {}
 
+    # support shorthand of passing just WebView
+    if options.constructor.name == "WebView"
+      options =
+        view: options
+
     if options.keepLoading?
       options.view.keepLoading = options.keepLoading
 
@@ -125,8 +130,6 @@ class DrawerCollection extends EventsSupport
 
     parameters.options.openGestures = ["PanNavBar", "PanCenterView"]
     parameters.options.closeGestures = ["PanNavBar", "PanCenterView", "TapNavBar", "TapCenterView", "PanDrawerView"]
-
-    console.log parameters
 
     steroids.nativeBridge.nativeCall
       method: "updateDrawer"
