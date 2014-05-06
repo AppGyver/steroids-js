@@ -1,0 +1,15 @@
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  var timeAlive = 0;
+  var timeAliveElem = document.querySelector("#timeAlive")
+
+  setInterval(function() {
+
+    timeAliveElem.textContent = timeAlive;
+    timeAlive++;
+
+  }, 1000);
+});
+</script>
+
+<p>I've been alive since app start, for <span id="timeAlive"></span> seconds.</p>

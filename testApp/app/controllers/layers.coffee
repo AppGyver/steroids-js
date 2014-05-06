@@ -134,4 +134,66 @@ class window.LayersController
 
     steroids.layers.replace view
 
+  @testInvalidLayerEvents: ->
+    try
+      steroids.layers.on 'invalidEventName', (event) ->
+        alert "should never be invoked"
+    catch error
+      alert "steroids.layers.on callend with an invalid event name! error: #{error}"
+
+  @didChangeHandlers = []
+  @willChangeHandlers = []
+
+  @testwillchangeEvent: ->
+    eventHandler = steroids.layers.on 'willchange', (event) ->
+      targetId = if event.target? and event.target.webview.id?
+        event.target.webview.id
+      else
+        ""
+      sourceId = if event.source? and event.source.webview.id?
+        event.source.webview.id
+      else
+        ""
+
+      alert "willchange event -> eventName: #{event.name} target.webview.id: #{targetId} source.webview.id: #{sourceId}"
+
+    @willChangeHandlers.push eventHandler
+
+    alert "event listener added"
+
+  @testdidchangeEvent: ->
+    eventHandler = steroids.layers.on 'didchange', (event) ->
+      targetId = if event.target? and event.target.webview.id?
+        event.target.webview.id
+      else
+        ""
+      sourceId = if event.source? and event.source.webview.id?
+        event.source.webview.id
+      else
+        ""
+      alert "didchange event -> eventName: #{event.name} target.webview.id: #{targetId} source.webview.id: #{sourceId}"
+
+    @didChangeHandlers.push eventHandler
+
+    alert "event listener added"
+
+  @testRemoveAllEventHandlers: ->
+    @didChangeHandlers.forEach (handlerId) -> steroids.layers.off 'didchange', handlerId
+
+    @willChangeHandlers.forEach (handlerId) -> steroids.layers.off 'willchange', handlerId
+
+    @willChangeHandlers = []
+    @didChangeHandlers = []
+
+    alert "event handlers removed"
+
+  @testRemovedidchangeEvents: ->
+    steroids.layers.off 'didchange'
+
+    alert "didchange events handlers removed"
+
+  @testRemovewillchangeEvents: ->
+    steroids.layers.off 'willchange'
+
+    alert "willchange events handlers removed"
 

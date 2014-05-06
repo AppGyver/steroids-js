@@ -39,6 +39,7 @@ module.exports = function(grunt) {
             'src/bridges/WebsocketBridge.coffee',
             'src/bridges/TizenBridge.coffee',
             'src/Events.coffee',
+            'src/models/EventsSupport.coffee',
             'src/models/device/Torch.coffee',
             'src/models/Device.coffee',
             'src/models/Animation.coffee',

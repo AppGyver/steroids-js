@@ -1,4 +1,4 @@
-class WebView
+class WebView extends EventsSupport
 
   params: {}
   id: null
@@ -8,6 +8,10 @@ class WebView
   navigationBar: new NavigationBar
 
   constructor: (options={})->
+
+    #setup the events support
+    super "webview", ["created", "preloaded", "unloaded"]
+
     @location = if options.constructor.name == "String"
       options
     else
@@ -21,7 +25,13 @@ class WebView
         @location = "#{window.location.protocol}//#{window.location.host}/#{@location}"
 
     @params = @getParams()
-    @setAllowedRotations([])
+
+    # Sets the WebView to rotate to portait orientation only by default.
+    # User can override this behavior by setting window.AG_allowedRotationsDefaults
+    # before loading Steroids.js.
+
+    allowedRotations = window.AG_allowedRotationsDefaults ? [0]
+    @setAllowedRotations([0])
 
 
   preload: (options={}, callbacks={}) ->
@@ -70,7 +80,7 @@ class WebView
       failureCallbacks: [callbacks.onFailure]
 
   displayLoading: (options={}, callbacks={}) ->
-  
+
     steroids.nativeBridge.nativeCall
       method: "displayTransitionHelper"
       successCallbacks: [callbacks.onSuccess]
@@ -116,13 +126,26 @@ class WebView
       successCallbacks: [callbacks.onSuccess]
       failureCallbacks: [callbacks.onFailure]
 
+  setBackgroundImage: (options={}, callbacks={}) ->
+    newImage = if options.constructor.name == "String"
+      options
+    else
+      options.image
+
+    steroids.nativeBridge.nativeCall
+      method: "setWebViewBackgroundImage"
+      parameters:
+        image: newImage
+      successCallbacks: [callbacks.onSuccess]
+      failureCallbacks: [callbacks.onFailure]
+
   updateKeyboard: (options={}, callbacks={}) ->
-    
+
     params = {}
-    
+
     if options.accessoryBarEnabled?
       params.accessoryBarEnabled = options.accessoryBarEnabled
-    
+
     steroids.nativeBridge.nativeCall
       method: "updateKeyboard"
       parameters: params

@@ -1,5 +1,9 @@
 
-class Modal
+class Modal extends EventsSupport
+
+  constructor: ->
+    #setup the events support
+    super "modal", ["willshow", "didshow", "willclose", "didclose"]
 
   show: (options={}, callbacks={})->
     view = if options.constructor.name == "Object"
@@ -26,6 +30,12 @@ class Modal
 
         parameters.disableAnimation = options.disableAnimation
 
+        if options.hidesNavigationBar?
+          parameters.hidesNavigationBar = options.hidesNavigationBar
+        else
+          #default is modal without nav bar
+          parameters.hidesNavigationBar = true
+
         steroids.nativeBridge.nativeCall
           method: "openModal"
           parameters: parameters
@@ -38,6 +48,13 @@ class Modal
   hide: (options={}, callbacks={})->
     steroids.nativeBridge.nativeCall
       method: "closeModal"
+      parameters: options
+      successCallbacks: [callbacks.onSuccess]
+      failureCallbacks: [callbacks.onFailure]
+
+  closeAll: (options={}, callbacks={})->
+    steroids.nativeBridge.nativeCall
+      method: "closeAllModal"
       parameters: options
       successCallbacks: [callbacks.onSuccess]
       failureCallbacks: [callbacks.onFailure]
