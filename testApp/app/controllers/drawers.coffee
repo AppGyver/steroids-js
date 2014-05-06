@@ -103,8 +103,8 @@ class window.DrawersController
     success = ->
       console.log "SUCCESS"
 
+    # fullChange is set automatically to true if center param is used
     steroids.drawers.hide {
-      fullChange: true
       center: DrawersController.center1
     }, {
       onSuccess: success
@@ -115,8 +115,8 @@ class window.DrawersController
       console.log "SUCCESS"
 
     steroids.drawers.hide
-      fullChange: true
       center: DrawersController.center2
+      fullChange: false # overridden if center param is defined
 
   @testEnableAllGestures: ->
     success = ->
@@ -130,7 +130,7 @@ class window.DrawersController
       onSuccess: success
     }
 
-  @testDisableGesture: ->
+  @testDisableGestureViaUpdate: ->
     success = ->
       console.log "SUCCESS"
 
@@ -143,6 +143,13 @@ class window.DrawersController
     }, {
       onSuccess: success
     }
+
+  @testDisableGesture: ->
+    success = ->
+      console.log "SUCCESS"
+
+    steroids.drawers.disableGesture
+      onSuccess: success
 
   @testUpdateWithWidthOfLayerInPixels: ->
     success = ->

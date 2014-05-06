@@ -34,8 +34,9 @@ class DrawerCollection
     if options.fullChange?
       parameters.fullChange = options.fullChange
 
-    # when fullChange = true specify a webview to be replaced in the center
+    # when center is defined, force fullChange:true
     if options.center?
+      parameters.fullChange = true
       DrawerCollection.applyViewOptions options.center, parameters.center
 
     steroids.nativeBridge.nativeCall
@@ -99,10 +100,10 @@ class DrawerCollection
   disableGesture: (options={}, callbacks={}) ->
     steroids.debug "steroids.drawers.disableGesture called"
 
-    parameters = {
-      openGestures: "None"
-      closeGestures: "None"
-    }
+    parameters =
+      options:
+        openGestures: ["None"]
+        closeGestures: ["None"]
 
     steroids.nativeBridge.nativeCall
       method: "updateDrawer"
