@@ -271,6 +271,44 @@ class window.DrawersController
   @testReplaceLayers: ->
     steroids.layers.replace DrawersController.center2
 
+  #event tests
+
+  @testWillShowChangeEvent: ->
+    eventHandler = steroids.drawers.on 'willshow', (event) ->
+      alert "willshow event -> eventName: #{event.name} drawer.edge: #{event.drawer.edge}"
+
+    alert "event listener added"
+
+  @testDidShowChangeEvent: ->
+    eventHandler = steroids.drawers.on 'didshow', (event) ->
+      alert "didshow event -> eventName: #{event.name} drawer.edge: #{event.drawer.edge}"
+
+    alert "event listener added"
+
+  @testWillCloseChangeEvent: ->
+    eventHandler = steroids.drawers.on 'willclose', (event) ->
+      alert "willclose event -> eventName: #{event.name} drawer.edge: #{event.drawer.edge}"
+
+    alert "event listener added"
+
+  @testDidCloseChangeEvent: ->
+    eventHandler = steroids.drawers.on 'didclose', (event) ->
+      alert "didclose event -> eventName: #{event.name} drawer.edge: #{event.drawer.edge}"
+
+    alert "event listener added"
+
+  @testRemoveShowEvents: ->
+    steroids.drawers.off 'willshow'
+    steroids.drawers.off 'didshow'
+
+    alert "show events handlers removed"
+
+  @testRemoveCloseEvents: ->
+    steroids.drawers.off 'willclose'
+    steroids.drawers.off 'didclose'
+
+    alert "close events handlers removed"
+
   @testTryToReusePreloadedAsModal: ->
     success = ->
       alert "should not have sucessed :-("

@@ -229,3 +229,30 @@ class window.WebviewController
       location: "notUsed"
 
     steroids.layers.push preloadedView
+
+  #event tests
+  @testCreatedEvent: ->
+    eventHandler = steroids.view.on 'created', (event) ->
+      alert "created event -> eventName: #{event.name} webview.location: #{event.webview.location}"
+
+    alert "event listener added"
+
+  @testPreloadedEvent: ->
+    eventHandler = steroids.view.on 'preloaded', (event) ->
+      alert "preloaded event -> eventName: #{event.name} webview.location: #{event.webview.location}"
+
+    alert "event listener added"
+
+  @testUnloadedEvent: ->
+    eventHandler = steroids.view.on 'unloaded', (event) ->
+      alert "unloaded event -> eventName: #{event.name} webview.location: #{event.webview.location}"
+
+    alert "event listener added"
+
+
+  @testOffAllEvents: ->
+    steroids.view.off 'created'
+    steroids.view.off 'preloaded'
+    steroids.view.off 'unloaded'
+
+    alert "all event listeners removed"
