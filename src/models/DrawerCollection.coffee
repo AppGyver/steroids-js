@@ -32,8 +32,8 @@ class DrawerCollection extends EventsSupport
       fullChange: false
     }
 
-    # false -> close the drawer from where the drawer is
-    # true -> fully extends the drawer before closing it .. that allows for the center view to be changed
+    # false -> close the drawer from where the drawer is.
+    # true -> fully extend the drawer before closing it. This allows the center view to be changed while it is hidden.
     if options.fullChange?
       parameters.fullChange = options.fullChange
 
