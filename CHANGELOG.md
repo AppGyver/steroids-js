@@ -1,15 +1,27 @@
-##Next version
+##3.1.9
 
-Changes:
- - `setAllowedRotations` now has a default of `[0]` instead of `[]` for new WebViews
- - `steroids.drawers` is completely reworked on the native side, with support for drawers on both sides, more open gestures, different animations for displaying the drawer, native events for the drawer and more.
+New drawers, set background image for a WebView, use unfiltered images for navigation bar buttons, open modals with navigation bar, bugfixes.
 
 Features:
- - New steroids.screen.rotate API that allows for the device orientation to be set programatically.
-   Examples: steroids.screen.rotate "portrait", steroids.screen.rotate "landscapeLeft"
+ - `steroids.views.WebView.setBackgroundImage` to set a background image for a WebView.
+ - `steroids.buttons.NavigationBarButton` now supports the `imageAsOriginal` property, allowing you to use an image for a navigation bar button without applying Apple's color filter on it.
+ - `steroids.modal.show` now has a `navigationBar` property; setting it to `true` will open the modal with the navigation bar displayed.
+
+Changes:
+  - `steroids.drawers` is completely reworked on the native side, with support for drawers on both sides, more open gestures, different animations for displaying the drawer and more:
+    - New API method `steroids.drawers.update` for updating/setting the WebViews used for drawers as well as drawer options. See the API docs for all the goodies!
+    - `steroids.drawers.hide` now supports replacing the center view as part of the API call.
+    - **BREAKING:** `steroids.drawers.show` is now only used to display drawers that have been set up with `steroids.drawers.update`, and cannot be used to initialize the drawer anymore.
+    - **BREAKING:** `steroids.drawers.defaultAnimations` changed to include four default animation types: slide, slide and scale, swinging door and parallax.
+    - `steroids.drawers.enableGesture` and `steroids.drawers.disableGesture` are deprecated (though they should still work), use `steroids.drawers.update` and `options.openGestures` and `options.closeGestures` instead.
+
+Changes:
+  - `setAllowedRotations` now has a default of `[0]` instead of `[]` for new WebViews. This can be overridden by setting a `window.AG_allowedRotationsDefaults` variable before Steroids.js is loaded.
 
 Secret features:
- - steroids.getApplicationState returns the application state including all preloaded webviews, tabs, modals and drawer controllers
+  - `steroids.getApplicationState` returns the application state including all preloaded webviews, tabs, modals and drawer controllers.
+  - `steroids.modal.closeAll()` closes all currently open modals.
+  - New `steroids.screen.rotate` API that allows for the device orientation to be set programatically. Examples: `steroids.screen.rotate("portrait")`, `steroids.screen.rotate("landscapeLeft")`.
 
 ##3.1.8 (2014-04-03)
 
