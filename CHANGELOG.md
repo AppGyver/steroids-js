@@ -13,6 +13,7 @@ Changes:
     - `steroids.drawers.hide` now supports replacing the center view as part of the API call.
     - **BREAKING:** `steroids.drawers.show` is now only used to display drawers that have been set up with `steroids.drawers.update`, and cannot be used to initialize the drawer anymore.
     - **BREAKING:** `steroids.drawers.defaultAnimations` changed to include four default animation types: slide, slide and scale, swinging door and parallax.
+    - **BREAKING:** `steroids.drawers.hideAll` deprecated.
     - `steroids.drawers.enableGesture` and `steroids.drawers.disableGesture` are deprecated (though they should still work), use `steroids.drawers.update` and `options.openGestures` and `options.closeGestures` instead.
 
 Changes:
