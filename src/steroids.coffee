@@ -94,6 +94,8 @@ window.steroids.app = new App
 
 Events.extend()
 
+window.steroids.initialView = new InitialView
+
 window.steroids.drawers = new DrawerCollection
 
 window.steroids.layers = new LayerCollection
