@@ -19,8 +19,3 @@ class JSCoreBridge extends Bridge
     #JSON.stringify(message)
     #no need to turn into string for iOS
     message
-
-  bindNativeBridge: ->
-    # register the handler when the native is ready
-    window.__JSCoreBridgeImpl.registerHandler steroids.nativeBridge.message_handler
-    super.bindNativeBridge()
