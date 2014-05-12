@@ -13,8 +13,8 @@ class Bridge
       TizenBridge
       WebBridge
       AndroidBridge
-      JSCoreBridge
       WebsocketBridge
+      JSCoreBridge
     ]
 
     unless @bestNativeBridge?
@@ -26,11 +26,6 @@ class Bridge
 
   constructor: ->
 
-  bindNativeBridge: ->
-    # reset the bestNativeBridge and search again.. since now the native side is ready
-    Bridge.bestNativeBridge = null;
-    steroids.nativeBridge = Bridge.getBestNativeBridge()
-
   sendMessageToNative: (options={})->
     throw "ERROR: Bridge#sendMessageToNative not overridden by subclass!"
 
@@ -39,11 +34,7 @@ class Bridge
 
   # Handles incoming API messages
   message_handler: (e)=>
-    msg = if e.constructor.name == "String"
-      JSON.parse(e)
-    else
-      # iOS parameters come as objects and not as Strings
-      e
+    msg = JSON.parse(e)
 
     if msg?.callback?
       if @callbacks[msg.callback]?
