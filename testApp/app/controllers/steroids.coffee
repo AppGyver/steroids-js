@@ -11,6 +11,12 @@ class window.SteroidsController
   @testCordovaDefined: () ->
     alert cordova?
 
+  @testJSCoreBridgeImplDefined: () ->
+    alert __JSCoreBridgeImpl?
+
+  @testReloadPage: () ->
+    window.location.reload()
+
   @testOpenURLGoogle: () ->
     steroids.openURL {
       url: "http://www.google.com"
