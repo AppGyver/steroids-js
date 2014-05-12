@@ -1,21 +1,27 @@
 # Communication bridge that utilizes an Object-C class exposed to the webview itself
 class JSCoreBridge extends Bridge
   constructor: ()->
-    #window.AG_SCREEN_ID = window.__JSCoreBridgeImpl.getAGScreenId()
-    #window.AG_LAYER_ID = window.__JSCoreBridgeImpl.getAGLayerId()
-    #window.AG_VIEW_ID = window.__JSCoreBridgeImpl.getAGViewId()
-
     return true
 
   @isUsable: ()->
     # __JSCoreAPIBridge is a Objective-C class (JSCoreBridge.m) exposed to the webview
-    console.log "JSCoreBridge.isUsable: #{typeof window.__JSCoreBridgeImpl}"
-    return typeof window.__JSCoreBridgeImpl != 'undefined'
+    return true
 
   sendMessageToNative:(message)->
-    window.__JSCoreBridgeImpl.send message
+    # Ensure websocket is open before sending anything
+    if window.__JSCoreBridgeImpl?
+      window.__JSCoreBridgeImpl.send message
+    else
+      window.steroids.on "jsCoreBridgeUsable", ()=>
+        window.__JSCoreBridgeImpl.send message
 
   parseMessage: (message={})->
     #JSON.stringify(message)
     #no need to turn into string for iOS
     message
+
+  message_handler: (msg)=>
+    # iOS parameters come as objects and not as Strings
+    if msg?.callback?
+      if @callbacks[msg.callback]?
+        @callbacks[msg.callback].call(msg.parameters, msg.parameters)
