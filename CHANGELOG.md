@@ -1,3 +1,11 @@
+##next
+
+Internal stuff:
+ - New iOS JavaScriptCore bridge - more awesome, faster and etc.
+
+ Features:
+ - Initial view that will be shown before actual app starts, can be dismissed and returned to at will.
+
 ##3.1.9 (2014-05-06)
 
 New drawers, set background image for a WebView, use unfiltered images for navigation bar buttons, open modals with navigation bar, bugfixes. All updates in v3.1.9 are iOS-only.
@@ -23,9 +31,6 @@ Secret features:
   - `steroids.modal.closeAll()` closes all currently open modals.
   - New `steroids.screen.rotate` API that allows for the device orientation to be set programatically. Examples: `steroids.screen.rotate("portrait")`, `steroids.screen.rotate("landscapeLeft")`.
   - New native UI events for `steroids.drawers`, `steroids.layers`, `steroids.tabBar`, `steroids.modal` and `steroids.views.WebView`
-
-Internal stuff:
- - New iOS JavaScriptCore bridge - more awesome, faster and etc.
 
 ##3.1.8 (2014-04-03)
 
