@@ -1,5 +1,8 @@
 ##next
 
+Bugfixes:
+- Fixed typo'd `steroids.drawers.update` parameter to be `stretchDrawer`, not `strechDrawer`.
+
 Internal stuff:
  - New iOS JavaScriptCore bridge - more awesome, faster and etc.
 
