@@ -285,7 +285,7 @@ class window.DrawersController
         showShadow: true
         openGestures: ["PanBezelCenterView"]
         closeGestures: ["PanCenterView", "PanDrawerView"]
-        strechDrawer: true
+        stretchDrawer: true
     ,
       onSuccess: success
 
