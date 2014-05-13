@@ -1,7 +1,7 @@
-##next
+##3.1.10 (TODO)
 
 Bugfixes:
-- Fixed typo'd `steroids.drawers.update` parameter to be `stretchDrawer`, not `strechDrawer`.
+- **BREAKING:** Fixed typo'd `steroids.drawers.update` parameter to be `stretchDrawer`, not `strechDrawer`.
 
 Internal stuff:
  - New iOS JavaScriptCore bridge - more awesome, faster and etc.
@@ -34,6 +34,9 @@ Secret features:
   - `steroids.modal.closeAll()` closes all currently open modals.
   - New `steroids.screen.rotate` API that allows for the device orientation to be set programatically. Examples: `steroids.screen.rotate("portrait")`, `steroids.screen.rotate("landscapeLeft")`.
   - New native UI events for `steroids.drawers`, `steroids.layers`, `steroids.tabBar`, `steroids.modal` and `steroids.views.WebView`
+
+Internal stuff:
+ - New iOS JavaScriptCore bridge - more awesome, faster and etc.
 
 ##3.1.8 (2014-04-03)
 
