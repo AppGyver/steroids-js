@@ -8,16 +8,16 @@ class window.AppController
   @path: ->
 
   @testPath: () ->
-    alert JSON.stringify(steroids.app.path)
+    notification JSON.stringify(steroids.app.path)
 
   @testUserFilesPath: ->
-    alert JSON.stringify(steroids.app.userFilesPath)
+    notification JSON.stringify(steroids.app.userFilesPath)
 
   @testAbsolutePath: () ->
-    alert JSON.stringify(steroids.app.absolutePath)
+    notification JSON.stringify(steroids.app.absolutePath)
 
   @testGetLaunchURL: ->
-    alert steroids.app.getLaunchURL()
+    notification steroids.app.getLaunchURL()
 
   @testOpenSteroidsScannerURL: ->
     steroids.openURL("steroids-scanner://base/path?first=1&second=2")
@@ -26,7 +26,7 @@ class window.AppController
     steroids.openURL("http://www.google.com")
 
   @testAddEventListenerForResumeAndAlertGetLaunchURL: ->
-    alert "set eventlistener for resume"
+    notification "set eventlistener for resume"
 
     document.addEventListener "resume", () ->
       alert steroids.app.getLaunchURL()
@@ -34,12 +34,12 @@ class window.AppController
   @testHostGetURL: ->
     steroids.app.host.getURL {},
       onSuccess: (msg) ->
-        alert msg
+        notification msg
 
   @testGetMode: ->
     steroids.app.getMode {},
       onSuccess: (msg) ->
-        alert msg
+        notification msg
 
   @testGetNSUserDefaults: ->
     steroids.app.getNSUserDefaults {},
