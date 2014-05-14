@@ -7,13 +7,13 @@ class window.DeviceController
 
   @testPing: () ->
     gotPong = (e) ->
-      alert e.message
+      notification e.message
 
     steroids.device.ping({}, { onSuccess: gotPong })
 
   @testGetIPAddress: () ->
     showIPAddress = (e) ->
-      alert e.ipAddress
+      notification e.ipAddress
 
     steroids.device.getIPAddress {
     }, {
@@ -24,33 +24,33 @@ class window.DeviceController
 
     steroids.device.torch.turnOn {
     }, {
-      onSuccess: () -> alert "turned on"
+      onSuccess: () -> notification "turned on"
     }
 
   @testTorchOff: () ->
 
     steroids.device.torch.turnOff {
     }, {
-      onSuccess: () -> alert "turned off"
+      onSuccess: () -> notification "turned off"
     }
 
   @testTorchToggle: () ->
 
     steroids.device.torch.toggle {
     }, {
-      onSuccess: () -> alert "toggled"
+      onSuccess: () -> notification "toggled"
     }
 
   @testEnableSleep: ()->
     steroids.device.enableSleep {}, {
-      onSuccess: () -> alert "enabled"
+      onSuccess: () -> notification "enabled"
     }
 
   @testDisableSleep: ()->
     steroids.device.disableSleep {}, {
-      onSuccess: () -> alert "disabled"
+      onSuccess: () -> notification "disabled"
     }
 
   @testPlatformGetName: () ->
     steroids.device.platform.getName {},
-      onSuccess: (gotName)-> alert gotName
+      onSuccess: (gotName)-> notification gotName
