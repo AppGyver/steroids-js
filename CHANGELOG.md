@@ -1,3 +1,8 @@
+##3.1.10 (TODO)
+
+Features:
+  - `steroids.modal.hideAll()` to hide all currently open modals. (**BREAKING:** replaces secret `steroids.modal.closeAll()` introduced in 3.1.9.)
+
 ##3.1.9 (2014-05-06)
 
 New drawers, set background image for a WebView, use unfiltered images for navigation bar buttons, open modals with navigation bar, bugfixes. All updates in v3.1.9 are iOS-only.

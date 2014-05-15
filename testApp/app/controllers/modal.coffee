@@ -108,13 +108,13 @@ class window.ModalController
     }, {
       onSuccess: hidden
     }
-    
-  @testCloseAll: () ->
-  
+
+  @testHideAll: () ->
+
     hidden = () ->
-      alert "all closed"
-  
-    steroids.modal.closeAll {
+      alert "all hidden"
+
+    steroids.modal.hideAll {
     }, {
       onSuccess: hidden
     }
