@@ -140,7 +140,8 @@ class window.NavigationbarController
   @testOverrideBackbuttonFalse: ->
     steroids.view.navigationBar.update {
       overrideBackButton: false
-    }
+    },
+      onSuccess: -> notification "nav bar buttons updated"
 
   @testSetBorderBlue: ->
     steroids.view.navigationBar.update
