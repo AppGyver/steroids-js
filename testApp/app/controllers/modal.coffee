@@ -29,7 +29,7 @@ class window.ModalController
 
     steroids.modal.show {
       view: hideView
-      hidesNavigationBar: false
+      navigationBar: true
     }, {
       onSuccess: opened
     }
