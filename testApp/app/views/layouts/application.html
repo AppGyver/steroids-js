@@ -7,6 +7,8 @@
   <link rel="stylesheet" href="../../stylesheets/application.css" />
   <link rel="stylesheet" href="../../stylesheets/ratchet-fixed.css" />
 
+  <link rel="stylesheet" href="../../stylesheets/util.css" />
+
   <script>
     window.onerror = function(a,b,c){ alert(a+" "+b+" "+c); }
   </script>
@@ -30,6 +32,7 @@
   <script src="../../javascripts/hammer.js"></script>
   <script src="../../javascripts/jquery.hammer.js"></script>
 
+  <script src="../../javascripts/util.js"></script>
 
 
   <script src="../../controllers/application.js"></script>
@@ -38,6 +41,11 @@
 
 </head>
 <body>
+    <div class="notification__wrap notification__wrap--hidden">
+    <div class="notification__td">
+      <div class="notification"></div>
+    </div>
+  </div>
   <div class="content">
       <div class="content-padded">
         <%= yield.view %>

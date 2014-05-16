@@ -13,7 +13,7 @@ class window.AnalyticsController
         hello: "world"
       }
     }, {
-      onSuccess: () -> alert "recorded"
+      onSuccess: () -> notification "recorded"
     }
 
 
@@ -25,6 +25,6 @@ class window.AnalyticsController
         appgyver_event_name: "customeventcollection"
       }
     }, {
-      onSuccess: () -> alert "recorded"
+      onSuccess: () -> notification "recorded"
     }
 

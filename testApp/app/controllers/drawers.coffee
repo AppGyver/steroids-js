@@ -101,7 +101,7 @@ class window.DrawersController
 
   @testShowNonPreloadedDrawerRight: ->
     success = ->
-      alert "SUCCESS"
+      notification "SUCCESS"
     failure = ->
       alert "FAILED"
 
@@ -115,7 +115,7 @@ class window.DrawersController
 
   @testShowNonPreloadedDrawerWithIdRight: ->
     success = ->
-      alert "SUCCESS"
+      notification "SUCCESS"
     failure = ->
       alert "FAILED"
 
@@ -131,7 +131,7 @@ class window.DrawersController
 
   @testShowPreloadedDrawerRight: ->
     success = ->
-      alert "SUCCESS"
+      notification "SUCCESS"
     failure = ->
       alert "FAILED"
 
@@ -337,41 +337,41 @@ class window.DrawersController
     eventHandler = steroids.drawers.on 'willshow', (event) ->
       alert "willshow event -> eventName: #{event.name} drawer.edge: #{event.drawer.edge}"
 
-    alert "event listener added"
+    notification "event listener added"
 
   @testDidShowChangeEvent: ->
     eventHandler = steroids.drawers.on 'didshow', (event) ->
       alert "didshow event -> eventName: #{event.name} drawer.edge: #{event.drawer.edge}"
 
-    alert "event listener added"
+    notification "event listener added"
 
   @testWillCloseChangeEvent: ->
     eventHandler = steroids.drawers.on 'willclose', (event) ->
       alert "willclose event -> eventName: #{event.name} drawer.edge: #{event.drawer.edge}"
 
-    alert "event listener added"
+    notification "event listener added"
 
   @testDidCloseChangeEvent: ->
     eventHandler = steroids.drawers.on 'didclose', (event) ->
       alert "didclose event -> eventName: #{event.name} drawer.edge: #{event.drawer.edge}"
 
-    alert "event listener added"
+    notification "event listener added"
 
   @testRemoveShowEvents: ->
     steroids.drawers.off 'willshow'
     steroids.drawers.off 'didshow'
 
-    alert "show events handlers removed"
+    notification "show events handlers removed"
 
   @testRemoveCloseEvents: ->
     steroids.drawers.off 'willclose'
     steroids.drawers.off 'didclose'
 
-    alert "close events handlers removed"
+    notification "close events handlers removed"
 
   @testTryToReusePreloadedAsModal: ->
     success = ->
-      alert "should not have sucessed :-("
+      notification "should not have sucessed :-("
 
     fail = ->
       alert "could not open the modal !"
@@ -381,5 +381,3 @@ class window.DrawersController
     ,
       onSuccess: success
       onFailure: fail
-
-

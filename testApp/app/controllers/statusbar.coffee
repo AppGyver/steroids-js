@@ -9,19 +9,19 @@ class window.StatusbarController
 
   @testHide: ->
     steroids.statusBar.hide {},
-      onSuccess: -> alert "hided"
+      onSuccess: -> notification "hidden"
       onFailure: -> alert "failed to hide"
 
   @testShow: ->
     steroids.statusBar.show {},
-      onSuccess: -> alert "showed"
+      onSuccess: -> notification "shown"
       onFailure: -> alert "failed to show"
 
   @testShowLight: ->
     steroids.statusBar.show "light",
-      onSuccess: -> alert "showed light"
+      onSuccess: -> notification "shown light"
       onFailure: -> alert "failed to show light"
   
   @testOnTap: ->
-    steroids.statusBar.onTap -> alert "status bar tapped !",
+    steroids.statusBar.onTap -> notification "status bar tapped !",
       onSuccess: -> alert "on tap event setup!"

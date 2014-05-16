@@ -15,14 +15,14 @@ class window.DataController
       return
 
     window.openDatabase = window.sqlitePlugin.openDatabase
-    alert "done"
+    notification "done"
 
   @testPersistenceJSDropTestDB: ->
     persistencedb = new steroids.data.SQLiteDB("persistencedb")
 
     persistencedb.dropTable "Task", {
       onSuccess: ->
-        alert "dropped"
+        notification "dropped"
       onFailure: ->
         alert "could not drop"
     }
@@ -40,11 +40,11 @@ class window.DataController
     @getTask()
 
     persistence.schemaSync ->
-      alert "defined"
+      notification "defined"
 
   @testPersistenceJSConfigure: ->
     persistence.store.websql.config(persistence, 'persistencedb', 'A database description', 5 * 1024 * 1024)
-    alert "configured"
+    notification "configured"
 
   @testPersistenceJSInsertTask: ->
     Task = @getTask()
@@ -56,14 +56,14 @@ class window.DataController
 
     persistence.add(t)
     persistence.flush () ->
-      alert "inserted"
+      notification "inserted"
 
   @testPersistenceJSListAllTasks: ->
     Task = @getTask()
 
     Task.all().list (tasks) ->
       steroids.debug(tasks)
-      alert "see console debug"
+      notification "see console debug"
 
 
   # SQLITE
@@ -72,7 +72,7 @@ class window.DataController
     sqlitedb = new steroids.data.SQLiteDB("testdb")
 
     if sqlitedb.databaseName == "testdb"
-      alert "ok"
+      notification "ok"
     else
       alert "not ok"
 
@@ -89,14 +89,14 @@ class window.DataController
         price: "real"
     ,
       onSuccess: ->
-        alert "Created table"
+        notification "Created table"
       onFailure: ->
         alert "Failed creating table"
 
   @testSQLiteDBDropTable: ->
     testdb = new steroids.data.SQLiteDB("testdb")
     testdb.dropTable "cars", {
-      onSuccess: -> alert "dropped"
+      onSuccess: -> notification "dropped"
       onFailure: -> alert "drop failed"
     }
 
@@ -110,7 +110,7 @@ class window.DataController
 
     testdb.execute "SELECT COUNT(*) FROM cars",
       onSuccess: (rows, res, tx) =>
-        alert "COUNT = #{rows[0]['COUNT(*)']}"
+        notification "COUNT = #{rows[0]['COUNT(*)']}"
       onFailure: (err) =>
         alert err.message
 
