@@ -51,6 +51,10 @@ steroids.config.preloads = [
   }
 ]
 
+steroids.config.initialView =
+  id: "initialView"
+  location: "http://localhost/views/initview/index.html"
+
 
 # -- Status bar --
 # Sets status bar visible (carrier, clock, battery status)
