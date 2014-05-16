@@ -12,13 +12,13 @@ class window.LoggerController
   @testShowLastMessage: ->
     lastMessage = steroids.logger.messages[steroids.logger.messages.length-1]
     if lastMessage?
-      notification "Last message: #{lastMessage.message}"
+      alert "Last message: #{lastMessage.message}"
     else
-      notification "no messages!"
+      alert "no messages!"
 
   @testStartFlushing: ->
     if steroids.logger.queue.startFlushing(100)
-      notification "started"
+      alert "started"
     else
       alert "not started"
 

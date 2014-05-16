@@ -9,14 +9,14 @@ class window.AudioController
     steroids.audio.play {
       path: "clap.wav"
     }, {
-      onSuccess: () -> notification "audio played"
+      onSuccess: () -> alert "audio played"
       onFailure: () -> alert "audio play failed"
     }
 
   @testPrime: ->
     steroids.audio.prime {
     }, {
-      onSuccess: () -> notification "audio primed"
+      onSuccess: () -> alert "audio primed"
       onFailure: () -> alert "audio prime failed"
     }
 

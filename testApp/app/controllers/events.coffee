@@ -4,8 +4,8 @@ class window.EventsController
 
   @testSteroidsReady: () ->
     steroids.on "ready", () ->
-      notification "I was called inside steroids ready"
+      alert "I was called inside steroids ready"
 
   @testDeviceReady: () ->
     document.addEventListener "deviceready", ->
-      notification "I was called inside deviceready"
+      alert "I was called inside deviceready"

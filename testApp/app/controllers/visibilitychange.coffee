@@ -18,7 +18,7 @@ class window.VisibilitychangeController
 
     document.addEventListener "visibilitychange", changed, true
 
-    notification "added eventlistner for visibilitychange"
+    alert "added eventlistner for visibilitychange"
 
   @testCurrentVisibilityIsVisible: () ->
 

@@ -22,7 +22,7 @@ class window.SplashscreenController
 
   @testHide: ->
     steroids.splashscreen.hide {},
-      onSuccess: -> notification "hided"
+      onSuccess: -> alert "hided"
       onFailure: -> alert "failed to show"
 
   @testShowHide: ->

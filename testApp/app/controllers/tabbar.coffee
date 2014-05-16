@@ -9,12 +9,12 @@ class window.TabbarController
 
   @testHide: ->
     steroids.tabBar.hide {},
-      onSuccess: -> notification "hidden"
+      onSuccess: -> alert "hided"
       onFailure: -> alert "failed to hide"
 
   @testShow: ->
     steroids.tabBar.show {},
-      onSuccess: -> notification "showed"
+      onSuccess: -> alert "showed"
       onFailure: -> alert "failed to show"
 
   @testUpdate: ->
@@ -37,7 +37,7 @@ class window.TabbarController
           }
         ]
       },
-      onSuccess: -> notification "updated"
+      onSuccess: -> alert "updated"
       onFailure: -> alert "failed to update"
     )
 
@@ -56,7 +56,7 @@ class window.TabbarController
           }
         ]
       },
-      onSuccess: -> notification "updated"
+      onSuccess: -> alert "updated"
       onFailure: -> alert "failed to update"
     )
 
@@ -70,7 +70,7 @@ class window.TabbarController
       badge: "1"
     },
     onSuccess: ->
-      notification "Success updating curent tab"
+      alert "Success updating curent tab"
     onFailure: (failure) ->
       console.log "Failed to update current tab", failure
       alert "Failed to update current tab"
@@ -85,7 +85,7 @@ class window.TabbarController
 
     @willChangeHandlers.push eventHandler
 
-    notification "event listener added"
+    alert "event listener added"
 
   @testdidchangeEvent: ->
     eventHandler = steroids.tabBar.on 'didchange', (event) ->
@@ -93,7 +93,7 @@ class window.TabbarController
 
     @didChangeHandlers.push eventHandler
 
-    notification "event listener added"
+    alert "event listener added"
 
   @testRemoveAllEventHandlers: ->
     @didChangeHandlers.forEach (handlerId) -> steroids.tabBar.off 'didchange', handlerId
@@ -103,15 +103,15 @@ class window.TabbarController
     @willChangeHandlers = []
     @didChangeHandlers = []
 
-    notification "event handlers removed"
+    alert "event handlers removed"
 
   @testRemoveDidChangeEvents: ->
     steroids.tabBar.off 'didchange'
 
-    notification "didchange events handlers removed"
+    alert "didchange events handlers removed"
 
   @testRemoveWillChangeEvents: ->
     steroids.tabBar.off 'willchange'
 
-    notification "willchange events handlers removed"
+    alert "willchange events handlers removed"
 

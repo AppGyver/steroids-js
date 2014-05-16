@@ -26,7 +26,7 @@ class window.LayersController
 
   @testPop: ->
     popped = ->
-      notification "popped"
+      alert "popped"
 
     steroids.layers.pop()
 
@@ -137,7 +137,7 @@ class window.LayersController
   @testInvalidLayerEvents: ->
     try
       steroids.layers.on 'invalidEventName', (event) ->
-        notification "should never be invoked"
+        alert "should never be invoked"
     catch error
       alert "steroids.layers.on callend with an invalid event name! error: #{error}"
 
@@ -159,7 +159,7 @@ class window.LayersController
 
     @willChangeHandlers.push eventHandler
 
-    notification "event listener added"
+    alert "event listener added"
 
   @testdidchangeEvent: ->
     eventHandler = steroids.layers.on 'didchange', (event) ->
@@ -175,7 +175,7 @@ class window.LayersController
 
     @didChangeHandlers.push eventHandler
 
-    notification "event listener added"
+    alert "event listener added"
 
   @testRemoveAllEventHandlers: ->
     @didChangeHandlers.forEach (handlerId) -> steroids.layers.off 'didchange', handlerId
@@ -185,15 +185,15 @@ class window.LayersController
     @willChangeHandlers = []
     @didChangeHandlers = []
 
-    notification "event handlers removed"
+    alert "event handlers removed"
 
   @testRemovedidchangeEvents: ->
     steroids.layers.off 'didchange'
 
-    notification "didchange events handlers removed"
+    alert "didchange events handlers removed"
 
   @testRemovewillchangeEvents: ->
     steroids.layers.off 'willchange'
 
-    notification "willchange events handlers removed"
+    alert "willchange events handlers removed"
 

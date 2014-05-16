@@ -6,10 +6,10 @@ class window.SteroidsController
     steroids.navigationBar.show { title: "steroids" }
 
   @testSteroidsDefined: () ->
-    notification steroids?
+    alert steroids?
 
   @testCordovaDefined: () ->
-    notification cordova?
+    alert cordova?
 
   @testOpenURLGoogle: () ->
     steroids.openURL {
