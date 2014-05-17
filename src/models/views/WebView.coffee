@@ -92,6 +92,9 @@ class WebView extends EventsSupport
     else
       options.allowedRotations
 
+    if not @allowedRotations? or @allowedRotations.length == 0
+      @allowedRotations = [0]
+
     window.shouldRotateToOrientation = (orientation) =>
       return if orientation in @allowedRotations
         true
