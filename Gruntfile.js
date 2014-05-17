@@ -34,6 +34,7 @@ module.exports = function(grunt) {
         files: {
           'dist/steroids.js': [
             'src/bridges/Bridge.coffee',
+            'src/bridges/FreshAndroidBridge.coffee',
             'src/bridges/AndroidBridge.coffee',
             'src/bridges/WebBridge.coffee',
             'src/bridges/WebsocketBridge.coffee',
