@@ -100,16 +100,29 @@ class WebView extends EventsSupport
 
     callbacks.onSuccess?.call()
 
+  mapDegreesToOrientations: (degrees) ->
+    if degrees == 0 or degrees == "0"
+      "portrait"
+    else if degrees == 180 or degrees == "180"
+      "portraitupsidedown"
+    else if degrees == -90 or degrees == "-90"
+      "landscapeleft"
+    else if degrees == 90 or degrees == "90"
+      "landscaperight"
+
+  # Deprecated. should use steroids.screen.rotate() instead.
   rotateTo: (options={}, callbacks={}) ->
-    degrees = if options.constructor.name == "String"
+    degrees = if options.constructor.name == "String" or options.constructor.name == "Number"
       options
     else
       options.degrees
 
+    orientation = @mapDegreesToOrientations degrees
+
     steroids.nativeBridge.nativeCall
-      method: "rotateTo"
+      method: "setOrientation"
       parameters:
-        orientation: degrees
+        orientation: orientation
       successCallbacks: [callbacks.onSuccess]
       failureCallbacks: [callbacks.onFailure]
 
