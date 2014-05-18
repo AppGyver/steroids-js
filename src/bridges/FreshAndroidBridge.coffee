@@ -13,11 +13,6 @@ class FreshAndroidBridge extends Bridge
   sendMessageToNative:(message)->
     FreshAndroidAPIBridge.send message
 
-  #return the message as json object. no need to
-  #parse into a string
-  parseMessage: (message={})->
-    message
-
   # notify the callbacks
   # msg is a JSON object
   message_handler: (msg)=>
