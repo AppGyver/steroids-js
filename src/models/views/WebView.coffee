@@ -31,7 +31,7 @@ class WebView extends EventsSupport
     # before loading Steroids.js.
 
     allowedRotations = window.AG_allowedRotationsDefaults ? [0]
-    @setAllowedRotations([0])
+    @setAllowedRotations(allowedRotations)
 
 
   preload: (options={}, callbacks={}) ->

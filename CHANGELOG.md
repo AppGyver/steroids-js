@@ -3,6 +3,9 @@
 Bugfixes:
 - **BREAKING:** Fixed typo'd `steroids.drawers.update` parameter to be `stretchDrawer`, not `strechDrawer`.
 
+Changes:
+- Deprecated `steroids.view.rotateTo()`, use `steroids.screen.rotate()` instead.
+
 Internal stuff:
  - New iOS JavaScriptCore bridge - more awesome, faster and etc.
 
