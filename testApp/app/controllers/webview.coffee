@@ -138,7 +138,7 @@ class window.WebviewController
 
   @testDisableRotate: ->
     steroids.view.setAllowedRotations {
-      allowedRotations: []
+      allowedRotations: [0]
     }, {
       onSuccess: -> alert "disabled rotating"
     }
