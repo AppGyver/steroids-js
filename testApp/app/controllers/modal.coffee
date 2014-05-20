@@ -19,6 +19,16 @@ class window.ModalController
       onSuccess: opened
     }
 
+  @testAllowAllOrientations: () ->
+    steroids.view.setAllowedRotations
+      allowedRotations: [-90, 90, 0, 180]
+    ,
+      onSuccess: alert "now you can rotate"
+
+  @testAllowOnlyPortrait: () ->
+    steroids.view.setAllowedRotations
+      allowedRotations: [0]
+
   @testShowWithNavBar: () ->
     opened = () ->
       alert "opened"
@@ -108,12 +118,12 @@ class window.ModalController
     }, {
       onSuccess: hidden
     }
-    
+
   @testCloseAll: () ->
-  
+
     hidden = () ->
       alert "all closed"
-  
+
     steroids.modal.closeAll {
     }, {
       onSuccess: hidden
