@@ -1,10 +1,24 @@
 ##3.1.10 (TODO)
 
-Features:
-  - `steroids.modal.hideAll()` to hide all currently open modals. (**BREAKING:** replaces secret `steroids.modal.closeAll()` introduced in 3.1.9.)
+Support for the Initial View; `steroids.getApplicationState`, `steroids.screen.rotate` and native UI events are
 
-Bug Fixes:
-  - `steroids.modal.show()` actually uses `navigationBar` property instead of deprecated `hidesNavigationBar` property.
+Features:
+  - `steroids.initialView.show()` and `steroids.initialView.dismiss()` for showing/dismissing the Initial View.
+  - `steroids.modal.hideAll()` to hide all currently open modals. (**BREAKING:** replaces secret `steroids.modal.closeAll()` introduced in 3.1.9.)
+  - `steroids.getApplicationState()` returns the application state including all preloaded webviews, tabs, modals and drawer controllers.
+  - New `steroids.screen.rotate` API that allows for the device orientation to be set programatically.
+  - Register event listeners for the new native UI events with `steroids.drawers.on()`, `steroids.layers.on()`, `steroids.tabBar.on()`, `steroids.modal.on()` and `steroids.view.on()` (event listeners are unregistered with the `.off()` functions).
+  - Setting the `window.AG_allowedRotationsDefaults` array before `steroids.js` is loaded will override the WebView default `steroids.view.setAllowedRotations([0])` with the given array.
+
+Bugfixes:
+  - `steroids.modal.show()` actually uses `navigationBar` property (as documented) instead of deprecated `hidesNavigationBar` property.
+  - **BREAKING:** Fixed typo'd `steroids.drawers.update` parameter to be `stretchDrawer`, not `strechDrawer`.
+
+Changes:
+- Deprecated `steroids.view.rotateTo()`, use `steroids.screen.rotate()` instead.
+
+Internal stuff:
+ - New iOS JavaScriptCore bridge - more awesome, faster and etc.
 
 ##3.1.9 (2014-05-06)
 
@@ -32,6 +46,9 @@ Secret features:
   - `steroids.modal.closeAll()` closes all currently open modals.
   - New `steroids.screen.rotate` API that allows for the device orientation to be set programatically. Examples: `steroids.screen.rotate("portrait")`, `steroids.screen.rotate("landscapeLeft")`.
   - New native UI events for `steroids.drawers`, `steroids.layers`, `steroids.tabBar`, `steroids.modal` and `steroids.views.WebView`
+
+Internal stuff:
+ - New iOS JavaScriptCore bridge - more awesome, faster and etc.
 
 ##3.1.8 (2014-04-03)
 

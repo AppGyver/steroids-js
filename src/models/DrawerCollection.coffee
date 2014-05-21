@@ -181,8 +181,8 @@ class DrawerCollection extends EventsSupport
 
     # By default, the side drawer will stretch if the user pans past the maximum drawer width. This gives a playful stretch effect.
     # You can disable this by setting strechDrawer to false
-    if options.strechDrawer?
-      parameters.strechDrawer = options.strechDrawer
+    if options.stretchDrawer?
+      parameters.strechDrawer = options.stretchDrawer
 
     # None -> The user can not interact with any content in the center view.
     # Full -> The user can interact with all content in the center view.

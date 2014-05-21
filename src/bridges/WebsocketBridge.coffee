@@ -4,8 +4,10 @@ class WebsocketBridge extends Bridge
     # Use reopen to open WebSocket
     @reopen()
 
+  @websocketBridgeUsable = false
+
   @isUsable: ()->
-    true
+    WebsocketBridge.websocketBridgeUsable
 
   # Open WebSocket connection to Native
   reopen: ()=>

@@ -14,6 +14,7 @@ class Bridge
       WebBridge
       AndroidBridge
       WebsocketBridge
+      JSCoreBridge
     ]
 
     unless @bestNativeBridge?
@@ -75,7 +76,13 @@ class Bridge
     request.parameters["udid"] = window.top.AG_WEBVIEW_UDID
 
     #console.log(request)
-    @sendMessageToNative JSON.stringify(request)
+    request = @parseMessage request
+    @sendMessageToNative request
+
+  #allow for the implementation to override and decide
+  #to call stringify or not (iOS we pass as objects)
+  parseMessage: (message={})->
+    JSON.stringify(message)
 
   storeCallbacks: (options={})->
     return {} unless options?.callbacks?

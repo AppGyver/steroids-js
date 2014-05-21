@@ -17,6 +17,10 @@ class window.DrawersController
     id: "center2"
   }
 
+  @modal: new steroids.views.WebView {
+    location: "views/modal/modalWithNavBar.html"
+  }
+
   # always put everything inside PhoneGap deviceready
   document.addEventListener "deviceready", =>
 
@@ -285,7 +289,7 @@ class window.DrawersController
         showShadow: true
         openGestures: ["PanBezelCenterView"]
         closeGestures: ["PanCenterView", "PanDrawerView"]
-        strechDrawer: true
+        stretchDrawer: true
     ,
       onSuccess: success
 
@@ -330,6 +334,20 @@ class window.DrawersController
 
   @testReplaceLayers: ->
     steroids.layers.replace DrawersController.center2
+
+  @testShowModal: ->
+
+    steroids.modal.show(
+      {
+        view: DrawersController.modal
+      }
+      {
+        onSuccess: ->
+          steroids.logger.log "Modal shown!"
+        onFailure: ->
+          steroids.logger.log "Could not show modal!"
+      }
+    )
 
   #event tests
 
