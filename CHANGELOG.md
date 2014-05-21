@@ -1,6 +1,6 @@
-##3.1.10 (TODO)
+##3.1.10 (2014-05-21)
 
-Support for the Initial View; `steroids.getApplicationState`, `steroids.screen.rotate` and native UI events are
+Support for the Initial View; `steroids.getApplicationState`, `steroids.screen.rotate` and native UI events are no longer secret features; bugfixes.
 
 Features:
   - `steroids.initialView.show()` and `steroids.initialView.dismiss()` for showing/dismissing the Initial View.
