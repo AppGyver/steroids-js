@@ -1,3 +1,8 @@
+##3.1.10-p1 (2014-05-22)
+
+Bugfixes:
+  - Certain APIs (such as `steroids.layers.popAll()`) no longer give errors if called without callbacks
+
 ##3.1.10 (2014-05-21)
 
 Support for the Initial View; `steroids.getApplicationState`, `steroids.screen.rotate` and native UI events are no longer secret features; bugfixes.
