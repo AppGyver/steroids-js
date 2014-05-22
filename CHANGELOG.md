@@ -1,4 +1,4 @@
-##3.1.10-p1 (2014-05-22)
+##3.1.11 (2014-05-22)
 
 Features:
   - Added missing callback options for `steroids.layers.popAll()`, adding `onTransitionStarted` and onTransitionEnd`. iOS only.
