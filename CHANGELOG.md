@@ -1,7 +1,7 @@
 ##3.1.10-p1 (2014-05-22)
 
 Features:
-  - Updated callback options for `steroids.layers.popAll()`, adding `onTransitionStarted` and onTransitionEnd`. iOS only.
+  - Added missing callback options for `steroids.layers.popAll()`, adding `onTransitionStarted` and onTransitionEnd`. iOS only.
 
 Bugfixes:
   - Certain APIs (such as `steroids.layers.popAll()`) no longer give errors if called without callbacks.
