@@ -400,4 +400,16 @@ class window.DrawersController
       onSuccess: success
       onFailure: fail
 
+  @testPushLayer: ->
+    popView = new steroids.views.WebView("/views/layers/pop.html")
+
+    steroids.layers.push(
+      {
+        view: popView
+      }
+      {
+        onSuccess: -> alert "Successfully pushed!"
+        onFailure: -> alert "Could not push."
+      }
+    )
 
