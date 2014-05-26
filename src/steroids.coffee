@@ -50,7 +50,7 @@ window.steroids =
   on: (event, callback)->
     @debug "on event #{event}"
     if @["#{event}_has_fired"]?
-      @debug "on event #{event}, alrueady fierd"
+      @debug "on event #{event}, already fired"
       callback()
     else
       @debug "on event #{event}, waiting"
