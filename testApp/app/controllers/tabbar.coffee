@@ -115,3 +115,111 @@ class window.TabbarController
 
     alert "willchange events handlers removed"
 
+  @testReplaceTabsInvertedOrder: ->
+
+    onSuccess = () ->
+      console.log "replace tabs onSuccess"
+
+    onFailure = () ->
+      console.log "replace tabs onFailure"
+
+    parameters =
+      tabs: [
+          target_url: "nojs.html"
+          title: "noJS"
+          position: 1
+          image_path: "icons/telescope@2x.png"
+        ,
+          target_url: "views/steroids/index.html"
+          title: "FileURL"
+          position: 1
+          image_path: "icons/shoebox@2x.png"
+        ,
+          target_url: "http://localhost/views/steroids/index.html"
+          title: "HTTP"
+          position: 0
+          image_path: "icons/telescope@2x.png"
+      ]
+
+    steroids.nativeBridge.nativeCall
+      method: "replaceTabs"
+      parameters: parameters
+      successCallbacks: [onSuccess]
+      failureCallbacks: [onFailure]
+
+  @testReplaceTabsOriginalOrder: ->
+
+    onSuccess = () ->
+      console.log "replace tabs onSuccess"
+
+    onFailure = () ->
+      console.log "replace tabs onFailure"
+
+    parameters =
+      tabs: [
+          target_url: "http://localhost/views/steroids/index.html"
+          title: "HTTP"
+          position: 0
+          image_path: "icons/pill@2x.png"
+        ,
+          target_url: "views/steroids/index.html"
+          title: "FileURL"
+          position: 1
+          image_path: "icons/shoebox@2x.png"
+        ,
+          target_url: "nojs.html"
+          title: "noJS"
+          position: 1
+          image_path: "icons/shoebox@2x.png"
+      ]
+
+    steroids.nativeBridge.nativeCall
+      method: "replaceTabs"
+      parameters: parameters
+      successCallbacks: [onSuccess]
+      failureCallbacks: [onFailure]
+
+  @replaceTabsIntervalId = 0;
+
+  @repeatReplaceTabs: ->
+    console.log "repeatReplaceTabs -> will call replaceTabs in 2 seconds."
+    setInterval ()->
+      console.log "repeatReplaceTabs -> calling replaceTabs ... "
+      TabbarController.replaceTabs()
+    ,
+      2000
+
+  @testRepeatReplaceTabs: ->
+
+    TabbarController.replaceTabs()
+
+  @replaceTabs: ->
+    onSuccess = () ->
+      console.log "repeatReplaceTabs -> replace tabs onSuccess"
+
+    onFailure = () ->
+      console.log "repeatReplaceTabs -> replace tabs onFailure"
+
+    parameters =
+      tabs: [
+          target_url: "http://localhost/views/tabbar/replaceTabs.html"
+          title: "Replace Tabs"
+          position: 0
+          image_path: "icons/shoebox@2x.png"
+        ,
+          target_url: "http://localhost/views/steroids/index.html"
+          title: "HTTP"
+          position: 1
+          image_path: "icons/pill@2x.png"
+        ,
+          target_url: "views/steroids/index.html"
+          title: "FileURL"
+          position: 2
+          image_path: "icons/shoebox@2x.png"
+      ]
+
+    steroids.nativeBridge.nativeCall
+      method: "replaceTabs"
+      parameters: parameters
+      successCallbacks: [onSuccess]
+      failureCallbacks: [onFailure]
