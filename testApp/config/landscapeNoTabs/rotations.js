@@ -1,0 +1,1 @@
+window.AG_allowedRotationsDefaults = [90, -90];
