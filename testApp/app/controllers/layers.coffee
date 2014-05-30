@@ -148,6 +148,10 @@ class window.LayersController
     msg = {commandToPreloadedView: "testReplaceToRoot"}
     window.postMessage msg, '*'
 
+  @testAlertViaPreloadedView: ->
+    msg = {commandToPreloadedView: "testAlert"}
+    window.postMessage msg, '*'
+
   @testInvalidLayerEvents: ->
     try
       steroids.layers.on 'invalidEventName', (event) ->

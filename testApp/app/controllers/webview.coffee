@@ -32,7 +32,6 @@ class window.WebviewController
       }
     )
 
-
   @testOnSuccessWithOpen: () ->
     webView = new steroids.views.WebView "/views/webview/noNavigationBar.html"
 
