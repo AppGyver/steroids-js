@@ -333,7 +333,17 @@ class window.DrawersController
     }
 
   @testReplaceLayers: ->
-    steroids.layers.replace DrawersController.center2
+    steroids.layers.replace(
+      {
+        view: DrawersController.center2
+      }
+      {
+        onSuccess: ->
+          steroids.logger.log "Replaced!"
+        onFailure: ->
+          steroids.logger.log "Could not replace."
+      }
+    )
 
   @testShowModal: ->
 
