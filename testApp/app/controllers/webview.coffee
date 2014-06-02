@@ -149,6 +149,37 @@ class window.WebviewController
       onFailure: () -> alert "preload failed"
     }
 
+  @pushFromPreloaded: () ->
+    webView = new steroids.views.WebView
+      location: "/views/webview/pushedFromPreloaded.html"
+
+    steroids.layers.push
+      view: webView
+    ,
+      onSuccess: () -> console.log "pushed webview from preloaded"
+
+  @replaceFromPreloaded: () ->
+    webView = new steroids.views.WebView
+      location: "/views/webview/replacedFromPreloaded.html"
+
+    webView.preload {}
+    ,
+      onSuccess: () ->
+        steroids.layers.replace
+          view: webView
+        ,
+          onSuccess: () -> console.log "replaced webview from preloaded -> onSuccess"
+          onFailure: () -> console.log "replaced webview from preloaded -> onFailure"
+
+  @testPreloadAndPushFromPreloaded: () ->
+    webView = new steroids.views.WebView
+      location: "/views/webview/preloadAndPush.html"
+
+    webView.preload {}
+    ,
+      onSuccess: () -> console.log "preload onSuccess"
+      onFailure: () -> console.log "preload onFailure"
+
   @testPopAll: ->
 
     steroids.layers.popAll {}, {}
