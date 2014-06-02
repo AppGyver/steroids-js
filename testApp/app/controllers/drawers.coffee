@@ -400,4 +400,8 @@ class window.DrawersController
       onSuccess: success
       onFailure: fail
 
+  @testLayersPush: ->
+    steroids.layers.push new steroids.views.WebView
+      location: "views/drawers/pushedFromDrawer.html"
+
 
