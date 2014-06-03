@@ -333,7 +333,17 @@ class window.DrawersController
     }
 
   @testReplaceLayers: ->
-    steroids.layers.replace DrawersController.center2
+    steroids.layers.replace(
+      {
+        view: DrawersController.center2
+      }
+      {
+        onSuccess: ->
+          steroids.logger.log "Replaced!"
+        onFailure: ->
+          steroids.logger.log "Could not replace."
+      }
+    )
 
   @testShowModal: ->
 
@@ -404,4 +414,16 @@ class window.DrawersController
     steroids.layers.push new steroids.views.WebView
       location: "views/drawers/pushedFromDrawer.html"
 
+  @testPushLayer: ->
+    popView = new steroids.views.WebView("/views/layers/pop.html")
+
+    steroids.layers.push(
+      {
+        view: popView
+      }
+      {
+        onSuccess: -> alert "Successfully pushed!"
+        onFailure: -> alert "Could not push."
+      }
+    )
 

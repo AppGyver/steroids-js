@@ -127,12 +127,30 @@ class window.LayersController
         steroids.layers.replace view
 
   @testReplaceToRoot: ->
-    view = new steroids.views.WebView {
+    rootView = new steroids.views.WebView {
       location: "/views/layers/index.html"
       id: "http://localhost/views/steroids/index.html"
     }
 
-    steroids.layers.replace view
+    steroids.layers.replace(
+      {
+        view: rootView
+      }
+      {
+        onSuccess: ->
+          steroids.logger.log "successfully replaced to root!"
+        onFailure: ->
+          steroids.logger.log "could not replace to root"
+      }
+    )
+
+  @testReplaceViaPreloadedView: ->
+    msg = {commandToPreloadedView: "testReplaceToRoot"}
+    window.postMessage msg, '*'
+
+  @testAlertViaPreloadedView: ->
+    msg = {commandToPreloadedView: "testAlert"}
+    window.postMessage msg, '*'
 
   @testInvalidLayerEvents: ->
     try

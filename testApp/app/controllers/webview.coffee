@@ -5,6 +5,32 @@ class window.WebviewController
 
     steroids.view.navigationBar.show { title: "webview" }
 
+  @addPreloadedViewMessageListener: () =>
+    window.addEventListener "message", (msg) =>
+      switch msg.data.commandToPreloadedView
+        when "testReplaceToRoot"
+          steroids.logger.log "testing replaceToRoot"
+          @testReplaceToRoot()
+        when "testAlert"
+          alert "I should not freeze the app!"
+
+  @testReplaceToRoot: ->
+    rootView = new steroids.views.WebView {
+      location: "blabla"
+      id: "http://localhost/views/steroids/index.html"
+    }
+
+    steroids.layers.replace(
+      {
+        view: rootView
+      }
+      {
+        onSuccess: ->
+          steroids.logger.log "Successfully replaced to root!"
+        onFailure: (error)->
+          steroids.logger.log "Could not replace to root: ", error
+      }
+    )
 
   @testOnSuccessWithOpen: () ->
     webView = new steroids.views.WebView "/views/webview/noNavigationBar.html"
@@ -169,7 +195,7 @@ class window.WebviewController
 
   @testDisableRotate: ->
     steroids.view.setAllowedRotations {
-      allowedRotations: []
+      allowedRotations: [0]
     }, {
       onSuccess: -> alert "disabled rotating"
     }

@@ -30,8 +30,8 @@ class Modal extends EventsSupport
 
         parameters.disableAnimation = options.disableAnimation
 
-        if options.hidesNavigationBar?
-          parameters.hidesNavigationBar = options.hidesNavigationBar
+        if options.navigationBar == true
+              parameters.hidesNavigationBar = false
         else
           #default is modal without nav bar
           parameters.hidesNavigationBar = true
@@ -52,7 +52,7 @@ class Modal extends EventsSupport
       successCallbacks: [callbacks.onSuccess]
       failureCallbacks: [callbacks.onFailure]
 
-  closeAll: (options={}, callbacks={})->
+  hideAll: (options={}, callbacks={})->
     steroids.nativeBridge.nativeCall
       method: "closeAllModal"
       parameters: options

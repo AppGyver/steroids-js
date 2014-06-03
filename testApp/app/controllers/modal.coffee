@@ -39,7 +39,7 @@ class window.ModalController
 
     steroids.modal.show {
       view: hideView
-      hidesNavigationBar: false
+      navigationBar: true
     }, {
       onSuccess: opened
     }
@@ -119,12 +119,12 @@ class window.ModalController
       onSuccess: hidden
     }
 
-  @testCloseAll: () ->
+  @testHideAll: () ->
 
     hidden = () ->
-      alert "all closed"
+      alert "all hidden"
 
-    steroids.modal.closeAll {
+    steroids.modal.hideAll {
     }, {
       onSuccess: hidden
     }

@@ -1,16 +1,32 @@
-##3.1.10 (TODO)
+##3.1.11 (2014-05-22)
+
+Features:
+  - Added missing callback options for `steroids.layers.popAll()`, adding `onTransitionStarted` and onTransitionEnd`. iOS only.
 
 Bugfixes:
-- **BREAKING:** Fixed typo'd `steroids.drawers.update` parameter to be `stretchDrawer`, not `strechDrawer`.
+  - Certain APIs (such as `steroids.layers.popAll()`) no longer give errors if called without callbacks.
+
+##3.1.10 (2014-05-21)
+
+Support for the Initial View; `steroids.getApplicationState`, `steroids.screen.rotate` and native UI events are no longer secret features; bugfixes.
+
+Features:
+  - `steroids.initialView.show()` and `steroids.initialView.dismiss()` for showing/dismissing the Initial View.
+  - `steroids.modal.hideAll()` to hide all currently open modals. (**BREAKING:** replaces secret `steroids.modal.closeAll()` introduced in 3.1.9.)
+  - `steroids.getApplicationState()` returns the application state including all preloaded webviews, tabs, modals and drawer controllers.
+  - New `steroids.screen.rotate` API that allows for the device orientation to be set programatically.
+  - Register event listeners for the new native UI events with `steroids.drawers.on()`, `steroids.layers.on()`, `steroids.tabBar.on()`, `steroids.modal.on()` and `steroids.view.on()` (event listeners are unregistered with the `.off()` functions).
+  - Setting the `window.AG_allowedRotationsDefaults` array before `steroids.js` is loaded will override the WebView default `steroids.view.setAllowedRotations([0])` with the given array.
+
+Bugfixes:
+  - `steroids.modal.show()` actually uses `navigationBar` property (as documented) instead of deprecated `hidesNavigationBar` property.
+  - **BREAKING:** Fixed typo'd `steroids.drawers.update` parameter to be `stretchDrawer`, not `strechDrawer`.
 
 Changes:
 - Deprecated `steroids.view.rotateTo()`, use `steroids.screen.rotate()` instead.
 
 Internal stuff:
  - New iOS JavaScriptCore bridge - more awesome, faster and etc.
-
- Features:
- - Initial view that will be shown before actual app starts, can be dismissed and returned to at will.
 
 ##3.1.9 (2014-05-06)
 
@@ -27,6 +43,7 @@ Changes:
     - `steroids.drawers.hide` now supports replacing the center view as part of the API call.
     - **BREAKING:** `steroids.drawers.show` is now only used to display drawers that have been set up with `steroids.drawers.update`, and cannot be used to initialize the drawer anymore.
     - **BREAKING:** `steroids.drawers.defaultAnimations` changed to include four default animation types: slide, slide and scale, swinging door and parallax.
+    - **BREAKING:** `steroids.drawers.hideAll` deprecated.
     - `steroids.drawers.enableGesture` and `steroids.drawers.disableGesture` are deprecated (though they should still work), use `steroids.drawers.update` and `options.openGestures` and `options.closeGestures` instead.
 
 Changes:

@@ -33,6 +33,7 @@ describe "steroids", ->
             runs ->
               steroids.modal.hide {},
                 onSuccess: -> dismissed = true
+                onFailure: (msg) -> alert(JSON.stringify(msg))
 
               waitsFor -> dismissed
 
