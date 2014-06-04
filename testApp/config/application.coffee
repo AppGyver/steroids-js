@@ -1,6 +1,6 @@
 # -- Required settings --
 
-steroids.config.name = "Steroids.js test app"
+steroids.config.name = "Steroids.js test app (with tabs)"
 steroids.config.location = "http://localhost/views/steroids/index.html"
 
 # -- Tabs --
