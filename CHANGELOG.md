@@ -1,3 +1,7 @@
+##3.1.12 (2014-06-09)
+
+Support for Fresh Android API bridge added.
+
 ##3.1.11 (2014-05-22)
 
 Features:
