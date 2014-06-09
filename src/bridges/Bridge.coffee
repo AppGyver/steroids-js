@@ -10,6 +10,7 @@ class Bridge
     # Add new native bridges here
     prioritizedList =
     [
+      FreshAndroidBridge
       TizenBridge
       WebBridge
       AndroidBridge
