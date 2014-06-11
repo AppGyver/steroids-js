@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <!-- Relative base path is AppGyverClient-Tests/www/ -->
+  <base href="../">
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <link rel="stylesheet" href="vendor/topcoat/css/topcoat-mobile-light.css" />
+  <link rel="stylesheet" href="stylesheets/application.css" />
+
+  <!--
+  <script src="http://localhost/javascripts/onerror.js"></script>
+  <script src="http://localhost/javascripts/console.log.js"></script>
+  -->
+
+  <!-- cordova.js is served from localhost to ensure the correct version -->
+  <script src="http://localhost/cordova.js"></script>
+  <script src="components/steroids-js/steroids.js"></script>
+
+  <!--
+  <script src="cdv-plugin-fb-connect.js"></script>
+  <script src="facebook-js-sdk.js"></script>
+  -->
+
+  <script src="javascripts/application.js"></script>
+
+  <script>
+    function xinspect(o,i) {
+    	if(typeof i=='undefined') {
+    		i = '';
+    	}
+
+    	if(i.length>50) {
+    		return '[MAX ITERATIONS]';
+    	}
+
+    	var r = [];
+
+    	for(var p in o) {
+    		var t = typeof o[p];
+    		r.push(i+'"'+p+'" ('+t+') => '+(t=='object' ? 'object:'+xinspect(o[p],i+'  ') : o[p]+''));
+    	}
+    	return r.join(i+'\n');
+    }
+  </script>
+
+  <script src="cordova/javascripts/cordovatests.js"></script>
+  <script src="cordova/javascripts/filetests.js"></script>
+
+</head>
+<body style="background-color:white">
+
+  <h1>CORDOVA API TESTS</h1>
+
+  <h2>Accelerometer</h2>
+  <button onclick="accelerometerTest()">Test accelerometer</button><br>
+  X : <span id="accel_x"></span><br/>
+  Y : <span id="accel_y"></span><br/>
+  Z : <span id="accel_z"></span><br/>
+  Time : <span id="accel_timestamp"></span><br/>
+
+  <h2>BarCodeScanner</h2>
+  <p>
+   <button onclick="BarCodeScan()">Scan a barcode</button><br/>
+   Text: <span id="qr_result"></span><br/>
+  </p>
+
+  <h2>Camera</h2>
+  <button onclick="cameraTestGetPicture()">Test camera (take picture)</button><br>
+  <button onclick="cameraTestFromPhotoLibrary()">Test camera (choose from photo library)</button><br>
+  <img style="display:none;" id="image" src="" />
+
+  <h2>Capture</h2>
+  <button onclick="captureTestAudio()">Test audio capture</button><br>
+  <button onclick="captureTestImage()">Test image capture</button><br>
+  <button onclick="captureTestVideo()">Test video capture</button><br>
+
+  <h2>Compass</h2>
+  <button onclick="compassTest()">Test compass</button><br>
+
+  <h2>Connection</h2>
+  <button onclick="connectionTest()">Test connection</button><br>
+
+  <h2>Contacts</h2>
+  <button onclick="contactsSaveTest()">Test creating and saving a contact</button><br>
+  <button onclick="contactsFindTest()">Test finding contacts matching "Dolan"</button><br>
+  RESULT: <span id="contacts_result"></span>
+
+  <h2>Device</h2>
+  <button onclick="deviceTest()">Test retrieving device namespace properties</button><br>
+
+  <h2>Events</h2>
+  <p>Add event listeners (see Cordova API for triggers):<br>
+    <button id="pause" onclick="addPause()">pause</button><br>
+    <button id="resign" onclick="addResign()">resign</button><br>
+    <button onclick="addResume()">resume</button><br>
+    <button onclick="addActive()">active</button><br>
+    <button id="online" onclick="addOnline()">online</button><br>
+    <button id="offline" onclick="addOffline()">offline</button><br>
+    <button onclick="addBatteryCritical()">batterycritical</button><br>
+    <button onclick="addBatteryLow()">batterylow</button><br>
+    <button onclick="addBatteryStatus()">batterystatus</button><br>
+  </p>
+
+  <h2>File</h2>
+  <button onclick="fileSystemURITest()">Test resolving filesystem URI</button><br>
+  <button onclick="readFileTest()">Read file "lol.txt"</button><br>
+
+  <h2>FileTransfer</h2>
+  <button onclick="downloadRedirectTest()">Download something that redirects before final response</button><br/>
+  <button onclick="downloadAuthorizationTest()">Download something with basic auth that redirects before final response</button><br/>
+
+  <h2>Geolocation</h2>
+  <button onclick="geolocationTest()">Test geolocation</button><br>
+
+  <h2>Media</h2>
+
+  <button onclick="playExistingAudioFile()">Play existing audio</button><br>
+
+  <h3>Record</h3>
+
+	<button onclick="recordAudio()">Record 5 sec audio clip to lol.wav</button>
+	<button onclick="playAudioFile()">Play audio lol.wav</button><br>
+	<button onclick="pauseAudio()">Pause audio</button><br>
+	<button onclick="stopAudio()">Stop audio</button><br>
+	<br>
+	RESULT: <span id="media_record_result"></span>
+
+	<h2>Notification</h2>
+	<button onclick="testAlert()">Test alert</button><br>
+  <button onclick="testConfirm()">Test confirm</button><br>
+  <button onclick="testBeep()">Beep (needs beep.wav)</button><br>
+	<button onclick="testVibrate()">Vibrate</button><br>
+	<button onclick="testVibrate(5000)">Vibrate 5000 ms</button><br>
+
+	<h2>Storage</h2>
+	<button onclick="openDatabaseTest()">Open SQL database</button><br>
+	<button onclick="dbTransactionTest()">Execute some SQL</button><br>
+	Results:<br>
+	<div id="results_div"></div>
+
+</body>
+</html>
