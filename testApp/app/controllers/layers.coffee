@@ -234,3 +234,7 @@ class window.LayersController
       onTransitionEnd: ->
         console.log "pop all finished"
 
+  @testReplaceNonPreloaded: ->
+    view = new steroids.views.WebView "/views/layers/index.html"
+    steroids.layers.replace view
+

@@ -170,6 +170,19 @@ class window.DrawersController
       onSuccess: success
     }
 
+  @testHideWithFullChangeCenter1NonPreloaded: ->
+    success = ->
+      console.log "SUCCESS"
+
+    centerView = new steroids.views.WebView("/views/drawers/index.html")
+
+    # fullChange is set automatically to true if center param is used
+    steroids.drawers.hide {
+      center: centerView
+    }, {
+      onSuccess: success
+    }
+
   @testHideWithFullChangeCenter2: ->
     success = ->
       console.log "SUCCESS"
