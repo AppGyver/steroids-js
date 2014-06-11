@@ -42,6 +42,11 @@ steroids.config.tabBar.tabs = [
     icon: "icons/shoebox@2x.png"
     location: "nojs.html"
   }
+  {
+    title: "Cordova"
+    icon: "icons/telescope@2x.png"
+    location: "views/cordova/index.html"
+  }
 ]
 
 steroids.config.preloads = [
