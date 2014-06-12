@@ -4,3 +4,6 @@
 [submodule "testApp/www/javascripts/persistencejs"]
 	path = testApp/www/javascripts/persistencejs
 	url = git://github.com/zefhemel/persistencejs.git
+[submodule "testSpecApp"]
+	path = testSpecApp
+	url = git@github.com:AppGyver/steroids-js-testSpecApp.git

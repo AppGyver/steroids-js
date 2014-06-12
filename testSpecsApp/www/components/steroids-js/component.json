@@ -1,6 +1,0 @@
-{
-	"name": "steroids-js",
-	"version": "3.1.0",
-	"main": "./steroids.js",
-	"dependencies": {}
-}
