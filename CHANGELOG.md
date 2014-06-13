@@ -1,3 +1,7 @@
+##3.1.12 (2014-06-09)
+
+Support for Fresh Android API bridge added.
+
 ##3.1.11 (2014-05-22)
 
 Features:
@@ -17,16 +21,14 @@ Features:
   - New `steroids.screen.rotate` API that allows for the device orientation to be set programatically.
   - Register event listeners for the new native UI events with `steroids.drawers.on()`, `steroids.layers.on()`, `steroids.tabBar.on()`, `steroids.modal.on()` and `steroids.view.on()` (event listeners are unregistered with the `.off()` functions).
   - Setting the `window.AG_allowedRotationsDefaults` array before `steroids.js` is loaded will override the WebView default `steroids.view.setAllowedRotations([0])` with the given array.
+  - New iOS JavaScriptCore bridge - more awesome, faster and etc.
 
 Bugfixes:
   - `steroids.modal.show()` actually uses `navigationBar` property (as documented) instead of deprecated `hidesNavigationBar` property.
   - **BREAKING:** Fixed typo'd `steroids.drawers.update` parameter to be `stretchDrawer`, not `strechDrawer`.
 
 Changes:
-- Deprecated `steroids.view.rotateTo()`, use `steroids.screen.rotate()` instead.
-
-Internal stuff:
- - New iOS JavaScriptCore bridge - more awesome, faster and etc.
+  - Deprecated `steroids.view.rotateTo()`, use `steroids.screen.rotate()` instead.
 
 ##3.1.9 (2014-05-06)
 
