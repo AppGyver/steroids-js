@@ -14,3 +14,7 @@ p + p {
 div.ratchetFix {
   margin-top: 3em;
 }
+
+.testResult {
+  background-color: #D4D6D6;
+}

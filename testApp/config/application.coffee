@@ -45,7 +45,7 @@ steroids.config.tabBar.tabs = [
   {
     title: "Cordova"
     icon: "icons/telescope@2x.png"
-    location: "views/cordova/index.html"
+    location: "http://localhost/views/plugin/index.html"
   }
 ]
 
