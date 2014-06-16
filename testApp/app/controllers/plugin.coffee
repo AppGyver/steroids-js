@@ -36,6 +36,9 @@ class window.PluginController
     accel_z.innerHTML = "";
     accel_timestamp.innerHTML = "";
 
+
+  # BARCODE TEST
+
   @barCodeScanTest = () ->
     cordova.plugins.barcodeScanner.scan (result) ->
       if result.cancelled
