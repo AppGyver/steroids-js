@@ -14,11 +14,15 @@ class PostMessage
 
 
   @dispatchMessageEvent: (escapedJSONMessage, targetOrigin) =>
-    message = JSON.parse(unescape(escapedJSONMessage))
+    #wrap in a setTimeout to garantee that runs in the webkit thread.
+    setTimeout ->
+      message = JSON.parse(unescape(escapedJSONMessage))
 
-    e = document.createEvent "MessageEvent"
+      e = document.createEvent "MessageEvent"
 
-    #                  type       bubles etc    message    origin
-    e.initMessageEvent "message", false, false, message, "", "", window, null
+      #                  type       bubles etc    message    origin
+      e.initMessageEvent "message", false, false, message, "", "", window, null
 
-    window.dispatchEvent e
+      window.dispatchEvent e
+    ,
+      1
