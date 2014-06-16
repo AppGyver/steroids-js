@@ -81,3 +81,24 @@ class window.PluginController
       sourceType: Camera.PictureSourceType.PHOTOLIBRARY
     }
 
+  # CAPTURE TEST
+
+  captureOnSuccess = (mediaFiles) ->
+    for item in mediaFiles
+      alert item.fullPath
+
+  captureOnError = (error) ->
+    alert 'Capture error, error code: ' + error.code
+
+
+  @captureAudioTest = () ->
+    navigator.device.capture.captureAudio captureOnSuccess, captureOnError, {}
+
+
+  @captureImageTest = () ->
+    navigator.device.capture.captureImage captureOnSuccess, captureOnError, {limit:1}
+
+
+  @captureVideoTest = () ->
+    navigator.device.capture.captureVideo captureOnSuccess, captureOnError, {}
+
