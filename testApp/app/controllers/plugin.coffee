@@ -102,3 +102,13 @@ class window.PluginController
   @captureVideoTest = () ->
     navigator.device.capture.captureVideo captureOnSuccess, captureOnError, {}
 
+  # COMPASS TEST
+
+  compassOnSuccess = (heading) ->
+    compass_result.innerHTML = heading.magneticHeading
+
+  compassOnError = (error) ->
+    alert 'CompassError: ' + error.code
+
+  @compassTest = () ->
+    navigator.compass.getCurrentHeading compassOnSuccess, compassOnError
