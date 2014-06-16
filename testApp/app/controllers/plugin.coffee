@@ -233,3 +233,71 @@ class window.PluginController
         Is it plugged in? #{status.isPlugged}"
 
     alert "Event listener added: batterystatus"
+
+  # FILE TEST
+
+  testFS = undefined
+  @getFileSystemTest = () ->
+    window.requestFileSystem LocalFileSystem.PERSISTENT, 0, gotFS, fileTestFail
+
+  @readFileTest = () ->
+    if testFS?
+      testFS.root.getFile "lol.txt", {create:true}, gotFileEntry, fileTestFail
+    else
+      alert "Request a fileSystem with the 'Get fileSystem' test first"
+
+  @writeFileTest = () ->
+    if testFS?
+      testFS.root.getFile "lol.txt", {create:true}, gotFileToWrite, fileTestFail
+    else
+      alert "Request a fileSystem with the 'Get fileSystem' test first"
+
+  gotFS = (fileSystem) ->
+    alert "Got file system with root path: " + fileSystem.root.fullPath
+    testFS = fileSystem
+
+  gotFileEntry = (fileEntry) ->
+    alert "Got file entry with path: " + fileEntry.fullPath
+    fileEntry.file gotFile, fileTestFail
+
+  gotFileToWrite = (fileEntry) ->
+    fileEntry.createWriter (fileWriter) ->
+      fileWriter.onwriteend = (e) ->
+        alert 'Write completed.'
+      fileWriter.onerror = (e) ->
+        alert 'Write failed: ' + JSON.stringify e
+
+      # Create a new Blob and write it to log.txt.
+      blob = new Blob ['Lorem Ipsum'], {type: 'text/plain'}
+
+      fileWriter.write blob
+
+    , fileTestFail
+
+  gotFile = (file) ->
+    alert "Got file: #{file.name} \n
+          Full path: #{file.fullPath} \n
+          Mime type: #{file.type} \n
+          Last modified: #{file.lastModifiedDate} \n
+          Size in bytes: #{file.size}"
+    readDataUrl(file);
+    readAsText(file);
+
+  readDataUrl = (file) ->
+    reader = new FileReader()
+    reader.onloadend = (evt) ->
+      alert "Read as data URL: " + evt.target.result
+
+    reader.readAsDataURL file
+
+  readAsText = (file) ->
+    reader = new FileReader()
+    reader.onloadend = (evt) ->
+      file_result.innerHTML = "
+        Contents of #{file.name}: \n
+        #{evt.target.result}"
+
+    reader.readAsText file
+
+  fileTestFail = (evt) ->
+      alert "FILETESTFAIL: " + JSON.stringify evt
