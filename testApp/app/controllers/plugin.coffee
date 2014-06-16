@@ -128,3 +128,44 @@ class window.PluginController
     states[Connection.NONE]     = 'No network connection'
 
     connection_result.innerHTML = states[networkState]
+
+  # CONTACTS TEST
+
+  myContact = undefined
+  contactsSaveOnSuccess = (contact) ->
+    contacts_result.innerHTML = contact.nickname + " created in Contacts."
+
+  contactsSaveOnError = (contactError) ->
+    contacts_result.innerHTML = "Contact save error = " + contactError.code
+
+  @contactsSaveTest = () ->
+    myContact = navigator.contacts.create {
+      "displayName": "Dolan Duck"
+      "nickname": "Dolan Duck"
+    }
+    myContact.note = "GOOBY PLZ"
+
+    name = new ContactName()
+    name.givenName = "Dolan"
+    name.familyName = "Duck"
+    myContact.name = name
+
+    myContact.save contactsSaveOnSuccess, contactsSaveOnError
+
+  # CONTACTS FIND TEST
+
+  contactsFindOnSuccess = (contacts) ->
+    contacts_result.innerHTML = 'Found ' + contacts.length + ' contacts matching Dolan.'
+
+
+  contactsFindOnError = (contactError) ->
+    contacts_result.innerHTML = 'Contacts find onError:' + contactError.code
+
+
+  # find all contacts with 'Dolan' in any name field
+  @contactsFindTest = () ->
+    options = new ContactFindOptions
+    options.filter = "Dolan"
+    options.multiple = true
+    fields = ["displayName", "name"]
+    navigator.contacts.find fields, contactsFindOnSuccess, contactsFindOnError, options
