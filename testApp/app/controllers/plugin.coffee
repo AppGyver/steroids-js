@@ -169,3 +169,13 @@ class window.PluginController
     options.multiple = true
     fields = ["displayName", "name"]
     navigator.contacts.find fields, contactsFindOnSuccess, contactsFindOnError, options
+
+  # DEVICE TESTS
+
+  @deviceTest = () ->
+    device_result.innerHTML =
+      "Device model: " + device.model + "<br>" +
+      "Device Cordova: " + device.cordova + "<br>" +
+      "Device platform: " + device.platform + "<br>" +
+      "Device UUID: " + device.uuid + "<br>" +
+      "Device version: " + device.version + "<br>"
