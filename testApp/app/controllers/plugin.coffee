@@ -48,3 +48,36 @@ class window.PluginController
     ,
     (error) ->
       alert "scanning failed: " + error
+
+  # CAMERA TEST
+
+  cameraOnSuccess = (imageData) ->
+    image = document.querySelector '#cameraTest'
+    image.src = "data:image/jpeg;base64," + imageData;
+
+
+  cameraOnFail = (message) ->
+    alert 'Failed because: ' + message
+
+
+  @cameraGetPictureTest = () ->
+    navigator.camera.getPicture cameraOnSuccess, cameraOnFail, {
+      quality: 50
+      destinationType: Camera.DestinationType.DATA_URL
+    }
+
+  @cameraCleanupTest = () ->
+    navigator.camera.cleanup(
+      () ->
+        alert "Camera cleanup success"
+      (message) ->
+        alert "Camera cleanup failed: " + message
+    )
+
+  @cameraFromPhotoLibraryTest = () ->
+    navigator.camera.getPicture cameraOnSuccess, cameraOnFail, {
+      quality: 50
+      destinationType: Camera.DestinationType.DATA_URL,
+      sourceType: Camera.PictureSourceType.PHOTOLIBRARY
+    }
+
