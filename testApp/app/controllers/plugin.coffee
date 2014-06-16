@@ -179,3 +179,57 @@ class window.PluginController
       "Device platform: " + device.platform + "<br>" +
       "Device UUID: " + device.uuid + "<br>" +
       "Device version: " + device.version + "<br>"
+
+  # EVENTS TESTS
+
+  @addPause = () ->
+    # alert doesn't work with pause so need to edit DOM
+    document.addEventListener "pause", () ->
+      pause_event.innerHTML = "YES"
+
+    alert "Event listener added: pause"
+
+  @addResume = () ->
+    # alert needs to be wrapped in setTimeout to work
+    document.addEventListener "resume", () ->
+      setTimeout () ->
+       alert "resume got triggered!"
+      , 0
+
+    alert "Event listener added: resume"
+
+  @addOnline = () ->
+    document.addEventListener "online", () ->
+      online_result.innerHTML = "YES"
+
+    alert "Event listener added: online"
+
+  @addOffline = () ->
+    document.addEventListener "offline", () ->
+      offline_result.innerHTML = "YES"
+
+    alert "Event listener added: offline"
+
+  @addBatteryCritical = () ->
+    window.addEventListener "batterycritical", (status) ->
+      alert "Device's battery level is critical, with  #{status.level}
+        % battery life. \n
+        Is it plugged in? #{status.isPlugged}"
+
+    alert "Event listener added: batterycritical"
+
+  @addBatteryLow = () ->
+    window.addEventListener "batterylow", (status) ->
+      alert "Device's battery level is low, with  #{status.level}
+        % battery life. \n
+        Is it plugged in? #{status.isPlugged}"
+
+    alert "Event listener added: batterylow"
+
+  @addBatteryStatus = () ->
+    window.addEventListener "batterystatus", (status) ->
+      alert "Device's battery level was changed by at least 1%, with  #{status.level}
+        % battery life. \n
+        Is it plugged in? #{status.isPlugged}"
+
+    alert "Event listener added: batterystatus"
