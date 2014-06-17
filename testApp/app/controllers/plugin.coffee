@@ -315,3 +315,27 @@ class window.PluginController
 
   fileTestFail = (evt) ->
       alert "FILETESTFAIL: " + JSON.stringify evt
+
+
+  imageFileURL = undefined
+
+  @fileURLTest = () ->
+    if testFS?
+      testFS.root.getFile "image.png", {create:true}, gotImage, imageTestFail
+    else
+      alert "Request a fileSystem with the 'Get fileSystem' test first"
+
+  @URLtoFileEntryTest = () ->
+    if testFS?
+      window.resolveLocalFileSystemURL imageFileURL, (fileEntry)->
+        fileURL_result.innerHTML = "fileEntry fullPath: " + fileEntry.fullPath
+      , imageTestFail
+    else
+      alert "Request a fileSystem with the 'Get fileSystem' test first"
+
+  gotImage = (fileEntry) ->
+    imageFileURL = fileEntry.toURL()
+    fileURL_result.innerHTML = "fileURL: " + imageFileURL
+
+  imageTestFail = (error) ->
+    fileURL_result.innerHTML = "Error resolving fileEntry: " + JSON.stringify error
