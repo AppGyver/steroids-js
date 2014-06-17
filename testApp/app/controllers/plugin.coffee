@@ -252,6 +252,12 @@ class window.PluginController
     else
       alert "Request a fileSystem with the 'Get fileSystem' test first"
 
+  @deleteFileTest = () ->
+    if testFS?
+      testFS.root.getFile "lol.txt", {create:false}, gotFileToDelete, fileTestFail
+    else
+      alert "Request a fileSystem with the 'Get fileSystem' test first"
+
   gotFS = (fileSystem) ->
     alert "Got file system with root path: " + fileSystem.root.fullPath
     testFS = fileSystem
@@ -263,9 +269,9 @@ class window.PluginController
   gotFileToWrite = (fileEntry) ->
     fileEntry.createWriter (fileWriter) ->
       fileWriter.onwriteend = (e) ->
-        alert 'Write completed.'
+        file_result.innerHTML = "Write completed"
       fileWriter.onerror = (e) ->
-        alert 'Write failed: ' + JSON.stringify e
+        file_result.innerHTML = 'Write failed: ' + JSON.stringify e
 
       # Create a new Blob and write it to log.txt.
       blob = new Blob ['Lorem Ipsum'], {type: 'text/plain'}
@@ -273,6 +279,14 @@ class window.PluginController
       fileWriter.write blob
 
     , fileTestFail
+
+  gotFileToDelete = (fileEntry) ->
+    fileEntry.remove( () ->
+      file_result.innerHTML = "File: #{fileEntry.name} deleted from path: #{fileEntry.fullPath}"
+    ,
+    (error) ->
+      fileTestFail
+    )
 
   gotFile = (file) ->
     alert "Got file: #{file.name} \n
