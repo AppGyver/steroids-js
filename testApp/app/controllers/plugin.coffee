@@ -335,7 +335,78 @@ class window.PluginController
 
   gotImage = (fileEntry) ->
     imageFileURL = fileEntry.toURL()
-    fileURL_result.innerHTML = "fileURL: " + imageFileURL
+    fileURL_result.innerHTML = "<a href=" + imageFileURL + ">LINK</a>"
 
   imageTestFail = (error) ->
     fileURL_result.innerHTML = "Error resolving fileEntry: " + JSON.stringify error
+
+  #FILETRANSFER TEST
+
+  @downloadTest = () ->
+    window.requestFileSystem LocalFileSystem.PERSISTENT, 0, (fs) ->
+      fileTransfer = new FileTransfer()
+      filePath = fs.root.toURL() + "/test.response"
+      uri = encodeURI "http://docs.appgyver.com/en/stable/index.html"
+
+      fileTransfer.download(
+        uri
+        filePath
+        (entry) ->
+          fileTransfer_result.innerHTML = "download complete: " + entry.fullPath
+        (error) ->
+          fileTransfer_result.innerHTML = "
+            download error source: #{error.source} \n
+            download error target: #{error.target} \n
+            download error code: #{error.code}"
+        false
+        {}
+      )
+    , (error) ->
+      fileTransfer_result.innerHTML = "Requesting fileSystem failed: " + JSON.stringify error
+
+  @downloadRedirectTest = () ->
+    window.requestFileSystem LocalFileSystem.PERSISTENT, 0, (fs) ->
+      fileTransfer = new FileTransfer()
+      filePath = fs.root.toURL() + "/test.redirect.response"
+      uri = encodeURI "http://cloud.appgyver.com/applications/" # redirects to /users/sign_in
+
+      fileTransfer.download(
+        uri
+        filePath
+        (entry) ->
+          fileTransfer_result.innerHTML = "download complete: " + entry.fullPath
+        (error) ->
+          fileTransfer_result.innerHTML = "
+            download error source: #{error.source} \n
+            download error target: #{error.target} \n
+            download error code: #{error.code}"
+        false
+        {}
+      )
+    , (error) ->
+      fileTransfer_result.innerHTML = "Requesting fileSystem failed: " + JSON.stringify error
+
+  @downloadAuthTest = () ->
+    window.requestFileSystem LocalFileSystem.PERSISTENT, 0, (fs) ->
+      fileTransfer = new FileTransfer()
+      filePath = fs.root.toURL() + "/test.auth.response"
+      uri = encodeURI "https://api.flowdock.com/flows/flemy/main/files/XaD24A7P0l_M__E4B1YBUw/20130624_130747.jpg" # redirects to acual image
+
+      fileTransfer.download(
+        uri
+        filePath
+        (entry) ->
+          fileTransfer_result.innerHTML = "download complete: " + entry.fullPath
+        (error) ->
+          fileTransfer_result.innerHTML = "
+            download error source: #{error.source} \n
+            download error target: #{error.target} \n
+            download error code: #{error.code}"
+        false
+        {
+          headers: { "Authorization": "Basic NjBlMDQ1MTE5NWZhZDY4OTg5OTU5NGE4Zjg0YzNjYmE6bnVsbA==" }
+        }
+      )
+    , (error) ->
+      fileTransfer_result.innerHTML = "Requesting fileSystem failed: " + JSON.stringify error
+
