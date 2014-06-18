@@ -2,7 +2,7 @@
 <ul class="list">
   <h2> Show </h2>
   <li class="performsTest" data-test="testShow">
-    testShow()
+    testShow() - enables drawers, shows left one as default
   </li>
 
   <li class="performsTest" data-test="testShowLeft">
@@ -15,6 +15,18 @@
 
   <li class="performsTest" data-test="testShowModal">
     testShowModal()
+  </li>
+
+  <li class="performsTest" data-test="testReplaceLayers">
+    testReplaceLayers() - replaces center view
+  </li>
+
+  <li class="performsTest" data-test="testAddRightButton">
+    testAddRightButton()
+  </li>
+
+  <li class="performsTest" data-test="testTryToReusePreloadedAsModal">
+    testTryToReusePreloadedAsModal() - should fail
   </li>
 
   <h2>Update drawers</h2>
@@ -35,6 +47,53 @@
     testEnableAllGestures()
   </li>
 
+  <li class="performsTest" data-test="testDisableGestureViaUpdate">
+    testDisableGestureViaUpdate()
+  </li>
+
+
+  <h2>Styling</h2>
+
+  <li class="performsTest" data-test="testHideShadow">
+    testHideShadow()
+  </li>
+
+  <li class="performsTest" data-test="testShowShadow">
+    testShowShadow()
+  </li>
+
+
+  <h2> Sizes </h2>
+  <li class="performsTest" data-test="testUpdateWithWidthOfLayerInPixels">
+    Test different pixel with layer
+  </li>
+
+  <li class="performsTest" data-test="testDiffSizes">
+    Test different pixel width drawers
+  </li>
+
+  <li class="performsTest" data-test="testStretchDrawer">
+    Test Drawer Stretch (pull on drawers)
+  </li>
+
+  <li class="performsTest" data-test="testDefaultSizes">
+    Reset sizes of drawers and layer and no stretch
+  </li>
+
+
+  <h2> Animations </h2>
+  <li class="performsTest" data-test="testUpdateWithSlideAndScale">
+    testUpdateWithSlideAndScale()
+  </li>
+  <li class="performsTest" data-test="testUpdateWithSwingingDoor">
+    testUpdateWithSwingingDoor()
+  </li>
+  <li class="performsTest" data-test="testUpdateWithParallax">
+    testUpdateWithParallax() - default
+  </li>
+
+
+  <h2> Legacy Backwards Compatibility </h2>
   <li class="performsTest" data-test="testLegacyEnableGesture">
     testLegacyEnableGesture()
   </li>
@@ -45,56 +104,6 @@
 
   <li class="performsTest" data-test="testLegacyDisableGesture">
     testLegacyDisableGesture()
-  </li>
-
-  <li class="performsTest" data-test="testDisableGestureViaUpdate">
-    testDisableGestureViaUpdate()
-  </li>
-
-  <h2>Other</h2>
-
-  <li class="performsTest" data-test="testUpdateWithParameters">
-    testUpdateWithParameters()
-  </li>
-
-  <li class="performsTest" data-test="testHideShadow">
-    testHideShadow()
-  </li>
-
-  <li class="performsTest" data-test="testShowShadow">
-    testShowShadow()
-  </li>
-
-  <h2> Sizes </h2>
-  <li class="performsTest" data-test="testUpdateWithWidthOfLayerInPixels">
-    testUpdateWithWidthOfLayerInPixels()
-  </li>
-
-  <li class="performsTest" data-test="testDiffSizes">
-    testDiffSizes()
-  </li>
-
-  <h2> Animations </h2>
-  <li class="performsTest" data-test="testUpdateWithParallax">
-    testUpdateWithParallax()
-  </li>
-  <li class="performsTest" data-test="testUpdateWithSlideAndScale">
-    testUpdateWithSlideAndScale()
-  </li>
-  <li class="performsTest" data-test="testUpdateWithSwingingDoor">
-    testUpdateWithSwingingDoor()
-  </li>
-
-  <li class="performsTest" data-test="testReplaceLayers">
-    testReplaceLayers()
-  </li>
-
-  <li class="performsTest" data-test="testAddRightButton">
-    testAddRightButton()
-  </li>
-
-  <li class="performsTest" data-test="testTryToReusePreloadedAsModal">
-    testTryToReusePreloadedAsModal()
   </li>
 
 </ul>

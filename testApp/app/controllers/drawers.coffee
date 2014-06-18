@@ -250,7 +250,7 @@ class window.DrawersController
 
     steroids.drawers.update {
       options:
-        widthOfLayerInPixels: 160
+        widthOfLayerInPixels: 200
     }, {
       onSuccess: success
     }
@@ -266,7 +266,23 @@ class window.DrawersController
       left:
         widthOfDrawerInPixels: 200
       right:
-        widthOfDrawerInPixels: 100
+        widthOfDrawerInPixels: 75
+    }, {
+      onSuccess: success
+    }
+
+  @testDefaultSizes: ->
+    success = ->
+      console.log "SUCCESS"
+
+    steroids.drawers.update {
+      options:
+        widthOfLayerInPixels: 0,
+        stretchDrawer: false
+      left:
+        widthOfDrawerInPixels: 280
+      right:
+        widthOfDrawerInPixels: 280 
     }, {
       onSuccess: success
     }
@@ -293,18 +309,22 @@ class window.DrawersController
       onSuccess: success
     }
 
-  @testUpdateWithParameters: ->
+  @testStretchDrawer: ->
     success = ->
       console.log "SUCCESS"
 
-    steroids.drawers.update
-      options:
-        showShadow: true
-        openGestures: ["PanBezelCenterView"]
-        closeGestures: ["PanCenterView", "PanDrawerView"]
+    steroids.drawers.update {
+      options: {
+        widthOfLayerInPixels: 0,
         stretchDrawer: true
-    ,
+      }
+      left:
+        widthOfDrawerInPixels: 150
+      right:
+        widthOfDrawerInPixels: 150 
+    }, {
       onSuccess: success
+    }
 
   @testUpdateWithParallax: ->
     success = ->
@@ -422,10 +442,6 @@ class window.DrawersController
     ,
       onSuccess: success
       onFailure: fail
-
-  @testLayersPush: ->
-    steroids.layers.push new steroids.views.WebView
-      location: "views/drawers/pushedFromDrawer.html"
 
   @testPushLayer: ->
     popView = new steroids.views.WebView("/views/layers/pop.html")
