@@ -410,3 +410,37 @@ class window.PluginController
     , (error) ->
       fileTransfer_result.innerHTML = "Requesting fileSystem failed: " + JSON.stringify error
 
+  # GEOLOCATION TEST
+
+  onGeolocationSuccess = (position) ->
+    geoLocation_result.innerHTML = "
+      Latitude: #{position.coords.latitude} \n
+      Longitude: #{position.coords.longitude} \n
+      Altitude: #{position.coords.altitude} \n
+      Accuracy: #{position.coords.accuracy} \n
+      Altitude Accuracy: #{position.coords.altitudeAccuracy} \n
+      Heading: #{position.coords.heading} \n
+      Speed: #{position.coords.speed} \n
+      Timestamp: #{position.timestamp} \n"
+
+  # onError Callback receives a PositionError object
+
+  onGeolocationError = (error) ->
+    alert "
+      code: #{error.code} \n
+      message: #{error.message} "
+
+  @geolocationTest = () ->
+    navigator.geolocation.getCurrentPosition onGeolocationSuccess, onGeolocationError
+
+  watchId = undefined
+
+  @watchPositionTest = () ->
+    watchId = navigator.geolocation.watchPosition onGeolocationSuccess, onGeolocationError
+
+  @clearPositionWatchTest = () ->
+    if watchId?
+      navigator.geolocation.clearWatch(watchId)
+      geoLocation_result.innerHTML = "Watch cleared"
+    else
+      geoLocation_result.innerHTML = "No position watch to clear"
