@@ -444,3 +444,57 @@ class window.PluginController
       geoLocation_result.innerHTML = "Watch cleared"
     else
       geoLocation_result.innerHTML = "No position watch to clear"
+
+  # MEDIA TEST
+
+  my_media = null;
+
+  # Play audio
+
+  @playExistingAudioFile = () ->
+    some_media = new Media "http://audio.ibeat.org/content/p1rj1s/p1rj1s_-_rockGuitar.mp3"
+    some_media.play()
+
+  @playAudio = () ->
+    if my_media == null
+        my_media = new Media "documents://"+"lol.wav"
+        my_media.play()
+    else
+      my_media.play()
+
+  @pauseAudio = () ->
+    if my_media?
+      my_media.pause()
+      media_record_result.innerHTML = "Playback paused!"
+
+  @stopAudio = () ->
+    if my_media?
+      my_media.stop()
+      media_record_result.innerHTML = "Playback stopped!"
+
+  @recordAudio = () ->
+    my_media = new Media "lol.wav"
+    my_media.startRecord()
+    media_record_result.innerHTML = "Recording!"
+
+    setTimeout () ->
+      my_media.stopRecord()
+      media_record_result.innerHTML = "Recording complete!"
+    , 5000
+
+
+  getPath = () ->
+    location.pathname.substring 0, location.pathname.lastIndexOf('/')+1
+
+  # NOTIFICATION TEST
+  @alertTest = () ->
+    navigator.notification.alert "Hello world!", null, "Cordova alert", "Lol"
+
+  @confirmTest = () ->
+    navigator.notification.confirm "Hello world!", null, "Cordova confirm", "Regards, Uncle, Dolan"
+
+  @beepTest = () ->
+    navigator.notification.beep 5
+
+  @vibrateTest = () ->
+    navigator.notification.vibrate 500
