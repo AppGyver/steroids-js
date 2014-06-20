@@ -185,7 +185,7 @@ class window.PluginController
   @addPause = () ->
     # alert doesn't work with pause so need to edit DOM
     document.addEventListener "pause", () ->
-      pause_event.innerHTML = "YES"
+      pause_result.innerHTML = "YES"
 
     alert "Event listener added: pause"
 
@@ -233,6 +233,24 @@ class window.PluginController
         Is it plugged in? #{status.isPlugged}"
 
     alert "Event listener added: batterystatus"
+
+  @addBackButton = () ->
+    window.addEventListener "backbutton", () ->
+      alert "Device's back button pressed !"
+
+    alert "Event listener added: backbutton"
+
+  @addMenuButton = () ->
+    window.addEventListener "menubutton", () ->
+      alert "Menu button pressed !"
+
+    alert "Event listener added: menubutton"
+
+  @addSearchButton = () ->
+    window.addEventListener "searchbutton", () ->
+      alert "searchbutton button pressed !"
+
+    alert "Event listener added: searchbutton"
 
   # FILE TEST
 
