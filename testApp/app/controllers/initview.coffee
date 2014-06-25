@@ -4,7 +4,7 @@ class window.InitviewController
     alert "test test"
 
   @testDismissInitialView: ->
-    console.log "@testDismissInitialView called"
+    steroids.logger.log "@testDismissInitialView called"
     myAnimation = new steroids.Animation
       transition: "flipHorizontalFromRight"
       duration: 1.0
@@ -14,12 +14,12 @@ class window.InitviewController
       animation: myAnimation
     ,
       onSuccess: (result) ->
-        console.log "initialView.dismiss onSuccess"
+        steroids.logger.log "initialView.dismiss onSuccess"
       onFailure: (result) ->
-        console.log "initialView.dismiss onFailure"
+        steroids.logger.log "initialView.dismiss onFailure"
 
   @testResetAppToInitialView: ->
-    console.log "@testResetAppToInitialView called"
+    steroids.logger.log "@testResetAppToInitialView called"
     myAnimation = new steroids.Animation
       transition: "slideFromBottom"
       duration: 1.0
@@ -29,6 +29,6 @@ class window.InitviewController
       animation: myAnimation
     ,
       onSuccess: (result) ->
-        console.log "initialView.show onSuccess"
+        steroids.logger.log "initialView.show onSuccess"
       onFailure: (result) ->
-        console.log "initialView.show onFailure"
+        steroids.logger.log "initialView.show onFailure"

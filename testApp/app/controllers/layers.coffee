@@ -16,7 +16,7 @@ class window.LayersController
 
   @testPushPop: ->
     pushed = ->
-      console.log "PUSHED"
+      steroids.logger.log "PUSHED"
 
     steroids.layers.push {
       view: @createWebView()
@@ -217,7 +217,7 @@ class window.LayersController
 
   @testAnotherLayer: ->
     pushed = ->
-      console.log "PUSHED"
+      steroids.logger.log "PUSHED"
 
     steroids.layers.push {
       view: @createWebView()
@@ -230,9 +230,9 @@ class window.LayersController
     steroids.layers.popAll {}
     ,
       onTransitionStarted: ->
-        console.log "pop all invoked"
+        steroids.logger.log "pop all invoked"
       onTransitionEnd: ->
-        console.log "pop all finished"
+        steroids.logger.log "pop all finished"
 
   @testReplaceNonPreloaded: ->
     view = new steroids.views.WebView "/views/layers/index.html"

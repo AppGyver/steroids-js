@@ -143,4 +143,4 @@ class window.DataController
 
   @testRSSFetch: ->
     lol = new steroids.data.RSS("url")
-    console.log(lol)
+    steroids.logger.log(lol)

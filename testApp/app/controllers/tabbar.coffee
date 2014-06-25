@@ -72,7 +72,7 @@ class window.TabbarController
     onSuccess: ->
       alert "Success updating curent tab"
     onFailure: (failure) ->
-      console.log "Failed to update current tab", failure
+      steroids.logger.log "Failed to update current tab", failure
       alert "Failed to update current tab"
     )
 
@@ -118,10 +118,10 @@ class window.TabbarController
   @testReplaceTabsInvertedOrder: ->
 
     onSuccess = () ->
-      console.log "replace tabs onSuccess"
+      steroids.logger.log "replace tabs onSuccess"
 
     onFailure = () ->
-      console.log "replace tabs onFailure"
+      steroids.logger.log "replace tabs onFailure"
 
     parameters =
       tabs: [
@@ -150,10 +150,10 @@ class window.TabbarController
   @testReplaceTabsOriginalOrder: ->
 
     onSuccess = () ->
-      console.log "replace tabs onSuccess"
+      steroids.logger.log "replace tabs onSuccess"
 
     onFailure = () ->
-      console.log "replace tabs onFailure"
+      steroids.logger.log "replace tabs onFailure"
 
     parameters =
       tabs: [
@@ -182,9 +182,9 @@ class window.TabbarController
   @replaceTabsIntervalId = 0;
 
   @repeatReplaceTabs: ->
-    console.log "repeatReplaceTabs -> will call replaceTabs in 2 seconds."
+    steroids.logger.log "repeatReplaceTabs -> will call replaceTabs in 2 seconds."
     setInterval ()->
-      console.log "repeatReplaceTabs -> calling replaceTabs ... "
+      steroids.logger.log "repeatReplaceTabs -> calling replaceTabs ... "
       TabbarController.replaceTabs()
     ,
       2000
@@ -195,10 +195,10 @@ class window.TabbarController
 
   @replaceTabs: ->
     onSuccess = () ->
-      console.log "repeatReplaceTabs -> replace tabs onSuccess"
+      steroids.logger.log "repeatReplaceTabs -> replace tabs onSuccess"
 
     onFailure = () ->
-      console.log "repeatReplaceTabs -> replace tabs onFailure"
+      steroids.logger.log "repeatReplaceTabs -> replace tabs onFailure"
 
     parameters =
       tabs: [

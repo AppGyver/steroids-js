@@ -2,7 +2,7 @@ class window.PostmessageController
 
   @testListenMessages: ->
     receiveMessage = (message) ->
-      console.log message
+      steroids.logger.log message
       elem = document.createElement "p"
       elem.textContent = message.data.text
       document.body.appendChild elem

@@ -79,7 +79,7 @@ class window.DrawersController
 
   @testShow: ->
     success = ->
-      console.log "SUCCESS"
+      steroids.logger.log "SUCCESS"
 
     steroids.drawers.show {}, {
       onSuccess: success
@@ -87,7 +87,7 @@ class window.DrawersController
 
   @testShowLeft: ->
     success = ->
-      console.log "SUCCESS"
+      steroids.logger.log "SUCCESS"
 
     steroids.drawers.show
       edge: steroids.screen.edges.LEFT
@@ -96,18 +96,20 @@ class window.DrawersController
 
   @testShowRight: ->
     success = ->
-      console.log "SUCCESS"
+      steroids.logger.log "SUCCESS"
 
     steroids.drawers.show
       edge: steroids.screen.edges.RIGHT
     ,
       onSuccess: success
 
+
+
   @testShowNonPreloadedDrawerRight: ->
     success = ->
-      alert "SUCCESS"
+      alert "TEST FAIL managed to set non-preloaded view as drawer"
     failure = ->
-      alert "FAILED"
+      alert "TEST SUCCESS because failed to set non-preloaded view as drawer"
 
     newDrawer = new steroids.views.WebView("views/drawers/extraDrawer.html")
 
@@ -117,11 +119,13 @@ class window.DrawersController
       onSuccess: success
       onFailure: failure
 
+
+
   @testShowNonPreloadedDrawerWithIdRight: ->
     success = ->
-      alert "SUCCESS"
+      alert "TEST FAIL managed to set non-preloaded view as drawer"
     failure = ->
-      alert "FAILED"
+      alert "TEST SUCCESS because failed to set non-preloaded view as drawer"
 
     newDrawer = new steroids.views.WebView
       location: "views/drawers/extraDrawer.html"
@@ -133,9 +137,11 @@ class window.DrawersController
       onSuccess: success
       onFailure: failure
 
+
+
   @testShowPreloadedDrawerRight: ->
     success = ->
-      alert "SUCCESS"
+      alert "SUCCESS, check right drawer"
     failure = ->
       alert "FAILED"
 
@@ -151,28 +157,38 @@ class window.DrawersController
           onFailure: failure
     }
 
+
+
   @testHide: ->
     success = ->
-      console.log "SUCCESS"
+      steroids.logger.log "SUCCESS in hiding the drawer"
+    failure = -> 
+      steroids.logger.log "FAILURE in testHide"
 
     steroids.drawers.hide {}, {
       onSuccess: success
+      onFailure: failure
     }
 
-  @testHideWithFullChangeCenter1: ->
+  @testHideWithCenter1: ->
     success = ->
-      console.log "SUCCESS"
+      steroids.logger.log "SUCCESS in hiding the drawer and replacing center with center 1"
+    failure = ->
+      steroids.logger.log "FAILURE in testHideWithCenter1"
 
     # fullChange is set automatically to true if center param is used
     steroids.drawers.hide {
       center: DrawersController.center1
     }, {
       onSuccess: success
+      onFailure: failure
     }
 
-  @testHideWithFullChangeCenter1NonPreloaded: ->
+  @testHideWithCenter1NonPreloaded: ->
     success = ->
-      console.log "SUCCESS"
+      steroids.logger.log "SUCCESS in hiding the drawer and replacing center with NON-PRELOADED center 1"
+    failure = ->
+      steroids.logger.log "FAILURE in testHideWithCenter1NonPreloaded"
 
     centerView = new steroids.views.WebView("/views/drawers/index.html")
 
@@ -181,19 +197,27 @@ class window.DrawersController
       center: centerView
     }, {
       onSuccess: success
+      onFailure: failure
     }
 
-  @testHideWithFullChangeCenter2: ->
+  @testHideWithCenter2: ->
     success = ->
-      console.log "SUCCESS"
+      steroids.logger.log "SUCCESS in hiding the drawer and showing center 2"
+    failure = ->
+      steroids.logger.log "FAILURE in testHideWithCenter2"
 
-    steroids.drawers.hide
+    steroids.drawers.hide {
       center: DrawersController.center2
-      fullChange: false # overridden if center param is defined
+    }, {
+      onSuccess: success
+      onFailure: failure
+    }
 
   @testEnableAllGestures: ->
     success = ->
-      console.log "SUCCESS"
+      steroids.logger.log "SUCCESS in enabling all swipe gestures"
+    failure = ->
+      steroids.logger.log "FAILURE in testEnableAllGestures"
 
     steroids.drawers.update {
       options:
@@ -201,6 +225,7 @@ class window.DrawersController
         closeGestures: ["PanNavBar", "PanCenterView", "PanBezelCenterView", "TapNavBar", "TapCenterView", "PanDrawerView"]
     }, {
       onSuccess: success
+      onFailure: failure
     }
 
   @testLegacyEnableGesture: ->
@@ -213,6 +238,9 @@ class window.DrawersController
           view: googleView
           edge: steroids.screen.edges.LEFT
           widthOfDrawerInPixels: 200
+        steroids.logger.log "SUCCESS in enabling legacy gesture"
+      onFailure: =>
+        steroids.logger.log "FAILURE in testLegacyEnableGesture"
     }
 
   @testLegacyEnableGestureShorthand: ->
@@ -221,11 +249,16 @@ class window.DrawersController
     {
       onSuccess: =>
         steroids.drawers.enableGesture(appleView)
+        steroids.logger.log "SUCCESS in enabling legacy gesture shorthand"
+      onFailure: =>
+        steroids.logger.log "FAILURE in testLegacyEnableGestureShorthand"
     }
 
   @testDisableGestureViaUpdate: ->
     success = ->
-      console.log "SUCCESS"
+      steroids.logger.log "SUCCESS in disabling gestures via update"
+    failure = ->
+      steroids.logger.log "FAILURE in testDisableGestureViaUpdate"
 
     steroids.drawers.update {
       options:
@@ -235,18 +268,21 @@ class window.DrawersController
         closeGestures: []
     }, {
       onSuccess: success
+      onFailure: failure
     }
 
   @testLegacyDisableGesture: ->
     success = ->
-      console.log "SUCCESS"
+      steroids.logger.log "SUCCESS"
+    failure = ->
+      steroids.logger.log "FAILURE"
 
     steroids.drawers.disableGesture
       onSuccess: success
 
   @testUpdateWithWidthOfLayerInPixels: ->
     success = ->
-      console.log "SUCCESS"
+      steroids.logger.log "SUCCESS"
 
     steroids.drawers.update {
       options:
@@ -257,7 +293,7 @@ class window.DrawersController
 
   @testDiffSizes: ->
     success = ->
-      console.log "SUCCESS"
+      steroids.logger.log "SUCCESS"
 
     steroids.drawers.update {
       options:
@@ -273,7 +309,7 @@ class window.DrawersController
 
   @testDefaultSizes: ->
     success = ->
-      console.log "SUCCESS"
+      steroids.logger.log "SUCCESS"
 
     steroids.drawers.update {
       options:
@@ -289,7 +325,7 @@ class window.DrawersController
 
   @testHideShadow: ->
     success = ->
-      console.log "SUCCESS"
+      steroids.logger.log "SUCCESS"
 
     steroids.drawers.update {
       options:
@@ -300,7 +336,7 @@ class window.DrawersController
 
   @testShowShadow: ->
     success = ->
-      console.log "SUCCESS"
+      steroids.logger.log "SUCCESS"
 
     steroids.drawers.update {
       options:
@@ -311,7 +347,7 @@ class window.DrawersController
 
   @testStretchDrawer: ->
     success = ->
-      console.log "SUCCESS"
+      steroids.logger.log "SUCCESS"
 
     steroids.drawers.update {
       options: {
@@ -328,7 +364,7 @@ class window.DrawersController
 
   @testUpdateWithParallax: ->
     success = ->
-      console.log "SUCCESS"
+      steroids.logger.log "SUCCESS"
 
     steroids.drawers.update
       options:
@@ -341,7 +377,7 @@ class window.DrawersController
 
   @testUpdateWithSlideAndScale: ->
     success = ->
-      console.log "SUCCESS"
+      steroids.logger.log "SUCCESS"
 
     steroids.drawers.update {
       options:
@@ -354,7 +390,7 @@ class window.DrawersController
 
   @testUpdateWithSwingingDoor: ->
     success = ->
-      console.log "SUCCESS"
+      steroids.logger.log "SUCCESS"
 
     steroids.drawers.update {
       options:

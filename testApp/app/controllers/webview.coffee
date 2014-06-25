@@ -156,7 +156,7 @@ class window.WebviewController
     steroids.layers.push
       view: webView
     ,
-      onSuccess: () -> console.log "pushed webview from preloaded"
+      onSuccess: () -> steroids.logger.log "pushed webview from preloaded"
 
   @replaceFromPreloaded: () ->
     webView = new steroids.views.WebView
@@ -168,8 +168,8 @@ class window.WebviewController
         steroids.layers.replace
           view: webView
         ,
-          onSuccess: () -> console.log "replaced webview from preloaded -> onSuccess"
-          onFailure: () -> console.log "replaced webview from preloaded -> onFailure"
+          onSuccess: () -> steroids.logger.log "replaced webview from preloaded -> onSuccess"
+          onFailure: () -> steroids.logger.log "replaced webview from preloaded -> onFailure"
 
   @testPreloadAndPushFromPreloaded: () ->
     webView = new steroids.views.WebView
@@ -177,8 +177,8 @@ class window.WebviewController
 
     webView.preload {}
     ,
-      onSuccess: () -> console.log "preload onSuccess"
-      onFailure: () -> console.log "preload onFailure"
+      onSuccess: () -> steroids.logger.log "preload onSuccess"
+      onFailure: () -> steroids.logger.log "preload onFailure"
 
   @testPopAll: ->
 

@@ -12,13 +12,13 @@ class window.ScreenController
 
   @testFreeze: ->
     steroids.screen.freeze {},
-      onSuccess: console.log "freeze success"
-      onFailure: console.log "freeze failure"
+      onSuccess: steroids.logger.log "freeze success"
+      onFailure: steroids.logger.log "freeze failure"
 
     unfreezer = ()->
       steroids.screen.unfreeze {},
-        onSuccess: console.log "unfreeze success"
-        onFailure: console.log "unfreeze failure"
+        onSuccess: steroids.logger.log "unfreeze success"
+        onFailure: steroids.logger.log "unfreeze failure"
 
     setTimeout unfreezer, 1000
 
@@ -32,7 +32,7 @@ class window.ScreenController
 
 
   @testTap: ->
-    console.log "firing tap soon"
+    steroids.logger.log "firing tap soon"
     window.setTimeout ->
       steroids.screen.tap {
         x: 30
@@ -51,9 +51,9 @@ class window.ScreenController
     steroids.screen.rotate "portrait"
     ,
       onTransitionStarted: ->
-        console.log "rotation started"
+        steroids.logger.log "rotation started"
       onTransitionEnded: ->
-        console.log "rotation ended"
+        steroids.logger.log "rotation ended"
 
   @testRotatePortraitUpsideDown: ->
     steroids.screen.rotate "portraitUpsideDown"
