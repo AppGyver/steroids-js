@@ -66,7 +66,7 @@ class window.DrawersController
       id: "center2"
 
   @testAddRightButton: ->
-    rightDrawerBtn = new steroids.buttons.NavigationBarButtons
+    rightDrawerBtn = new steroids.buttons.NavigationBarButton
     rightDrawerBtn.title = "==>"
     rightDrawerBtn.onTap = =>
       steroids.drawers.show
