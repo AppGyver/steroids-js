@@ -31,18 +31,30 @@
 
   <h2>Update drawers</h2>
   <li class="performsTest" data-test="testShowNonPreloadedDrawerRight">
-    testShowNonPreloadedDrawerRight()
+    testShowNonPreloadedDrawerRight() - should fail
   </li>
 
   <li class="performsTest" data-test="testShowNonPreloadedDrawerWithIdRight">
-    testShowNonPreloadedDrawerWithIdRight()
+    testShowNonPreloadedDrawerWithIdRight() - should fail
   </li>
 
   <li class="performsTest" data-test="testShowPreloadedDrawerRight">
     testShowPreloadedDrawerRight()
   </li>
 
+
   <h2> Gestures </h2>
+
+  <br/>
+  <b>Test these gestures:</b><br/>
+  - open/close the drawer by panning (swiping) on the nav bar<br/>
+  - open/close the drawer by panning anywhere on the center view<br/>
+  - open/close the drawer by panning from the edge of the center view<br/>
+  - close the drawer by tapping the navigation bar of the center view<br/>
+  - close the drawer by tapping anywhere in the center view<br/>
+  - close the drawer by panning anywhere in the drawer view<br/>
+  <br/>
+
   <li class="performsTest" data-test="testEnableAllGestures">
     testEnableAllGestures()
   </li>
@@ -55,17 +67,17 @@
   <h2>Styling</h2>
 
   <li class="performsTest" data-test="testHideShadow">
-    testHideShadow()
+    Hide shadow between drawer and center view
   </li>
 
   <li class="performsTest" data-test="testShowShadow">
-    testShowShadow()
+    Show shadow between drawer and center view
   </li>
 
 
   <h2> Sizes </h2>
   <li class="performsTest" data-test="testUpdateWithWidthOfLayerInPixels">
-    Test different pixel with layer
+    Test different pixel width layer
   </li>
 
   <li class="performsTest" data-test="testDiffSizes">
@@ -73,7 +85,7 @@
   </li>
 
   <li class="performsTest" data-test="testStretchDrawer">
-    Test Drawer Stretch (pull on drawers)
+    Test Drawer Stretch (pull on drawers to see effect)
   </li>
 
   <li class="performsTest" data-test="testDefaultSizes">
