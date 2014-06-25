@@ -66,7 +66,7 @@ class window.DrawersController
       id: "center2"
 
   @testAddRightButton: ->
-    rightDrawerBtn = new steroids.buttons.NavigationBarButton
+    rightDrawerBtn = new steroids.buttons.NavigationBarButtons
     rightDrawerBtn.title = "==>"
     rightDrawerBtn.onTap = =>
       steroids.drawers.show
@@ -76,32 +76,46 @@ class window.DrawersController
     steroids.navigationBar.update
       buttons:
         right: [rightDrawerBtn]
+    ,
+      onSuccess: ->
+        steroids.logger.log "SUCCESS in adding button to navigation bar that opens right drawer"
+      onFailure: ->
+        steroids.logger.log "FAILURE in testAddRightButton"
 
   @testShow: ->
     success = ->
-      steroids.logger.log "SUCCESS"
+      steroids.logger.log "SUCCESS in showing default drawer"
+    failure = ->
+      steroids.logger.log "FAILURE in testShow"
 
     steroids.drawers.show {}, {
       onSuccess: success
+      onFailure: failure
     }
 
   @testShowLeft: ->
     success = ->
-      steroids.logger.log "SUCCESS"
+      steroids.logger.log "SUCCESS in showing left drawer"
+    failure = ->
+      steroids.logger.log "FAILURE in testShowLeft"
 
     steroids.drawers.show
       edge: steroids.screen.edges.LEFT
     ,
       onSuccess: success
+      onFailure: failure
 
   @testShowRight: ->
     success = ->
-      steroids.logger.log "SUCCESS"
+      steroids.logger.log "SUCCESS in showing right drawer"
+    failure = ->
+      steroids.logger.log "FAILURE in testShowRight"
 
     steroids.drawers.show
       edge: steroids.screen.edges.RIGHT
     ,
       onSuccess: success
+      onFailure: failure
 
 
 
@@ -123,9 +137,9 @@ class window.DrawersController
 
   @testShowNonPreloadedDrawerWithIdRight: ->
     success = ->
-      alert "TEST FAIL managed to set non-preloaded view as drawer"
+      steroids.logger.log "TEST SUCCESS because failed to set non-preloaded view as drawer"
     failure = ->
-      alert "TEST SUCCESS because failed to set non-preloaded view as drawer"
+      steroids.logger.log "TEST FAIL managed to set non-preloaded view as drawer"
 
     newDrawer = new steroids.views.WebView
       location: "views/drawers/extraDrawer.html"
@@ -134,16 +148,17 @@ class window.DrawersController
     steroids.drawers.update
       right: newDrawer
     ,
-      onSuccess: success
-      onFailure: failure
+      # test should not pass
+      onSuccess: failure
+      onFailure: success
 
 
 
   @testShowPreloadedDrawerRight: ->
     success = ->
-      alert "SUCCESS, check right drawer"
+      steroids.logger.log "SUCCESS in updating preloaded view as right drawer"
     failure = ->
-      alert "FAILED"
+      steroids.logger.log "FAILED in testShowPreloadedDrawerRight"
 
     newDrawer = new steroids.views.WebView("views/drawers/extraDrawer.html")
 
@@ -273,27 +288,33 @@ class window.DrawersController
 
   @testLegacyDisableGesture: ->
     success = ->
-      steroids.logger.log "SUCCESS"
+      steroids.logger.log "SUCCESS in disabling gestures the legacy way"
     failure = ->
-      steroids.logger.log "FAILURE"
+      steroids.logger.log "FAILURE in testLegacyDisableGesture"
 
     steroids.drawers.disableGesture
       onSuccess: success
+      onFailure: failure
 
   @testUpdateWithWidthOfLayerInPixels: ->
     success = ->
-      steroids.logger.log "SUCCESS"
+      steroids.logger.log "SUCCESS in updating the width of the center layer"
+    failure = ->
+      steroids.logger.log "FAILURE in testUpdateWithWidthOfLayerInPixels"
 
     steroids.drawers.update {
       options:
         widthOfLayerInPixels: 200
     }, {
       onSuccess: success
+      onFailure: failure
     }
 
   @testDiffSizes: ->
     success = ->
-      steroids.logger.log "SUCCESS"
+      steroids.logger.log "SUCCESS in testing different sizes for drawers"
+    failure = ->
+      steroids.logger.log "FAILURE in testDiffSizes"
 
     steroids.drawers.update {
       options:
@@ -305,11 +326,14 @@ class window.DrawersController
         widthOfDrawerInPixels: 75
     }, {
       onSuccess: success
+      onFailure: failure
     }
 
   @testDefaultSizes: ->
     success = ->
-      steroids.logger.log "SUCCESS"
+      steroids.logger.log "SUCCESS in returning to original sizes for drawers and center layer"
+    failure = ->
+      steroids.logger.log "FAILURE in testDefaultSizes"
 
     steroids.drawers.update {
       options:
@@ -321,33 +345,42 @@ class window.DrawersController
         widthOfDrawerInPixels: 280 
     }, {
       onSuccess: success
+      onFailure: failure
     }
 
   @testHideShadow: ->
     success = ->
-      steroids.logger.log "SUCCESS"
+      steroids.logger.log "SUCCESS in hiding drawer shadow"
+    failure = ->
+      steroids.logger.log "FAILURE in testHideShadow"
 
     steroids.drawers.update {
       options:
         showShadow: false
     }, {
       onSuccess: success
+      onFailure: failure
     }
 
   @testShowShadow: ->
     success = ->
-      steroids.logger.log "SUCCESS"
+      steroids.logger.log "SUCCESS in showing drawer shadow"
+    failure = ->
+      steroids.logger.log "FAILURE in testShowShadow"
 
     steroids.drawers.update {
       options:
         showShadow: true
     }, {
       onSuccess: success
+      onFailure: failure
     }
 
   @testStretchDrawer: ->
     success = ->
-      steroids.logger.log "SUCCESS"
+      steroids.logger.log "SUCCESS in enabling stretch effect for drawer"
+    failure = ->
+      steroids.logger.log "FAILURE in testStretchDrawer"
 
     steroids.drawers.update {
       options: {
@@ -360,11 +393,14 @@ class window.DrawersController
         widthOfDrawerInPixels: 150 
     }, {
       onSuccess: success
+      onFailure: failure
     }
 
   @testUpdateWithParallax: ->
     success = ->
-      steroids.logger.log "SUCCESS"
+      steroids.logger.log "SUCCESS in changing drawer animation to parallax"
+    failure = ->
+      steroids.logger.log "FAILURE in testUpdateWithParallax"
 
     steroids.drawers.update
       options:
@@ -374,10 +410,13 @@ class window.DrawersController
           parallaxFactor: 2.1
     ,
       onSuccess: success
+      onFailure: failure
 
   @testUpdateWithSlideAndScale: ->
     success = ->
-      steroids.logger.log "SUCCESS"
+      steroids.logger.log "SUCCESS in changing drawer animation to SlideAndScale"
+    failure = ->
+      steroids.logger.log "FAILURE in testUpdateWithSlideAndScale"
 
     steroids.drawers.update {
       options:
@@ -386,11 +425,14 @@ class window.DrawersController
           duration: 0.5
     }, {
       onSuccess: success
+      onFailure: failure
     }
 
   @testUpdateWithSwingingDoor: ->
     success = ->
-      steroids.logger.log "SUCCESS"
+      steroids.logger.log "SUCCESS in changing drawer animation to SwingingDoor"
+    failure = ->
+      steroids.logger.log "FAILURE in testUpdateWithSwingingDoor"
 
     steroids.drawers.update {
       options:
@@ -399,6 +441,7 @@ class window.DrawersController
           duration: 0.5
     }, {
       onSuccess: success
+      onFailure: failure
     }
 
   @testReplaceLayers: ->
@@ -408,9 +451,9 @@ class window.DrawersController
       }
       {
         onSuccess: ->
-          steroids.logger.log "Replaced!"
+          steroids.logger.log "SUCCESS in replacing center layer to center 2"
         onFailure: ->
-          steroids.logger.log "Could not replace."
+          steroids.logger.log "FAILURE in testReplaceLayers - could not replace center layer"
       }
     )
 
@@ -422,9 +465,9 @@ class window.DrawersController
       }
       {
         onSuccess: ->
-          steroids.logger.log "Modal shown!"
+          steroids.logger.log "SUCCESS in showing modal"
         onFailure: ->
-          steroids.logger.log "Could not show modal!"
+          steroids.logger.log "FAILURE in testShowModal - could not show modal"
       }
     )
 
@@ -434,50 +477,51 @@ class window.DrawersController
     eventHandler = steroids.drawers.on 'willshow', (event) ->
       alert "willshow event -> eventName: #{event.name} drawer.edge: #{event.drawer.edge}"
 
-    alert "event listener added"
+    steroids.logger.log "Event listener drawer WILL SHOW added"
 
   @testDidShowChangeEvent: ->
     eventHandler = steroids.drawers.on 'didshow', (event) ->
       alert "didshow event -> eventName: #{event.name} drawer.edge: #{event.drawer.edge}"
 
-    alert "event listener added"
+    steroids.logger.log "Event listener drawer DID SHOW added"
 
   @testWillCloseChangeEvent: ->
     eventHandler = steroids.drawers.on 'willclose', (event) ->
       alert "willclose event -> eventName: #{event.name} drawer.edge: #{event.drawer.edge}"
 
-    alert "event listener added"
+    steroids.logger.log "Event listener drawer WILL CLOSE added"
 
   @testDidCloseChangeEvent: ->
     eventHandler = steroids.drawers.on 'didclose', (event) ->
       alert "didclose event -> eventName: #{event.name} drawer.edge: #{event.drawer.edge}"
 
-    alert "event listener added"
+    steroids.logger.log "Event listener drawer DID CLOSE added"
 
   @testRemoveShowEvents: ->
     steroids.drawers.off 'willshow'
     steroids.drawers.off 'didshow'
 
-    alert "show events handlers removed"
+    steroids.logger.log "Drawer show event handlers removed"
 
   @testRemoveCloseEvents: ->
     steroids.drawers.off 'willclose'
     steroids.drawers.off 'didclose'
 
-    alert "close events handlers removed"
+    steroids.logger.log "Drawer close event handlers removed"
 
   @testTryToReusePreloadedAsModal: ->
     success = ->
-      alert "should not have sucessed :-("
+      steroids.logger.log "TEST SUCCESS was not able to open modal"
 
-    fail = ->
-      alert "could not open the modal !"
+    failure = ->
+      steroids.logger.log "TEST FAILURE in testTryToReusePreloadedAsModal - should not have been able to"
 
     steroids.modal.show
       view: DrawersController.leftDrawer
     ,
-      onSuccess: success
-      onFailure: fail
+      # modal.show should fail
+      onSuccess: failure
+      onFailure: success
 
   @testPushLayer: ->
     popView = new steroids.views.WebView("/views/layers/pop.html")
@@ -487,8 +531,8 @@ class window.DrawersController
         view: popView
       }
       {
-        onSuccess: -> alert "Successfully pushed!"
-        onFailure: -> alert "Could not push."
+        onSuccess: -> alert "SUCCESS pushed layer"
+        onFailure: -> alert "FAILURE in testPushLayer"
       }
     )
 
