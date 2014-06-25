@@ -14,9 +14,9 @@ class window.InitviewController
       animation: myAnimation
     ,
       onSuccess: (result) ->
-        steroids.logger.log "initialView.dismiss onSuccess"
+        steroids.logger.log "SUCCESS in dismissing initial view"
       onFailure: (result) ->
-        steroids.logger.log "initialView.dismiss onFailure"
+        steroids.logger.log "FAILURE in testDismissInitialView"
 
   @testResetAppToInitialView: ->
     steroids.logger.log "@testResetAppToInitialView called"
@@ -29,6 +29,6 @@ class window.InitviewController
       animation: myAnimation
     ,
       onSuccess: (result) ->
-        steroids.logger.log "initialView.show onSuccess"
+        steroids.logger.log "SUCCESS in showing initial view"
       onFailure: (result) ->
-        steroids.logger.log "initialView.show onFailure"
+        steroids.logger.log "FAILURE in testResetAppToInitialView"

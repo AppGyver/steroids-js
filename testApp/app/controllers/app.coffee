@@ -44,4 +44,4 @@ class window.AppController
   @testGetNSUserDefaults: ->
     steroids.app.getNSUserDefaults {},
       onSuccess: (obj) ->
-        alert "should return empty object: #{obj}"
+        alert "should return empty object, returned: #{obj}"

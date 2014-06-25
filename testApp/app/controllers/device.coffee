@@ -6,51 +6,66 @@ class window.DeviceController
     steroids.navigationBar.show { title: "platform" }
 
   @testPing: () ->
-    gotPong = (e) ->
-      alert e.message
+    success = (e) ->
+      steroids.logger.log "SUCCESS in getting message, message is: " + e.message
+    failure = ->
+      steroids.logger.log "FAILURE in testPing"
 
-    steroids.device.ping({}, { onSuccess: gotPong })
+    steroids.device.ping({},{ 
+      onSuccess: success
+      onFailure: failure
+    })
 
   @testGetIPAddress: () ->
-    showIPAddress = (e) ->
-      alert e.ipAddress
+    success = (e) ->
+      steroids.logger.log "SUCCESS in getting IP address: " + e.ipAddress
+    failure = () ->
+      steroids.logger.log "FAILURE in testGetIPAddress"
+
 
     steroids.device.getIPAddress {
     }, {
-      onSuccess: showIPAddress
+      onSuccess: success
+      onFailure: failure
     }
 
   @testTorchOn: () ->
 
     steroids.device.torch.turnOn {
     }, {
-      onSuccess: () -> alert "turned on"
+      onSuccess: () -> steroids.logger.log "SUCCESS in switching torch on"
+      onFailure: () -> steroids.logger.log "FAILURE in testTorchOn"
     }
 
   @testTorchOff: () ->
 
     steroids.device.torch.turnOff {
     }, {
-      onSuccess: () -> alert "turned off"
+      onSuccess: () -> steroids.logger.log "SUCCESS in switching torch off"
+      onFailure: () -> steroids.logger.log "FAILURE in testTorchOff"
     }
 
   @testTorchToggle: () ->
 
     steroids.device.torch.toggle {
     }, {
-      onSuccess: () -> alert "toggled"
+      onSuccess: () -> steroids.logger.log "SUCCESS in toggling torch on/off"
+      onFailure: () -> steroids.logger.log "FAILURE in testTorchToggle"
     }
 
   @testEnableSleep: ()->
     steroids.device.enableSleep {}, {
-      onSuccess: () -> alert "enabled"
+      onSuccess: () -> steroids.logger.log "SUCCESS in enabling device to go to sleep"
+      onFailure: () -> steroids.logger.log "FAILURE in testEnableSleep"
     }
 
   @testDisableSleep: ()->
     steroids.device.disableSleep {}, {
-      onSuccess: () -> alert "disabled"
+      onSuccess: () -> steroids.logger.log "SUCCESS in disabling device sleep"
+      onFailure: () -> steroids.logger.log "FAILURE in testDisableSleep"
     }
 
   @testPlatformGetName: () ->
     steroids.device.platform.getName {},
-      onSuccess: (gotName)-> alert gotName
+      onSuccess: (gotName)-> steroids.logger.log "SUCCESS in getting platform name, it is: " + gotName
+      onFailure: () -> steroids.logger.log "FAILURE in testPlatformGetName"

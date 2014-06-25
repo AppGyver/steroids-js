@@ -27,8 +27,9 @@ class window.FileController
             img.setAttribute 'src', "/resizetest/success.png"
             fileResult.innerHTML = ""
             fileResult.appendChild img
+            steroids.logger.log "SUCCESS in resizing image"
           onFailure: =>
-            alert "resize failed"
+            steroids.logger.log "FAILURE in testResize image"
 
   # @testScale: ->
   #   @createFile().scaleImage {
@@ -52,5 +53,6 @@ class window.FileController
         img.setAttribute 'src', "/unzippedtest/success.png"
         fileResult.innerHTML = ""
         fileResult.appendChild img
+        steroids.logger.log "SUCCESS in unzipping image"
       onFailure: =>
-        alert "unzip failed"
+        steroids.logger.log "FAILURE in testUnzip"

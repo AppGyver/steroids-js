@@ -13,7 +13,8 @@ class window.AnalyticsController
         hello: "world"
       }
     }, {
-      onSuccess: () -> alert "recorded"
+      onSuccess: () -> steroids.logger.log "SUCCESS in tracking event"
+      onFailure: () -> steroids.logger.log "FAILURE in testTrack"
     }
 
 
@@ -25,6 +26,7 @@ class window.AnalyticsController
         appgyver_event_name: "customeventcollection"
       }
     }, {
-      onSuccess: () -> alert "recorded"
+      onSuccess: () -> steroids.logger.log "SUCCESS in tracking event to custom event collection"
+      onFailure: () -> steroids.logger.log "FAILURE in testTrackCustomEventCollection"
     }
 
