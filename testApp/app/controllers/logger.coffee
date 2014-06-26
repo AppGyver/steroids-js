@@ -12,18 +12,21 @@ class window.LoggerController
   @testShowLastMessage: ->
     lastMessage = steroids.logger.messages[steroids.logger.messages.length-1]
     if lastMessage?
-      alert "Last message: #{lastMessage.message}"
+      steroids.logger.log "SUCCESS Last message in log: #{lastMessage.message}"
     else
-      alert "no messages!"
+      steroids.logger.log "No messages in log! Not sure if failure or no previous log messages..."
 
   @testStartFlushing: ->
     if steroids.logger.queue.startFlushing(100)
-      alert "started"
+      steroids.logger.log "SUCCESS in starting up logger queue flushing again"
     else
-      alert "not started"
+      steroids.logger.log "FAILURE in testStartFlushing, flushing did not start"
 
   @testStopFlushing: ->
-    steroids.logger.queue.stopFlushing()
+    if steroids.logger.queue.stopFlushing()
+      alert "SUCCESS flushing was stopped - no new logs will appear. Test by pressing steroids.logger.log('hello')"
+    else
+      steroids.logger.log "FAILURE in testStopFlushing"
 
   @testCircularObject: ->
     circularObj =
