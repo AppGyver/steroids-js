@@ -6,6 +6,8 @@ class window.PluginController
     # Make Navigation Bar to appear with a custom title text
     steroids.navigationBar.show { title: "Plugin" }
 
+    alert "deviceready !"
+
   # ACCELEROMETER TEST
 
   accelerometerOnSuccess = (acceleration) ->
@@ -185,7 +187,7 @@ class window.PluginController
   @addPause = () ->
     # alert doesn't work with pause so need to edit DOM
     document.addEventListener "pause", () ->
-      pause_event.innerHTML = "YES"
+      pause_result.innerHTML = "YES"
 
     alert "Event listener added: pause"
 
@@ -233,6 +235,33 @@ class window.PluginController
         Is it plugged in? #{status.isPlugged}"
 
     alert "Event listener added: batterystatus"
+
+  @addBackButton = () ->
+
+    handler = () ->
+      alert "Device's back button pressed !"
+
+    document.addEventListener "backbutton", handler, false
+
+    alert "Event listener added: backbutton"
+
+  @addMenuButton = () ->
+
+    handler = () ->
+      alert "Menu button pressed !"
+
+    document.addEventListener "menubutton", handler, false
+
+    alert "Event listener added: menubutton"
+
+  @addSearchButton = () ->
+
+    handler = () ->
+      alert "searchbutton button pressed !"
+
+    document.addEventListener "searchbutton", handler, false
+
+    alert "Event listener added: searchbutton"
 
   # FILE TEST
 
