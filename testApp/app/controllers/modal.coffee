@@ -6,8 +6,10 @@ class window.ModalController
     # steroids.navigationBar.show { title: "modal" }
 
   @testShow: () ->
-    opened = () ->
-      alert "opened"
+    success = ->
+      steroids.logger.log "SUCCESS in opening modal"
+    failure = ->
+      steroids.logger.log "FAILURE in testShow modal"
 
     hideView = new steroids.views.WebView {
       location: "/views/modal/hide.html"
@@ -16,22 +18,29 @@ class window.ModalController
     steroids.modal.show {
       view: hideView
     }, {
-      onSuccess: opened
+      onSuccess: success
+      onFailure: failure
     }
 
   @testAllowAllOrientations: () ->
     steroids.view.setAllowedRotations
       allowedRotations: [-90, 90, 0, 180]
     ,
-      onSuccess: alert "now you can rotate"
+      onSuccess: steroids.logger.log "SUCCESS in allowing all rotations"
+      onFailure: steroids.logger.log "FAILURE in testAllowAllOrientations"
 
   @testAllowOnlyPortrait: () ->
     steroids.view.setAllowedRotations
       allowedRotations: [0]
+    ,
+      onSuccess: steroids.logger.log "SUCCESS in allowing only portrait"
+      onFailure: steroids.logger.log "FAILURE in testAllowOnlyPortrait"
 
   @testShowWithNavBar: () ->
-    opened = () ->
-      alert "opened"
+    success = ->
+      steroids.logger.log "SUCCESS in opening modal with navigation bar"
+    failure = ->
+      steroids.logger.log "FAILURE in testShowWithNavBar modal"
 
     hideView = new steroids.views.WebView {
       location: "/views/modal/hide.html"
@@ -41,24 +50,27 @@ class window.ModalController
       view: hideView
       navigationBar: true
     }, {
-      onSuccess: opened
+      onSuccess: success
+      onFailure: failure
     }
 
   @testOpenAnotherModal: () ->
-
-    steroids.modal.show(new steroids.views.WebView("/views/modal/index.html"))
-
-  @testShowShorthand: () ->
-
-    hideView = new steroids.views.WebView "/views/modal/hide.html"
-
-    steroids.modal.show(hideView)
+    steroids.modal.show {
+      view: new steroids.views.WebView "/views/modal/index.html" 
+    }, {
+      onSuccess: steroids.logger.log "SUCCESS in opening another modal from modal"
+      onFailure: steroids.logger.log "FAILURE in testOpenAnotherModal from modal"
+    }
 
   @testShowModalWithNavBar: () ->
-
     modalWithNavBar = new steroids.views.WebView "/views/modal/modalWithNavBar.html"
 
-    steroids.modal.show(modalWithNavBar)
+    steroids.modal.show {
+      modalWithNavBar
+    }, {
+      onSuccess: steroids.logger.log "SUCCESS in showing a modal without calling navigationBar:true in show"
+      onFailure: steroids.logger.log "FAILURE in testShowModalWithNavBar"
+    }
 
   @testDisplayNavigationBar: () ->
     steroids.view.navigationBar.show
@@ -68,21 +80,24 @@ class window.ModalController
     rightButton = new steroids.buttons.NavigationBarButton();
 
     rightButton.title = "Right"
-    rightButton.onTap = => alert('touched Right')
+    rightButton.onTap = => steroids.logger.log "Event: Right button of Modal's navigation bar was touched!"
 
     steroids.view.navigationBar.setButtons {
       right: [rightButton]
     },
     {
-      onSuccess: alert "Buttons set!" ;
+      onSuccess: steroids.logger.log "SUCCESS in displaying navigation bar for modal"
+      onFailure: steroids.logger.log "FAILURE in testDisplayNavigationBar modal"
     }
 
   @testHideNavigationBar: () ->
-    steroids.view.navigationBar.hide()
+    steroids.view.navigationBar.hide {}, {
+      onSuccess: steroids.logger.log "SUCCESS in hiding navigation bar of modal"
+      onFailure: steroids.logger.log "FAILURE in testHideNavigationBar modal"
+    }
 
 
   @testShowPreloaded: () ->
-
     window.addEventListener "message", (message) =>
       steroids.modal.show(preloadedView) if message.data == "okay to show modal"
 
