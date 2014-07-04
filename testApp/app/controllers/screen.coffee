@@ -47,6 +47,18 @@ class window.ScreenController
       }
     , 1100
 
+  @testAllowPortrait: ->
+    steroids.screen.setAllowedRotations "portrait"
+
+  @testAllowPortraitUpsideDown: ->
+    steroids.screen.setAllowedRotations "portraitUpsideDown"
+
+  @testAllowLandscapeLeft: ->
+    steroids.screen.setAllowedRotations "landscapeLeft"
+
+  @testAllowLandscapeRight: ->
+    steroids.screen.setAllowedRotations "landscapeRight"
+
   @testRotatePortrait: ->
     steroids.screen.rotate "portrait"
     ,
