@@ -197,6 +197,38 @@ class window.ModalController
       onFailure: -> alert "failed set nav bar appearance"
     }
 
+  #orientation tests
+
+  @testModalInLandscape: ->
+    opened = () ->
+      alert "opened in landscape"
+
+    landscapeModal = new steroids.views.WebView {
+      location: "/views/modal/hide.html",
+      allowedRotations: ["landscapeLeft", "landscapeRight"]
+    }
+
+    steroids.modal.show {
+      view: landscapeModal
+    }, {
+      onSuccess: opened
+    }
+
+  @testModalInPortrait: ->
+    opened = () ->
+      alert "opened in landscape"
+
+    landscapeModal = new steroids.views.WebView {
+      location: "/views/modal/hide.html",
+      allowedRotations: ["portrait", "portraitUpsideDown"]
+    }
+
+    steroids.modal.show {
+      view: landscapeModal
+    }, {
+      onSuccess: opened
+    }
+
   #event tests
 
   @testWillShowChangeEvent: ->
