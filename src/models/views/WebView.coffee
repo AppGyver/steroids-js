@@ -26,13 +26,8 @@ class WebView extends EventsSupport
 
     @params = @getParams()
 
-    # Sets the WebView to rotate to portait orientation only by default.
-    # User can override this behavior by setting window.AG_allowedRotationsDefaults
-    # before loading Steroids.js.
-
-    allowedRotations = window.AG_allowedRotationsDefaults ? [0]
-    @setAllowedRotations(allowedRotations)
-
+    if options.allowedRotations?
+      @setAllowedRotations(options.allowedRotations)
 
   preload: (options={}, callbacks={}) ->
     steroids.debug "preload called for WebView #{JSON.stringify @}"
