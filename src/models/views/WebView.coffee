@@ -26,9 +26,6 @@ class WebView extends EventsSupport
 
     @params = @getParams()
 
-    if options.allowedRotations?
-      @setAllowedRotations(options.allowedRotations)
-
   preload: (options={}, callbacks={}) ->
     steroids.debug "preload called for WebView #{JSON.stringify @}"
 
