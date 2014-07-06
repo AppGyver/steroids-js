@@ -26,9 +26,6 @@ class WebView extends EventsSupport
 
     @params = @getParams()
 
-    if options.allowedRotations?
-      @setAllowedRotations(options.allowedRotations)
-
   preload: (options={}, callbacks={}) ->
     steroids.debug "preload called for WebView #{JSON.stringify @}"
 
@@ -81,18 +78,6 @@ class WebView extends EventsSupport
       successCallbacks: [callbacks.onSuccess]
       failureCallbacks: [callbacks.onFailure]
 
-  @mapDegreesToOrientations: (degrees) ->
-    if degrees == 0 or degrees == "0"
-      "portrait"
-    else if degrees == 180 or degrees == "180"
-      "portraitupsidedown"
-    else if degrees == -90 or degrees == "-90"
-      "landscapeleft"
-    else if degrees == 90 or degrees == "90"
-      "landscaperight"
-    else
-      return degrees
-
   # Deprecated. should use steroids.screen.setAllowedRotations() instead.
   setAllowedRotations: (options={}, callbacks={}) ->
     allowedRotations = if options.constructor.name == "Array"
@@ -107,7 +92,7 @@ class WebView extends EventsSupport
 
     #make sure we have orientation and not degrees
     allowedRotations = allowedRotations.map (value) -> 
-      WebView.mapDegreesToOrientations value
+      Screen.mapDegreesToOrientations value
 
     steroids.nativeBridge.nativeCall
       method: "setAllowedOrientation"
@@ -123,7 +108,7 @@ class WebView extends EventsSupport
     else
       options.degrees
 
-    orientation = @mapDegreesToOrientations degrees
+    orientation = Screen.mapDegreesToOrientations degrees
 
     steroids.nativeBridge.nativeCall
       method: "setOrientation"
