@@ -19,7 +19,7 @@ class Modal extends EventsSupport
         [options.allowedRotations]
 
       #make sure we have orientation and not degrees
-      allowedRotations = allowedRotations.map (value) -> 
+      allowedRotations = allowedRotations.map (value) ->
         Screen.mapDegreesToOrientations value
 
     switch view.constructor.name
