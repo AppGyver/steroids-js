@@ -474,6 +474,21 @@ class window.PluginController
     else
       geoLocation_result.innerHTML = "No position watch to clear"
 
+  # GLOBALIZATION TEST
+
+  @localeTest = () ->
+    navigator.globalization.getLocaleName (locale) ->
+      globalization_result.innerHTML = locale.value
+
+  @DSTTest = () ->
+    navigator.globalization.isDayLightSavingsTime(
+      new Date()
+      (date) ->
+        globalization_result.innerHTML = "Is Daylight savings: " + date.dst
+      (error) ->
+        globalization_result.innerHTML = "Error: " + JSON.stringify error
+    )
+
   # MEDIA TEST
 
   my_media = null;
