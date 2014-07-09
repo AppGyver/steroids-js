@@ -68,6 +68,31 @@ class window.PluginController
       destinationType: Camera.DestinationType.DATA_URL
     }
 
+  modalOpenedSuccess = () ->
+    alert "modal opened on the camera callback !"
+
+  openModalOnSucess = (imageData) ->
+    image = document.querySelector '#cameraTest'
+    image.src = "data:image/jpeg;base64," + imageData;
+    #open a modal
+    steroids.modal.show
+      view: new steroids.views.WebView "/views/modal/hide.html"
+    ,
+      onSuccess: modalOpenedSuccess
+
+  @cameraFromPhotoLibraryOpenModalTest = () ->
+    navigator.camera.getPicture openModalOnSucess, cameraOnFail, {
+      quality: 50
+      destinationType: Camera.DestinationType.DATA_URL,
+      sourceType: Camera.PictureSourceType.PHOTOLIBRARY
+    }
+
+  @cameraGetPictureOpenModalTest = () ->
+    navigator.camera.getPicture openModalOnSucess, cameraOnFail, {
+      quality: 50
+      destinationType: Camera.DestinationType.DATA_URL
+    }
+
   @cameraCleanupTest = () ->
     navigator.camera.cleanup(
       () ->
