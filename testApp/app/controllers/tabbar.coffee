@@ -117,67 +117,81 @@ class window.TabbarController
 
   @testReplaceTabsInvertedOrder: ->
 
-    onSuccess = () ->
-      steroids.logger.log "replace tabs onSuccess"
-
-    onFailure = () ->
-      steroids.logger.log "replace tabs onFailure"
-
-    parameters =
+    options =
       tabs: [
-          target_url: "nojs.html"
-          title: "noJS"
-          position: 1
-          image_path: "icons/telescope@2x.png"
-        ,
-          target_url: "views/steroids/index.html"
-          title: "FileURL"
-          position: 1
-          image_path: "icons/shoebox@2x.png"
-        ,
-          target_url: "http://localhost/views/steroids/index.html"
-          title: "HTTP"
-          position: 0
-          image_path: "icons/telescope@2x.png"
+        location: "http://localhost/views/plugin/index.html"
+        title: "Cordova"
+        position: 3
+        icon: "icons/telescope@2x.png"
+      ,
+        location: "nojs.html"
+        title: "noJS"
+        position: 2
+        icon: "icons/telescope@2x.png"
+      ,
+        location: "views/steroids/index.html"
+        title: "FileURL"
+        position: 1
+        icon: "icons/shoebox@2x.png"
+      ,
+        location: "http://localhost/views/steroids/index.html"
+        title: "HTTP"
+        position: 0
+        icon: "icons/telescope@2x.png"
       ]
 
-    steroids.nativeBridge.nativeCall
-      method: "replaceTabs"
-      parameters: parameters
-      successCallbacks: [onSuccess]
-      failureCallbacks: [onFailure]
+    callBacks =
+      onSuccess: () ->
+        alert "replace tabs onSuccess"
+      onFailure: () ->
+        alert "replace tabs onFailure"
+
+
+    steroids.tabBar.replace options, callBacks
+
 
   @testReplaceTabsOriginalOrder: ->
 
-    onSuccess = () ->
-      steroids.logger.log "replace tabs onSuccess"
-
-    onFailure = () ->
-      steroids.logger.log "replace tabs onFailure"
-
-    parameters =
+    options =
       tabs: [
-          target_url: "http://localhost/views/steroids/index.html"
-          title: "HTTP"
-          position: 0
-          image_path: "icons/pill@2x.png"
-        ,
-          target_url: "views/steroids/index.html"
-          title: "FileURL"
-          position: 1
-          image_path: "icons/shoebox@2x.png"
-        ,
-          target_url: "nojs.html"
-          title: "noJS"
-          position: 1
-          image_path: "icons/shoebox@2x.png"
+        location: "http://localhost/views/steroids/index.html"
+        title: "HTTP"
+        position: 0
+        icon: "icons/pill@2x.png"
+      ,
+        location: "views/steroids/index.html"
+        title: "FileURL"
+        position: 1
+        icon: "icons/shoebox@2x.png"
+      ,
+        location: "nojs.html"
+        title: "noJS"
+        position: 2
+        icon: "icons/shoebox@2x.png"
+      ,
+        location: "http://localhost/views/plugin/index.html"
+        title: "Cordova"
+        position: 3
+        icon: "icons/telescope@2x.png"
       ]
 
-    steroids.nativeBridge.nativeCall
-      method: "replaceTabs"
-      parameters: parameters
-      successCallbacks: [onSuccess]
-      failureCallbacks: [onFailure]
+    callBacks =
+      onSuccess: () ->
+        alert "replace tabs onSuccess"
+      onFailure: () ->
+        alert "replace tabs onFailure"
+
+
+    steroids.tabBar.replace options, callBacks
+
+  @testReplaceTabsNoParams: ->
+    callBacks =
+      onSuccess: () ->
+        alert "replace tabs no params onSuccess"
+      onFailure: () ->
+        alert "replace tabs no params onFailure"
+
+    steroids.tabBar.replace null, callBacks
 
   @replaceTabsIntervalId = 0;
 
@@ -194,32 +208,30 @@ class window.TabbarController
     TabbarController.replaceTabs()
 
   @replaceTabs: ->
-    onSuccess = () ->
-      steroids.logger.log "repeatReplaceTabs -> replace tabs onSuccess"
 
-    onFailure = () ->
-      steroids.logger.log "repeatReplaceTabs -> replace tabs onFailure"
-
-    parameters =
+    options =
       tabs: [
-          target_url: "http://localhost/views/tabbar/replaceTabs.html"
+          location: "http://localhost/views/tabbar/replaceTabs.html"
           title: "Replace Tabs"
           position: 0
-          image_path: "icons/shoebox@2x.png"
+          icon: "icons/shoebox@2x.png"
         ,
-          target_url: "http://localhost/views/steroids/index.html"
+          location: "http://localhost/views/steroids/index.html"
           title: "HTTP"
           position: 1
-          image_path: "icons/pill@2x.png"
+          icon: "icons/pill@2x.png"
         ,
-          target_url: "views/steroids/index.html"
+          location: "views/steroids/index.html"
           title: "FileURL"
           position: 2
-          image_path: "icons/shoebox@2x.png"
+          icon: "icons/shoebox@2x.png"
       ]
 
-    steroids.nativeBridge.nativeCall
-      method: "replaceTabs"
-      parameters: parameters
-      successCallbacks: [onSuccess]
-      failureCallbacks: [onFailure]
+    callBacks =
+      onSuccess: () ->
+        steroids.logger.log "repeatReplaceTabs -> replace tabs onSuccess"
+      onFailure: () ->
+        steroids.logger.log "repeatReplaceTabs -> replace tabs onFailure"
+
+
+    steroids.tabBar.replace options, callBacks
