@@ -26,15 +26,15 @@ class window.ModalController
     steroids.view.setAllowedRotations
       allowedRotations: [-90, 90, 0, 180]
     ,
-      onSuccess: steroids.logger.log "SUCCESS in allowing all rotations"
-      onFailure: steroids.logger.log "FAILURE in testAllowAllOrientations"
+      onSuccess: -> steroids.logger.log "SUCCESS in allowing all rotations"
+      onFailure: -> steroids.logger.log "FAILURE in testAllowAllOrientations"
 
   @testAllowOnlyPortrait: () ->
     steroids.view.setAllowedRotations
       allowedRotations: [0]
     ,
-      onSuccess: steroids.logger.log "SUCCESS in allowing only portrait"
-      onFailure: steroids.logger.log "FAILURE in testAllowOnlyPortrait"
+      onSuccess: -> steroids.logger.log "SUCCESS in allowing only portrait"
+      onFailure: -> steroids.logger.log "FAILURE in testAllowOnlyPortrait"
 
   @testShowWithNavBar: () ->
     success = ->
@@ -58,18 +58,18 @@ class window.ModalController
     steroids.modal.show {
       view: new steroids.views.WebView "/views/modal/index.html"
     }, {
-      onSuccess: steroids.logger.log "SUCCESS in opening another modal from modal"
-      onFailure: steroids.logger.log "FAILURE in testOpenAnotherModal from modal"
+      onSuccess: -> steroids.logger.log "SUCCESS in opening another modal from modal"
+      onFailure: -> steroids.logger.log "FAILURE in testOpenAnotherModal from modal"
     }
 
   @testShowModalWithNavBar: () ->
     modalWithNavBar = new steroids.views.WebView "/views/modal/modalWithNavBar.html"
 
     steroids.modal.show {
-      modalWithNavBar
+      view: modalWithNavBar
     }, {
-      onSuccess: steroids.logger.log "SUCCESS in showing a modal without calling navigationBar:true in show"
-      onFailure: steroids.logger.log "FAILURE in testShowModalWithNavBar"
+      onSuccess: -> steroids.logger.log "SUCCESS in showing a modal without calling navigationBar:true in show"
+      onFailure: -> steroids.logger.log "FAILURE in testShowModalWithNavBar"
     }
 
   @testDisplayNavigationBar: () ->
@@ -86,14 +86,14 @@ class window.ModalController
       right: [rightButton]
     },
     {
-      onSuccess: steroids.logger.log "SUCCESS in displaying navigation bar for modal"
-      onFailure: steroids.logger.log "FAILURE in testDisplayNavigationBar modal"
+      onSuccess: -> steroids.logger.log "SUCCESS in displaying navigation bar for modal"
+      onFailure: -> steroids.logger.log "FAILURE in testDisplayNavigationBar modal"
     }
 
   @testHideNavigationBar: () ->
     steroids.view.navigationBar.hide {}, {
-      onSuccess: steroids.logger.log "SUCCESS in hiding navigation bar of modal"
-      onFailure: steroids.logger.log "FAILURE in testHideNavigationBar modal"
+      onSuccess: -> steroids.logger.log "SUCCESS in hiding navigation bar of modal"
+      onFailure: -> steroids.logger.log "FAILURE in testHideNavigationBar modal"
     }
 
 

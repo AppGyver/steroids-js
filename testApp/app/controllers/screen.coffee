@@ -12,13 +12,13 @@ class window.ScreenController
 
   @testFreeze: ->
     steroids.screen.freeze {},
-      onSuccess: steroids.logger.log "freeze success"
-      onFailure: steroids.logger.log "freeze failure"
+      onSuccess: -> steroids.logger.log "freeze success"
+      onFailure: -> steroids.logger.log "freeze failure"
 
     unfreezer = ()->
       steroids.screen.unfreeze {},
-        onSuccess: steroids.logger.log "unfreeze success"
-        onFailure: steroids.logger.log "unfreeze failure"
+        onSuccess: -> steroids.logger.log "unfreeze success"
+        onFailure: -> steroids.logger.log "unfreeze failure"
 
     setTimeout unfreezer, 1000
 

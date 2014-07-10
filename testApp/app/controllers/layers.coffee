@@ -142,9 +142,9 @@ class window.LayersController
   @testKeepLoadingThis: ->
 
     removeLoading = () ->
-      setTimeout ->
+      setTimeout ( ->
         steroids.view.removeLoading()
-      , 2000
+      ), 2000
 
     keepLoadingView = new steroids.views.WebView "/views/layers/pop.html"
 
@@ -154,7 +154,7 @@ class window.LayersController
     }, {
       onSuccess: ->
         removeLoading
-        steroids.logger.log "SUCCESS in pushing layer while keeping loading.html/png on top until this view removes it after 2000 timeout"
+        steroids.logger.log "SUCCESS in pushing layer while keeping loading.html/png on top, this view should remove loading html after timeout"
       onFailure: ->
         steroids.logger.log "FAILURE in testKeepLoadingThis"
     }
