@@ -131,3 +131,15 @@ window.steroids.logger.queue.autoFlush(100)
 
 window.addEventListener "error", (error, url, lineNumber) ->
   steroids.logger.log "#{error.message} - #{url}:#{lineNumber}"
+
+window.steroids.layers.on "didchange", (event) ->
+  ## This hack is required to force webkit to repaint
+  ## and apply the transparency to the webview background
+  ## This is required to solve the setBackgroundImage
+  ## and setBackground APIs (https://github.com/AppGyver/steroids/issues/308)
+  dumbElement = document.createElement("IMG")
+  document.body.appendChild(dumbElement)
+  setTimeout () ->
+    if dumbElement?
+      document.body.removeChild dumbElement
+  , 1
