@@ -11,6 +11,17 @@ class Modal extends EventsSupport
     else
       options
 
+    allowedRotations = null
+    if options.allowedRotations?
+      allowedRotations = if options.allowedRotations.constructor.name == "Array"
+        options.allowedRotations
+      else
+        [options.allowedRotations]
+
+      #make sure we have orientation and not degrees
+      allowedRotations = allowedRotations.map (value) ->
+        Screen.mapDegreesToOrientations value
+
     switch view.constructor.name
       when "PreviewFileView"
         steroids.nativeBridge.nativeCall
@@ -29,6 +40,9 @@ class Modal extends EventsSupport
         parameters.keepTransitionHelper = options.keepLoading
 
         parameters.disableAnimation = options.disableAnimation
+
+        if allowedRotations?
+          parameters.allowedRotations = allowedRotations
 
         if options.navigationBar == true
               parameters.hidesNavigationBar = false

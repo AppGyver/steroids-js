@@ -143,3 +143,13 @@ window.steroids.layers.on "didchange", (event) ->
     if dumbElement?
       document.body.removeChild dumbElement
   , 1
+
+# Cordova orientation is deprecated. 
+# orientation is done at the screen level and not at the webview level anymore
+# Newer versions of steroids overrides the cordova shouldRotateToOrientation 
+# to always return false.
+# For legacy suport of apps/steroids older versions the native code will still
+# call this function for the "first" webview to decide the orientation for the 
+# screen
+window.shouldRotateToOrientation = (orientation) =>
+  return false

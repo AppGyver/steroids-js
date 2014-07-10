@@ -56,7 +56,7 @@ class window.ModalController
 
   @testOpenAnotherModal: () ->
     steroids.modal.show {
-      view: new steroids.views.WebView "/views/modal/index.html" 
+      view: new steroids.views.WebView "/views/modal/index.html"
     }, {
       onSuccess: steroids.logger.log "SUCCESS in opening another modal from modal"
       onFailure: steroids.logger.log "FAILURE in testOpenAnotherModal from modal"
@@ -195,6 +195,34 @@ class window.ModalController
     }, {
       onSuccess: -> alert "taste the rainbow"
       onFailure: -> alert "failed set nav bar appearance"
+    }
+
+  #orientation tests
+
+  @testModalInLandscape: ->
+    opened = () ->
+      alert "opened in landscape"
+
+    landscapeModal = new steroids.views.WebView "/views/modal/modalLandscape.html"
+
+    steroids.modal.show {
+      view: landscapeModal,
+      allowedRotations: ["landscapeLeft", "landscapeRight"]
+    }, {
+      onSuccess: opened
+    }
+
+  @testModalInPortrait: ->
+    opened = () ->
+      alert "opened in landscape"
+
+    landscapeModal = new steroids.views.WebView "/views/modal/modalPortrait.html"
+
+    steroids.modal.show {
+      view: landscapeModal,
+      allowedRotations: ["portrait", "portraitUpsideDown"]
+    }, {
+      onSuccess: opened
     }
 
   #event tests

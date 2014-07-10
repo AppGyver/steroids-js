@@ -33,6 +33,40 @@ class Screen
       successCallbacks: [callbacks.onSuccess]
       failureCallbacks: [callbacks.onFailure]
 
+  @mapDegreesToOrientations: (degrees) ->
+    if degrees == 0 or degrees == "0"
+      "portrait"
+    else if degrees == 180 or degrees == "180"
+      "portraitupsidedown"
+    else if degrees == -90 or degrees == "-90"
+      "landscapeleft"
+    else if degrees == 90 or degrees == "90"
+      "landscaperight"
+    else
+      return degrees
+
+  setAllowedRotations: (options={}, callbacks={}) ->
+    allowedRotations = if options.constructor.name == "Array"
+      options
+    else if options.constructor.name == "String"
+      [options]
+    else
+      options.allowedRotations
+
+    if not allowedRotations? or allowedRotations.length == 0
+      allowedRotations = [0]
+
+    #make sure we have orientation and not degrees
+    allowedRotations = allowedRotations.map (value) -> 
+      Screen.mapDegreesToOrientations value
+
+    steroids.nativeBridge.nativeCall
+      method: "setAllowedOrientation"
+      parameters: 
+        allowedRotations: allowedRotations
+      successCallbacks: [callbacks.onSuccess]
+      failureCallbacks: [callbacks.onFailure]
+
   #orientation:
   #  portrait
   #  portraitUpsideDown
@@ -49,6 +83,8 @@ class Screen
         options.orientation
       else
         "portrait"
+
+    params.orientation = Screen.mapDegreesToOrientations params.orientation
 
     steroids.nativeBridge.nativeCall
       method: "setOrientation"
