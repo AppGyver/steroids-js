@@ -617,3 +617,26 @@ class window.PluginController
 
   @vibrateTest = () ->
     navigator.notification.vibrate 500
+
+  # LOCAL STORAGE TEST
+  @setItemTest = () ->
+    window.localStorage.setItem "items", "apples"
+    localStorage_result.innerHTML = "Set an item 'items' with the value 'apples'." 
+
+  @getItemTest = () ->
+    item = window.localStorage.getItem "items"
+    if item?
+      localStorage_result.innerHTML = "Got '#{item}'"
+    else
+      localStorage_result.innerHTML = "Error: could not find the item"
+  
+  @removeItemTest = () ->
+    item = window.localStorage.getItem "items"
+    if item?
+      window.localStorage.removeItem "items"
+      localStorage_result.innerHTML = "'items' removed"
+    else
+      localStorage_result.innerHTML = "Error: could not find the item to be removed"
+    
+
+
