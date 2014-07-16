@@ -8,18 +8,16 @@ class window.PluginController
 
     list = document.getElementById("ready")
     el = document.createElement("li")
-    el.innerHTML = (new Date()).toLocaleTimeString() + " Cordova READY";
-    list.appendChild(el);
-
-    #alert "deviceready !"
+    el.innerHTML = (new Date()).toLocaleTimeString() + " Cordova READY"
+    list.appendChild(el)
 
   # Steroids ready event 
-  steroids.on 'ready' ,->
+  steroids.on 'ready' , ->
 
-    list = document.getElementById("ready");
-    el = document.createElement("li");
-    el.innerHTML = (new Date()).toLocaleTimeString() + " Steroids READY";
-    list.appendChild(el);
+    list = document.getElementById("ready")
+    el = document.createElement("li")
+    el.innerHTML = (new Date()).toLocaleTimeString() + " Steroids READY"
+    list.appendChild(el)
 
 
   # ACCELEROMETER TEST
