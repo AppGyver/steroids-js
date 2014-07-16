@@ -122,6 +122,42 @@ class window.PluginController
       sourceType: Camera.PictureSourceType.PHOTOLIBRARY
     }
 
+  fileError = (error)->
+    alert "Cordova error code: " + error.code, null, "File system error!"
+
+  fileMoved = (file)->
+    image = document.querySelector '#cameraTest'
+    image.src = "/#{file.name}?#{(new Date()).getTime()}"
+    
+  gotFileObject = (file)->
+    targetDirURI = "file://" + steroids.app.absoluteUserFilesPath
+    fileName = "user_pic.png"
+
+    window.resolveLocalFileSystemURL(
+      targetDirURI
+      (directory)->
+        file.moveTo directory, fileName, fileMoved, fileError
+      fileError
+    )
+
+  saveInUserFilesOnSuccess = (imageURI) ->
+    window.resolveLocalFileSystemURL imageURI, gotFileObject, fileError
+
+  @cameraGetPictureSaveInUserFilesTest = () ->
+    navigator.camera.getPicture saveInUserFilesOnSuccess, cameraOnFail, {
+      quality: 50
+      destinationType: Camera.DestinationType.IMAGE_URI
+      encodingType: Camera.EncodingType.PNG
+    }
+
+  @cameraFromPhotoLibrarySaveInUserFilesTest = () ->
+    navigator.camera.getPicture saveInUserFilesOnSuccess, cameraOnFail, {
+      sourceType: Camera.PictureSourceType.PHOTOLIBRARY
+      quality: 50
+      destinationType: Camera.DestinationType.FILE_URI
+      encodingType: Camera.EncodingType.PNG
+    }
+
   # CAPTURE TEST
 
   captureOnSuccess = (mediaFiles) ->
