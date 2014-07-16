@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf8">
+  <title>New Application</title>
+
+  <link rel="stylesheet" href="stylesheets/application.css" />
+  <link rel="stylesheet" href="stylesheets/ratchet-fixed.css" />
+
+  <script>
+    window.onerror = function(a,b,c){ alert(a+" "+b+" "+c); }
+  </script>
+
+  <script>
+    function capitaliseFirstLetter(string) {
+      return string.charAt(0).toUpperCase() + string.slice(1);
+    }
+
+    STEROIDS = {};
+    STEROIDS.controllerName = capitaliseFirstLetter("plugin") + "Controller";
+  </script>
+
+  <script src="../../www/cordova.js"></script>
+
+  <script src="javascripts/rotations.js"></script>
+  <script src="javascripts/steroids.js"></script>
+
+  <script src="javascripts/jquery.min.js"></script>
+
+  <script src="javascripts/hammer.js"></script>
+  <script src="javascripts/jquery.hammer.js"></script>
+
+
+
+  <script src="controllers/application.js"></script>
+
+  <script src="controllers/plugin.js"></script>
+
+</head>
+<body>
+  <div class="content">
+      <div class="content-padded">
+        
+        <h1>CORDOVA FROM FILE PROTOCOL</h1>
+
+        <ul class="list">
+        <li>Remember to set steroids.config.location to "cordovaFileProtocol.html" in config/application.coffee</li>
+        </ul>
+  
+        <ul class="list" id="ready">  
+        </ul>
+        <ul class="list"> 
+          <li class="performsTest" data-test="vibrateTest">
+            Vibrate
+          </li>
+        </ul>
+      </div>
+  </div>
+</body>
+  
+</html>
