@@ -146,7 +146,7 @@ class window.PluginController
   @cameraGetPictureSaveInUserFilesTest = () ->
     navigator.camera.getPicture saveInUserFilesOnSuccess, cameraOnFail, {
       quality: 50
-      destinationType: Camera.DestinationType.IMAGE_URI
+      destinationType: Camera.DestinationType.FILE_URI
       encodingType: Camera.EncodingType.PNG
     }
 
