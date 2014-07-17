@@ -1,0 +1,85 @@
+<h1>FRESH ANDROID SUPPORTED</h1>
+
+<ul class="list" id="ready">  
+</ul>
+
+<h1>OpenURL</h1>
+<ul class="list">
+  <li class="performsTest" data-test="testOpenURLGoogle">
+    openURL("http://www.google.com")
+  </li>
+  <li class="performsTest" data-test="testOpenURLMapsAndroid">
+    openURL("geo:42,2?z=8") (Android)
+  </li>
+</ul>
+
+<h1>Status Bar</h1>
+<ul class="list">
+  <li class="performsTest" data-test="testHide">
+    hide()
+  </li>
+  <li class="performsTest" data-test="testShow">
+    show()
+  </li>
+ </ul>
+
+ <h1>Visibilitystate</h1>
+ <ul class="list">
+ 	<li class="performsTest" data-test="testCurrentVisibilityIsVisible">
+    	document.hidden == false &amp;&amp; document.visibilityState == "visible"
+  	</li>
+  </ul>
+
+<h1>Device</h1>
+<ul class="list">
+  <li class="performsTest" data-test="testPing">
+    ping()
+  </li>
+  <li class="performsTest" data-test="testGetIPAddress">
+    getIPAddress()
+  </li>
+  <li class="performsTest" data-test="testEnableSleep">
+    enableSleep()
+  </li>
+  <li class="performsTest" data-test="testDisableSleep">
+    disableSleep
+</ul>
+
+<h1>Unzip</h1>
+<ul class="list">
+	<li class="performsTest" data-test="testUnzip">
+    steroids.File#unzip()
+  </li>
+</ul>
+
+<div id="fileResult"></div>
+
+<h1>App</h1>
+<ul class="list">
+  <li class="performsTest" data-test="testPath">
+    path
+  </li>
+  <li class="performsTest" data-test="testAbsoluteUserFilesPath">
+    absoluteUserFilesPath
+  </li>
+  <li class="performsTest" data-test="testAbsolutePath">
+    absolutePath
+  </li>
+</ul>
+
+<h1>Rotation / Orientation</h1>
+<ul class="list">
+  <li class="performsTest" data-test="testRotatePortrait">
+    testRotatePortrait
+  </li>
+  <li class="performsTest" data-test="testRotatePortraitUpsideDown">
+    testRotatePortraitUpsideDown
+  </li>
+  <li class="performsTest" data-test="testRotateLandscapeLeft">
+    testRotateLandscapeLeft
+  </li>
+  <li class="performsTest" data-test="testRotateLandscapeRight">
+    testRotateLandscapeRight
+  </li>
+
+</ul>
