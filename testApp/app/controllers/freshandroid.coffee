@@ -87,7 +87,7 @@ class window.FreshandroidController
     }
 
   # Unzip
-  @createFile: (options="test.png")->
+  @createFile: (options={path:"test.png", relativeTo: steroids.app.absoluteUserFilesPath})->
     new steroids.File(options)
 
   @testUnzip: ->
@@ -98,8 +98,8 @@ class window.FreshandroidController
         fileResult.innerHTML = ""
         fileResult.appendChild img
         navigator.notification.alert "SUCCESS in unzipping image"
-      onFailure: =>
-        navigator.notification.alert "FAILURE in testUnzip"
+      onFailure: (error)=>
+        navigator.notification.alert "FAILURE in testUnzip: #{JSON.stringify error}"
 
   # Path
   @testPath: () ->
