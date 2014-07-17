@@ -102,9 +102,6 @@ class window.FreshandroidController
         navigator.notification.alert "FAILURE in testUnzip: #{JSON.stringify error}"
 
   # Path
-  @testPath: () ->
-    navigator.notification.alert JSON.stringify(steroids.app.path)
-
   @testAbsoluteUserFilesPath: ->
     navigator.notification.alert JSON.stringify(steroids.app.absoluteUserFilesPath)
 
