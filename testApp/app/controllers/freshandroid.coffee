@@ -111,11 +111,6 @@ class window.FreshandroidController
   # Rotate
   @testRotatePortrait: ->
     steroids.screen.rotate "portrait"
-    ,
-      onTransitionStarted: ->
-        navigator.notification.alert "rotation started"
-      onTransitionEnded: ->
-        navigator.notification.alert "rotation ended"
 
   @testRotatePortraitUpsideDown: ->
     steroids.screen.rotate "portraitUpsideDown"
