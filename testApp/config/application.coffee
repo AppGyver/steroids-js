@@ -1,7 +1,8 @@
 # -- Required settings --
 
 steroids.config.name = "Steroids.js test app (with tabs)"
-steroids.config.location = "http://localhost/views/steroids/index.html"
+steroids.config.location = "http://localhost/views/freshandroid/index.html"
+# steroids.config.location = "http://localhost/views/plugin/index.html"
 # steroids.config.location = "cordovaFileProtocol.html"
 
 # -- Tabs --
@@ -10,7 +11,7 @@ steroids.config.location = "http://localhost/views/steroids/index.html"
 # This will override steroids.config.location (that is for single webview apps, like in PhoneGap)
 # Default: false
 #
-steroids.config.tabBar.enabled = true
+steroids.config.tabBar.enabled = false
 
 # Array with objects to specify which tabs are created on app startup
 #
