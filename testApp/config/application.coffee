@@ -3,9 +3,9 @@
 steroids.config.name = "Steroids.js test app for steroids"
 # steroids.config.name = "Steroids.js test app for cordova"
 # steroids.config.name = "Steroids.js test app for file protocol"
-steroids.config.location = "http://localhost/views/freshandroid/index.html"
-# steroids.config.location = "http://localhost/views/plugin/index.html"
-# steroids.config.location = "cordovaFileProtocol.html"
+steroids.config.location = "views/freshandroid/index.html"
+# steroids.config.location = "views/plugin/index.html"
+#steroids.config.location = "cordovaFileProtocol.html"
 
 # -- Tabs --
 
