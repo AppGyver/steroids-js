@@ -26,9 +26,10 @@ class EventsSupport
         msg: "Error on addEventListener event: #{event} error: #{error}"
 
     fireEventHandler = (params) ->
-      event = {
-        name: params.name
-      }
+      event = {}
+
+      for key of params
+        event[key] = params[key]
 
       if params.webview?
         event.webview = new steroids.views.WebView
