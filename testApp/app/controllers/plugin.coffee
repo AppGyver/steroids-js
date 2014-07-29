@@ -533,7 +533,7 @@ class window.PluginController
       message: #{error.message} "
 
   @geolocationTest = () ->
-    navigator.geolocation.getCurrentPosition onGeolocationSuccess, onGeolocationError
+    navigator.geolocation.getCurrentPosition onGeolocationSuccess, onGeolocationError, {enableHighAccuracy:true, timeout:5000}
 
   watchId = undefined
 
@@ -619,7 +619,7 @@ class window.PluginController
   # LOCAL STORAGE TEST
   @setItemTest = () ->
     window.localStorage.setItem "items", "apples"
-    localStorage_result.innerHTML = "Set an item 'items' with the value 'apples'." 
+    localStorage_result.innerHTML = "Set an item 'items' with the value 'apples'."
 
   @getItemTest = () ->
     item = window.localStorage.getItem "items"
