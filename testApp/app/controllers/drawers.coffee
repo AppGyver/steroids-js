@@ -177,7 +177,7 @@ class window.DrawersController
   @testHide: ->
     success = ->
       steroids.logger.log "SUCCESS in hiding the drawer"
-    failure = -> 
+    failure = ->
       steroids.logger.log "FAILURE in testHide"
 
     steroids.drawers.hide {}, {
@@ -342,7 +342,7 @@ class window.DrawersController
       left:
         widthOfDrawerInPixels: 280
       right:
-        widthOfDrawerInPixels: 280 
+        widthOfDrawerInPixels: 280
     }, {
       onSuccess: success
       onFailure: failure
@@ -390,7 +390,7 @@ class window.DrawersController
       left:
         widthOfDrawerInPixels: 150
       right:
-        widthOfDrawerInPixels: 150 
+        widthOfDrawerInPixels: 150
     }, {
       onSuccess: success
       onFailure: failure
@@ -536,3 +536,16 @@ class window.DrawersController
       }
     )
 
+  @testUpdateNonPreloadedDrawerRight: ->
+    success = ->
+      alert "TEST FAIL managed to set non-preloaded view as drawer"
+    failure = ->
+      alert "TEST SUCCESS because failed to set non-preloaded view as drawer"
+
+    newDrawer = new steroids.views.WebView("views/drawers/extraDrawer.html")
+
+    steroids.drawers.update
+      right: newDrawer
+    ,
+      onSuccess: success
+      onFailure: failure

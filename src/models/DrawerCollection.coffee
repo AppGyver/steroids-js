@@ -69,20 +69,33 @@ class DrawerCollection extends EventsSupport
       options:{}
     }
 
+    validViews = true
+
     if options.left?
-      DrawerCollection.applyViewOptions options.left, parameters.left
+      if options.left.id?
+        DrawerCollection.applyViewOptions options.left, parameters.left
+      else
+        validViews = false
+        if callbacks.onFailure?
+          callbacks.onFailure "No identifier provided for the preloaded webview!"
 
     if options.right?
-      DrawerCollection.applyViewOptions options.right, parameters.right
+      if options.right.id?
+        DrawerCollection.applyViewOptions options.right, parameters.right
+      else
+        validViews = false
+        if callbacks.onFailure?
+          callbacks.onFailure "No identifier provided for the preloaded webview!"
 
     if options.options?
       DrawerCollection.applyDrawerSettings options.options, parameters.options
 
-    steroids.nativeBridge.nativeCall
-      method: "updateDrawer"
-      parameters: parameters
-      successCallbacks: [callbacks.onSuccess]
-      failureCallbacks: [callbacks.onFailure]
+    if validViews
+      steroids.nativeBridge.nativeCall
+        method: "updateDrawer"
+        parameters: parameters
+        successCallbacks: [callbacks.onSuccess]
+        failureCallbacks: [callbacks.onFailure]
 
   # DEPRECATED, legacy support only
   disableGesture: (options={}, callbacks={}) ->
