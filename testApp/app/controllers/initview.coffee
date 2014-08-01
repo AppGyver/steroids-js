@@ -30,3 +30,34 @@ class window.InitviewController
         steroids.logger.log "SUCCESS in showing initial view"
       onFailure: (result) ->
         steroids.logger.log "FAILURE in testResetAppToInitialView"
+
+
+
+  @testPushPreloadedView: ->
+    preLoaded = new steroids.views.WebView "views/initview/pushedview.html"
+    preLoaded.preload {}
+    ,
+      onSuccess: ->
+        steroids.layers.push
+          view: preLoaded
+        ,
+          onSuccess: () ->
+
+          onFailure: (error) ->
+            alert "failed to push view: " + error.errorDescription
+
+      onFailure: (error) ->
+        alert "failed to preload: " + error.errorDescription
+
+  @testPushNewWebView: ->
+    webview = new steroids.views.WebView "views/initview/pushedview.html"
+    steroids.layers.push
+      view: webview
+    ,
+      onSuccess: () ->
+
+      onFailure: (error) ->
+        alert "failed to push view: " + error.errorDescription
+
+  @testPopView: ->
+    steroids.layers.pop {}
