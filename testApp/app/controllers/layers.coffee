@@ -167,9 +167,9 @@ class window.LayersController
           {
             view: view
           }, {
-            onSuccess: -> 
+            onSuccess: ->
               steroids.logger.log "SUCCESS in replacing with a preloaded layer"
-            onFailure: -> 
+            onFailure: ->
               steroids.logger.log "FAILURE in testReplace while replacing view with preloaded layer"
           })
       onFailure: ->
@@ -278,7 +278,6 @@ class window.LayersController
     }
 
   @testPopAll: ->
-
     steroids.layers.popAll {}
     ,
       onTransitionStarted: ->
@@ -295,3 +294,25 @@ class window.LayersController
         onFailure: -> "FAILURE in testReplaceNonPreloaded"
       }
 
+  @testReplaceStep1: ->
+    @replaceStep1 = new steroids.views.WebView "/views/layers/replaceStep1.html"
+    view = @replaceStep1
+    @replaceStep1.preload {}
+    ,
+      onSuccess: ->
+        steroids.layers.push
+          view: view
+
+  @testReplaceStep2: ->
+    steroids.layers.push
+      view: new steroids.views.WebView "/views/layers/replaceStep2.html"
+
+  @testReplaceWithViewAlreadyInStack: ->
+    view = @replaceStep1
+    steroids.layers.replace
+      view: view
+    ,
+      onSuccess: ->
+        alert "SUCCESS in replacing a webview that was already in the stack!"
+      onFailure: ->
+        alert "FAILURE in testReplaceWithViewAlreadyInStack"
