@@ -295,11 +295,18 @@ class window.LayersController
       }
 
   @testReplaceStep1: ->
-    @replaceStep1 = new steroids.views.WebView "/views/layers/replaceStep1.html"
-    view = @replaceStep1
-    @replaceStep1.preload {}
+    view = new steroids.views.WebView
+      location: "/views/layers/replaceStep1.html"
+      id: "preloadedStep1"
+
+    view.preload {}
     ,
       onSuccess: ->
+        steroids.layers.push
+          view: view
+      onFailure:->
+        # if it fails to preload .. because it is already preloaded..
+        # not problem,.. we push anyway
         steroids.layers.push
           view: view
 
@@ -308,7 +315,10 @@ class window.LayersController
       view: new steroids.views.WebView "/views/layers/replaceStep2.html"
 
   @testReplaceWithViewAlreadyInStack: ->
-    view = @replaceStep1
+    view = new steroids.views.WebView
+      location: "/views/layers/replaceStep1.html"
+      id: "preloadedStep1"
+
     steroids.layers.replace
       view: view
     ,
