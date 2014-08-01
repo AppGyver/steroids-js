@@ -19,9 +19,8 @@ class WebView extends EventsSupport
 
     @id = if options.id?
       options.id
-    
-    # MapView inherits from WebView .. and it can be created without a webview overlay .. so the location might be null
-    if @location and @location.indexOf("://") == -1 # if a path
+
+    if @location.indexOf("://") == -1 # if a path
       if window.location.href.indexOf("file://") == -1 # if not currently on file protocol
         @location = "#{window.location.protocol}//#{window.location.host}/#{@location}"
 
@@ -92,12 +91,12 @@ class WebView extends EventsSupport
       allowedRotations = [0]
 
     #make sure we have orientation and not degrees
-    allowedRotations = allowedRotations.map (value) -> 
+    allowedRotations = allowedRotations.map (value) ->
       Screen.mapDegreesToOrientations value
 
     steroids.nativeBridge.nativeCall
       method: "setAllowedOrientation"
-      parameters: 
+      parameters:
         allowedRotations: allowedRotations
       successCallbacks: [callbacks.onSuccess]
       failureCallbacks: [callbacks.onFailure]
