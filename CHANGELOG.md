@@ -1,3 +1,11 @@
+##3.5.0 (2014-07-14)
+
+Features:
+  - `steroids.tabBar.replace` for replacing the native tab bar with new tabs. iOS only.
+
+Bugfixes:
+  - Calling `alert` inside a postMessage event listener no longer freezes the app. Closes #379.
+
 ##3.1.12 (2014-06-09)
 
 Support for Fresh Android API bridge added.
