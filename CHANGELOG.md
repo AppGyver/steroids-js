@@ -1,3 +1,10 @@
+##3.5.1 (TODO)
+
+Bugfixes:
+- `steroids.view.setBackgroundColor` now properly honors `background-color: transparent` CSS property. Closes [#304](https://github.com/AppGyver/steroids/issues/304).
+- `steroids.view.setBackgroundImage` no longer randomly displays a white box on top of the background.
+Closes [#38](https://github.com/AppGyver/steroids/issues/308).
+
 ##3.5.0 (2014-07-14)
 
 Features:
