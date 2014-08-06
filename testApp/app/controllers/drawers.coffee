@@ -117,29 +117,32 @@ class window.DrawersController
       onSuccess: success
       onFailure: failure
 
+  ## UPDATING DRAWERS
 
-
-  @testShowNonPreloadedDrawerRight: ->
+  @testUpdateNonPreloadedDrawerRight: ->
     success = ->
-      alert "TEST FAIL managed to set non-preloaded view as drawer"
+      steroids.logger.log
+        "SUCCESS testUpdateNonPreloadedDrawerRight - failed to set non-preloaded view as right drawer. Right drawer should be unaffected."
     failure = ->
-      alert "TEST SUCCESS because failed to set non-preloaded view as drawer"
+      steroids.logger.log
+        "FAILURE testUpdateNonPreloadedDrawerRight - native success callback fired while setting non-preloaded view as right drawer."
 
     newDrawer = new steroids.views.WebView("views/drawers/extraDrawer.html")
 
     steroids.drawers.update
       right: newDrawer
     ,
-      onSuccess: success
-      onFailure: failure
+      # test should fail
+      onSuccess: failure
+      onFailure: success
 
-
-
-  @testShowNonPreloadedDrawerWithIdRight: ->
+  @testUpdateNonPreloadedDrawerWithIdRight: ->
     success = ->
-      steroids.logger.log "TEST SUCCESS because failed to set non-preloaded view as drawer"
+      steroids.logger.log
+        "SUCCESS testUpdateNonPreloadedDrawerWithIdRight - failed to set non-preloaded view with id parameter set as right drawer. Right drawer should be unaffected."
     failure = ->
-      steroids.logger.log "TEST FAIL managed to set non-preloaded view as drawer"
+      steroids.logger.log
+        "FAILURE testUpdateNonPreloadedDrawerWithIdRight - native success callback fired while setting non-preloaded view with id property set as right drawer."
 
     newDrawer = new steroids.views.WebView
       location: "views/drawers/extraDrawer.html"
@@ -152,13 +155,13 @@ class window.DrawersController
       onSuccess: failure
       onFailure: success
 
-
-
-  @testShowPreloadedDrawerRight: ->
+  @testUpdatePreloadedDrawerRight: ->
     success = ->
-      steroids.logger.log "SUCCESS in updating preloaded view as right drawer"
+      steroids.logger.log
+        "SUCCESS testUpdatePreloadedDrawerRight – updated right drawer with preloaded view. Right drawer should be updated to show 'Extra'."
     failure = ->
-      steroids.logger.log "FAILED in testShowPreloadedDrawerRight"
+      steroids.logger.log
+        "FAILURE testUpdatePreloadedDrawerRight - could not update right drawer with preloaded view."
 
     newDrawer = new steroids.views.WebView("views/drawers/extraDrawer.html")
 
@@ -172,7 +175,7 @@ class window.DrawersController
           onFailure: failure
     }
 
-
+  ## HIDING LAYERS
 
   @testHide: ->
     success = ->
@@ -535,17 +538,3 @@ class window.DrawersController
         onFailure: -> alert "FAILURE in testPushLayer"
       }
     )
-
-  @testUpdateNonPreloadedDrawerRight: ->
-    success = ->
-      alert "TEST FAIL managed to set non-preloaded view as drawer"
-    failure = ->
-      alert "TEST SUCCESS because failed to set non-preloaded view as drawer"
-
-    newDrawer = new steroids.views.WebView("views/drawers/extraDrawer.html")
-
-    steroids.drawers.update
-      right: newDrawer
-    ,
-      onSuccess: success
-      onFailure: failure
