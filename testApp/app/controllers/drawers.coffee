@@ -177,7 +177,7 @@ class window.DrawersController
   @testHide: ->
     success = ->
       steroids.logger.log "SUCCESS in hiding the drawer"
-    failure = -> 
+    failure = ->
       steroids.logger.log "FAILURE in testHide"
 
     steroids.drawers.hide {}, {
@@ -199,11 +199,11 @@ class window.DrawersController
       onFailure: failure
     }
 
-  @testHideWithCenter1NonPreloaded: ->
+  @testHideWithNonPreloadedCenter1: ->
     success = ->
       steroids.logger.log "SUCCESS in hiding the drawer and replacing center with NON-PRELOADED center 1"
     failure = ->
-      steroids.logger.log "FAILURE in testHideWithCenter1NonPreloaded"
+      steroids.logger.log "FAILURE in testHideWithNonPreloadedCenter1"
 
     centerView = new steroids.views.WebView("/views/drawers/index.html")
 
@@ -342,7 +342,7 @@ class window.DrawersController
       left:
         widthOfDrawerInPixels: 280
       right:
-        widthOfDrawerInPixels: 280 
+        widthOfDrawerInPixels: 280
     }, {
       onSuccess: success
       onFailure: failure
@@ -390,7 +390,7 @@ class window.DrawersController
       left:
         widthOfDrawerInPixels: 150
       right:
-        widthOfDrawerInPixels: 150 
+        widthOfDrawerInPixels: 150
     }, {
       onSuccess: success
       onFailure: failure
