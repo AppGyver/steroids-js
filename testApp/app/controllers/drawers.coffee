@@ -536,3 +536,16 @@ class window.DrawersController
       }
     )
 
+  @testUpdateNonPreloadedDrawerRight: ->
+    success = ->
+      alert "TEST FAIL managed to set non-preloaded view as drawer"
+    failure = ->
+      alert "TEST SUCCESS because failed to set non-preloaded view as drawer"
+
+    newDrawer = new steroids.views.WebView("views/drawers/extraDrawer.html")
+
+    steroids.drawers.update
+      right: newDrawer
+    ,
+      onSuccess: success
+      onFailure: failure
