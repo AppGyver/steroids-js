@@ -37,11 +37,11 @@ class Screen
     if degrees == 0 or degrees == "0"
       "portrait"
     else if degrees == 180 or degrees == "180"
-      "portraitupsidedown"
+      "portraitUpsideDown"
     else if degrees == -90 or degrees == "-90"
-      "landscapeleft"
+      "landscapeLeft"
     else if degrees == 90 or degrees == "90"
-      "landscaperight"
+      "landscapeRight"
     else
       return degrees
 
@@ -57,12 +57,12 @@ class Screen
       allowedRotations = [0]
 
     #make sure we have orientation and not degrees
-    allowedRotations = allowedRotations.map (value) -> 
+    allowedRotations = allowedRotations.map (value) ->
       Screen.mapDegreesToOrientations value
 
     steroids.nativeBridge.nativeCall
       method: "setAllowedOrientation"
-      parameters: 
+      parameters:
         allowedRotations: allowedRotations
       successCallbacks: [callbacks.onSuccess]
       failureCallbacks: [callbacks.onFailure]
