@@ -3,7 +3,6 @@ class WebView extends EventsSupport
   params: {}
   id: null
   location: null
-  allowedRotations: null
 
   navigationBar: new NavigationBar
 
@@ -91,12 +90,12 @@ class WebView extends EventsSupport
       allowedRotations = [0]
 
     #make sure we have orientation and not degrees
-    allowedRotations = allowedRotations.map (value) -> 
+    allowedRotations = allowedRotations.map (value) ->
       Screen.mapDegreesToOrientations value
 
     steroids.nativeBridge.nativeCall
       method: "setAllowedOrientation"
-      parameters: 
+      parameters:
         allowedRotations: allowedRotations
       successCallbacks: [callbacks.onSuccess]
       failureCallbacks: [callbacks.onFailure]
@@ -144,7 +143,6 @@ class WebView extends EventsSupport
       failureCallbacks: [callbacks.onFailure]
 
   updateKeyboard: (options={}, callbacks={}) ->
-
     params = {}
 
     if options.accessoryBarEnabled?
