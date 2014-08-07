@@ -41,19 +41,6 @@ class window.WebviewController
       onSuccess: -> navigator.notification.alert "on success!"
     }
 
-
-  @testRotateTo: () ->
-    steroids.view.rotateTo(0)
-
-  @testRotateTo90: () ->
-    steroids.view.rotateTo(90)
-
-  @testRotateTo180: () ->
-    steroids.view.rotateTo(180)
-
-  @testRotateToNeg90: () ->
-    steroids.view.rotateTo(-90)
-
   @testOpenWithoutNavigationBar: () ->
     webView = new steroids.views.WebView "/views/webview/noNavigationBar.html"
 
@@ -192,41 +179,6 @@ class window.WebviewController
     fileURLWebView = new steroids.views.WebView "file://#{steroids.app.absolutePath}/views/webview/params.html"
 
     steroids.layers.push fileURLWebView
-
-  @testDisableRotate: ->
-    steroids.view.setAllowedRotations {
-      allowedRotations: [0]
-    }, {
-      onSuccess: -> console.log "disabled rotating"
-    }
-
-  @testEnableRotate90: ->
-    steroids.view.setAllowedRotations {
-      allowedRotations: [90]
-    }, {
-      onSuccess: -> console.log "allowed rotate to 90"
-    }
-
-  @testEnableRotateAll: ->
-    steroids.view.setAllowedRotations {
-      allowedRotations: [0, 90, 180, -90]
-    }, {
-      onSuccess: -> console.log "rotating to all directions"
-    }
-
-  @testEnableRotateHorizontal: ->
-    steroids.view.setAllowedRotations {
-      allowedRotations: [-90, 90]
-    }, {
-      onSuccess: -> console.log "rotates to horizontal directions"
-    }
-
-  @testEnableRotateVertical: ->
-    steroids.view.setAllowedRotations {
-      allowedRotations: [0, 180]
-    }, {
-      onSuccess: -> console.log "rotates to vertical directions"
-    }
 
   @testOpenWithCurlUp: ->
     anim = new steroids.Animation("curlUp")
