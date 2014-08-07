@@ -1,0 +1,124 @@
+<ul class="list">
+
+  <h1>Allowed Rotation / Orientation</h1>
+  <li class="performsTest" data-test="testAllowPortraitUpsideDown">
+    testAllowPortraitUpsideDown
+  </li>
+  <li class="performsTest" data-test="testAllowPortrait">
+    testAllowPortrait
+  </li>
+  <li class="performsTest" data-test="testAllowLandscapeLeft">
+    testAllowLandscapeLeft
+  </li>
+  <li class="performsTest" data-test="testAllowLandscapeRight">
+    testAllowLandscapeRight
+  </li>
+  <li class="performsTest" data-test="testAllowAll">
+    testAllowAll rotations
+  </li>
+
+  <h1>Rotation / Orientation</h1>
+  <li class="performsTest" data-test="testRotatePortrait">
+    testRotatePortrait
+  </li>
+  <li class="performsTest" data-test="testRotatePortraitUpsideDown">
+    testRotatePortraitUpsideDown
+  </li>
+  <li class="performsTest" data-test="testRotateLandscapeLeft">
+    testRotateLandscapeLeft
+  </li>
+  <li class="performsTest" data-test="testRotateLandscapeRight">
+    testRotateLandscapeRight
+  </li>
+
+  <h2>Legacy setAllowedRotations API</h2>
+
+  <li><em>Note:these API calls will not auto-rotate the screen.</em></li>
+
+  <li class="performsTest" data-test="testLegacyAllowRotation0">
+    Set allowed rotations to portrait.
+    <br><br>
+    <small>
+      <strong>API call:</strong><br>
+      <code>steroids.view.setAllowedRotations([0])</code>
+    </small>
+  </li>
+
+  <li class="performsTest" data-test="testLegacyAllowRotation90">
+    Set allowed rotations to landscape right.
+    <br><br>
+    <small>
+      <strong>API call:</strong><br>
+      <code>steroids.view.setAllowedRotations([90])</code>
+    </small>
+  </li>
+
+  <li class="performsTest" data-test="testLegacyAllowRotationAll">
+    Set allowed rotations to all orientations.
+    <br><br>
+    <small>
+      <strong>API call:</strong><br>
+      <code>steroids.view.setAllowedRotations([90, -90, 0, 180])</code>
+    </small>
+  </li>
+
+  <li class="performsTest" data-test="testLegacyAllowRotationHorizontal">
+    Set allowed rotations to horizontal rotations.
+    <br><br>
+    <small>
+      <strong>API call:</strong><br>
+      <code>steroids.view.setAllowedRotations([90, -90])</code>
+    </small>
+  </li>
+
+  <li class="performsTest" data-test="testLegacyAllowRotationVertical">
+    Set allowed rotations to vertical rotations.
+    <br><br>
+    <small>
+      <strong>API call:</strong><br>
+      <code>steroids.view.setAllowedRotations([0, 180])</code>
+    </small>
+  </li>
+
+  <h2>Legacy steroids.view.rotateTo API</h2>
+
+  <li><em>Note: these will not work if the target rotation is not among allowed rotations.</em></li>
+
+  <li class="performsTest" data-test="testLegacyRotateToNeg90">
+    Rotate screen to landscape left.
+    <br><br>
+    <small>
+      <strong>API call:</strong><br>
+      <code>steroids.view.rotateTo(-90)</code>
+    </small>
+  </li>
+
+  <li class="performsTest" data-test="testLegacyRotateTo180">
+    Rotate screen to upside-down portrait.
+    <br><br>
+    <small>
+      <strong>API call:</strong><br>
+      <code>steroids.view.rotateTo(180)</code>
+    </small>
+  </li>
+
+  <li class="performsTest" data-test="testLegacyRotateTo0">
+    Rotate screen to portrait.
+    <br><br>
+    <small>
+      <strong>API call:</strong><br>
+      <code>steroids.view.rotateTo(0)</code>
+    </small>
+  </li>
+
+  <li class="performsTest" data-test="testLegacyRotateTo90">
+    Rotates screen to landscape right.
+    <br><br>
+    <small>
+      <strong>API call:</strong><br>
+      <code>steroids.view.rotateTo(90)</code>
+    </small>
+  </li>
+
+
+</ul>

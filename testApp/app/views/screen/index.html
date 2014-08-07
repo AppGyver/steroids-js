@@ -2,9 +2,15 @@
   ScreenController.index();
 </script>
 
-<h1 onclick="navigator.notification.alert('touched')">screen</h1>
+<h1 onclick="navigator.notification.alert('Touched h1')">Screen</h1>
 
 <ul class="list">
+
+  <li class="opensLayer" data-location="/views/rotations/index.html">
+    Rotations
+    <span class="chevron"/>
+  </li>
+
   <li class="performsTest" data-test="testFreeze">
     steroids.screen.freeze() + steroids.screen.unfreeze()
   </li>
