@@ -168,9 +168,7 @@ class window.WebviewController
       onFailure: () -> steroids.logger.log "preload onFailure"
 
   @testPopAll: ->
-
     steroids.layers.popAll {}, {}
-
 
   @testShowParamsWhenNone: () ->
     navigator.notification.alert JSON.stringify(steroids.view.params)
@@ -257,7 +255,6 @@ class window.WebviewController
       navigator.notification.alert "unloaded event -> eventName: #{event.name} webview.location: #{event.webview.location}"
 
     navigator.notification.alert "event listener added"
-
 
   @testOffAllEvents: ->
     steroids.view.off 'created'
