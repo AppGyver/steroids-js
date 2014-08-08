@@ -73,11 +73,18 @@ class window.PluginController
   cameraOnFail = (message) ->
     navigator.notification.alert 'Failed because: ' + message
 
-
   @cameraGetPictureTest = () ->
     navigator.camera.getPicture cameraOnSuccess, cameraOnFail, {
       quality: 50
       destinationType: Camera.DestinationType.DATA_URL
+      sourceType: Camera.PictureSourceType.CAMERA
+      targetWidth: 300
+      targetHeight: 300
+      encodingType: Camera.EncodingType.PNG
+      mediaType: Camera.MediaType.PICTURE
+      allowEdit : false
+      correctOrientation: false
+      saveToPhotoAlbum: false
     }
 
   modalOpenedSuccess = () ->
@@ -95,14 +102,29 @@ class window.PluginController
   @cameraFromPhotoLibraryOpenModalTest = () ->
     navigator.camera.getPicture openModalOnSucess, cameraOnFail, {
       quality: 50
-      destinationType: Camera.DestinationType.DATA_URL,
+      destinationType: Camera.DestinationType.DATA_URL
       sourceType: Camera.PictureSourceType.PHOTOLIBRARY
+      targetWidth: 300
+      targetHeight: 300
+      encodingType: Camera.EncodingType.PNG
+      mediaType: Camera.MediaType.PICTURE
+      allowEdit : false
+      correctOrientation: false
+      saveToPhotoAlbum: false
     }
 
   @cameraGetPictureOpenModalTest = () ->
     navigator.camera.getPicture openModalOnSucess, cameraOnFail, {
       quality: 50
       destinationType: Camera.DestinationType.DATA_URL
+      sourceType: Camera.PictureSourceType.CAMERA
+      targetWidth: 300
+      targetHeight: 300
+      encodingType: Camera.EncodingType.PNG
+      mediaType: Camera.MediaType.PICTURE
+      allowEdit : false
+      correctOrientation: false
+      saveToPhotoAlbum: false
     }
 
   @cameraCleanupTest = () ->
@@ -116,8 +138,15 @@ class window.PluginController
   @cameraFromPhotoLibraryTest = () ->
     navigator.camera.getPicture cameraOnSuccess, cameraOnFail, {
       quality: 50
-      destinationType: Camera.DestinationType.DATA_URL,
+      destinationType: Camera.DestinationType.DATA_URL
       sourceType: Camera.PictureSourceType.PHOTOLIBRARY
+      targetWidth: 300
+      targetHeight: 300
+      encodingType: Camera.EncodingType.PNG
+      mediaType: Camera.MediaType.PICTURE
+      allowEdit : false
+      correctOrientation: false
+      saveToPhotoAlbum: false
     }
 
   fileError = (error)->
@@ -145,15 +174,28 @@ class window.PluginController
     navigator.camera.getPicture saveInUserFilesOnSuccess, cameraOnFail, {
       quality: 50
       destinationType: Camera.DestinationType.FILE_URI
+      sourceType: Camera.PictureSourceType.CAMERA
+      targetWidth: 300
+      targetHeight: 300
       encodingType: Camera.EncodingType.PNG
+      mediaType: Camera.MediaType.PICTURE
+      allowEdit : false
+      correctOrientation: false
+      saveToPhotoAlbum: false
     }
 
   @cameraFromPhotoLibrarySaveInUserFilesTest = () ->
     navigator.camera.getPicture saveInUserFilesOnSuccess, cameraOnFail, {
-      sourceType: Camera.PictureSourceType.PHOTOLIBRARY
       quality: 50
       destinationType: Camera.DestinationType.FILE_URI
+      sourceType: Camera.PictureSourceType.PHOTOLIBRARY
+      targetWidth: 300
+      targetHeight: 300
       encodingType: Camera.EncodingType.PNG
+      mediaType: Camera.MediaType.PICTURE
+      allowEdit : false
+      correctOrientation: false
+      saveToPhotoAlbum: false
     }
 
   # CAPTURE TEST
