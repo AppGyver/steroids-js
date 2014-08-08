@@ -80,10 +80,10 @@ class window.PluginController
       sourceType: Camera.PictureSourceType.CAMERA
       targetWidth: 300
       targetHeight: 300
-      encodingType: Camera.EncodingType.PNG
+      encodingType: Camera.EncodingType.JPEG
       mediaType: Camera.MediaType.PICTURE
       allowEdit : false
-      correctOrientation: false
+      correctOrientation: true
       saveToPhotoAlbum: false
     }
 
@@ -106,10 +106,10 @@ class window.PluginController
       sourceType: Camera.PictureSourceType.PHOTOLIBRARY
       targetWidth: 300
       targetHeight: 300
-      encodingType: Camera.EncodingType.PNG
+      encodingType: Camera.EncodingType.JPEG
       mediaType: Camera.MediaType.PICTURE
       allowEdit : false
-      correctOrientation: false
+      correctOrientation: true
       saveToPhotoAlbum: false
     }
 
@@ -120,10 +120,10 @@ class window.PluginController
       sourceType: Camera.PictureSourceType.CAMERA
       targetWidth: 300
       targetHeight: 300
-      encodingType: Camera.EncodingType.PNG
+      encodingType: Camera.EncodingType.JPEG
       mediaType: Camera.MediaType.PICTURE
       allowEdit : false
-      correctOrientation: false
+      correctOrientation: true
       saveToPhotoAlbum: false
     }
 
@@ -142,10 +142,10 @@ class window.PluginController
       sourceType: Camera.PictureSourceType.PHOTOLIBRARY
       targetWidth: 300
       targetHeight: 300
-      encodingType: Camera.EncodingType.PNG
+      encodingType: Camera.EncodingType.JPEG
       mediaType: Camera.MediaType.PICTURE
       allowEdit : false
-      correctOrientation: false
+      correctOrientation: true
       saveToPhotoAlbum: false
     }
 
@@ -177,10 +177,10 @@ class window.PluginController
       sourceType: Camera.PictureSourceType.CAMERA
       targetWidth: 300
       targetHeight: 300
-      encodingType: Camera.EncodingType.PNG
+      encodingType: Camera.EncodingType.JPEG
       mediaType: Camera.MediaType.PICTURE
       allowEdit : false
-      correctOrientation: false
+      correctOrientation: true
       saveToPhotoAlbum: false
     }
 
@@ -191,10 +191,10 @@ class window.PluginController
       sourceType: Camera.PictureSourceType.PHOTOLIBRARY
       targetWidth: 300
       targetHeight: 300
-      encodingType: Camera.EncodingType.PNG
+      encodingType: Camera.EncodingType.JPEG
       mediaType: Camera.MediaType.PICTURE
       allowEdit : false
-      correctOrientation: false
+      correctOrientation: true
       saveToPhotoAlbum: false
     }
 
