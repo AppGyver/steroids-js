@@ -59,6 +59,9 @@ class window.ScreenController
   @testAllowLandscapeRight: ->
     steroids.screen.setAllowedRotations "landscapeRight"
 
+  @testAllowAll: ->
+    steroids.screen.setAllowedRotations ["portrait", "portraitUpsideDown", "landscapeRight", "landscapeRight"]
+
   @testRotatePortrait: ->
     steroids.screen.rotate "portrait"
     ,

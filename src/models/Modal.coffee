@@ -41,6 +41,8 @@ class Modal extends EventsSupport
 
         parameters.disableAnimation = options.disableAnimation
 
+        parameters.waitTransitionEnd = options.waitTransitionEnd
+
         if allowedRotations?
           parameters.allowedRotations = allowedRotations
 

@@ -12,7 +12,7 @@ class window.WebviewController
           steroids.logger.log "testing replaceToRoot"
           @testReplaceToRoot()
         when "testAlert"
-          alert "I should not freeze the app!"
+          navigator.notification.alert "I should not freeze the app!"
 
   @testReplaceToRoot: ->
     rootView = new steroids.views.WebView {
@@ -38,7 +38,7 @@ class window.WebviewController
     steroids.layers.push {
       view: webView
     }, {
-      onSuccess: -> alert "on success!"
+      onSuccess: -> navigator.notification.alert "on success!"
     }
 
 
@@ -82,11 +82,11 @@ class window.WebviewController
 
   @testAddVisibilitychangeEvent: () ->
     changed = () ->
-      alert "visibility of #{window.location.href} changed, document.visibilityState: " + document.visibilityState + ", document.hidden: " + document.hidden
+      navigator.notification.alert "visibility of #{window.location.href} changed, document.visibilityState: " + document.visibilityState + ", document.hidden: " + document.hidden
 
     document.addEventListener "visibilitychange", changed, true
 
-    alert "added eventlistner for visibilitychange"
+    navigator.notification.alert "added eventlistner for visibilitychange"
 
   @testPreload: () ->
 
@@ -96,8 +96,8 @@ class window.WebviewController
 
     webView.preload {
     }, {
-      onSuccess: -> alert "preload call success"
-      onFailure: (error) -> alert "failed to preload: " + error.errorDescription
+      onSuccess: -> navigator.notification.alert "preload call success"
+      onFailure: (error) -> navigator.notification.alert "failed to preload: " + error.errorDescription
     }
 
   @testUnload: () ->
@@ -107,8 +107,8 @@ class window.WebviewController
 
     preloadedView.unload {
     }, {
-      onSuccess: -> alert "unload call success"
-      onFailure: (error)  -> alert "failed to unload: " + error.errorDescription
+      onSuccess: -> navigator.notification.alert "unload call success"
+      onFailure: (error)  -> navigator.notification.alert "failed to unload: " + error.errorDescription
     }
 
   @testPreloadThisAndOpen: () ->
@@ -129,7 +129,7 @@ class window.WebviewController
   @testPreloadAndOpen: () ->
 
     andOpen = () ->
-      alert "It's preloaded, now opening it."
+      navigator.notification.alert "It's preloaded, now opening it."
 
       webView.location = null   # make sure that it has no location
 
@@ -146,7 +146,7 @@ class window.WebviewController
     webView.preload {
     }, {
       onSuccess: () -> andOpen()
-      onFailure: () -> alert "preload failed"
+      onFailure: () -> navigator.notification.alert "preload failed"
     }
 
   @pushFromPreloaded: () ->
@@ -186,7 +186,7 @@ class window.WebviewController
 
 
   @testShowParamsWhenNone: () ->
-    alert JSON.stringify(steroids.view.params)
+    navigator.notification.alert JSON.stringify(steroids.view.params)
 
   @testParamsInFileURL: () ->
     fileURLWebView = new steroids.views.WebView "file://#{steroids.app.absolutePath}/views/webview/params.html"
@@ -265,19 +265,19 @@ class window.WebviewController
     steroids.view.updateKeyboard {
       accessoryBarEnabled:true
     }, {
-      onSuccess: -> alert "keyboardc accesssory enabled"
+      onSuccess: -> navigator.notification.alert "keyboardc accesssory enabled"
     }
 
   @testDisableKeyboardAccessory: () ->
     steroids.view.updateKeyboard {
       accessoryBarEnabled:false
     }, {
-      onSuccess: -> alert "keyboardy accesssory disabled"
+      onSuccess: -> navigator.notification.alert "keyboardy accesssory disabled"
     }
 
   @testKeyboardAccessoryWithEmptyParams: () ->
     steroids.view.updateKeyboard null, {
-      onSuccess: -> alert "updateKeyboard called with no parameters (no change)"
+      onSuccess: -> navigator.notification.alert "updateKeyboard called with no parameters (no change)"
     }
 
   @testPreloadViaArray: () ->
@@ -290,21 +290,21 @@ class window.WebviewController
   #event tests
   @testCreatedEvent: ->
     eventHandler = steroids.view.on 'created', (event) ->
-      alert "created event -> eventName: #{event.name} webview.location: #{event.webview.location}"
+      navigator.notification.alert "created event -> eventName: #{event.name} webview.location: #{event.webview.location}"
 
-    alert "event listener added"
+    navigator.notification.alert "event listener added"
 
   @testPreloadedEvent: ->
     eventHandler = steroids.view.on 'preloaded', (event) ->
-      alert "preloaded event -> eventName: #{event.name} webview.location: #{event.webview.location}"
+      navigator.notification.alert "preloaded event -> eventName: #{event.name} webview.location: #{event.webview.location}"
 
-    alert "event listener added"
+    navigator.notification.alert "event listener added"
 
   @testUnloadedEvent: ->
     eventHandler = steroids.view.on 'unloaded', (event) ->
-      alert "unloaded event -> eventName: #{event.name} webview.location: #{event.webview.location}"
+      navigator.notification.alert "unloaded event -> eventName: #{event.name} webview.location: #{event.webview.location}"
 
-    alert "event listener added"
+    navigator.notification.alert "event listener added"
 
 
   @testOffAllEvents: ->
@@ -312,4 +312,4 @@ class window.WebviewController
     steroids.view.off 'preloaded'
     steroids.view.off 'unloaded'
 
-    alert "all event listeners removed"
+    navigator.notification.alert "all event listeners removed"
