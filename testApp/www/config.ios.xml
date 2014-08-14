@@ -13,12 +13,6 @@
     <preference name="HideKeyboardFormAccessoryBar" value="false" />
     <preference name="KeyboardDisplayRequiresUserAction" value="false" />
     <preference name="KeyboardShrinksView" value="false" />
-    <preference name="SuppressesIncrementalRendering" value="false" />
-
-    <preference name="PaginationMode" value="unpaginated"/>
-    <preference name="PageLength" value="0"/>
-    <preference name="PaginationBreakingMode" value="page"/>
-    <preference name="GapBetweenPages" value="0"/>
 
     <preference name="EnablePopGestureRecognition" value="true" />
     <preference name="DisableTabBarUnselectedIconTintColor" value="false" />
