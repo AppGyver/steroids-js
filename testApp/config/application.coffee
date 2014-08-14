@@ -47,6 +47,11 @@ steroids.config.tabBar.tabs = [
     icon: "icons/telescope@2x.png"
     location: "http://localhost/views/plugin/index.html"
   }
+  {
+    title: "Config-iOS"
+    icon: "icons/shoebox@2x.png"
+    location: "http://localhost/views/config/index.html"
+  }
 ]
 
 steroids.config.preloads = [
