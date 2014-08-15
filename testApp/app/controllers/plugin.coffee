@@ -635,6 +635,10 @@ class window.PluginController
       localStorage_result.innerHTML = "'items' removed"
     else
       localStorage_result.innerHTML = "Error: could not find the item to be removed"
+
+  # EXIT APP
+  @exitAppTest = () ->
+    navigator.app.exitApp()
     
 
 
