@@ -134,4 +134,8 @@ class window.FreshandroidController
   @testRemoveEventHandlerByEventname: ->
     steroids.keyboard.off "actionButtonPressed"
     navigator.notification.alert "all actionButtonPressed event handlers removed"
+
+  # Steroids.logger.log
+  @testSteroidsLoggerLog: ->
+    steroids.logger.log "Steroids.logger.log logging"
     
