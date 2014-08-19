@@ -1,7 +1,7 @@
 # -- Required settings --
 
 steroids.config.name = "Steroids.js test app (with tabs)"
-steroids.config.location = "http://localhost/views/steroids/index.html"
+steroids.config.location = "http://localhost/views/applicationcoffee/index.html"
 
 # -- Tabs --
 
@@ -101,5 +101,7 @@ steroids.config.navigationBar.borderColor = "#aef"
 # The postMake command is run right after `steroids make`, before running `steroids package`, the process that packages the app before sending it to client devices.
 # steroids.config.hooks.postMake.cmd = "echo"
 # steroids.config.hooks.postMake.args = ["cleaning up files"]
+
+steroids.config.copyToUserFiles = ["test.txt", "test.png"]
 
 
