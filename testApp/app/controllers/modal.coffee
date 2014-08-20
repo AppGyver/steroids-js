@@ -23,15 +23,15 @@ class window.ModalController
     }
 
   @testAllowAllOrientations: () ->
-    steroids.view.setAllowedRotations
-      allowedRotations: [-90, 90, 0, 180]
+    steroids.screen.setAllowedRotations
+      allowedRotations: ["landscapeLeft", "landscapeRight", "portrait", "portraitUpsideDown"]
     ,
       onSuccess: -> steroids.logger.log "SUCCESS in allowing all rotations"
       onFailure: -> steroids.logger.log "FAILURE in testAllowAllOrientations"
 
   @testAllowOnlyPortrait: () ->
-    steroids.view.setAllowedRotations
-      allowedRotations: [0]
+    steroids.screen.setAllowedRotations
+      allowedRotations: ["portrait"]
     ,
       onSuccess: -> steroids.logger.log "SUCCESS in allowing only portrait"
       onFailure: -> steroids.logger.log "FAILURE in testAllowOnlyPortrait"

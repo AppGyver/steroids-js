@@ -69,8 +69,8 @@ class window.AnimationController
     nowRotate = ->
       alert "now rotate the device off from 0 and try slideFromLeft"
 
-    steroids.view.setAllowedRotations {
-      allowedRotations: [-90, 90, 0, 180]
+    steroids.screen.setAllowedRotations {
+      allowedRotations: ["landscapeLeft", "landscapeRight", "portrait", "portraitUpsideDown"]
     }, {
       onSuccess: nowRotate
     }
