@@ -1,0 +1,76 @@
+<ul class="list">
+
+  <h1>Allowed Rotation / Orientation</h1>
+  <li class="performsTest" data-test="testAllowPortraitUpsideDown">
+    testAllowPortraitUpsideDown
+  </li>
+  <li class="performsTest" data-test="testAllowPortrait">
+    testAllowPortrait
+  </li>
+  <li class="performsTest" data-test="testAllowLandscapeLeft">
+    testAllowLandscapeLeft
+  </li>
+  <li class="performsTest" data-test="testAllowLandscapeRight">
+    testAllowLandscapeRight
+  </li>
+  <li class="performsTest" data-test="testAllowAll">
+    testAllowAll rotations
+  </li>
+
+  <h1>Rotation / Orientation</h1>
+  <li class="performsTest" data-test="testRotatePortrait">
+    testRotatePortrait
+  </li>
+  <li class="performsTest" data-test="testRotatePortraitUpsideDown">
+    testRotatePortraitUpsideDown
+  </li>
+  <li class="performsTest" data-test="testRotateLandscapeLeft">
+    testRotateLandscapeLeft
+  </li>
+  <li class="performsTest" data-test="testRotateLandscapeRight">
+    testRotateLandscapeRight
+  </li>
+
+  <h2>Legacy setAllowedRotations API</h2>
+
+  <li class="performsTest" data-test="testLegacyAllowRotation0">
+    Set allowed rotations to portrait. Will not auto-rotate the screen.
+  </li>
+
+  <li class="performsTest" data-test="testLegacyAllowRotation90">
+    Set allowed rotations to landscape right. Will not auto-rotate the screen.
+  </li>
+
+  <li class="performsTest" data-test="testLegacyAllowRotationAll">
+    Set allowed rotations to all orientations.
+  </li>
+
+  <li class="performsTest" data-test="testLegacyAllowRotationHorizontal">
+    Set allowed rotations to horizontal rotations. Will not auto-rotate the screen.
+  </li>
+
+  <li class="performsTest" data-test="testLegacyAllowRotationVertical">
+    Set allowed rotations to vertical rotations. Will not auto-rotate the screen.
+  </li>
+
+  <h2>Legacy steroids.view.rotateTo API</h2>
+
+  <li><em>Note: these will not work if the target rotation is not among allowed rotations.</em></li>
+
+  <li class="performsTest" data-test="testLegacyRotateToNeg90">
+    Rotate screen to landscape left.
+  </li>
+
+  <li class="performsTest" data-test="testLegacyRotateTo180">
+    Rotate screen to upside-down portrait.
+  </li>
+
+  <li class="performsTest" data-test="testLegacyRotateTo0">
+    Rotate screen to portrait.
+  </li>
+
+  <li class="performsTest" data-test="testLegacyRotateTo90">
+    Rotates screen to landscape right.
+  </li>
+
+</ul>

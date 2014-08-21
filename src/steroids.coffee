@@ -129,5 +129,30 @@ window.postMessage = PostMessage.postMessage
 window.steroids.logger = new Logger
 window.steroids.logger.queue.autoFlush(100)
 
+window.steroids.keyboard = new Keyboard
+
+
 window.addEventListener "error", (error, url, lineNumber) ->
   steroids.logger.log "#{error.message} - #{url}:#{lineNumber}"
+
+window.steroids.layers.on "didchange", (event) ->
+  ## This hack is required to force webkit to repaint
+  ## and apply the transparency to the webview background
+  ## This is required to solve the setBackgroundImage
+  ## and setBackground APIs (https://github.com/AppGyver/steroids/issues/308)
+  dumbElement = document.createElement("IMG")
+  document.body.appendChild(dumbElement)
+  setTimeout () ->
+    if dumbElement?
+      document.body.removeChild dumbElement
+  , 1
+
+# Cordova orientation is deprecated.
+# orientation is done at the screen level and not at the webview level anymore
+# Newer versions of steroids overrides the cordova shouldRotateToOrientation
+# to always return false.
+# For legacy suport of apps/steroids older versions the native code will still
+# call this function for the "first" webview to decide the orientation for the
+# screen
+window.shouldRotateToOrientation = (orientation) =>
+  return false

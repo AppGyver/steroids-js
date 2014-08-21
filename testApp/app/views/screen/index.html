@@ -2,9 +2,15 @@
   ScreenController.index();
 </script>
 
-<h1 onclick="navigator.notification.alert('touched')">screen</h1>
+<h1 onclick="navigator.notification.alert('Touched h1')">Screen</h1>
 
 <ul class="list">
+
+  <li class="opensLayer" data-location="/views/rotations/index.html">
+    Rotations
+    <span class="chevron"/>
+  </li>
+
   <li class="performsTest" data-test="testFreeze">
     steroids.screen.freeze() + steroids.screen.unfreeze()
   </li>
@@ -16,20 +22,6 @@
   <li class="performsTest" data-test="testTap">
     steroids.screen.tap({x: 30, y: 70}) (should tap h1 screen)<br>
     broken since iOS 7.1
-  </li>
-
-  <h1>Rotation / Orientation</h1>
-  <li class="performsTest" data-test="testRotatePortrait">
-    testRotatePortrait
-  </li>
-  <li class="performsTest" data-test="testRotatePortraitUpsideDown">
-    testRotatePortraitUpsideDown
-  </li>
-  <li class="performsTest" data-test="testRotateLandscapeLeft">
-    testRotateLandscapeLeft
-  </li>
-  <li class="performsTest" data-test="testRotateLandscapeRight">
-    testRotateLandscapeRight
   </li>
 
 </ul>

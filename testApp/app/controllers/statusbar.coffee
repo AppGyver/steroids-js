@@ -9,19 +9,35 @@ class window.StatusbarController
 
   @testHide: ->
     steroids.statusBar.hide {},
-      onSuccess: -> alert "hided"
+      onSuccess: -> console.log "hided"
       onFailure: -> alert "failed to hide"
 
   @testShow: ->
     steroids.statusBar.show {},
-      onSuccess: -> alert "showed"
+      onSuccess: -> console.log "showed"
       onFailure: -> alert "failed to show"
 
   @testShowLight: ->
     steroids.statusBar.show "light",
-      onSuccess: -> alert "showed light"
+      onSuccess: -> console.log "showed light"
       onFailure: -> alert "failed to show light"
-  
+
   @testOnTap: ->
     steroids.statusBar.onTap -> alert "status bar tapped !",
       onSuccess: -> alert "on tap event setup!"
+
+  @testHideNavBarAnimated: ->
+    steroids.view.navigationBar.hide {
+      animated: true
+    }, {
+      onSuccess: -> alert "hided with animation"
+      onFailure: -> alert "failed to hide"
+    }
+
+  @testShowNavBarAnimated: ->
+    steroids.view.navigationBar.show {
+      animated: true
+    }, {
+      onSuccess: -> alert "showed with animation"
+      onFailure: -> alert "failed to show"
+    }

@@ -3,7 +3,6 @@ class WebView extends EventsSupport
   params: {}
   id: null
   location: null
-  allowedRotations: null
 
   navigationBar: new NavigationBar
 
@@ -25,14 +24,6 @@ class WebView extends EventsSupport
         @location = "#{window.location.protocol}//#{window.location.host}/#{@location}"
 
     @params = @getParams()
-
-    # Sets the WebView to rotate to portait orientation only by default.
-    # User can override this behavior by setting window.AG_allowedRotationsDefaults
-    # before loading Steroids.js.
-
-    allowedRotations = window.AG_allowedRotationsDefaults ? [0]
-    @setAllowedRotations(allowedRotations)
-
 
   preload: (options={}, callbacks={}) ->
     steroids.debug "preload called for WebView #{JSON.stringify @}"
@@ -86,32 +77,28 @@ class WebView extends EventsSupport
       successCallbacks: [callbacks.onSuccess]
       failureCallbacks: [callbacks.onFailure]
 
+  # Deprecated. should use steroids.screen.setAllowedRotations() instead.
   setAllowedRotations: (options={}, callbacks={}) ->
-    @allowedRotations = if options.constructor.name == "Array"
+    allowedRotations = if options.constructor.name == "Array"
       options
+    else if options.constructor.name == "String"
+      [options]
     else
       options.allowedRotations
 
-    if not @allowedRotations? or @allowedRotations.length == 0
-      @allowedRotations = [0]
+    if not allowedRotations? or allowedRotations.length == 0
+      allowedRotations = [0]
 
-    window.shouldRotateToOrientation = (orientation) =>
-      return if orientation in @allowedRotations
-        true
-      else
-        false
+    #make sure we have orientation and not degrees
+    allowedRotations = allowedRotations.map (value) ->
+      Screen.mapDegreesToOrientations value
 
-    callbacks.onSuccess?.call()
-
-  mapDegreesToOrientations: (degrees) ->
-    if degrees == 0 or degrees == "0"
-      "portrait"
-    else if degrees == 180 or degrees == "180"
-      "portraitupsidedown"
-    else if degrees == -90 or degrees == "-90"
-      "landscapeleft"
-    else if degrees == 90 or degrees == "90"
-      "landscaperight"
+    steroids.nativeBridge.nativeCall
+      method: "setAllowedOrientation"
+      parameters:
+        allowedRotations: allowedRotations
+      successCallbacks: [callbacks.onSuccess]
+      failureCallbacks: [callbacks.onFailure]
 
   # Deprecated. should use steroids.screen.rotate() instead.
   rotateTo: (options={}, callbacks={}) ->
@@ -120,7 +107,7 @@ class WebView extends EventsSupport
     else
       options.degrees
 
-    orientation = @mapDegreesToOrientations degrees
+    orientation = Screen.mapDegreesToOrientations degrees
 
     steroids.nativeBridge.nativeCall
       method: "setOrientation"
@@ -156,7 +143,6 @@ class WebView extends EventsSupport
       failureCallbacks: [callbacks.onFailure]
 
   updateKeyboard: (options={}, callbacks={}) ->
-
     params = {}
 
     if options.accessoryBarEnabled?

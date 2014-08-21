@@ -1,10 +1,24 @@
+##3.5.1 (2014-08-21)
+
+Features:
+- Added `waitTransitionEnd: true` parameter for `steroids.modal.show`. iOS only. **(Requires iOS native runtime v3.5.1 or newer.)**
+  - This will cause the modal to wait until any existing transition (such as `steroids.layers.push`) is finished before showing the modal.
+  - Without this parameter, calling `steroids.modal.show` while a transition is in progress will trigger the failure callback.
+- Added `steroids.keyboard.on` `actionButtonPressed` event listener. Android only. **(Requires Fresh Android native runtime v3.5.1 or newer.)
+  - This event is triggered when the **Go** button is pressed (present on the software keyboard of older Android versions).
+
+Bugfixes:
+- `steroids.view.setBackgroundColor` now properly honors `background-color: transparent` CSS property. Closes [#304](https://github.com/AppGyver/steroids/issues/304).
+- `steroids.view.setBackgroundImage` no longer randomly displays a white box on top of the background.
+Closes [#38](https://github.com/AppGyver/steroids/issues/308).
+
 ##3.5.0 (2014-07-14)
 
 Features:
   - `steroids.tabBar.replace` for replacing the native tab bar with new tabs. iOS only.
 
 Bugfixes:
-  - Calling `alert` inside a postMessage event listener no longer freezes the app. Closes #379.
+  - Calling `alert` inside a `postMessage` event listener no longer freezes the app. Closes [#379](https://github.com/AppGyver/steroids/issues/379).
 
 ##3.1.12 (2014-06-09)
 
