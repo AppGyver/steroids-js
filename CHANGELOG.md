@@ -1,4 +1,4 @@
-##3.5.1 (TODO)
+##3.5.1 (2014-08-21)
 
 Features:
 - Added `waitTransitionEnd: true` parameter for `steroids.modal.show`. iOS only. **(Requires iOS native runtime v3.5.1 or newer.)**
