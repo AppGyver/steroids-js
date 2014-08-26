@@ -16,6 +16,9 @@ class WebView extends EventsSupport
     else
       options.location
 
+    if options._parameters?
+      @setParams(options._parameters)
+
     @id = if options.id?
       options.id
 
@@ -62,6 +65,16 @@ class WebView extends EventsSupport
       pair = pairString.split '='
       params[pair[0]] = pair[1]
     return params
+
+  setParams: (object)->
+    @setParam(key, value) for key, value of object
+
+  setParam: (key, value)->
+    @location = @location + (if "?" in @location
+      "&"
+    else
+      "?"
+    ) + "#{encodeURIComponent(key)}=#{encodeURIComponent(value)}"
 
   removeLoading: (options={}, callbacks={}) ->
 

@@ -1,3 +1,8 @@
+##3.5.2 (2014-08-26)
+
+Secret Features:
+- Added _parameters key support to steroids.view.WebView. Related issue [#502](https://github.com/AppGyver/steroids/issues/502)
+
 ##3.5.1 (2014-08-21)
 
 Features:
@@ -301,4 +306,3 @@ Reset changelog.
 
 Bugfixes:
   - API calls were broken in 0.6.0, release process failure.
-
