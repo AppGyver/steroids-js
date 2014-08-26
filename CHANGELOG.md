@@ -1,3 +1,14 @@
+##3.5.2
+
+Features:
+- `steroids.views.WebView` now accepts object key called `parameters` with object as a value. Parameters object key/value pairs are added to the location url (after encodeURIComponent).
+
+Bugfixes:
+- `steroids.view.params` no longer returns object with current location as a key with undefined value when no queryParameters in the view URL.
+
+Changes:
+- `steroids.view.params` object keys and values are now decoded using decodeURIComponent
+
 ##3.5.1 (2014-08-21)
 
 Features:
@@ -301,4 +312,3 @@ Reset changelog.
 
 Bugfixes:
   - API calls were broken in 0.6.0, release process failure.
-
