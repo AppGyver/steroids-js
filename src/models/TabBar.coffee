@@ -50,15 +50,17 @@ class TabBar extends EventsSupport
 
     if options.constructor.name == "Object"
       parameters = {}
+      parameters.position = options.position
       parameters.tabs = []
-      for scale in [0...options.tabs.length]
-        parameters.tabs.push(
-          {
-            title: options.tabs[scale].title
-            image_path: options.tabs[scale].icon
-            badge: options.tabs[scale].badge
-          }
-        )
+      if options.tabs
+        for scale in [0...options.tabs.length]
+          parameters.tabs.push(
+            {
+              title: options.tabs[scale].title
+              image_path: options.tabs[scale].icon
+              badge: options.tabs[scale].badge
+            }
+          )
 
     steroids.nativeBridge.nativeCall
       method: "updateTabs"

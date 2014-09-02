@@ -17,6 +17,21 @@ class window.TabbarController
       onSuccess: -> alert "showed"
       onFailure: -> alert "failed to show"
 
+  @testUpdateTop: ->
+    steroids.tabBar.update {
+      position: 'top'
+    },
+    onSuccess: -> alert "updated"
+    onFailure: -> alert "failed to update"
+
+  @testUpdateBottom: ->
+    steroids.tabBar.update {
+      position: 'bottom'
+    },
+    onSuccess: -> alert "updated"
+    onFailure: -> alert "failed to update"
+
+
   @testUpdate: ->
     steroids.tabBar.update({
       tabs:
