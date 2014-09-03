@@ -1,6 +1,14 @@
 class window.LayersController
+
+
   # always put everything inside PhoneGap deviceready
   document.addEventListener "deviceready", ->
+    @preloadedView = new steroids.views.WebView
+      id: 'pop_preloaded',
+      location:"/views/layers/pop.html"
+
+    @preloadedView.preload()
+
 
   # Make Navigation Bar to appear with a custom title text
   unless window.location.href.match("pop.html")
@@ -10,6 +18,20 @@ class window.LayersController
     new steroids.views.WebView {
       location: "/views/layers/pop.html"
     }
+
+  @testPushPreloaded: ->
+
+    success = ->
+      steroids.logger.log "SUCCESS in pushing pop.html preloaded"
+    failure = ->
+      steroids.logger.log "FAILURE in testPushPreloaded"
+
+    steroids.layers.push
+      view:
+        id: 'pop_preloaded'
+    ,
+      onSuccess: success
+      onFailure: failure
 
   @testShowNavBar: ->
     steroids.navigationBar.show "layers!",
@@ -167,9 +189,9 @@ class window.LayersController
           {
             view: view
           }, {
-            onSuccess: -> 
+            onSuccess: ->
               steroids.logger.log "SUCCESS in replacing with a preloaded layer"
-            onFailure: -> 
+            onFailure: ->
               steroids.logger.log "FAILURE in testReplace while replacing view with preloaded layer"
           })
       onFailure: ->
@@ -294,4 +316,3 @@ class window.LayersController
         onSuccess: -> "SUCCESS in replacing a non-preloaded webview to the layer stack"
         onFailure: -> "FAILURE in testReplaceNonPreloaded"
       }
-
