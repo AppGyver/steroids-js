@@ -6,7 +6,10 @@ class window.PluginController
     # Make Navigation Bar to appear with a custom title text
     steroids.navigationBar.show { title: "Plugin" }
 
-    alert "deviceready !"
+    list = document.getElementById("ready")
+    el = document.createElement("li")
+    el.innerHTML = (new Date()).toLocaleTimeString() + " Cordova READY"
+    list.appendChild(el)
 
   # ACCELEROMETER TEST
 
