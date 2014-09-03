@@ -24,9 +24,9 @@ class window.LoggerController
 
   @testStopFlushing: ->
     if steroids.logger.queue.stopFlushing()
-      alert "SUCCESS flushing was stopped - no new logs will appear. Test by pressing steroids.logger.log('hello')"
+      navigator.notification.alert "SUCCESS flushing was stopped - no new logs will appear. Test by pressing steroids.logger.log('hello')"
     else
-      steroids.logger.log "FAILURE in testStopFlushing"
+      navigator.notification.alert "FAILURE in testStopFlushing"
 
   @testCircularObject: ->
     circularObj =

@@ -1,7 +1,7 @@
 class window.InitviewController
 
   @testTest: ->
-    alert "test test"
+    navigator.notification.alert "test test"
 
   @testDismissInitialView: ->
     myAnimation = new steroids.Animation
@@ -16,6 +16,7 @@ class window.InitviewController
         steroids.logger.log "SUCCESS in dismissing initial view"
       onFailure: (result) ->
         steroids.logger.log "FAILURE in testDismissInitialView"
+        navigator.notification.alert "FAILURE in testDismissInitialView"
 
   @testResetAppToInitialView: ->
     myAnimation = new steroids.Animation
@@ -30,3 +31,4 @@ class window.InitviewController
         steroids.logger.log "SUCCESS in showing initial view"
       onFailure: (result) ->
         steroids.logger.log "FAILURE in testResetAppToInitialView"
+        navigator.notification.alert "FAILURE in testResetAppToInitialView"

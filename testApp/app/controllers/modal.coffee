@@ -10,6 +10,7 @@ class window.ModalController
       steroids.logger.log "SUCCESS in opening modal"
     failure = ->
       steroids.logger.log "FAILURE in testShow modal"
+      navigator.notification.alert "FAILURE in testShow modal"
 
     hideView = new steroids.views.WebView {
       location: "/views/modal/hide.html"
@@ -27,20 +28,25 @@ class window.ModalController
       allowedRotations: ["landscapeLeft", "landscapeRight", "portrait", "portraitUpsideDown"]
     ,
       onSuccess: -> steroids.logger.log "SUCCESS in allowing all rotations"
-      onFailure: -> steroids.logger.log "FAILURE in testAllowAllOrientations"
+      onFailure: ->
+        steroids.logger.log "FAILURE in testAllowAllOrientations"
+        navigator.notification.alert "FAILURE in testAllowAllOrientations"
 
   @testAllowOnlyPortrait: () ->
     steroids.screen.setAllowedRotations
       allowedRotations: ["portrait"]
     ,
       onSuccess: -> steroids.logger.log "SUCCESS in allowing only portrait"
-      onFailure: -> steroids.logger.log "FAILURE in testAllowOnlyPortrait"
+      onFailure: ->
+        steroids.logger.log "FAILURE in testAllowOnlyPortrait"
+        navigator.notification.alert "FAILURE in testAllowOnlyPortrait"
 
   @testShowWithNavBar: () ->
     success = ->
       steroids.logger.log "SUCCESS in opening modal with navigation bar"
     failure = ->
       steroids.logger.log "FAILURE in testShowWithNavBar modal"
+      navigator.notification.alert "FAILURE in testShowWithNavBar modal"
 
     hideView = new steroids.views.WebView {
       location: "/views/modal/hide.html"
@@ -59,7 +65,9 @@ class window.ModalController
       view: new steroids.views.WebView "/views/modal/index.html"
     }, {
       onSuccess: -> steroids.logger.log "SUCCESS in opening another modal from modal"
-      onFailure: -> steroids.logger.log "FAILURE in testOpenAnotherModal from modal"
+      onFailure: ->
+        steroids.logger.log "FAILURE in testOpenAnotherModal from modal"
+        navigator.notification.alert "FAILURE in testOpenAnotherModal from modal"
     }
 
   @testShowModalWithNavBar: () ->
@@ -69,7 +77,9 @@ class window.ModalController
       view: modalWithNavBar
     }, {
       onSuccess: -> steroids.logger.log "SUCCESS in showing a modal without calling navigationBar:true in show"
-      onFailure: -> steroids.logger.log "FAILURE in testShowModalWithNavBar"
+      onFailure: ->
+        steroids.logger.log "FAILURE in testShowModalWithNavBar"
+        navigator.notification.alert "FAILURE in testShowModalWithNavBar"
     }
 
   @testDisplayNavigationBar: () ->
@@ -87,13 +97,17 @@ class window.ModalController
     },
     {
       onSuccess: -> steroids.logger.log "SUCCESS in displaying navigation bar for modal"
-      onFailure: -> steroids.logger.log "FAILURE in testDisplayNavigationBar modal"
+      onFailure: ->
+        steroids.logger.log "FAILURE in testDisplayNavigationBar modal"
+        navigator.notification.alert "FAILURE int testDisplayNavigationBar modal"
     }
 
   @testHideNavigationBar: () ->
     steroids.view.navigationBar.hide {}, {
       onSuccess: -> steroids.logger.log "SUCCESS in hiding navigation bar of modal"
-      onFailure: -> steroids.logger.log "FAILURE in testHideNavigationBar modal"
+      onFailure: ->
+        steroids.logger.log "FAILURE in testHideNavigationBar modal"
+        navigator.notification.alert "FAILURE in testHideNavigationBar modal"
     }
 
 
@@ -125,39 +139,40 @@ class window.ModalController
   @testHide: () ->
 
     hidden = () ->
-      # causes the app to crash if closed after 2 seconds.. that is because
-      #the source webview where the aler originates is no longer on memory
-      #alert "hidden"
+      navigator.notification.alert "SUCCESS modal hidden, n.n.alert does not crash here"
 
     steroids.modal.hide {
     }, {
       onSuccess: hidden
+      onFailure: -> navigator.notification.alert "FAILURE in hiding modal"
     }
 
   @testHideAll: () ->
 
     hidden = () ->
-      alert "all hidden"
+      navigator.notification.alert "SUCCESS all modals hidden, n.n.alert does not crash"
 
     steroids.modal.hideAll {
     }, {
       onSuccess: hidden
+      onFailure: -> navigator.notification.alert "FAILURE in hiding all modals"
     }
 
   @testHideDisableAnimation: () ->
 
     hidden = () ->
-      alert "hidden without animation"
+      navigator.notification.alert "SUCCESS hidden without animation, n.n.alert does not crash"
 
     steroids.modal.hide {
       disableAnimation: true
     }, {
       onSuccess: hidden
+      onFailure: -> navigator.notification.alert "FAILURE in hiding without animation"
     }
 
   @testShowDisableAnimation: () ->
     opened = () ->
-      alert "opened"
+      navigator.notification.alert "SUCCESS in opening modal"
 
     hideView = new steroids.views.WebView {
       location: "/views/modal/hide.html"
@@ -168,6 +183,7 @@ class window.ModalController
       disableAnimation: true
     }, {
       onSuccess: opened
+      onFailure: -> navigator.notification.alert "FAILURE in showing without animation"
     }
 
   @testUpdateNavBar: ->
@@ -181,8 +197,8 @@ class window.ModalController
         right: [closeButton]
       }
     },
-      onSuccess: -> alert "nav bar buttons updated"
-      onFailure: -> alert "failed to update nav bar buttons"
+      onSuccess: -> steroids.logger.log "SUCCESS in updating nav bar buttons"
+      onFailure: -> navigator.notification.alert "failed to update nav bar buttons"
 
   @testSetAppearanceToRainbow: ->
     steroids.view.navigationBar.setAppearance {
@@ -193,15 +209,15 @@ class window.ModalController
       portraitBackgroundImage: steroids.app.path + '/images/navbar-bg@2x.png'
       landscapeBackgroundImage: steroids.app.path + '/images/navbar-bg@2x.png'
     }, {
-      onSuccess: -> alert "taste the rainbow"
-      onFailure: -> alert "failed set nav bar appearance"
+      onSuccess: -> steroids.logger.log "SUCCESS tasted the rainbow"
+      onFailure: -> navigator.notification.alert "FAILURE in testSetAppearanceToRainbow - failed set nav bar appearance"
     }
 
   #orientation tests
 
   @testModalInLandscape: ->
     opened = () ->
-      alert "opened in landscape"
+      steroids.logger.log "SUCCESS opened modal in landscape"
 
     landscapeModal = new steroids.views.WebView "/views/modal/modalLandscape.html"
 
@@ -210,11 +226,12 @@ class window.ModalController
       allowedRotations: ["landscapeLeft", "landscapeRight"]
     }, {
       onSuccess: opened
+      onFailure: -> navigator.notification.alert "FAILURE in testModalInLandscape"
     }
 
   @testModalInPortrait: ->
     opened = () ->
-      alert "opened in landscape"
+      steroids.logger.log "SUCCESS opened modal in portrait"
 
     landscapeModal = new steroids.views.WebView "/views/modal/modalPortrait.html"
 
@@ -223,48 +240,55 @@ class window.ModalController
       allowedRotations: ["portrait", "portraitUpsideDown"]
     }, {
       onSuccess: opened
+      onFailure: -> navigator.notification.alert "FAILURE in testModalInPortrait"
     }
 
   #event tests
 
   @testWillShowChangeEvent: ->
     eventHandler = steroids.modal.on 'willshow', (event) ->
-      alert "willshow event -> eventName: #{event.name} target.webview.id: #{event.target.webview.id}"
+      navigator.notification.alert "willshow event -> eventName: #{event.name} target.webview.id: #{event.target.webview.id}"
 
-    alert "event listener added"
+    steroids.logger.log "SUCCESS will show event listener added"
 
   @testDidShowChangeEvent: ->
     eventHandler = steroids.modal.on 'didshow', (event) ->
-      alert "didshow event -> eventName: #{event.name} target.webview.id: #{event.target.webview.id}"
+      navigator.notification.alert "didshow event -> eventName: #{event.name} target.webview.id: #{event.target.webview.id}"
 
-    alert "event listener added"
+    steroids.logger.log "SUCCESS did show event listener added"
 
   @testWillCloseChangeEvent: ->
     eventHandler = steroids.modal.on 'willclose', (event) ->
-      alert "willclose event -> eventName: #{event.name} target.webview.id: #{event.target.webview.id}"
+      navigator.notification.alert "willclose event -> eventName: #{event.name} target.webview.id: #{event.target.webview.id}"
 
-    alert "event listener added"
+    steroids.logger.log "SUCCESS will close event listener added"
 
   @testDidCloseChangeEvent: ->
     eventHandler = steroids.modal.on 'didclose', (event) ->
-      alert "didclose event -> eventName: #{event.name} target.webview.id: #{event.target.webview.id}"
+      navigator.notification.alert "didclose event -> eventName: #{event.name} target.webview.id: #{event.target.webview.id}"
 
-    alert "event listener added"
+    steroids.logger.log "SUCCESS did close event listener added"
 
   @testRemoveShowEvents: ->
     steroids.modal.off 'willshow'
     steroids.modal.off 'didshow'
 
-    alert "modal show events handlers removed"
+    steroids.logger.log "SUCCESS modal show events handlers removed"
 
   @testRemoveCloseEvents: ->
     steroids.modal.off 'willclose'
     steroids.modal.off 'didclose'
 
-    alert "modal close events handlers removed"
+    steroids.logger.log "SUCCESS modal close events handlers removed"
 
   @testGetApplicationState: ->
-    steroids.getApplicationState {}
-    ,
+    steroids.getApplicationState {},
       onSuccess: (appState) ->
-        alert "application state received :-)"
+        steroids.logger.log appState
+        steroids.logger.log "SUCCESS in receiving app state, see horrible mess of JSON string"
+      onFailure: () ->
+        navigator.notification.alert "FAILURE application state not received"
+
+
+
+    
