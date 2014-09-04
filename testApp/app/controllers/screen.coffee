@@ -5,13 +5,13 @@ class window.ScreenController
 
   @testFreeze: ->
     steroids.screen.freeze {},
-      onSuccess: -> steroids.logger.log "freeze success"
-      onFailure: -> steroids.logger.log "freeze failure"
+      onSuccess: -> steroids.logger.log "SUCCESS in freezing the screen"
+      onFailure: -> navigator.notification.alert "FAILURE in testFreeze freezing the screen"
 
     unfreezer = ()->
       steroids.screen.unfreeze {},
-        onSuccess: -> steroids.logger.log "unfreeze success"
-        onFailure: -> steroids.logger.log "unfreeze failure"
+        onSuccess: -> steroids.logger.log "SUCCESS in unfreezing the screen"
+        onFailure: -> navigator.notification.alert "FAILURE in testFreeze in unfreezing the screen"
 
     setTimeout unfreezer, 1000
 
@@ -22,9 +22,12 @@ class window.ScreenController
         img.setAttribute 'src', params.screenshot
         captureResult.innerHTML = ""
         captureResult.appendChild img
+        steroids.logger.log "SUCCESS in capturing screen"
+      onFailure: ->
+        navigator.notification.alert "FAILURE in capturing the screen testCapture"
 
   @testTap: ->
-    steroids.logger.log "firing tap soon"
+    steroids.logger.log "TEST firing tap soon"
     window.setTimeout ->
       steroids.screen.tap {
         x: 30

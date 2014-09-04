@@ -13,21 +13,21 @@ class window.SplashscreenController
 
     steroids.splashscreen.show {},
       onSuccess: ->
-        alert("Splash shown, will dissmiss after 3000ms if set in config.xml or after 5000ms (timeout)")
-      onFailure: -> alert "failed to show"
+        steroids.logger.log("SUCCESS in showing splash screen, will dissmiss after 3000ms if set in config.xml or after 5000ms (timeout)")
+      onFailure: -> navigator.notification.alert "FAILURE in showing the splash screen"
 
     setTimeout ->
-      steroids.splashscreen.hide()
+      testHide
     , 5000
 
   @testHide: ->
     steroids.splashscreen.hide {},
-      onSuccess: -> alert "hided"
-      onFailure: -> alert "failed to show"
+      onSuccess: -> steroids.logger.log "SUCCESS in hiding the splash screen"
+      onFailure: -> steroids.logger.log "FAILURE in hiding the splash screen"
 
   @testShowHide: ->
     steroids.splashscreen.show()
 
     setTimeout ->
-      steroids.splashscreen.hide()
+      testHide
     , 1000
