@@ -1,9 +1,11 @@
 class window.ModalController
   # always put everything inside PhoneGap deviceready
   document.addEventListener "deviceready", ->
+    @preloadedView = new steroids.views.WebView
+      id: 'hide_preloaded'
+      location:"/views/modal/hide.html"
 
-    # Make Navigation Bar to appear with a custom title text
-    # steroids.navigationBar.show { title: "modal" }
+    @preloadedView.preload()
 
   @testShow: () ->
     success = ->
@@ -110,13 +112,18 @@ class window.ModalController
         navigator.notification.alert "FAILURE in testHideNavigationBar modal"
     }
 
-
   @testShowPreloaded: () ->
+    steroids.modal.show
+      view: new steroids.views.WebView
+        id: 'hide_preloaded'
+        location:"/views/modal/hide.html"
+
+  @testShowPreloadedOnce: () ->
     window.addEventListener "message", (message) =>
       steroids.modal.show(preloadedView) if message.data == "okay to show modal"
 
-
-    preloadedView = new steroids.views.WebView "/views/modal/preload.html"
+    preloadedView = new steroids.views.WebView
+      location: "/views/modal/preload.html"
     preloadedView.preload()
 
 
