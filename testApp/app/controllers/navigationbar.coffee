@@ -10,107 +10,107 @@ class window.NavigationbarController
     steroids.view.navigationBar.hide {
       animated: true
     }, {
-      onSuccess: -> alert "hided with animation"
-      onFailure: -> alert "failed to hide"
+      onSuccess: -> steroids.logger.log "SUCCESS in hiding navigationBar with animation"
+      onFailure: -> navigator.notification.alert "FAILURE in testHideAnimated - hiding navigationBar with animation"
     }
 
   @testShowAnimated: ->
     steroids.view.navigationBar.show {
       animated: true
     }, {
-      onSuccess: -> alert "showed with animation"
-      onFailure: -> alert "failed to show"
+      onSuccess: -> steroids.logger.log "SUCCESS in showing nav bar with animation"
+      onFailure: -> navigator.notification.alert "FAILURE in testShowAnimated"
     }
 
   @testHide: ->
     steroids.view.navigationBar.hide {},
-      onSuccess: -> alert "hided"
-      onFailure: -> alert "failed to hide"
+      onSuccess: -> steroids.logger.log "SUCCESS in hiding navigation bar without animation"
+      onFailure: -> navigator.notification.alert "FAILURE in testHide - hiding navigation bar without animation"
 
   @testShow: ->
     steroids.view.navigationBar.show {},
-      onSuccess: -> alert "showed"
-      onFailure: -> alert "failed to show"
+      onSuccess: -> steroids.logger.log "SUCCESS in showing navigation bar without animation"
+      onFailure: -> navigator.notification.alert "FAILURE in testShow"
 
   @testShowWithTitle: ->
     steroids.view.navigationBar.show {
       title: "Any title"
     },
-      onSuccess: -> alert "showed with title"
-      onFailure: -> alert "failed to show with title"
+      onSuccess: -> steroids.logger.log "SUCCESS in showing navigation bar with title"
+      onFailure: -> navigator.notification.alert "FAILURE in testShowWithTitle nav bar"
 
   @testShowWithTitleImagePath: ->
     steroids.view.navigationBar.show {
       titleImagePath: "/icons/pill@2x.png"
     },
-    onSuccess: -> alert "showed with titleImagePath"
-    onFailure: -> alert "failed to show with titleImagePath"
+    onSuccess: -> steroids.logger.log "SUCCESS in showing nav bar with titleImagePath"
+    onFailure: -> navigator.notification.alert "FAILURE in testShowWithTitleImagePath"
 
   @testSetButtonsWithOneRightButton: ->
     button = new steroids.buttons.NavigationBarButton
     button.title = "TEST"
-    button.onTap = => alert "RIGHT BUTTON TAPPED"
+    button.onTap = => navigator.notification.alert "RIGHT BUTTON TAPPED"
 
     steroids.view.navigationBar.setButtons {
       right: [button]
     },
-      onSuccess: => alert "buttons set"
-      onFailure: => alert "failed to set buttons"
+      onSuccess: => steroids.logger.log "SUCCESS in setting one button into nav bar (legacy)"
+      onFailure: => navigator.notification.alert "FAILURE in testSetButtonsWithOneRightButton (legacy)"
 
   @testSetButtonsWithManyButtons: (options={override:false})->
     button1 = new steroids.buttons.NavigationBarButton
     button1.title = "EKA"
-    button1.onTap = => alert "EKA BUTTON TAPPED"
+    button1.onTap = => navigator.notification.alert "EKA BUTTON TAPPED"
 
     button2 = new steroids.buttons.NavigationBarButton
     button2.title = "TOKA"
-    button2.onTap = => alert "TOKA BUTTON TAPPED"
+    button2.onTap = => navigator.notification.alert "TOKA BUTTON TAPPED"
 
     button3 = new steroids.buttons.NavigationBarButton
     button3.title = "NoCB"
 
     button4 = new steroids.buttons.NavigationBarButton
     button4.imagePath = "/icons/pill@2x.png"
-    button4.onTap = => alert "ICON BUTTON TAPPED"
+    button4.onTap = => navigator.notification.alert "ICON BUTTON TAPPED"
 
     steroids.view.navigationBar.setButtons {
       overrideBackButton: options.override
       left: [button1, button2]
       right: [button3, button4]
     },
-      onSuccess: => alert "many buttons set"
-      onFailure: => alert "failed to set many buttons"
+      onSuccess: => steroids.logger.log "SUCCESS in setting many buttons with setButtons"
+      onFailure: => navigator.notification.alert "FAILURE in testSetButtonsWithManyButtons with or without back button (legacy)"
 
   @testSetButtonsWithManyButtonsWithoutBack: ->
     @testSetButtonsWithManyButtons { override: true }
 
   @testSetButtonsWithoutButtons: ->
     steroids.view.navigationBar.setButtons {},
-      onSuccess: => alert "all buttons removed"
-      onFailure: => alert "failed to remove all buttons"
+      onSuccess: => steroids.logger.log "SUCCESS in removing all buttons from nav bar"
+      onFailure: => navigator.notification.alert "FAILURE in testSetButtonsWithoutButtons - removing buttons from nav bar"
 
   @testUpdateTitle: ->
     steroids.view.navigationBar.update {
       title: "New title"
     },
-      onSuccess: -> alert "title updated"
-      onFailure: -> alert "failed to update title"
+      onSuccess: -> steroids.logger.log "SUCCESS in updating navigationBar title"
+      onFailure: -> navigator.notification.alert "FAILURE in testUpdateTitle"
 
   @testUpdateTitleImage: ->
     steroids.view.navigationBar.update {
       titleImagePath: "/icons/pill@2x.png"
     },
-      onSuccess: -> alert "title image updated"
-      onFailure: -> alert "failed to update image title"
+      onSuccess: -> steroids.logger.log "SUCCESS in nav bar testUpdateTitleImage"
+      onFailure: -> navigator.notification.alert "FAILURE in testUpdateTitleImage"
 
   @testUpdateWithButtons: ->
     button1 = new steroids.buttons.NavigationBarButton
     button1.title = "RIGHT"
-    button1.onTap = => alert "RIGHT BUTTON TAPPED"
+    button1.onTap = => navigator.notification.alert "RIGHT BUTTON TAPPED"
 
     button2 = new steroids.buttons.NavigationBarButton
     button2.imagePath = "/icons/pill@2x.png"
-    button2.onTap = => alert "LEFT BUTTON TAPPED"
+    button2.onTap = => navigator.notification.alert "LEFT BUTTON TAPPED"
 
     steroids.view.navigationBar.update {
       buttons: {
@@ -118,8 +118,8 @@ class window.NavigationbarController
         left: [button2]
       }
     },
-      onSuccess: -> alert "nav bar buttons updated"
-      onFailure: -> alert "failed to update nav bar buttons"
+      onSuccess: -> steroids.logger.log "SUCCESS in updating buttons"
+      onFailure: -> navigator.notification.alert "FAILURE in testUpdateWithButtons"
 
   @testUpdateWithNoButtons: ->
     steroids.view.navigationBar.update {
@@ -128,48 +128,60 @@ class window.NavigationbarController
         left: []
       }
     },
-      onSuccess: -> alert "nav bar buttons updated"
-      onFailure: -> alert "failed to update nav bar buttons"
+      onSuccess: -> steroids.logger.log "SUCCESS in updating nav bar to have no buttons"
+      onFailure: -> navigator.notification.alert "FAILURE in testUpdateWithNoButtons"
 
   @testOverrideBackbuttonTrue: ->
     steroids.view.navigationBar.update {
       overrideBackButton: true
-    }
+    },
+      onSuccess: -> steroids.logger.log "SUCCESS in overriding nav bar back button with update"
+      onFailure: -> navigator.notification.alert "FAILURE in testOverrideBackbuttonTrue"
 
   @testOverrideBackbuttonFalse: ->
     steroids.view.navigationBar.update {
       overrideBackButton: false
-    }
+    },
+      onSuccess: -> steroids.logger.log "SUCCESS in dis-overriding nav bar button (a.k.a. showing it) with update"
+      onFailure: -> navigator.notification.alert "FAILURE in testOverrideBackbuttonFalse"
 
   @testSetBorderBlue: ->
-    steroids.view.navigationBar.update
+    steroids.view.navigationBar.update {
       border: {
         size: 1
         color: '#CCCCFF'
       }
+    },
+      onSuccess: -> steroids.logger.log "SUCCESS in setting nav bar border to blue"
+      onFailure: -> navigator.notification.alert "FAILURE in testSetBorderBlue"
+
 
   @testSetBackButtonTitle: ->
     customBack = new steroids.buttons.NavigationBarButton
     customBack.title = "custom back"
     steroids.view.navigationBar.update {
       backButton: customBack
-    }
+    },
+      onSuccess: -> steroids.logger.log "SUCCESS in testSetBackButtonTitle"
+      onFailure: -> navigator.notification.alert "FAILURE in testSetBackButtonTitle"
 
   @testSetBackButtonImage: ->
     customBack = new steroids.buttons.NavigationBarButton
     customBack.imagePath = "/icons/pill@2x.png"
     steroids.view.navigationBar.update {
       backButton: customBack
-    }
+    },
+      onSuccess: -> steroids.logger.log "SUCCESS in testSetBackButtonImage"
+      onFailure: -> navigator.notification.alert "FAILURE in testSetBackButtonImage"
 
   @testUpdateButtonsWithoutBackButton: ->
     button1 = new steroids.buttons.NavigationBarButton
     button1.title = "NEW RIGHT"
-    button1.onTap = => alert "NEW RIGHT BUTTON TAPPED"
+    button1.onTap = => navigator.notification.alert "NEW RIGHT BUTTON TAPPED"
 
     button2 = new steroids.buttons.NavigationBarButton
     button2.imagePath = "/icons/pill@2x.png"
-    button2.onTap = => alert "LEFT BUTTON TAPPED"
+    button2.onTap = => navigator.notification.alert "LEFT BUTTON TAPPED"
 
     steroids.view.navigationBar.update {
       overrideBackButton: true
@@ -178,19 +190,19 @@ class window.NavigationbarController
         left: [button2]
       }
     },
-      onSuccess: -> alert "nav bar buttons updated"
-      onFailure: -> alert "failed to update nav bar buttons"
+      onSuccess: -> steroids.logger.log "SUCCESS in updating buttons into nav bar but no back button"
+      onFailure: -> navigator.notification.alert "FAILURE in testUpdateButtonsWithoutBackButton"
 
   @testButtonWithImageAsOriginal: ->
     btoImgOriginal = new steroids.buttons.NavigationBarButton
     btoImgOriginal.imagePath = "/icons/apple_colorfull.png"
     btoImgOriginal.imageAsOriginal = "true"
-    btoImgOriginal.onTap = => alert "BUTTON WITH ORIGINAL IMAGE TAPPED"
+    btoImgOriginal.onTap = => navigator.notification.alert "BUTTON WITH ORIGINAL IMAGE TAPPED"
 
     btoTintedImg = new steroids.buttons.NavigationBarButton
     btoTintedImg.imagePath = "/icons/apple_colorfull.png"
     # btoTintedImg.imageAsOriginal = "true"
-    btoTintedImg.onTap = => alert "BUTTON WITH TINTED IMAGE TAPPED"
+    btoTintedImg.onTap = => navigator.notification.alert "BUTTON WITH TINTED IMAGE TAPPED"
 
     steroids.view.navigationBar.update {
       buttons: {
@@ -198,8 +210,8 @@ class window.NavigationbarController
         left: [btoTintedImg]
       }
     },
-      onSuccess: -> alert "nav bar buttons updated"
-      onFailure: -> alert "failed to update nav bar buttons"
+      onSuccess: -> steroids.logger.log "SUCCESS in testButtonWithImageAsOriginal - updating nav bar with tint and no tint buttons"
+      onFailure: -> navigator.notification.alert "FAILURE in testButtonWithImageAsOriginal"
 
   @testSetAppearanceToRainbow: ->
     steroids.view.navigationBar.setAppearance {
@@ -209,6 +221,6 @@ class window.NavigationbarController
       portraitBackgroundImage: steroids.app.path + '/images/navbar-bg@2x.png'
       landscapeBackgroundImage: steroids.app.path + '/images/navbar-bg@2x.png'
     }, {
-      onSuccess: -> alert "taste the rainbow"
-      onFailure: -> alert "failed set nav bar appearance"
+      onSuccess: -> steroids.logger.log "SUCCESS in testSetAppearanceToRainbow - taste the rainbow!"
+      onFailure: -> navigator.notification.alert "FAILURE in testSetAppearanceToRainbow in nav bar tests"
     }
