@@ -69,6 +69,14 @@ class window.PluginController
     navigator.camera.getPicture cameraOnSuccess, cameraOnFail, {
       quality: 50
       destinationType: Camera.DestinationType.DATA_URL
+      sourceType: Camera.PictureSourceType.CAMERA
+      targetWidth: 300
+      targetHeight: 300
+      encodingType: Camera.EncodingType.JPEG
+      mediaType: Camera.MediaType.PICTURE
+      allowEdit : false
+      correctOrientation: true
+      saveToPhotoAlbum: false
     }
 
   modalOpenedSuccess = () ->
@@ -86,14 +94,29 @@ class window.PluginController
   @cameraFromPhotoLibraryOpenModalTest = () ->
     navigator.camera.getPicture openModalOnSucess, cameraOnFail, {
       quality: 50
-      destinationType: Camera.DestinationType.DATA_URL,
+      destinationType: Camera.DestinationType.DATA_URL
       sourceType: Camera.PictureSourceType.PHOTOLIBRARY
+      targetWidth: 300
+      targetHeight: 300
+      encodingType: Camera.EncodingType.JPEG
+      mediaType: Camera.MediaType.PICTURE
+      allowEdit : false
+      correctOrientation: true
+      saveToPhotoAlbum: false
     }
 
   @cameraGetPictureOpenModalTest = () ->
     navigator.camera.getPicture openModalOnSucess, cameraOnFail, {
       quality: 50
       destinationType: Camera.DestinationType.DATA_URL
+      sourceType: Camera.PictureSourceType.CAMERA
+      targetWidth: 300
+      targetHeight: 300
+      encodingType: Camera.EncodingType.JPEG
+      mediaType: Camera.MediaType.PICTURE
+      allowEdit : false
+      correctOrientation: true
+      saveToPhotoAlbum: false
     }
 
   @cameraCleanupTest = () ->
@@ -107,8 +130,64 @@ class window.PluginController
   @cameraFromPhotoLibraryTest = () ->
     navigator.camera.getPicture cameraOnSuccess, cameraOnFail, {
       quality: 50
-      destinationType: Camera.DestinationType.DATA_URL,
+      destinationType: Camera.DestinationType.DATA_URL
       sourceType: Camera.PictureSourceType.PHOTOLIBRARY
+      targetWidth: 300
+      targetHeight: 300
+      encodingType: Camera.EncodingType.JPEG
+      mediaType: Camera.MediaType.PICTURE
+      allowEdit : false
+      correctOrientation: true
+      saveToPhotoAlbum: false
+    }
+
+  fileError = (error)->
+    navigator.notification.alert "Cordova error code: " + error.code, null, "File system error!"
+
+  fileMoved = (file)->
+    image = document.querySelector '#cameraTest'
+    image.src = "/#{file.name}?#{(new Date()).getTime()}"
+    
+  gotFileObject = (file)->
+    targetDirURI = "file://" + steroids.app.absoluteUserFilesPath
+    fileName = "user_pic.png"
+
+    window.resolveLocalFileSystemURL(
+      targetDirURI
+      (directory)->
+        file.moveTo directory, fileName, fileMoved, fileError
+      fileError
+    )
+
+  saveInUserFilesOnSuccess = (imageURI) ->
+    window.resolveLocalFileSystemURL imageURI, gotFileObject, fileError
+
+  @cameraGetPictureSaveInUserFilesTest = () ->
+    navigator.camera.getPicture saveInUserFilesOnSuccess, cameraOnFail, {
+      quality: 50
+      destinationType: Camera.DestinationType.FILE_URI
+      sourceType: Camera.PictureSourceType.CAMERA
+      targetWidth: 300
+      targetHeight: 300
+      encodingType: Camera.EncodingType.JPEG
+      mediaType: Camera.MediaType.PICTURE
+      allowEdit : false
+      correctOrientation: true
+      saveToPhotoAlbum: false
+    }
+
+  @cameraFromPhotoLibrarySaveInUserFilesTest = () ->
+    navigator.camera.getPicture saveInUserFilesOnSuccess, cameraOnFail, {
+      quality: 50
+      destinationType: Camera.DestinationType.FILE_URI
+      sourceType: Camera.PictureSourceType.PHOTOLIBRARY
+      targetWidth: 300
+      targetHeight: 300
+      encodingType: Camera.EncodingType.JPEG
+      mediaType: Camera.MediaType.PICTURE
+      allowEdit : false
+      correctOrientation: true
+      saveToPhotoAlbum: false
     }
 
   # CAPTURE TEST
