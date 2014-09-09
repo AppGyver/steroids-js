@@ -218,28 +218,6 @@ class window.WebviewController
       steroids.view.removeLoading()
     , 3000
 
-  @testEnableKeyboardAccessory: () ->
-    steroids.view.updateKeyboard {
-      accessoryBarEnabled:true
-    }, {
-      onSuccess: -> steroids.logger.log "SUCCESS keyboard accesssory enabled"
-      onFailure: (error) -> navigator.notification.alert "FAILURE in testEnableKeyboardAccessory", error
-    }
-
-  @testDisableKeyboardAccessory: () ->
-    steroids.view.updateKeyboard {
-      accessoryBarEnabled:false
-    }, {
-      onSuccess: -> steroids.logger.log "SUCCESS keyboard accesssory disabled"
-      onFailure: (error) -> navigator.notification.alert "FAILURE in testDisableKeyboardAccessory", error
-    }
-
-  @testKeyboardAccessoryWithEmptyParams: () ->
-    steroids.view.updateKeyboard null, {
-      onSuccess: -> steroids.logger.log "SUCCESS updateKeyboard called with no parameters (no change)"
-      onFailure: (error) -> navigator.notification.alert "FAILURE in testKeyboardAccessoryWithEmptyParams", error
-    }
-
   @testPreloadViaArray: () ->
     preloadedView = new steroids.views.WebView
       id: "preloadedViaPreloadsArray"
