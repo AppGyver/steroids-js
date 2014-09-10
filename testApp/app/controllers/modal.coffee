@@ -146,6 +146,7 @@ class window.ModalController
   @testHide: () ->
 
     hidden = () ->
+      steroids.logger.log "SUCCESS in hiding modal"
       navigator.notification.alert "SUCCESS modal hidden, n.n.alert does not crash here"
 
     steroids.modal.hide {
@@ -157,6 +158,7 @@ class window.ModalController
   @testHideAll: () ->
 
     hidden = () ->
+      steroids.logger.log "SUCCESS in hiding all modals"
       navigator.notification.alert "SUCCESS all modals hidden, n.n.alert does not crash"
 
     steroids.modal.hideAll {
