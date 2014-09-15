@@ -264,8 +264,8 @@ class window.DrawersController
           widthOfDrawerInPixels: 200
         steroids.logger.log "SUCCESS in enabling legacy gesture"
       onFailure: =>
-        steroids.logger.log "FAILURE in testLegacyEnableGesture"
-        navigator.notification.alert "FAILURE in testLegacyEnableGesture"
+        steroids.logger.log "FAILURE in preloading googleview in testLegacyEnableGesture"
+        navigator.notification.alert "FAILURE in preloading googleview for testLegacyEnableGesture"
     }
 
   @testLegacyEnableGestureShorthand: ->
