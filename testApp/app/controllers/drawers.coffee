@@ -327,8 +327,8 @@ class window.DrawersController
   @testDiffSizes: ->
     success = ->
       steroids.logger.log "SUCCESS in testing different sizes for drawers"
-    failure = ->
-      steroids.logger.log "FAILURE in testDiffSizes"
+    failure = (error) ->
+      steroids.logger.log "FAILURE in testDiffSizes: " + JSON.stringify error
       navigator.notification.alert "FAILURE in testDiffSizes"
 
     steroids.drawers.update {
