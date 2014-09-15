@@ -1,9 +1,11 @@
 <script>
   var visibilityChanged = function() {
-    alert("window.location: " + window.location.href + " - visibilityState: " + document.visibilityState + " - hidden:" + document.hidden);
+    alert("FROM PRELOADED VIEW window.location: " + window.location.href + " - visibilityState: " + document.visibilityState + " - hidden:" + document.hidden);
   }
 
   steroids.on("ready", function() {
     document.addEventListener("visibilitychange", visibilityChanged);
   });
 </script>
+
+<h1>hi i have eventlisteners on visibilitychange</h1>

@@ -6,7 +6,13 @@ class window.VisibilitychangeController
 
     webView = new steroids.views.WebView "/views/visibilitychange/preloadThatSetsVisibilityChanges.html"
 
-    webView.preload()
+    webView.preload {},
+    {
+      onSuccess: -> steroids.logger.log "SUCCESS in preloading view for visibilitychange"
+      onFailure: ->
+        steroids.logger.log "FAILURE in testPreloadVisibilityChange"
+        navigator.notification.alert "FAILURE in testPreloadVisibilityChange"
+    }
 
     window.setTimeout =>
       steroids.layers.push webView
