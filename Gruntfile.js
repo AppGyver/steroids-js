@@ -57,6 +57,7 @@ module.exports = function(grunt) {
             'src/models/TabBar.coffee',
             'src/models/views/WebView.coffee',
             'src/models/views/PreviewFileView.coffee',
+            'src/models/views/MapView.coffee',
             'src/models/Audio.coffee',
             'src/models/OAuth2/OAuth2Flow.coffee',
             'src/models/OAuth2/AuthorizationCodeFlow.coffee',
