@@ -48,12 +48,20 @@ class LayerCollection extends EventsSupport
       parameters.pushAnimationCurve = options.animation.curve
       parameters.popAnimationCurve = options.animation.reversedCurve
 
-
-    steroids.nativeBridge.nativeCall
-      method: "openLayer"
-      parameters: parameters
-      successCallbacks: [callbacks.onSuccess]
-      failureCallbacks: [callbacks.onFailure]
+    switch view.constructor.name
+      when "MapView"
+        parameters.map = view.getMapParameters()
+        steroids.nativeBridge.nativeCall
+          method: "openMapLayer"
+          parameters: parameters
+          successCallbacks: [callbacks.onSuccess]
+          failureCallbacks: [callbacks.onFailure]
+      else
+        steroids.nativeBridge.nativeCall
+          method: "openLayer"
+          parameters: parameters
+          successCallbacks: [callbacks.onSuccess]
+          failureCallbacks: [callbacks.onFailure]
 
   replace: (options={}, callbacks={}) ->
     steroids.debug "steroids.layers.replace called"

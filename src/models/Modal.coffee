@@ -23,6 +23,7 @@ class Modal extends EventsSupport
         Screen.mapDegreesToOrientations value
 
     switch view.constructor.name
+
       when "PreviewFileView"
         steroids.nativeBridge.nativeCall
           method: "previewFile"
@@ -30,7 +31,8 @@ class Modal extends EventsSupport
             filenameWithPath: view.getNativeFilePath()
           successCallbacks: [callbacks.onSuccess]
           failureCallbacks: [callbacks.onFailure]
-      when "WebView"
+      
+      when "MapView", "WebView"
 
         parameters = if view.id?
           { id: view.id }
@@ -51,6 +53,10 @@ class Modal extends EventsSupport
         else
           #default is modal without nav bar
           parameters.hidesNavigationBar = true
+
+        # map view options
+        if view.constructor.name == "MapView"
+          parameters.map = view
 
         steroids.nativeBridge.nativeCall
           method: "openModal"
