@@ -22,11 +22,6 @@ steroids.config.tabBar.enabled = true
 #   - http://www.google.com (directly from internet)
 #
 steroids.config.tabBar.tabs = [
-   {
-     title: "FUT"
-     icon: "icons/telescope@2x.png"
-     location: "http://localhost/views/mapview/index.html"
-   }
   {
     title: "HTTP"
     icon: "icons/pill@2x.png"
@@ -51,6 +46,11 @@ steroids.config.tabBar.tabs = [
     title: "Config-iOS"
     icon: "icons/shoebox@2x.png"
     location: "http://localhost/views/config/index.html"
+  }
+  {
+    title: "Map"
+    icon: "icons/telescope@2x.png"
+    location: "http://localhost/views/mapview/index.html"
   }
 ]
 
@@ -108,5 +108,3 @@ steroids.config.navigationBar.borderColor = "#aef"
 # steroids.config.hooks.postMake.args = ["cleaning up files"]
 
 steroids.config.copyToUserFiles = ["test.txt", "test.png"]
-
-
