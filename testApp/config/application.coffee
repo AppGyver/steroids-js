@@ -3,6 +3,17 @@
 steroids.config.name = "Steroids.js test app (with tabs)"
 steroids.config.location = "http://localhost/views/applicationcoffee/index.html"
 
+## -- Drawer for testing --
+# steroids.config.drawers =
+#   left:
+#     id: "leftDrawer"
+#     location: "http://localhost/views/drawers/leftDrawer.html"
+#
+#   right:
+#     id: "rightDrawer"
+#     location: "http://localhost/views/drawers/rightDrawer.html"
+
+
 # -- Tabs --
 
 # A boolean to enable tab bar (on bottom)
