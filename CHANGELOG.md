@@ -1,4 +1,13 @@
-##3.5.2
+## 3.5.3 (2014-09-18)
+
+We have added a lot more tests to our Steroids.js testApp for etc. pushing layers from the initialView etc, check them out!
+
+Secret features:
+- Tabs for Android (Fresh) have the possibility to be defined to be at the top or the bottom of the screen.
+  - On the top the tabs would be "Android default" but for now tabs can only be at the bottom to make the app look similar to iOS apps on Android.
+- The first things for MapViews are now in Steroids.js, but this feature is not coming before iOS native runtime v3.5.3.
+
+## 3.5.2 (2014-08-26)
 
 Features:
 - `steroids.views.WebView` now accepts object key called `parameters` with object as a value. Parameters object key/value pairs are added to the location url (after encodeURIComponent).
