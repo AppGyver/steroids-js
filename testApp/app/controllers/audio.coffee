@@ -10,13 +10,13 @@ class window.AudioController
       path: "clap.wav"
     }, {
       onSuccess: () -> steroids.logger.log "SUCCESS in playing audio"
-      onFailure: () -> steroids.logger.log "FAILURE in testPlay"
+      onFailure: () -> navigator.notification.alert "FAILURE in testPlay"
     }
 
   @testPrime: ->
     steroids.audio.prime {
     }, {
       onSuccess: () -> steroids.logger.log "SUCCESS in priming audio for playing"
-      onFailure: () -> steroids.logger.log "FAILURE in testPrime"
+      onFailure: () -> navigator.notification.alert "FAILURE in testPrime"
     }
 

@@ -4,6 +4,6 @@ class window.NotificationsController
     steroids.notifications.post {
       message: "hello"
     }, {
-      onSuccess: () -> alert "success"
-      onFailure: () -> alert "failed"
+      onSuccess: () -> steroids.logger.log "SUCCESS in sending steroids notification"
+      onFailure: () -> navigator.notification.alert "FAILURE in testHello in notifications"
     }

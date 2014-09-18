@@ -61,9 +61,9 @@ class WebView extends EventsSupport
   getParams: ()->
     params = {}
     pairStrings = @location.slice(@location.indexOf('?') + 1).split('&')
-    for pairString in pairStrings
+    for pairString in pairStrings when pairString isnt location.href
       pair = pairString.split '='
-      params[pair[0]] = pair[1]
+      params[decodeURIComponent(pair[0])] = decodeURIComponent(pair[1])
     return params
 
   setParams: (object)->

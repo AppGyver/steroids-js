@@ -15,16 +15,16 @@ class window.DataController
       return
 
     window.openDatabase = window.sqlitePlugin.openDatabase
-    alert "done"
+    navigator.notification.alert "done"
 
   @testPersistenceJSDropTestDB: ->
     persistencedb = new steroids.data.SQLiteDB("persistencedb")
 
     persistencedb.dropTable "Task", {
       onSuccess: ->
-        alert "dropped"
+        navigator.notification.alert "dropped"
       onFailure: ->
-        alert "could not drop"
+        navigator.notification.alert "could not drop"
     }
 
   @getTask: ->
@@ -40,11 +40,11 @@ class window.DataController
     @getTask()
 
     persistence.schemaSync ->
-      alert "defined"
+      navigator.notification.alert "defined"
 
   @testPersistenceJSConfigure: ->
     persistence.store.websql.config(persistence, 'persistencedb', 'A database description', 5 * 1024 * 1024)
-    alert "configured"
+    navigator.notification.alert "configured"
 
   @testPersistenceJSInsertTask: ->
     Task = @getTask()
@@ -56,14 +56,14 @@ class window.DataController
 
     persistence.add(t)
     persistence.flush () ->
-      alert "inserted"
+      navigator.notification.alert "inserted"
 
   @testPersistenceJSListAllTasks: ->
     Task = @getTask()
 
     Task.all().list (tasks) ->
       steroids.debug(tasks)
-      alert "see console debug"
+      navigator.notification.alert "see console debug"
 
 
   # SQLITE
@@ -72,9 +72,9 @@ class window.DataController
     sqlitedb = new steroids.data.SQLiteDB("testdb")
 
     if sqlitedb.databaseName == "testdb"
-      alert "ok"
+      navigator.notification.alert "ok"
     else
-      alert "not ok"
+      navigator.notification.alert "not ok"
 
   @testSQLiteDBCreateTable: ->
     sqlitedb = new steroids.data.SQLiteDB("testdb")
@@ -89,15 +89,15 @@ class window.DataController
         price: "real"
     ,
       onSuccess: ->
-        alert "Created table"
+        navigator.notification.alert "Created table"
       onFailure: ->
-        alert "Failed creating table"
+        navigator.notification.alert "Failed creating table"
 
   @testSQLiteDBDropTable: ->
     testdb = new steroids.data.SQLiteDB("testdb")
     testdb.dropTable "cars", {
-      onSuccess: -> alert "dropped"
-      onFailure: -> alert "drop failed"
+      onSuccess: -> navigator.notification.alert "dropped"
+      onFailure: -> navigator.notification.alert "drop failed"
     }
 
   @testSQLiteDBexecute: ->
@@ -106,13 +106,13 @@ class window.DataController
       onSuccess: (rows, res, tx) ->
         steroids.debug res
       onFailure: (err) =>
-        alert err.message
+        navigator.notification.alert err.message
 
     testdb.execute "SELECT COUNT(*) FROM cars",
       onSuccess: (rows, res, tx) =>
-        alert "COUNT = #{rows[0]['COUNT(*)']}"
+        navigator.notification.alert "COUNT = #{rows[0]['COUNT(*)']}"
       onFailure: (err) =>
-        alert err.message
+        navigator.notification.alert err.message
 
 
   # TOUCHDB
@@ -123,20 +123,20 @@ class window.DataController
       name: "testdb"
 
     touchdb.on 'ready', () =>
-      alert "first 'testdb' ready"
+      navigator.notification.alert "first 'testdb' ready"
 
       samedb = new steroids.data.TouchDB
         name: "testdb"
 
       samedb.on 'ready', () =>
-        alert "second 'testdb' ready"
+        navigator.notification.alert "second 'testdb' ready"
 
   @testTouchDBOnChange: ->
     touchdb = new steroids.data.TouchDB
       name: "testdb"
 
     touchdb.on 'change', =>
-      alert('changed, always fired when set -- needs more thinking, cuz is currently required for ng-touchdb')
+      navigator.notification.alert('changed, always fired when set -- needs more thinking, cuz is currently required for ng-touchdb')
 
 
   # RSS

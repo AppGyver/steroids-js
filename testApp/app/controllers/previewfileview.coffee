@@ -13,4 +13,6 @@ class window.PreviewfileviewController
 
     steroids.modal.show {
       view: pdfView
-    }
+    },
+      onSuccess: -> steroids.logger.log "SUCCESS in showing the PreviewFileView with the PDF"
+      onFailure: -> navigator.notification.alert "FAILURE in testPreviewPDF"

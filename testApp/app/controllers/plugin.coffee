@@ -6,7 +6,10 @@ class window.PluginController
     # Make Navigation Bar to appear with a custom title text
     steroids.navigationBar.show { title: "Plugin" }
 
-    alert "deviceready !"
+    list = document.getElementById("ready")
+    el = document.createElement("li")
+    el.innerHTML = (new Date()).toLocaleTimeString() + " Cordova READY"
+    list.appendChild(el)
 
   # ACCELEROMETER TEST
 
@@ -17,7 +20,7 @@ class window.PluginController
     accel_timestamp.innerHTML = acceleration.timestamp;
 
   accelerometerOnError= () ->
-    alert 'accelerometer onError!'
+    navigator.notification.alert 'accelerometer onError!'
 
 
   # TODO: the success callback function continues to fire forever and ever
@@ -29,7 +32,7 @@ class window.PluginController
     options =
       frequency: 100
     watchId = navigator.accelerometer.watchAcceleration accelerometerOnSuccess, accelerometerOnError
-    alert "watching acceleration"
+    navigator.notification.alert "watching acceleration"
 
   @clearAccelerationWatchTest = () ->
     navigator.accelerometer.clearWatch watchId
@@ -44,12 +47,12 @@ class window.PluginController
   @barCodeScanTest = () ->
     cordova.plugins.barcodeScanner.scan (result) ->
       if result.cancelled
-        alert "the user cancelled the scan"
+        navigator.notification.alert "the user cancelled the scan"
       else
         qr_result.innerHTML = result.text
     ,
     (error) ->
-      alert "scanning failed: " + error
+      navigator.notification.alert "scanning failed: " + error
 
   # CAMERA TEST
 
@@ -59,17 +62,25 @@ class window.PluginController
 
 
   cameraOnFail = (message) ->
-    alert 'Failed because: ' + message
+    navigator.notification.alert 'Failed because: ' + message
 
 
   @cameraGetPictureTest = () ->
     navigator.camera.getPicture cameraOnSuccess, cameraOnFail, {
       quality: 50
       destinationType: Camera.DestinationType.DATA_URL
+      sourceType: Camera.PictureSourceType.CAMERA
+      targetWidth: 300
+      targetHeight: 300
+      encodingType: Camera.EncodingType.JPEG
+      mediaType: Camera.MediaType.PICTURE
+      allowEdit : false
+      correctOrientation: true
+      saveToPhotoAlbum: false
     }
 
   modalOpenedSuccess = () ->
-    alert "modal opened on the camera callback !"
+    navigator.notification.alert "modal opened on the camera callback !"
 
   openModalOnSucess = (imageData) ->
     image = document.querySelector '#cameraTest'
@@ -83,39 +94,110 @@ class window.PluginController
   @cameraFromPhotoLibraryOpenModalTest = () ->
     navigator.camera.getPicture openModalOnSucess, cameraOnFail, {
       quality: 50
-      destinationType: Camera.DestinationType.DATA_URL,
+      destinationType: Camera.DestinationType.DATA_URL
       sourceType: Camera.PictureSourceType.PHOTOLIBRARY
+      targetWidth: 300
+      targetHeight: 300
+      encodingType: Camera.EncodingType.JPEG
+      mediaType: Camera.MediaType.PICTURE
+      allowEdit : false
+      correctOrientation: true
+      saveToPhotoAlbum: false
     }
 
   @cameraGetPictureOpenModalTest = () ->
     navigator.camera.getPicture openModalOnSucess, cameraOnFail, {
       quality: 50
       destinationType: Camera.DestinationType.DATA_URL
+      sourceType: Camera.PictureSourceType.CAMERA
+      targetWidth: 300
+      targetHeight: 300
+      encodingType: Camera.EncodingType.JPEG
+      mediaType: Camera.MediaType.PICTURE
+      allowEdit : false
+      correctOrientation: true
+      saveToPhotoAlbum: false
     }
 
   @cameraCleanupTest = () ->
     navigator.camera.cleanup(
       () ->
-        alert "Camera cleanup success"
+        navigator.notification.alert "Camera cleanup success"
       (message) ->
-        alert "Camera cleanup failed: " + message
+        navigator.notification.alert "Camera cleanup failed: " + message
     )
 
   @cameraFromPhotoLibraryTest = () ->
     navigator.camera.getPicture cameraOnSuccess, cameraOnFail, {
       quality: 50
-      destinationType: Camera.DestinationType.DATA_URL,
+      destinationType: Camera.DestinationType.DATA_URL
       sourceType: Camera.PictureSourceType.PHOTOLIBRARY
+      targetWidth: 300
+      targetHeight: 300
+      encodingType: Camera.EncodingType.JPEG
+      mediaType: Camera.MediaType.PICTURE
+      allowEdit : false
+      correctOrientation: true
+      saveToPhotoAlbum: false
+    }
+
+  fileError = (error)->
+    navigator.notification.alert "Cordova error code: " + error.code, null, "File system error!"
+
+  fileMoved = (file)->
+    image = document.querySelector '#cameraTest'
+    image.src = "/#{file.name}?#{(new Date()).getTime()}"
+    
+  gotFileObject = (file)->
+    targetDirURI = "file://" + steroids.app.absoluteUserFilesPath
+    fileName = "user_pic.png"
+
+    window.resolveLocalFileSystemURL(
+      targetDirURI
+      (directory)->
+        file.moveTo directory, fileName, fileMoved, fileError
+      fileError
+    )
+
+  saveInUserFilesOnSuccess = (imageURI) ->
+    window.resolveLocalFileSystemURL imageURI, gotFileObject, fileError
+
+  @cameraGetPictureSaveInUserFilesTest = () ->
+    navigator.camera.getPicture saveInUserFilesOnSuccess, cameraOnFail, {
+      quality: 50
+      destinationType: Camera.DestinationType.FILE_URI
+      sourceType: Camera.PictureSourceType.CAMERA
+      targetWidth: 300
+      targetHeight: 300
+      encodingType: Camera.EncodingType.JPEG
+      mediaType: Camera.MediaType.PICTURE
+      allowEdit : false
+      correctOrientation: true
+      saveToPhotoAlbum: false
+    }
+
+  @cameraFromPhotoLibrarySaveInUserFilesTest = () ->
+    navigator.camera.getPicture saveInUserFilesOnSuccess, cameraOnFail, {
+      quality: 50
+      destinationType: Camera.DestinationType.FILE_URI
+      sourceType: Camera.PictureSourceType.PHOTOLIBRARY
+      targetWidth: 300
+      targetHeight: 300
+      encodingType: Camera.EncodingType.JPEG
+      mediaType: Camera.MediaType.PICTURE
+      allowEdit : false
+      correctOrientation: true
+      saveToPhotoAlbum: false
     }
 
   # CAPTURE TEST
 
   captureOnSuccess = (mediaFiles) ->
     for item in mediaFiles
-      alert item.fullPath
+      navigator.notification.alert item.fullPath
 
   captureOnError = (error) ->
-    alert 'Capture error, error code: ' + error.code
+    navigator.notification.alert 'Capture error, error code: ' + error.code
 
 
   @captureAudioTest = () ->
@@ -135,7 +217,7 @@ class window.PluginController
     compass_result.innerHTML = heading.magneticHeading
 
   compassOnError = (error) ->
-    alert 'CompassError: ' + error.code
+    navigator.notification.alert 'CompassError: ' + error.code
 
   @compassTest = () ->
     navigator.compass.getCurrentHeading compassOnSuccess, compassOnError
@@ -214,79 +296,79 @@ class window.PluginController
     document.addEventListener "pause", () ->
       pause_result.innerHTML = "YES"
 
-    alert "Event listener added: pause"
+    navigator.notification.alert "Event listener added: pause"
 
   @addResume = () ->
     # alert needs to be wrapped in setTimeout to work
     document.addEventListener "resume", () ->
       setTimeout () ->
-       alert "resume got triggered!"
+       navigator.notification.alert "resume got triggered!"
       , 0
 
-    alert "Event listener added: resume"
+    navigator.notification.alert "Event listener added: resume"
 
   @addOnline = () ->
     document.addEventListener "online", () ->
       online_result.innerHTML = "YES"
 
-    alert "Event listener added: online"
+    navigator.notification.alert "Event listener added: online"
 
   @addOffline = () ->
     document.addEventListener "offline", () ->
       offline_result.innerHTML = "YES"
 
-    alert "Event listener added: offline"
+    navigator.notification.alert "Event listener added: offline"
 
   @addBatteryCritical = () ->
     window.addEventListener "batterycritical", (status) ->
-      alert "Device's battery level is critical, with  #{status.level}
+      navigator.notification.alert "Device's battery level is critical, with  #{status.level}
         % battery life. \n
         Is it plugged in? #{status.isPlugged}"
 
-    alert "Event listener added: batterycritical"
+    navigator.notification.alert "Event listener added: batterycritical"
 
   @addBatteryLow = () ->
     window.addEventListener "batterylow", (status) ->
-      alert "Device's battery level is low, with  #{status.level}
+      navigator.notification.alert "Device's battery level is low, with  #{status.level}
         % battery life. \n
         Is it plugged in? #{status.isPlugged}"
 
-    alert "Event listener added: batterylow"
+    navigator.notification.alert "Event listener added: batterylow"
 
   @addBatteryStatus = () ->
     window.addEventListener "batterystatus", (status) ->
-      alert "Device's battery level was changed by at least 1%, with  #{status.level}
+      navigator.notification.alert "Device's battery level was changed by at least 1%, with  #{status.level}
         % battery life. \n
         Is it plugged in? #{status.isPlugged}"
 
-    alert "Event listener added: batterystatus"
+    navigator.notification.alert "Event listener added: batterystatus"
 
   @addBackButton = () ->
 
     handler = () ->
-      alert "Device's back button pressed !"
+      navigator.notification.alert "Device's back button pressed !"
 
     document.addEventListener "backbutton", handler, false
 
-    alert "Event listener added: backbutton"
+    navigator.notification.alert "Event listener added: backbutton"
 
   @addMenuButton = () ->
 
     handler = () ->
-      alert "Menu button pressed !"
+      navigator.notification.alert "Menu button pressed !"
 
     document.addEventListener "menubutton", handler, false
 
-    alert "Event listener added: menubutton"
+    navigator.notification.alert "Event listener added: menubutton"
 
   @addSearchButton = () ->
 
     handler = () ->
-      alert "searchbutton button pressed !"
+      navigator.notification.alert "searchbutton button pressed !"
 
     document.addEventListener "searchbutton", handler, false
 
-    alert "Event listener added: searchbutton"
+    navigator.notification.alert "Event listener added: searchbutton"
 
   # FILE TEST
 
@@ -298,26 +380,26 @@ class window.PluginController
     if testFS?
       testFS.root.getFile "lol.txt", {create:true}, gotFileEntry, fileTestFail
     else
-      alert "Request a fileSystem with the 'Get fileSystem' test first"
+      navigator.notification.alert "Request a fileSystem with the 'Get fileSystem' test first"
 
   @writeFileTest = () ->
     if testFS?
       testFS.root.getFile "lol.txt", {create:true}, gotFileToWrite, fileTestFail
     else
-      alert "Request a fileSystem with the 'Get fileSystem' test first"
+      navigator.notification.alert "Request a fileSystem with the 'Get fileSystem' test first"
 
   @deleteFileTest = () ->
     if testFS?
       testFS.root.getFile "lol.txt", {create:false}, gotFileToDelete, fileTestFail
     else
-      alert "Request a fileSystem with the 'Get fileSystem' test first"
+      navigator.notification.alert "Request a fileSystem with the 'Get fileSystem' test first"
 
   gotFS = (fileSystem) ->
-    alert "Got file system with root path: " + fileSystem.root.fullPath
+    navigator.notification.alert "Got file system with root path: " + fileSystem.root.fullPath
     testFS = fileSystem
 
   gotFileEntry = (fileEntry) ->
-    alert "Got file entry with path: " + fileEntry.fullPath
+    navigator.notification.alert "Got file entry with path: " + fileEntry.fullPath
     fileEntry.file gotFile, fileTestFail
 
   gotFileToWrite = (fileEntry) ->
@@ -343,7 +425,7 @@ class window.PluginController
     )
 
   gotFile = (file) ->
-    alert "Got file: #{file.name} \n
+    navigator.notification.alert "Got file: #{file.name} \n
           Full path: #{file.fullPath} \n
           Mime type: #{file.type} \n
           Last modified: #{file.lastModifiedDate} \n
@@ -354,7 +436,7 @@ class window.PluginController
   readDataUrl = (file) ->
     reader = new FileReader()
     reader.onloadend = (evt) ->
-      alert "Read as data URL: " + evt.target.result
+      navigator.notification.alert "Read as data URL: " + evt.target.result
 
     reader.readAsDataURL file
 
@@ -368,7 +450,7 @@ class window.PluginController
     reader.readAsText file
 
   fileTestFail = (evt) ->
-      alert "FILETESTFAIL: " + JSON.stringify evt
+      navigator.notification.alert "FILETESTFAIL: " + JSON.stringify evt
 
 
   imageFileURL = undefined
@@ -377,7 +459,7 @@ class window.PluginController
     if testFS?
       testFS.root.getFile "image.png", {create:true}, gotImage, imageTestFail
     else
-      alert "Request a fileSystem with the 'Get fileSystem' test first"
+      navigator.notification.alert "Request a fileSystem with the 'Get fileSystem' test first"
 
   @URLtoFileEntryTest = () ->
     if testFS?
@@ -385,7 +467,7 @@ class window.PluginController
         fileURL_result.innerHTML = "fileEntry.fullPath: " + fileEntry.fullPath
       , imageTestFail
     else
-      alert "Request a fileSystem with the 'Get fileSystem' test first"
+      navigator.notification.alert "Request a fileSystem with the 'Get fileSystem' test first"
 
   gotImage = (fileEntry) ->
     imageFileURL = fileEntry.toURL()
@@ -480,7 +562,7 @@ class window.PluginController
   # onError Callback receives a PositionError object
 
   onGeolocationError = (error) ->
-    alert "
+    navigator.notification.alert "
       code: #{error.code} \n
       message: #{error.message} "
 
@@ -567,3 +649,28 @@ class window.PluginController
 
   @vibrateTest = () ->
     navigator.notification.vibrate 500
+
+  # LOCAL STORAGE TEST
+  @setItemTest = () ->
+    window.localStorage.setItem "items", "apples"
+    localStorage_result.innerHTML = "Set an item 'items' with the value 'apples'."
+
+  @getItemTest = () ->
+    item = window.localStorage.getItem "items"
+    if item?
+      localStorage_result.innerHTML = "Got '#{item}'"
+    else
+      localStorage_result.innerHTML = "Error: could not find the item"
+  
+  @removeItemTest = () ->
+    item = window.localStorage.getItem "items"
+    if item?
+      window.localStorage.removeItem "items"
+      localStorage_result.innerHTML = "'items' removed"
+    else
+      localStorage_result.innerHTML = "Error: could not find the item to be removed"
+    
+  # EXIT APP
+  @exitAppTest = () ->
+    navigator.app.exitApp()
+

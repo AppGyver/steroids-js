@@ -30,6 +30,7 @@ class window.FileController
             steroids.logger.log "SUCCESS in resizing image"
           onFailure: =>
             steroids.logger.log "FAILURE in testResize image"
+            navigator.notification.alert "FAILURE in testResize image"
 
   # @testScale: ->
   #   @createFile().scaleImage {
@@ -56,3 +57,4 @@ class window.FileController
         steroids.logger.log "SUCCESS in unzipping image"
       onFailure: =>
         steroids.logger.log "FAILURE in testUnzip"
+        navigator.notification.alert "FAILURE in testUnzip"

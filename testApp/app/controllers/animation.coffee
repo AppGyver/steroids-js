@@ -35,7 +35,7 @@ class window.AnimationController
     }
 
     anim.perform({}, {
-      onFailure: -> alert "..and it is failing with onFailure. great success."
+      onFailure: -> navigator.notification.alert "..and it is failing with onFailure. great success."
     })
 
   @testSlideFromRight: () ->
@@ -44,7 +44,7 @@ class window.AnimationController
     }
 
     anim.perform({}, {
-      onFailure: -> alert "..and it is failing with onFailure. great success."
+      onFailure: -> navigator.notification.alert "..and it is failing with onFailure. great success."
     })
 
   @testSlideFromTop: () ->
@@ -53,7 +53,7 @@ class window.AnimationController
      }
 
      anim.perform({}, {
-       onFailure: -> alert "..and it is failing with onFailure. great success."
+       onFailure: -> navigator.notification.alert "..and it is failing with onFailure. great success."
      })
 
   @testSlideFromBottom: () ->
@@ -62,15 +62,15 @@ class window.AnimationController
     }
 
     anim.perform({}, {
-      onFailure: -> alert "..and it is failing with onFailure. great success."
+      onFailure: -> navigator.notification.alert "..and it is failing with onFailure. great success."
     })
 
   @testDontPerformWhenOrientationNot0: () ->
     nowRotate = ->
-      alert "now rotate the device off from 0 and try slideFromLeft"
+      navigator.notification.alert "now rotate the device off from 0 and try slideFromLeft"
 
-    steroids.view.setAllowedRotations {
-      allowedRotations: [-90, 90, 0, 180]
+    steroids.screen.setAllowedRotations {
+      allowedRotations: ["landscapeLeft", "landscapeRight", "portrait", "portraitUpsideDown"]
     }, {
       onSuccess: nowRotate
     }
@@ -82,7 +82,7 @@ class window.AnimationController
 
     anim.perform({}, {
       onSuccess: ->
-      onAnimationStarted: -> alert "animation started"
-      onAnimationEnded: -> alert "animation ended"
-      onFailure: -> alert "..and it is failing with onFailure. great success."
+      onAnimationStarted: -> navigator.notification.alert "animation started"
+      onAnimationEnded: -> navigator.notification.alert "animation ended"
+      onFailure: -> navigator.notification.alert "..and it is failing with onFailure. great success."
     })

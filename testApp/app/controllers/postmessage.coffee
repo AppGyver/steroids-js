@@ -9,7 +9,7 @@ class window.PostmessageController
 
     window.addEventListener "message", receiveMessage
 
-    alert "Listening for messages and appending them to this document."
+    navigator.notification.alert "Listening for messages and appending them to this document."
 
   @testSendingUncommonCharacters: ->
     msg = {text: "%=!=€%&hay'jay  ____dolan"}

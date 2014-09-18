@@ -81,12 +81,14 @@ class window.DrawersController
         steroids.logger.log "SUCCESS in adding button to navigation bar that opens right drawer"
       onFailure: ->
         steroids.logger.log "FAILURE in testAddRightButton"
+        navigator.notification.alert "FAILURE in testAddRightButton"
 
   @testShow: ->
     success = ->
       steroids.logger.log "SUCCESS in showing default drawer"
     failure = ->
       steroids.logger.log "FAILURE in testShow"
+      navigator.notification.alert "FAILURE in testShow"
 
     steroids.drawers.show {}, {
       onSuccess: success
@@ -98,6 +100,7 @@ class window.DrawersController
       steroids.logger.log "SUCCESS in showing left drawer"
     failure = ->
       steroids.logger.log "FAILURE in testShowLeft"
+      navigator.notification.alert "FAILURE in testShowLeft"
 
     steroids.drawers.show
       edge: steroids.screen.edges.LEFT
@@ -110,6 +113,7 @@ class window.DrawersController
       steroids.logger.log "SUCCESS in showing right drawer"
     failure = ->
       steroids.logger.log "FAILURE in testShowRight"
+      navigator.notification.alert "FAILURE in testShowRight"
 
     steroids.drawers.show
       edge: steroids.screen.edges.RIGHT
@@ -124,6 +128,7 @@ class window.DrawersController
       steroids.logger.log "SUCCESS testUpdateNonPreloadedDrawerRight - failed to set non-preloaded view as right drawer. Right drawer should be unaffected."
     failure = ->
       steroids.logger.log "FAILURE testUpdateNonPreloadedDrawerRight - native success callback fired while setting non-preloaded view as right drawer."
+      navigator.notification.alert "FAILURE testUpdateNonPreloadedDrawerRight - native success callback fired while setting non-preloaded view as right drawer."
 
     newDrawer = new steroids.views.WebView("views/drawers/extraDrawer.html")
 
@@ -139,6 +144,7 @@ class window.DrawersController
       steroids.logger.log "SUCCESS testUpdateNonPreloadedDrawerWithIdRight - failed to set non-preloaded view with id parameter set as right drawer. Right drawer should be unaffected."
     failure = ->
       steroids.logger.log "FAILURE testUpdateNonPreloadedDrawerWithIdRight - native success callback fired while setting non-preloaded view with id property set as right drawer."
+      navigator.notification.alert "FAILURE testUpdateNonPreloadedDrawerWithIdRight - native success callback fired while setting non-preloaded view with id property set as right drawer."
 
     newDrawer = new steroids.views.WebView
       location: "views/drawers/extraDrawer.html"
@@ -156,6 +162,7 @@ class window.DrawersController
       steroids.logger.log "SUCCESS testUpdatePreloadedDrawerRight – updated right drawer with preloaded view. Right drawer should be updated to show 'Extra'."
     failure = ->
       steroids.logger.log "FAILURE testUpdatePreloadedDrawerRight - could not update right drawer with preloaded view."
+      navigator.notification.alert "FAILURE testUpdatePreloadedDrawerRight - could not update right drawer with preloaded view."
 
     newDrawer = new steroids.views.WebView("views/drawers/extraDrawer.html")
 
@@ -176,6 +183,7 @@ class window.DrawersController
       steroids.logger.log "SUCCESS in hiding the drawer"
     failure = ->
       steroids.logger.log "FAILURE in testHide"
+      navigator.notification.alert "FAILURE testUpdatePreloadedDrawerRight - could not update right drawer with preloaded view."
 
     steroids.drawers.hide {}, {
       onSuccess: success
@@ -187,6 +195,7 @@ class window.DrawersController
       steroids.logger.log "SUCCESS in hiding the drawer and replacing center with center 1"
     failure = ->
       steroids.logger.log "FAILURE in testHideWithCenter1"
+      navigator.notification.alert "FAILURE testUpdatePreloadedDrawerRight - could not update right drawer with preloaded view."
 
     # fullChange is set automatically to true if center param is used
     steroids.drawers.hide {
@@ -201,6 +210,7 @@ class window.DrawersController
       steroids.logger.log "SUCCESS in hiding the drawer and replacing center with NON-PRELOADED center 1"
     failure = ->
       steroids.logger.log "FAILURE in testHideWithNonPreloadedCenter1"
+      navigator.notification.alert "FAILURE in testHideWithNonPreloadedCenter1"
 
     centerView = new steroids.views.WebView("/views/drawers/index.html")
 
@@ -217,6 +227,7 @@ class window.DrawersController
       steroids.logger.log "SUCCESS in hiding the drawer and showing center 2"
     failure = ->
       steroids.logger.log "FAILURE in testHideWithCenter2"
+      navigator.notification.alert "FAILURE in testHideWithCenter2"
 
     steroids.drawers.hide {
       center: DrawersController.center2
@@ -230,6 +241,7 @@ class window.DrawersController
       steroids.logger.log "SUCCESS in enabling all swipe gestures"
     failure = ->
       steroids.logger.log "FAILURE in testEnableAllGestures"
+      navigator.notification.alert "FAILURE in testEnableAllGestures"
 
     steroids.drawers.update {
       options:
@@ -252,7 +264,8 @@ class window.DrawersController
           widthOfDrawerInPixels: 200
         steroids.logger.log "SUCCESS in enabling legacy gesture"
       onFailure: =>
-        steroids.logger.log "FAILURE in testLegacyEnableGesture"
+        steroids.logger.log "FAILURE in preloading googleview in testLegacyEnableGesture"
+        navigator.notification.alert "FAILURE in preloading googleview for testLegacyEnableGesture"
     }
 
   @testLegacyEnableGestureShorthand: ->
@@ -264,6 +277,7 @@ class window.DrawersController
         steroids.logger.log "SUCCESS in enabling legacy gesture shorthand"
       onFailure: =>
         steroids.logger.log "FAILURE in testLegacyEnableGestureShorthand"
+        navigator.notification.alert "FAILURE in testLegacyEnableGestureShorthand"
     }
 
   @testDisableGestureViaUpdate: ->
@@ -271,6 +285,7 @@ class window.DrawersController
       steroids.logger.log "SUCCESS in disabling gestures via update"
     failure = ->
       steroids.logger.log "FAILURE in testDisableGestureViaUpdate"
+      navigator.notification.alert "FAILURE in testDisableGestureViaUpdate"
 
     steroids.drawers.update {
       options:
@@ -288,6 +303,7 @@ class window.DrawersController
       steroids.logger.log "SUCCESS in disabling gestures the legacy way"
     failure = ->
       steroids.logger.log "FAILURE in testLegacyDisableGesture"
+      navigator.notification.alert "FAILURE in testLegacyDisableGesture"
 
     steroids.drawers.disableGesture
       onSuccess: success
@@ -298,6 +314,7 @@ class window.DrawersController
       steroids.logger.log "SUCCESS in updating the width of the center layer"
     failure = ->
       steroids.logger.log "FAILURE in testUpdateWithWidthOfLayerInPixels"
+      navigator.notification.alert "FAILURE in testUpdateWithWidthOfLayerInPixels"
 
     steroids.drawers.update {
       options:
@@ -310,8 +327,9 @@ class window.DrawersController
   @testDiffSizes: ->
     success = ->
       steroids.logger.log "SUCCESS in testing different sizes for drawers"
-    failure = ->
-      steroids.logger.log "FAILURE in testDiffSizes"
+    failure = (error) ->
+      steroids.logger.log "FAILURE in testDiffSizes: " + JSON.stringify error
+      navigator.notification.alert "FAILURE in testDiffSizes"
 
     steroids.drawers.update {
       options:
@@ -331,6 +349,7 @@ class window.DrawersController
       steroids.logger.log "SUCCESS in returning to original sizes for drawers and center layer"
     failure = ->
       steroids.logger.log "FAILURE in testDefaultSizes"
+      navigator.notification.alert "FAILURE in testDefaultSizes"
 
     steroids.drawers.update {
       options:
@@ -350,6 +369,7 @@ class window.DrawersController
       steroids.logger.log "SUCCESS in hiding drawer shadow"
     failure = ->
       steroids.logger.log "FAILURE in testHideShadow"
+      navigator.notification.alert "FAILURE in testHideShadow"
 
     steroids.drawers.update {
       options:
@@ -364,6 +384,7 @@ class window.DrawersController
       steroids.logger.log "SUCCESS in showing drawer shadow"
     failure = ->
       steroids.logger.log "FAILURE in testShowShadow"
+      navigator.notification.alert "FAILURE in testShowShadow"
 
     steroids.drawers.update {
       options:
@@ -378,6 +399,7 @@ class window.DrawersController
       steroids.logger.log "SUCCESS in enabling stretch effect for drawer"
     failure = ->
       steroids.logger.log "FAILURE in testStretchDrawer"
+      navigator.notification.alert "FAILURE in testStretchDrawer"
 
     steroids.drawers.update {
       options: {
@@ -398,6 +420,7 @@ class window.DrawersController
       steroids.logger.log "SUCCESS in changing drawer animation to parallax"
     failure = ->
       steroids.logger.log "FAILURE in testUpdateWithParallax"
+      navigator.notification.alert "FAILURE in testUpdateWithParallax"
 
     steroids.drawers.update
       options:
@@ -414,6 +437,7 @@ class window.DrawersController
       steroids.logger.log "SUCCESS in changing drawer animation to SlideAndScale"
     failure = ->
       steroids.logger.log "FAILURE in testUpdateWithSlideAndScale"
+      navigator.notification.alert "FAILURE in testUpdateWithSlideAndScale"
 
     steroids.drawers.update {
       options:
@@ -430,6 +454,7 @@ class window.DrawersController
       steroids.logger.log "SUCCESS in changing drawer animation to SwingingDoor"
     failure = ->
       steroids.logger.log "FAILURE in testUpdateWithSwingingDoor"
+      navigator.notification.alert "FAILURE in testUpdateWithSwingingDoor"
 
     steroids.drawers.update {
       options:
@@ -451,6 +476,7 @@ class window.DrawersController
           steroids.logger.log "SUCCESS in replacing center layer to center 2"
         onFailure: ->
           steroids.logger.log "FAILURE in testReplaceLayers - could not replace center layer"
+          navigator.notification.alert "FAILURE in testReplaceLayers - could not replace center layer"
       }
     )
 
@@ -465,6 +491,7 @@ class window.DrawersController
           steroids.logger.log "SUCCESS in showing modal"
         onFailure: ->
           steroids.logger.log "FAILURE in testShowModal - could not show modal"
+          navigator.notification.alert "FAILURE in testShowModal - could not show modal"
       }
     )
 
@@ -472,25 +499,25 @@ class window.DrawersController
 
   @testWillShowChangeEvent: ->
     eventHandler = steroids.drawers.on 'willshow', (event) ->
-      alert "willshow event -> eventName: #{event.name} drawer.edge: #{event.drawer.edge}"
+      navigator.notification.alert "willshow event -> eventName: #{event.name} drawer.edge: #{event.drawer.edge}"
 
     steroids.logger.log "Event listener drawer WILL SHOW added"
 
   @testDidShowChangeEvent: ->
     eventHandler = steroids.drawers.on 'didshow', (event) ->
-      alert "didshow event -> eventName: #{event.name} drawer.edge: #{event.drawer.edge}"
+      navigator.notification.alert "didshow event -> eventName: #{event.name} drawer.edge: #{event.drawer.edge}"
 
     steroids.logger.log "Event listener drawer DID SHOW added"
 
   @testWillCloseChangeEvent: ->
     eventHandler = steroids.drawers.on 'willclose', (event) ->
-      alert "willclose event -> eventName: #{event.name} drawer.edge: #{event.drawer.edge}"
+      navigator.notification.alert "willclose event -> eventName: #{event.name} drawer.edge: #{event.drawer.edge}"
 
     steroids.logger.log "Event listener drawer WILL CLOSE added"
 
   @testDidCloseChangeEvent: ->
     eventHandler = steroids.drawers.on 'didclose', (event) ->
-      alert "didclose event -> eventName: #{event.name} drawer.edge: #{event.drawer.edge}"
+      navigator.notification.alert "didclose event -> eventName: #{event.name} drawer.edge: #{event.drawer.edge}"
 
     steroids.logger.log "Event listener drawer DID CLOSE added"
 
@@ -528,7 +555,7 @@ class window.DrawersController
         view: popView
       }
       {
-        onSuccess: -> alert "SUCCESS pushed layer"
-        onFailure: -> alert "FAILURE in testPushLayer"
+        onSuccess: -> steroids.logger.log "SUCCESS pushed layer"
+        onFailure: -> navigator.notification.alert "FAILURE in testPushLayer"
       }
     )

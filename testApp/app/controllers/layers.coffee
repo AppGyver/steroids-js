@@ -1,6 +1,14 @@
 class window.LayersController
+
+
   # always put everything inside PhoneGap deviceready
   document.addEventListener "deviceready", ->
+    @preloadedView = new steroids.views.WebView
+      id: 'pop_preloaded',
+      location:"/views/layers/pop.html"
+
+    @preloadedView.preload()
+
 
   # Make Navigation Bar to appear with a custom title text
   unless window.location.href.match("pop.html")
@@ -11,16 +19,33 @@ class window.LayersController
       location: "/views/layers/pop.html"
     }
 
+  @testPushPreloaded: ->
+
+    success = ->
+      steroids.logger.log "SUCCESS in pushing pop.html preloaded"
+    failure = ->
+      steroids.logger.log "FAILURE in testPushPreloaded"
+
+    steroids.layers.push
+      view:
+        id: 'pop_preloaded'
+    ,
+      onSuccess: success
+      onFailure: failure
+
   @testShowNavBar: ->
     steroids.navigationBar.show "layers!",
       onSuccess: -> steroids.logger.log "SUCCESS in showing navigation bar"
-      onFailure: -> steroids.logger.log "FAILURE in testShowNavBar"
+      onFailure: -> 
+        steroids.logger.log "FAILURE in testShowNavBar"
+        navigator.notification.alert "FAILURE in testShowNavBar"
 
   @testPushPop: ->
     success = ->
       steroids.logger.log "SUCCESS in pushing pop.html"
     failure = ->
       steroids.logger.log "FAILURE in testPushPop"
+      navigator.notification.alert "FAILURE in testPushPop"
 
     steroids.layers.push {
       view: @createWebView()
@@ -34,6 +59,7 @@ class window.LayersController
       steroids.logger.log "SUCCESS in popping the topmost layer"
     failure = ->
       steroids.logger.log "FAILURE in testPop"
+      navigator.notification.alert "FAILURE in testPop"
 
     steroids.layers.pop({}, {
       onSuccess: success
@@ -48,7 +74,9 @@ class window.LayersController
       animation: animation
     }, {
       onSuccess: -> steroids.logger.log "SUCCESS push with animation"
-      onFailure: -> steroids.logger.log "FAILURE in testPushAnimated"
+      onFailure: ->
+        steroids.logger.log "FAILURE in testPushAnimated"
+        navigator.notification.alert "FAILURE in testPushAnimated"
     }
 
   @testPushHideNavBar: ->
@@ -57,7 +85,9 @@ class window.LayersController
       navigationBar: false
     }, {
       onSuccess: -> steroids.logger.log "SUCCESS in pushing layer while hiding nav bar"
-      onFailure: -> steroids.logger.log "FAILURE in testPushHideNavBar"
+      onFailure: ->
+        steroids.logger.log "FAILURE in testPushHideNavBar"
+        navigator.notification.alert "FAILURE in testPushHideNavBar"
     }
 
   @testPushHideTabBar: ->
@@ -66,7 +96,9 @@ class window.LayersController
       tabBar: false
     }, {
       onSuccess: -> steroids.logger.log "SUCCESS in pushing layer while hiding tab bar"
-      onFailure: -> steroids.logger.log "FAILURE in testPushHideTabBar"
+      onFailure: ->
+        steroids.logger.log "FAILURE in testPushHideTabBar"
+        navigator.notification.alert "FAILURE in testPushHideTabBar"
     }
 
   @testKeepLoading: ->
@@ -77,7 +109,9 @@ class window.LayersController
       keepLoading: true
     }, {
       onSuccess: -> steroids.logger.log "SUCCESS in pushing layer while keeping loading screen until non-preloaded view is loaded and result view removes the loading.html/png"
-      onFailure: -> steroids.logger.log "FAILURE in testKeepLoading"
+      onFailure: ->
+        steroids.logger.log "FAILURE in testKeepLoading"
+        navigator.notification.alert "FAILURE in testKeepLoading"
     }
 
   @testKeepLoadingWithPreloaded: ->
@@ -87,14 +121,18 @@ class window.LayersController
         keepLoading: true
       }, {
         onSuccess: -> steroids.logger.log "SUCCESS in pushing preloaded web view while keeping loading screen until preloaded view removes it"
-        onFailure: -> steroids.logger.log "FAILURE in testKeepLoadingWithPreloaded"
+        onFailure: ->
+          steroids.logger.log "FAILURE in testKeepLoadingWithPreloaded"
+          navigator.notification.alert "FAILURE in testKeepLoadingWithPreloaded"
       }
 
     keepLoadingView = new steroids.views.WebView "/views/layers/keepLoading.html"
 
     keepLoadingView.preload({}, {
       onSuccess: pushPreloadedWebViewWithKeep
-      onFailure: -> steroids.logger.log "FAILURE in preloading view in testKeepLoadingWithPreloaded"
+      onFailure: ->
+        steroids.logger.log "FAILURE in preloading view in testKeepLoadingWithPreloaded"
+        navigator.notification.alert "FAILURE in preloading view in testKeepLoadingWithPreloaded"
     })
 
   @testPushAnimatedSlideFromLeftAndFade: ->
@@ -107,7 +145,9 @@ class window.LayersController
       animation: animation
     }, {
       onSuccess: -> steroids.logger.log "SUCCESS in pushing layer with slideFromLeft and Fade animation"
-      onFailure: -> steroids.logger.log "FAILURE in testPushAnimatedSlideFromLeftAndFade"
+      onFailure: ->
+        steroids.logger.log "FAILURE in testPushAnimatedSlideFromLeftAndFade"
+        navigator.notification.alert "FAILURE in testPushAnimatedSlideFromLeftAndFade"
     }
 
   @testPushAnimatedSlideFromLeftAndFadeFast: ->
@@ -121,7 +161,9 @@ class window.LayersController
       animation: animation
     }, {
       onSuccess: -> steroids.logger.log "SUCCESS in pushing layer with slideFromLeft and FadeFast animation"
-      onFailure: -> steroids.logger.log "FAILURE in testPushAnimatedSlideFromLeftAndFadeFast"
+      onFailure: ->
+        steroids.logger.log "FAILURE in testPushAnimatedSlideFromLeftAndFadeFast"
+        navigator.notification.alert "FAILURE in testPushAnimatedSlideFromLeftAndFadeFast"
     }
 
   @testPushAnimatedSlideFromLeftAndFadeFastAndSlow: ->
@@ -136,7 +178,9 @@ class window.LayersController
       animation: animation
     }, {
       onSuccess: -> steroids.logger.log "SUCCESS in pushing layer with slideFromLeft and FadeFastAndSlow animation"
-      onFailure: -> steroids.logger.log "FAILURE in testPushAnimatedSlideFromLeftAndFadeFastAndSlow"
+      onFailure: ->
+        steroids.logger.log "FAILURE in testPushAnimatedSlideFromLeftAndFadeFastAndSlow"
+        navigator.notification.alert "FAILURE in testPushAnimatedSlideFromLeftAndFadeFastAndSlow"
     }
 
   @testKeepLoadingThis: ->
@@ -157,6 +201,7 @@ class window.LayersController
         steroids.logger.log "SUCCESS in pushing layer while keeping loading.html/png on top, this view should remove loading html after timeout"
       onFailure: ->
         steroids.logger.log "FAILURE in testKeepLoadingThis"
+        navigator.notification.alert "FAILURE in testKeepLoadingThis"
     }
 
   @testReplace: ->
@@ -167,13 +212,15 @@ class window.LayersController
           {
             view: view
           }, {
-            onSuccess: -> 
+            onSuccess: ->
               steroids.logger.log "SUCCESS in replacing with a preloaded layer"
-            onFailure: -> 
+            onFailure: ->
               steroids.logger.log "FAILURE in testReplace while replacing view with preloaded layer"
+              navigator.notification.alert "FAILURE in testReplace while replacing view with preloaded layer"
           })
       onFailure: ->
         steroids.logger.log "FAILURE in testReplace while preloading view"
+        navigator.notification.alert "FAILURE in testReplace with preloading view"
 
 
   @testReplaceToRoot: ->
@@ -190,6 +237,7 @@ class window.LayersController
           steroids.logger.log "SUCCESS in replacing view to root without preload"
         onFailure: ->
           steroids.logger.log "FAILURE in testReplaceToRoot"
+          navigator.notification.alert "FAILURE in testReplaceToRoot"
       }
     )
 
@@ -205,6 +253,7 @@ class window.LayersController
     try
       steroids.layers.on 'invalidEventName', (event) ->
         steroids.logger.log "TEST FAILURE in testInvalidLayerEvents - was able to add event listener with invalid name"
+        navigator.notification.alert "TEST FAILURE in testInvalidLayerEvents - was able to add event listener with invalid name"
     catch error
       steroids.logger.log "TEST SUCCESS steroids.layers.on was called with invalid layer event but this was catched. Error catched: '#{error}'"
 
@@ -222,7 +271,7 @@ class window.LayersController
       else
         ""
 
-      alert "willchange event -> eventName: #{event.name} target.webview.id: #{targetId} source.webview.id: #{sourceId}"
+      navigator.notification.alert "willchange event -> eventName: #{event.name} target.webview.id: #{targetId} source.webview.id: #{sourceId}"
 
     @willChangeHandlers.push eventHandler
 
@@ -238,7 +287,7 @@ class window.LayersController
         event.source.webview.id
       else
         ""
-      alert "didchange event -> eventName: #{event.name} target.webview.id: #{targetId} source.webview.id: #{sourceId}"
+      navigator.notification.alert "didchange event -> eventName: #{event.name} target.webview.id: #{targetId} source.webview.id: #{sourceId}"
 
     @didChangeHandlers.push eventHandler
 
@@ -278,7 +327,6 @@ class window.LayersController
     }
 
   @testPopAll: ->
-
     steroids.layers.popAll {}
     ,
       onTransitionStarted: ->
@@ -291,7 +339,38 @@ class window.LayersController
     steroids.layers.replace {
         view: view
       }, {
-        onSuccess: -> "SUCCESS in replacing a non-preloaded webview to the layer stack"
-        onFailure: -> "FAILURE in testReplaceNonPreloaded"
+        onSuccess: -> steroids.logger.log "SUCCESS in replacing a non-preloaded webview to the layer stack"
+        onFailure: -> navigator.notification.alert "FAILURE in testReplaceNonPreloaded"
       }
+  @testReplaceStep1: ->
+    view = new steroids.views.WebView
+      location: "/views/layers/replaceStep1.html"
+      id: "preloadedStep1"
 
+    view.preload {}
+    ,
+      onSuccess: ->
+        steroids.layers.push
+          view: view
+      onFailure:->
+        # if it fails to preload .. because it is already preloaded..
+        # not problem,.. we push anyway
+        steroids.layers.push
+          view: view
+
+  @testReplaceStep2: ->
+    steroids.layers.push
+      view: new steroids.views.WebView "/views/layers/replaceStep2.html"
+
+  @testReplaceWithViewAlreadyInStack: ->
+    view = new steroids.views.WebView
+      location: "/views/layers/replaceStep1.html"
+      id: "preloadedStep1"
+
+    steroids.layers.replace
+      view: view
+    ,
+      onSuccess: ->
+        alert "SUCCESS in replacing a webview that was already in the stack!"
+      onFailure: ->
+        alert "FAILURE in testReplaceWithViewAlreadyInStack"

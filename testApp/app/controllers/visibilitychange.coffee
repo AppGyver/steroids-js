@@ -6,7 +6,13 @@ class window.VisibilitychangeController
 
     webView = new steroids.views.WebView "/views/visibilitychange/preloadThatSetsVisibilityChanges.html"
 
-    webView.preload()
+    webView.preload {},
+    {
+      onSuccess: -> steroids.logger.log "SUCCESS in preloading view for visibilitychange"
+      onFailure: ->
+        steroids.logger.log "FAILURE in testPreloadVisibilityChange"
+        navigator.notification.alert "FAILURE in testPreloadVisibilityChange"
+    }
 
     window.setTimeout =>
       steroids.layers.push webView
@@ -14,16 +20,16 @@ class window.VisibilitychangeController
 
   @testAddVisibilitychangeEvent: () ->
     changed = () ->
-      alert "visibility of #{window.location.href} changed, document.visibilityState: " + document.visibilityState + ", document.hidden: " + document.hidden
+      steroids.logger.log "SUCCESS visibility of #{window.location.href} changed, document.visibilityState: " + document.visibilityState + ", document.hidden: " + document.hidden
 
     document.addEventListener "visibilitychange", changed, true
 
-    alert "added eventlistner for visibilitychange"
+    steroids.logger.log "added eventlistner for visibilitychange"
 
   @testCurrentVisibilityIsVisible: () ->
 
-    alert document.hidden
-    alert document.visibilityState
+    navigator.notification.alert "hidden or no?", document.hidden
+    navigator.notification.alert "visible or no?", document.visibilityState
 
   @testPrerenderVisibilityIsHidden: () ->
     webView = new steroids.views.WebView "/views/visibilitychange/preloadThatTellsItsVisibilityWhenLoaded.html"

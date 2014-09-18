@@ -1,3 +1,5 @@
+<ul class="list" id="ready">  
+</ul>
 
 <h1>Accelerometer</h1>
 
@@ -35,14 +37,20 @@
   <li class="performsTest" data-test="cameraGetPictureOpenModalTest">
     Take picture and Open Modal
   </li>
+  <li class="performsTest" data-test="cameraGetPictureSaveInUserFilesTest">
+    Take picture and Save in User Files
+  </li>
   <li class="performsTest" data-test="cameraCleanupTest">
-    Clean temporary camera files
+    Clean temporary camera files (iOS only)
   </li>
   <li class="performsTest" data-test="cameraFromPhotoLibraryTest">
     Choose from photo library
   </li>
   <li class="performsTest" data-test="cameraFromPhotoLibraryOpenModalTest">
     Choose from photo library and Open Modal
+  </li>
+  <li class="performsTest" data-test="cameraFromPhotoLibrarySaveInUserFilesTest">
+    Choose from photo library and Save in User Files
   </li>
   <li class="testResult">
     <img id="cameraTest" alt="camera result" style="width:100%" />
@@ -245,5 +253,26 @@
   </li>
   <li class="performsTest" data-test="vibrateTest">
     Vibrate
+  </li>
+</ul>
+<h1>Local Storage</h1>
+<ul class="list">
+  <li class="performsTest" data-test="setItemTest">
+    Set an Item
+  </li>
+  <li class="performsTest" data-test="getItemTest">
+    Get an Item
+  </li>
+  <li class="performsTest" data-test="removeItemTest">
+    Remove an Item
+  </li>
+  <li class="testResult">
+    <span id="localStorage_result"></span>
+  </li>
+</ul>
+<h1>Exit App</h1>
+<ul class="list">
+  <li class="performsTest" data-test="exitAppTest">
+    Exit app
   </li>
 </ul>
