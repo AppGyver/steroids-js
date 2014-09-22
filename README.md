@@ -43,7 +43,7 @@ Due to Bower limitations (cannot exclude certain files from a repository), the B
 
     cd bower && git co master && cd ..
 
-    echo "VERSION=$(coffee sync-bower.coffee)" # this sets $VERSION to match current version, for use in below scripts
+    VERSION=$(coffee sync-bower.coffee) && echo "VERSION=$VERSION" # this sets (and then echoes) $VERSION to match current version, for use in below scripts
 
     cp dist/steroids.js bower/steroids.js
     cd bower && git co master && git commit -am "$VERSION" && git tag "v$VERSION" && git push && git push --tags && cd ..
