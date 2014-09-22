@@ -1,3 +1,7 @@
+## 3.5.4 (2014-09-22)
+
+Rollback: `steroids.views.WebView` object reads url parameters from `_parameters` object instead of `parameters`. Related to [#502](https://github.com/AppGyver/steroids/issues/502)
+
 ## 3.5.3 (2014-09-18)
 
 We have added a lot more tests to our Steroids.js testApp for etc. pushing layers from the initialView etc, check them out!
