@@ -8,4 +8,5 @@ docs
 npm-debug.log
 /testSlave/www/index.html
 /testApp/config/cloud.json
+/testApp/config/cloud.*.json
 testSpecsApp/dist
