@@ -1,4 +1,12 @@
 class NavigationBar
+
+  tapButton: (options={}, callbacks={}) ->
+    steroids.nativeBridge.nativeCall
+      method: "navigationBarTapButton"
+      parameters: options
+      successCallbacks: [callbacks.onSuccess]
+      failureCallbacks: [callbacks.onFailure]
+
   hide: (options={}, callbacks={}) ->
 
     options.animated = options.animated?
@@ -152,9 +160,9 @@ class NavigationBar
       if options.title?
         params.title = options.title
         params.titleImagePath = ""
-        
+
       params.border = options.border
-      
+
       if options.titleImagePath?
         if not options.title?
           params.titleImagePath = relativeTo + options.titleImagePath
@@ -194,7 +202,3 @@ class NavigationBar
         successCallbacks: [callbacks.onSuccess]
         recurringCallbacks: [@buttonTapped]
         failureCallbacks: [callbacks.onFailure]
-
-
-
-

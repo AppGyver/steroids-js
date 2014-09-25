@@ -224,3 +224,38 @@ class window.NavigationbarController
       onSuccess: -> steroids.logger.log "SUCCESS in testSetAppearanceToRainbow - taste the rainbow!"
       onFailure: -> navigator.notification.alert "FAILURE in testSetAppearanceToRainbow in nav bar tests"
     }
+
+  @testTapButton_0: ->
+    steroids.view.navigationBar.tapButton
+      index: 0
+    ,
+      onSuccess: -> steroids.logger.log "SUCCESS in tapButton"
+      onFailure: -> navigator.notification.alert "FAILURE in tapButton"
+
+  @testTapButton_1: ->
+    steroids.view.navigationBar.tapButton
+      index: 1
+    ,
+      onSuccess: -> steroids.logger.log "SUCCESS in tapButton"
+      onFailure: -> navigator.notification.alert "FAILURE in tapButton"
+
+  @testTapButton_2: ->
+    steroids.view.navigationBar.tapButton
+      index: 2
+    ,
+      onSuccess: -> steroids.logger.log "SUCCESS in tapButton"
+      onFailure: -> navigator.notification.alert "FAILURE in tapButton"
+
+  @testTapButton_3: ->
+    steroids.view.navigationBar.tapButton
+      index: 3
+    ,
+      onSuccess: -> steroids.logger.log "SUCCESS in tapButton"
+      onFailure: -> navigator.notification.alert "FAILURE in tapButton"
+
+  @testTapButton_4: ->
+    steroids.view.navigationBar.tapButton
+      index: 4
+    ,
+      onSuccess: -> steroids.logger.log "SUCCESS in tapButton"
+      onFailure: -> navigator.notification.alert "FAILURE in tapButton"
