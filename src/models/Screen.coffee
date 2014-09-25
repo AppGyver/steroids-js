@@ -33,6 +33,13 @@ class Screen
       successCallbacks: [callbacks.onSuccess]
       failureCallbacks: [callbacks.onFailure]
 
+  dismissNextAlert: (options={}, callbacks={}) ->
+    steroids.nativeBridge.nativeCall
+      method: "dismissNextAlert"
+      parameters: options
+      successCallbacks: [callbacks.onSuccess]
+      failureCallbacks: [callbacks.onFailure]
+
   @mapDegreesToOrientations: (degrees) ->
     if degrees == 0 or degrees == "0"
       "portrait"
@@ -92,5 +99,3 @@ class Screen
       successCallbacks: [callbacks.onSuccess, callbacks.onTransitionStarted]
       recurringCallbacks: [callbacks.onTransitionEnded]
       failureCallbacks: [callbacks.onFailure]
-
-
