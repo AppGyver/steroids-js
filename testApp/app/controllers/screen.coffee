@@ -3,6 +3,21 @@ class window.ScreenController
   @index: ->
     steroids.navigationBar.show "Screen"
 
+  @testDismissNextAlert_with_0: ->
+    setTimeout ->
+      navigator.notification.alert('this will auto close in 2 seconds');
+    ,
+      1
+
+    dismissFunc = ->
+      steroids.screen.dismissNextAlert
+        buttonIndex: 0
+      ,
+        onSuccess: -> steroids.logger.log "SUCCESS in dismissNextAlert"
+        onFailure: -> navigator.notification.alert "FAILURE in dismissNextAlert"
+
+    setTimeout dismissFunc, 2 * 1000
+
   @testFreeze: ->
     steroids.screen.freeze {},
       onSuccess: -> steroids.logger.log "SUCCESS in freezing the screen"
