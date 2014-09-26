@@ -33,3 +33,34 @@ navigation-bar back-indicator {
   background-image: url(icons/apple_colorfull.png);
   background-size: 18;
 }
+
+/*used in styling apis tests*/
+#navBarBig {
+  background-color: #1f2838;
+}
+
+#navBarBig title {
+  color: #eeeeee;
+  font-size: 30px;
+}
+
+#navBarSmall {
+  background-color: #ea8b2a;
+}
+
+#navBarSmall title {
+  color: #b8435b;
+  font-size: 18px;
+}
+
+.navBarWithBorder {
+  border: 2px solid #f6546a;
+}
+
+.greenNavBar {
+  background-color: #74a259;
+}
+
+.greenNavBar title {
+  color: #aceace;
+}

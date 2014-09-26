@@ -6,6 +6,55 @@ class window.NavigationbarController
       # Make Navigation Bar to appear with a custom title text
       steroids.view.navigationBar.show { title: "navbar" }
 
+  @testSetStyleId_navBarBig: ->
+    steroids.view.navigationBar.setStyleId "navBarBig"
+    , {
+      onSuccess: -> steroids.logger.log "SUCCESS in testSetStyleId"
+      onFailure: -> navigator.notification.alert "FAILURE in testSetStyleId"
+    }
+
+  @testSetStyleId_navBarSmall: ->
+    steroids.view.navigationBar.setStyleId "navBarSmall"
+    , {
+      onSuccess: -> steroids.logger.log "SUCCESS in testSetStyleId"
+      onFailure: -> navigator.notification.alert "FAILURE in testSetStyleId"
+    }
+
+  @testRemoveStyleId: ->
+    steroids.view.navigationBar.setStyleId ""
+    , {
+      onSuccess: -> steroids.logger.log "SUCCESS in testSetStyleId"
+      onFailure: -> navigator.notification.alert "FAILURE in testSetStyleId"
+    }
+
+  @testSetStyleCSS: ->
+    steroids.view.navigationBar.setStyleCSS "background-color: pink;"
+    , {
+      onSuccess: -> steroids.logger.log "SUCCESS in testSetStyleCSS"
+      onFailure: -> navigator.notification.alert "FAILURE in testSetStyleCSS"
+    }
+
+  @testRemoveStyleCSS: ->
+    steroids.view.navigationBar.setStyleCSS ""
+    , {
+      onSuccess: -> steroids.logger.log "SUCCESS in testSetStyleCSS"
+      onFailure: -> navigator.notification.alert "FAILURE in testSetStyleCSS"
+    }
+
+  @testAddStyleClass: ->
+    steroids.view.navigationBar.addStyleClass "navBarWithBorder"
+    , {
+      onSuccess: -> steroids.logger.log "SUCCESS in testAddStyleClass"
+      onFailure: -> navigator.notification.alert "FAILURE in testAddStyleClass"
+    }
+
+  @tesSetStyleClass: ->
+    steroids.view.navigationBar.setStyleClass "greenNavBar"
+    , {
+      onSuccess: -> steroids.logger.log "SUCCESS in tesSetStyleClass"
+      onFailure: -> navigator.notification.alert "FAILURE in tesSetStyleClass"
+    }
+
   @testHideAnimated: ->
     steroids.view.navigationBar.hide {
       animated: true
