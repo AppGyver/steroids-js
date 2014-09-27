@@ -7,6 +7,25 @@ class window.AppController
 
   @path: ->
 
+  @testLoadTheme_default: ->
+    steroids.app.loadTheme "default.css"
+    ,
+      onSuccess: -> steroids.logger.log "SUCCESS in testLoadTheme_default"
+      onFailure: -> navigator.notification.alert "FAILURE in testLoadTheme_default"
+
+
+  @testLoadTheme_green: ->
+    steroids.app.loadTheme "green-theme.css"
+    ,
+      onSuccess: -> steroids.logger.log "SUCCESS in testLoadTheme_green"
+      onFailure: -> navigator.notification.alert "FAILURE in testLoadTheme_green"
+
+  @testLoadTheme_red: ->
+    steroids.app.loadTheme "red-theme.css"
+    ,
+      onSuccess: -> steroids.logger.log "SUCCESS in testLoadTheme_red"
+      onFailure: -> navigator.notification.alert "FAILURE in testLoadTheme_red"
+
   @testPath: () ->
     navigator.notification.alert JSON.stringify(steroids.app.path)
 
