@@ -14,3 +14,22 @@ class window.PostmessageController
   @testSendingUncommonCharacters: ->
     msg = {text: "%=!=€%&hay'jay  ____dolan"}
     window.postMessage msg, "*"
+
+  @testSendHello: ->
+    msg = { text: "hello!" }
+    window.postMessage msg, "*"
+
+  @testStressPostMessages: ->
+    steroids.logger.log "TEST START starting postMessage stress test"
+
+    # number of post messages sent:
+    i = 100
+
+    while i -= 1
+      msg = { text: "Stress test message, #{i} messages left" }
+      window.postMessage msg, "*"
+
+    lul = { text: "STRESS TEST END" }
+    window.postMessage lul, "*"
+
+    steroids.logger.log "TEST END and SUCCESS, survived the stress test of postMessages"

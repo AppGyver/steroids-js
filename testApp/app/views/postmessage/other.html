@@ -1,15 +1,19 @@
 <h1>Postmessage sender</h1>
 
-<button>Tap to send</button>
-
-<script>
-  steroids.on("ready", function() {
-    document.querySelector("button").addEventListener("touchend", function() {
-      var msg = { text: "hello!" };
-      window.postMessage(msg, "*");
-
-    });
-  });
-
-</script>
+<p>This view sends the postMessages to the previous view. Please go back to the previous view to see that the messages have arrived.</p>
+<br>
+<ul class="list">
+  <li class="performsTest" data-test="testSendHello">
+    Send hello to other view
+  </li>
+</ul>
+<br><br>
+<h2>Postmessage stresstest</h2>
+<p>If there's suspicion using excessive postMessages would cause crashes etc, please run the stresstest from below.</p>
+<br>
+<ul class="list">
+  <li class="performsTest" data-test="testStressPostMessages">
+    Send 100 postMessages to previous view
+  </li>
+</ul>
 
