@@ -4,6 +4,62 @@ class TabBar extends EventsSupport
     #setup the events support
     super "tab", ["willchange", "didchange"]
 
+  setStyleId: (options={}, callbacks={}) ->
+
+    styleId = if options.constructor.name == "String"
+      options
+    else
+      options.styleId
+
+    steroids.nativeBridge.nativeCall
+      method: "setTabBarStyleId"
+      parameters:
+        styleId: styleId
+      successCallbacks: [callbacks.onSuccess]
+      failureCallbacks: [callbacks.onFailure]
+
+  setStyleCSS: (options={}, callbacks={}) ->
+
+    styleCSS = if options.constructor.name == "String"
+      options
+    else
+      options.styleCSS
+
+    steroids.nativeBridge.nativeCall
+      method: "setTabBarStyleCSS"
+      parameters:
+        styleCSS: styleCSS
+      successCallbacks: [callbacks.onSuccess]
+      failureCallbacks: [callbacks.onFailure]
+
+  addStyleClass: (options={}, callbacks={}) ->
+
+    styleClass = if options.constructor.name == "String"
+      options
+    else
+      options.styleClass
+
+    steroids.nativeBridge.nativeCall
+      method: "addTabBarStyleClass"
+      parameters:
+        styleClass: styleClass
+      successCallbacks: [callbacks.onSuccess]
+      failureCallbacks: [callbacks.onFailure]
+
+  setStyleClass: (options={}, callbacks={}) ->
+
+    styleClass = if options.constructor.name == "String"
+      options
+    else
+      options.styleClass
+
+    steroids.nativeBridge.nativeCall
+      method: "setTabBarStyleClass"
+      parameters:
+        styleClass: styleClass
+      successCallbacks: [callbacks.onSuccess]
+      failureCallbacks: [callbacks.onFailure]
+
   hide: (options={}, callbacks={}) ->
     steroids.debug "steroids.tabBar.hide options: #{JSON.stringify options} callbacks: #{JSON.stringify callbacks}"
 
@@ -59,6 +115,9 @@ class TabBar extends EventsSupport
               title: options.tabs[scale].title
               image_path: options.tabs[scale].icon
               badge: options.tabs[scale].badge
+              styleClass : options.tabs[scale].styleClass
+              styleId : options.tabs[scale].styleId
+              styleCSS : options.tabs[scale].styleCSS
             }
           )
 
@@ -82,6 +141,9 @@ class TabBar extends EventsSupport
             title: options.tabs[scale].title
             image_path: options.tabs[scale].icon
             position: options.tabs[scale].position
+            styleClass : options.tabs[scale].styleClass
+            styleId : options.tabs[scale].styleId
+            styleCSS : options.tabs[scale].styleCSS
           }
         )
 

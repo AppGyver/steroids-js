@@ -79,3 +79,23 @@ navigation-bar back-indicator {
 #tokaButton {
   background-color: #FFCF40;
 }
+
+/*TabBar test styling */
+.tabGray {
+  background-color: #B3B3B3;
+  color: black;
+}
+
+#myLittleTab {
+  background-color: #FFCF40;
+}
+
+/*TabBarItem test styling */
+.tab-bar-item-yellow {
+  background-color: #FFCF40;
+}
+
+#second-item {
+  color: green;
+  background-color: #FF6363;
+}

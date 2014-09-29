@@ -7,6 +7,47 @@ class window.TabbarController
       # Make Navigation Bar to appear with a custom title text
       steroids.view.navigationBar.show { title: "tabbar" }
 
+  @testSetStyleId_myLittleTab: ->
+    steroids.tabBar.setStyleId "myLittleTab"
+    ,
+      onSuccess: -> steroids.logger.log "SUCCESS in testSetStyleId_myLittleTab"
+      onFailure: -> navigator.notification.alert "FAILURE in testSetStyleId_myLittleTab"
+
+  @testRemoveStyleId: ->
+    steroids.tabBar.setStyleId ""
+    ,
+      onSuccess: -> steroids.logger.log "SUCCESS in testRemoveStyleId"
+      onFailure: -> navigator.notification.alert "FAILURE in testRemoveStyleId"
+
+  @testSetStyleClass_tabGray: ->
+    steroids.tabBar.setStyleClass "tabGray"
+    ,
+      onSuccess: -> steroids.logger.log "SUCCESS in testSetStyleClass_tabGray"
+      onFailure: -> navigator.notification.alert "FAILURE in testSetStyleClass_tabGray"
+
+  @testSetStyleCSS: ->
+    steroids.tabBar.setStyleCSS "border: 2px solid #FFCF40;"
+    ,
+      onSuccess: -> steroids.logger.log "SUCCESS in testSetStyleCSS"
+      onFailure: -> navigator.notification.alert "FAILURE in testSetStyleCSS"
+
+  @testUpdateTabItemsWithStyle: ->
+    steroids.tabBar.update
+      tabs: [
+          {
+            styleClass: "tab-bar-item-yellow"
+          },
+          {
+            styleId: "second-item"
+          },
+          {
+            styleCSS: "color:red;"
+          }
+        ]
+    ,
+      onSuccess: -> steroids.logger.log "SUCCESS in testUpdateTabItemsWithStyle"
+      onFailure: -> navigator.notification.alert "FAILURE in testUpdateTabItemsWithStyle"
+
   @testHide: ->
     steroids.tabBar.hide {},
       onSuccess: -> steroids.logger.log "SUCCESS in hiding the tab bar"
