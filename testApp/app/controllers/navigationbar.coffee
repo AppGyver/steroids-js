@@ -6,6 +6,55 @@ class window.NavigationbarController
       # Make Navigation Bar to appear with a custom title text
       steroids.view.navigationBar.show { title: "navbar" }
 
+  @testSetStyleId_navBarBig: ->
+    steroids.view.navigationBar.setStyleId "navBarBig"
+    , {
+      onSuccess: -> steroids.logger.log "SUCCESS in testSetStyleId"
+      onFailure: -> navigator.notification.alert "FAILURE in testSetStyleId"
+    }
+
+  @testSetStyleId_navBarSmall: ->
+    steroids.view.navigationBar.setStyleId "navBarSmall"
+    , {
+      onSuccess: -> steroids.logger.log "SUCCESS in testSetStyleId"
+      onFailure: -> navigator.notification.alert "FAILURE in testSetStyleId"
+    }
+
+  @testRemoveStyleId: ->
+    steroids.view.navigationBar.setStyleId ""
+    , {
+      onSuccess: -> steroids.logger.log "SUCCESS in testSetStyleId"
+      onFailure: -> navigator.notification.alert "FAILURE in testSetStyleId"
+    }
+
+  @testSetStyleCSS: ->
+    steroids.view.navigationBar.setStyleCSS "background-color: pink;"
+    , {
+      onSuccess: -> steroids.logger.log "SUCCESS in testSetStyleCSS"
+      onFailure: -> navigator.notification.alert "FAILURE in testSetStyleCSS"
+    }
+
+  @testRemoveStyleCSS: ->
+    steroids.view.navigationBar.setStyleCSS ""
+    , {
+      onSuccess: -> steroids.logger.log "SUCCESS in testSetStyleCSS"
+      onFailure: -> navigator.notification.alert "FAILURE in testSetStyleCSS"
+    }
+
+  @testAddStyleClass: ->
+    steroids.view.navigationBar.addStyleClass "navBarWithBorder"
+    , {
+      onSuccess: -> steroids.logger.log "SUCCESS in testAddStyleClass"
+      onFailure: -> navigator.notification.alert "FAILURE in testAddStyleClass"
+    }
+
+  @tesSetStyleClass: ->
+    steroids.view.navigationBar.setStyleClass "greenNavBar"
+    , {
+      onSuccess: -> steroids.logger.log "SUCCESS in tesSetStyleClass"
+      onFailure: -> navigator.notification.alert "FAILURE in tesSetStyleClass"
+    }
+
   @testHideAnimated: ->
     steroids.view.navigationBar.hide {
       animated: true
@@ -61,13 +110,16 @@ class window.NavigationbarController
     button1 = new steroids.buttons.NavigationBarButton
     button1.title = "EKA"
     button1.onTap = => navigator.notification.alert "EKA BUTTON TAPPED"
+    button1.styleClass = "rounded-button primary"
 
     button2 = new steroids.buttons.NavigationBarButton
     button2.title = "TOKA"
     button2.onTap = => navigator.notification.alert "TOKA BUTTON TAPPED"
+    button2.styleId = "tokaButton"
 
     button3 = new steroids.buttons.NavigationBarButton
     button3.title = "NoCB"
+    button3.styleCSS = "border: 1px solid #FF6363;"
 
     button4 = new steroids.buttons.NavigationBarButton
     button4.imagePath = "/icons/pill@2x.png"

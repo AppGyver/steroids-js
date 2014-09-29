@@ -1,5 +1,61 @@
 class NavigationBar
 
+  setStyleId: (options={}, callbacks={}) ->
+
+    styleId = if options.constructor.name == "String"
+      options
+    else
+      options.styleId
+
+    steroids.nativeBridge.nativeCall
+      method: "setNavigationBarStyleId"
+      parameters:
+        styleId: styleId
+      successCallbacks: [callbacks.onSuccess]
+      failureCallbacks: [callbacks.onFailure]
+
+  setStyleCSS: (options={}, callbacks={}) ->
+
+    styleCSS = if options.constructor.name == "String"
+      options
+    else
+      options.styleCSS
+
+    steroids.nativeBridge.nativeCall
+      method: "setNavigationBarStyleCSS"
+      parameters:
+        styleCSS: styleCSS
+      successCallbacks: [callbacks.onSuccess]
+      failureCallbacks: [callbacks.onFailure]
+
+  addStyleClass: (options={}, callbacks={}) ->
+
+    styleClass = if options.constructor.name == "String"
+      options
+    else
+      options.styleClass
+
+    steroids.nativeBridge.nativeCall
+      method: "addNavigationBarStyleClass"
+      parameters:
+        styleClass: styleClass
+      successCallbacks: [callbacks.onSuccess]
+      failureCallbacks: [callbacks.onFailure]
+
+  setStyleClass: (options={}, callbacks={}) ->
+
+    styleClass = if options.constructor.name == "String"
+      options
+    else
+      options.styleClass
+
+    steroids.nativeBridge.nativeCall
+      method: "setNavigationBarStyleClass"
+      parameters:
+        styleClass: styleClass
+      successCallbacks: [callbacks.onSuccess]
+      failureCallbacks: [callbacks.onFailure]
+
   tapButton: (options={}, callbacks={}) ->
     steroids.nativeBridge.nativeCall
       method: "navigationBarTapButton"
@@ -58,12 +114,13 @@ class NavigationBar
       @buttonCallbacks = {}
       params =
         overrideBackButton: options.overrideBackButton
-      buttonParametersFrom = (obj)->
-        if obj.title?
-          title: obj.title
-        else
-          imagePath: relativeTo + obj.imagePath
 
+      buttonParametersFrom = (obj)->
+        btnParams = obj.toParams()
+        if obj.imagePath?
+          btnParams.imagePath = relativeTo + obj.imagePath
+
+        return btnParams
 
       if typeof AndroidAPIBridge is 'undefined' # no AndroidAPIBridge on iOS
         locations = ["right", "left"]
