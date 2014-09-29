@@ -64,3 +64,18 @@ navigation-bar back-indicator {
 .greenNavBar title {
   color: #aceace;
 }
+
+
+/*Navigation bar Items*/
+.rounded-button {
+  border-radius: 10pt;
+  border: 2px solid #1CD99A;
+}
+
+.primary {
+  background-color: #57B6E1;
+}
+
+#tokaButton {
+  background-color: #FFCF40;
+}

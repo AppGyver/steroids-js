@@ -114,12 +114,13 @@ class NavigationBar
       @buttonCallbacks = {}
       params =
         overrideBackButton: options.overrideBackButton
-      buttonParametersFrom = (obj)->
-        if obj.title?
-          title: obj.title
-        else
-          imagePath: relativeTo + obj.imagePath
 
+      buttonParametersFrom = (obj)->
+        btnParams = obj.toParams()
+        if obj.imagePath?
+          btnParams.imagePath = relativeTo + obj.imagePath
+
+        return btnParams
 
       if typeof AndroidAPIBridge is 'undefined' # no AndroidAPIBridge on iOS
         locations = ["right", "left"]

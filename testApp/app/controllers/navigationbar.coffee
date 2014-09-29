@@ -110,13 +110,16 @@ class window.NavigationbarController
     button1 = new steroids.buttons.NavigationBarButton
     button1.title = "EKA"
     button1.onTap = => navigator.notification.alert "EKA BUTTON TAPPED"
+    button1.styleClass = "rounded-button primary"
 
     button2 = new steroids.buttons.NavigationBarButton
     button2.title = "TOKA"
     button2.onTap = => navigator.notification.alert "TOKA BUTTON TAPPED"
+    button2.styleId = "tokaButton"
 
     button3 = new steroids.buttons.NavigationBarButton
     button3.title = "NoCB"
+    button3.styleCSS = "border: 1px solid #FF6363;"
 
     button4 = new steroids.buttons.NavigationBarButton
     button4.imagePath = "/icons/pill@2x.png"
