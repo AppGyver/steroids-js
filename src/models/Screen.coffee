@@ -1,4 +1,9 @@
-class Screen
+class Screen extends EventsSupport
+
+  constructor: ->
+    #setup the events support
+    super "screen", ["alertdidshow"]
+
   edges:
     LEFT: "left"
     RIGHT: "right"
@@ -33,9 +38,9 @@ class Screen
       successCallbacks: [callbacks.onSuccess]
       failureCallbacks: [callbacks.onFailure]
 
-  dismissNextAlert: (options={}, callbacks={}) ->
+  dismissAlert: (options={}, callbacks={}) ->
     steroids.nativeBridge.nativeCall
-      method: "dismissNextAlert"
+      method: "dismissAlert"
       parameters: options
       successCallbacks: [callbacks.onSuccess]
       failureCallbacks: [callbacks.onFailure]
