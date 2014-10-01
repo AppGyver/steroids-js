@@ -16,13 +16,13 @@ class window.KeyboardController
     steroids.keyboard.off "actionButtonPressed"
 
     navigator.notification.alert "all actionButtonPressed event handlers removed"
-    
+
   @testEnableKeyboardAccessory: () ->
     steroids.view.updateKeyboard {
       accessoryBarEnabled:true
     }, {
       onSuccess: -> steroids.logger.log "SUCCESS keyboard accesssory enabled"
-      onFailure: (error) -> navigator.notification.alert "FAILURE in testEnableKeyboardAccessory", error
+      onFailure: (error) -> navigator.notification.alert "FAILURE in testEnableKeyboardAccessory:\n\n#{error.errorDescription}"
     }
 
   @testDisableKeyboardAccessory: () ->
@@ -30,11 +30,11 @@ class window.KeyboardController
       accessoryBarEnabled:false
     }, {
       onSuccess: -> steroids.logger.log "SUCCESS keyboard accesssory disabled"
-      onFailure: (error) -> navigator.notification.alert "FAILURE in testDisableKeyboardAccessory", error
+      onFailure: (error) -> navigator.notification.alert "FAILURE in testDisableKeyboardAccessory:\n\n#{error.errorDescription}"
     }
 
   @testKeyboardAccessoryWithEmptyParams: () ->
     steroids.view.updateKeyboard null, {
       onSuccess: -> steroids.logger.log "SUCCESS updateKeyboard called with no parameters (no change)"
-      onFailure: (error) -> navigator.notification.alert "FAILURE in testKeyboardAccessoryWithEmptyParams", error
+      onFailure: (error) -> navigator.notification.alert "FAILURE in testKeyboardAccessoryWithEmptyParams:\n\n#{error.errorDescription}"
     }
