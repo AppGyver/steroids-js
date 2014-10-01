@@ -193,9 +193,9 @@ class DrawerCollection extends EventsSupport
       parameters.closeGestures = options.closeGestures
 
     # By default, the side drawer will stretch if the user pans past the maximum drawer width. This gives a playful stretch effect.
-    # You can disable this by setting strechDrawer to false
+    # You can disable this by setting stretchDrawer to false
     if options.stretchDrawer?
-      parameters.strechDrawer = options.stretchDrawer
+      parameters.stretchDrawer = options.stretchDrawer
 
     # None -> The user can not interact with any content in the center view.
     # Full -> The user can interact with all content in the center view.
