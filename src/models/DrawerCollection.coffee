@@ -63,29 +63,28 @@ class DrawerCollection extends EventsSupport
   update: (options={}, callbacks={}) ->
     steroids.debug "steroids.drawers.update called"
 
-    parameters = {
+    parameters =
       left:{}
       right:{}
       options:{}
-    }
 
     validViews = true
 
     if options.left?
-      if options.left.id?
-        DrawerCollection.applyViewOptions options.left, parameters.left
-      else
+      if ! options.left.id? and options.left.location
         validViews = false
         if callbacks.onFailure?
           callbacks.onFailure "No identifier provided for the preloaded webview!"
+      else
+        DrawerCollection.applyViewOptions options.left, parameters.left
 
     if options.right?
-      if options.right.id?
-        DrawerCollection.applyViewOptions options.right, parameters.right
-      else
+      if ! options.right.id? and options.right.location
         validViews = false
         if callbacks.onFailure?
           callbacks.onFailure "No identifier provided for the preloaded webview!"
+      else
+        DrawerCollection.applyViewOptions options.right, parameters.right
 
     if options.options?
       DrawerCollection.applyDrawerSettings options.options, parameters.options
@@ -153,7 +152,8 @@ class DrawerCollection extends EventsSupport
   @applyViewOptions: (view={}, parameters={}) ->
     if view.id?
       parameters.id = view.id
-    else
+
+    if view.location?
       parameters.url = view.location
 
     if view.keepLoading == true
