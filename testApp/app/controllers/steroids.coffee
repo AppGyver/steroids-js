@@ -19,10 +19,10 @@ class window.SteroidsController
       list.appendChild(el)
 
   @testSteroidsDefined: () ->
-    navigator.notification.alert steroids?
+    navigator.notification.alert "#{steroids?}"
 
   @testCordovaDefined: () ->
-    navigator.notification.alert cordova?
+    navigator.notification.alert "#{cordova?}"
 
   @testJSCoreBridgeImplDefined: () ->
     navigator.notification.alert __JSCoreBridgeImpl?
