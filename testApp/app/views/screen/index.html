@@ -2,36 +2,36 @@
   ScreenController.index();
 </script>
 
-<h1 onclick="navigator.notification.alert('Touched h1')">Screen</h1>
+<h2 onclick="navigator.notification.alert('Touched h1')">Screen</h2>
 
-<ul class="list">
+<div class="list">
 
-  <li class="opensLayer" data-location="/views/rotations/index.html">
+  <a class="opensLayer item item-text-wrap" data-location="/views/rotations/index.html">
     Rotations
-    <span class="chevron"/>
-  </li>
+    
+  </a>
 
-  <li class="performsTest" data-test="testFreeze">
+  <a class="performsTest item item-text-wrap" data-location="testFreeze">
     steroids.screen.freeze() + steroids.screen.unfreeze()
-  </li>
+  </a>
 
-  <li class="performsTest" data-test="testCapture">
+  <a class="performsTest item item-text-wrap" data-location="testCapture">
     steroids.screen.capture(filename)
-  </li>
+  </a>
 
-  <li class="performsTest" data-test="testDismissNextAlert_with_index_0">
+  <a class="performsTest item item-text-wrap" data-location="testDismissNextAlert_with_index_0">
     steroids.screen.dismissNextAlert({buttonIndex: 0})
-  </li>
+  </a>
 
-  <li class="performsTest" data-test="testDismissNextAlert_with_10">
+  <a class="performsTest item item-text-wrap" data-location="testDismissNextAlert_with_10">
     steroids.screen.dismissNextAlert({buttonIndex: 10})
-  </li>
+  </a>
 
-  <li class="performsTest" data-test="testTap">
+  <a class="performsTest item item-text-wrap" data-location="testTap">
     steroids.screen.tap({x: 30, y: 70}) (should tap h1 screen)<br>
     broken since iOS 7.1
-  </li>
+  </a>
 
-</ul>
+</div>
 
 <div id="captureResult"></div>

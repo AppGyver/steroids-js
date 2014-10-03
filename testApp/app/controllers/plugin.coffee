@@ -660,7 +660,7 @@ class window.PluginController
     if item?
       localStorage_result.innerHTML = "Got '#{item}'"
     else
-      localStorage_result.innerHTML = "Error: could not find the item"
+      localStorage_result.innerHTML = "Error: could not find the item item-text-wrap"
   
   @removeItemTest = () ->
     item = window.localStorage.getItem "items"

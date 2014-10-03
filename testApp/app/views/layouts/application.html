@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
   <title>New Application</title>
 
+  <link rel="stylesheet" href="../../vendor/ionic/css/ionic.css" />
   <link rel="stylesheet" href="../../stylesheets/application.css" />
-  <link rel="stylesheet" href="../../stylesheets/ratchet-fixed.css" />
 
   <script>
     window.onerror = function(a,b,c){ alert(a+" "+b+" "+c); }
@@ -34,12 +34,10 @@
   <script src="../../controllers/<%= yield.controller %>.js"></script>
 
 </head>
-<body>
-  <div class="content">
-      <div class="content-padded">
-        <%= yield.view %>
+<body class="conten">
+  <div class="padding">
+    <%= yield.view %>
 
-      </div>
   </div>
 </body>
 </html>

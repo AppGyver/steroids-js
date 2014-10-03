@@ -21,6 +21,6 @@ $(document).ready ->
   $(".performsTest").on "click", (e) ->
     # return if !window.chrome && e.gesture.srcEvent.type == "mousedown"
 
-    eval "#{STEROIDS.controllerName}.#{@getAttribute("data-test")}()"
+    eval "#{STEROIDS.controllerName}.#{@getAttribute("data-location")}()"
 
 

@@ -38,7 +38,7 @@ class window.TabbarController
             styleClass: "tab-bar-item-yellow"
           },
           {
-            styleId: "second-item"
+            styleId: "second-item item-text-wrap"
           },
           {
             styleCSS: "color:red;"

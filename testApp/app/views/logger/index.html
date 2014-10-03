@@ -2,27 +2,27 @@
   LoggerController.index();
 </script>
 
-<h1>logger</h1>
+<h2>logger</h2>
 
-<ul class="list">
-  <li class="performsTest" data-test="testLog">
+<div class="list">
+  <a class="performsTest item item-text-wrap" data-location="testLog">
     steroids.logger.log("hello")
-  </li>
-  <li class="performsTest" data-test="testException">
+  </a>
+  <a class="performsTest item item-text-wrap" data-location="testException">
     test onerror testException()
-  </li>
-  <li class="performsTest" data-test="testShowLastMessage">
+  </a>
+  <a class="performsTest item item-text-wrap" data-location="testShowLastMessage">
     show last message
-  </li>
-  <li class="performsTest" data-test="testStopFlushing">
+  </a>
+  <a class="performsTest item item-text-wrap" data-location="testStopFlushing">
     steroids.logger.queue.stopFlushing()
-  </li>
-  <li class="performsTest" data-test="testStartFlushing">
+  </a>
+  <a class="performsTest item item-text-wrap" data-location="testStartFlushing">
     steroids.logger.queue.startFlushing(100)
-  </li>
+  </a>
 
-  <li class="performsTest" data-test="testCircularObject">
+  <a class="performsTest item item-text-wrap" data-location="testCircularObject">
     steroids.logger.log(circularObj)
-  </li>
+  </a>
 
-</ul>
+</div>

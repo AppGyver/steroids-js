@@ -8,30 +8,30 @@
     steroids.debugEnabled = true;
 </script>
 
-<ul class="list">
+<div class="list">
 
-  <li class="performsTest" data-test="testPersistenceOverrideNativeSQL">
+  <a class="performsTest item item-text-wrap" data-location="testPersistenceOverrideNativeSQL">
     window.openDatabase = window.sqlitePlugin.openDatabase
-  </li>
+  </a>
 
-  <li class="performsTest" data-test="testPersistenceJSConfigure">
+  <a class="performsTest item item-text-wrap" data-location="testPersistenceJSConfigure">
     persistence.js configure
-  </li>
+  </a>
 
-  <li class="performsTest" data-test="testPersistenceJSDefineTask">
+  <a class="performsTest item item-text-wrap" data-location="testPersistenceJSDefineTask">
     define Task + createTable
-  </li>
+  </a>
 
-  <li class="performsTest" data-test="testPersistenceJSDropTestDB">
+  <a class="performsTest item item-text-wrap" data-location="testPersistenceJSDropTestDB">
     drop table "Task"
-  </li>
+  </a>
 
-  <li class="performsTest" data-test="testPersistenceJSInsertTask">
+  <a class="performsTest item item-text-wrap" data-location="testPersistenceJSInsertTask">
     insert Task
-  </li>
+  </a>
 
-  <li class="performsTest" data-test="testPersistenceJSListAllTasks">
+  <a class="performsTest item item-text-wrap" data-location="testPersistenceJSListAllTasks">
     Task.all()
-  </li>
+  </a>
 
-</ul>
+</div>

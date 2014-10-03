@@ -3,16 +3,8 @@
     -webkit-user-select:none;
 }
 
-h1 {
-  margin: 10em;
-}
-
 p + p {
   margin-top: 1em;
-}
-
-div.ratchetFix {
-  margin-top: 3em;
 }
 
 .testResult {

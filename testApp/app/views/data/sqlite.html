@@ -2,17 +2,17 @@
 <script>
     steroids.debugEnabled = true;
 </script>
-<ul class="list">
+<div class="list">
 
-  <li class="performsTest" data-test="testSQLiteDB">
+  <a class="performsTest item item-text-wrap" data-location="testSQLiteDB">
     new SQLiteDB("cars")
-  </li>
+  </a>
 
-  <li class="performsTest" data-test="testSQLiteDBDropTable">
+  <a class="performsTest item item-text-wrap" data-location="testSQLiteDBDropTable">
     sqlitedb.dropTable("cars")
-  </li>
+  </a>
 
-  <li class="performsTest" data-test="testSQLiteDBCreateTable">
+  <a class="performsTest item item-text-wrap" data-location="testSQLiteDBCreateTable">
     sqlitedb.createTable({
       name: "cars",
       columns: {
@@ -30,16 +30,16 @@
         alert("Failed creating table");
       }
     });
-  </li>
+  </a>
 
-  <li class="performsTest" data-test="testSQLiteDBexecute">
+  <a class="performsTest item item-text-wrap" data-location="testSQLiteDBexecute">
     INSERT + COUNT
-  </li>
+  </a>
 
-  <li class="opensLayer" data-location="views/data/sqliteImmediate.html">
+  <a class="opensLayer item item-text-wrap" data-location="views/data/sqliteImmediate.html">
     Start tests without actions
-    <span class="chevron"/>
-  </li>
+    
+  </a>
 
 
-</ul>
+</div>

@@ -1,32 +1,32 @@
-<h1>config.xml tests</h1>
+<h2>config.xml tests</h2>
 <p> Test that all user preferences work by modifying config.ios.xml preferences, then interacting with the different elements on this page.
 
-<h1>Inline media</h1>
+<h2>Inline media</h2>
 
-<ul class="list">
-  <li class="item">
+<div class="list">
+  <a class="item item-text-wrap">
     The video should play inline if AllowInlineMediaPlayback is set to true, in separate player otherwise.
-  </li>
-</ul>
+  </a>
+</div>
 <video id="videoTest" src="http://techslides.com/demos/sample-videos/small.mp4" webkit-playsinline controls="controls">Your browser doesn't support video</video>
 
 <a class="button button-block button-positive" onclick="document.getElementById('videoTest').removeAttribute('webkit-playsinline')">
   Remove plays-inline attribute from video
 </a>
 
-<h1>Keyboard test (check the following things)</h1>
+<h2>Keyboard test (check the following things)</h2>
 
-<ul class="list">
-  <li class="item">
+<div class="list">
+  <a class="item item-text-wrap">
     HideKeyboardFormAccessoryBar. If true, keyboard will not display the bar with "done" etc above it
-  </li>
-  <li class="item">
+  </a>
+  <a class="item item-text-wrap">
     KeyboardDisplayRequiresUserAction. If true, keyboard cannot be opened by pressing the button below
-  </li>
-  <li class="item">
+  </a>
+  <a class="item item-text-wrap">
     KeyboardShrinksView. If true, view will be resized to end at top of keyboard element when keyboard is open
-  </li>
-</ul>
+  </a>
+</div>
 
 <a class="button button-block button-positive" onclick="document.getElementById('keyboardTest').focus()">
   Focus on input element

@@ -72,9 +72,9 @@ steroids.config.preloads = [
   }
 ]
 
-steroids.config.initialView =
-  id: "initialView"
-  location: "http://localhost/views/initview/index.html"
+# steroids.config.initialView =
+#   id: "initialView"
+#   location: "http://localhost/views/initview/index.html"
 
 
 # -- Status bar --
