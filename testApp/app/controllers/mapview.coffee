@@ -35,9 +35,9 @@ class window.MapviewController
       region:
         center:
           # The latitude in degrees. Positive values indicate latitudes north of the equator. Negative values indicate latitudes south of the equator.
-          latitude: -41.2889
+          latitude: 60.1708
           # The longitude in degrees. Measurements are relative to the zero meridian, with positive values extending east of the meridian and negative values extending west of the meridian.
-          longitude: 174.7772
+          longitude: 24.9375
 
         span:
           # The amount of north-to-south distance (measured in meters) to use for the span.
@@ -69,9 +69,9 @@ class window.MapviewController
       region:
         center:
           # The latitude in degrees. Positive values indicate latitudes north of the equator. Negative values indicate latitudes south of the equator.
-          latitude: 41.2889
+          latitude: 60.1708
           # The longitude in degrees. Measurements are relative to the zero meridian, with positive values extending east of the meridian and negative values extending west of the meridian.
-          longitude: 174.7772
+          longitude: 24.9375
 
         span:
           # The amount of north-to-south distance (measured in meters) to use for the span.
@@ -85,8 +85,8 @@ class window.MapviewController
       onSuccess: ->
         # add some markers to the map
         mapView.addMarkers [
-              latitude: 41.2889
-              longitude: 174.7772
+              latitude: 60.1708
+              longitude: 24.9375
               title: "marker 1"
               subtitle: "subtitle marker 1"
             ,
