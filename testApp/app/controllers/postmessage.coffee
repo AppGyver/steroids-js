@@ -23,7 +23,7 @@ class window.PostmessageController
     steroids.logger.log "TEST START starting postMessage stress test"
 
     # number of post messages sent:
-    i = 100
+    i = 500
 
     while i -= 1
       msg = { text: "Stress test message, #{i} messages left" }
