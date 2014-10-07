@@ -478,73 +478,57 @@ class window.PluginController
 
   #FILETRANSFER TEST
 
-  @downloadTest = () ->
-    window.requestFileSystem LocalFileSystem.PERSISTENT, 0, (fs) ->
-      fileTransfer = new FileTransfer()
-      filePath = fs.root.toURL() + "/test.response"
-      uri = encodeURI "http://docs.appgyver.com/en/stable/index.html"
+  readDownloadAsText = (file) ->
+    reader = new FileReader()
+    reader.onloadend = (evt) ->
+      fileTransfer_result.innerHTML = "
+        Contents of #{file.name}: \n
+        #{evt.target.result}"
 
-      fileTransfer.download(
-        uri
-        filePath
-        (entry) ->
-          fileTransfer_result.innerHTML = "download complete: " + entry.fullPath
-        (error) ->
-          fileTransfer_result.innerHTML = "
-            download error source: #{error.source} \n
-            download error target: #{error.target} \n
-            download error code: #{error.code}"
-        false
-        {}
-      )
-    , (error) ->
-      fileTransfer_result.innerHTML = "Requesting fileSystem failed: " + JSON.stringify error
+    reader.readAsText file
+
+  downloadFromURL = (uri, fileName, options={}) ->
+    fileTransfer = new FileTransfer()
+    filePath = steroids.app.absoluteUserFilesPath + fileName
+    uri = encodeURI uri
+    fileTransfer.download(
+      uri
+      filePath
+      (entry) ->
+        fileTransfer_result.innerHTML = "Download complete: #{entry.fullPath}, attempting to read file (if test stalls here, not download problem)"
+        win = (fileObject) ->
+          readDownloadAsText fileObject
+        fail = (error) ->
+          fileTransfer_result.innerHTML = "Failed to read file: #{JSON.stringify error}"
+        entry.file win, fail
+      (error) ->
+        fileTransfer_result.innerHTML = "
+          download error source: #{error.source} \n
+          download error target: #{error.target} \n
+          download error code: #{error.code}"
+      false
+      options
+    )
+
+  @downloadTest = () ->
+    fileTransfer_result.innerHTML = "Downloading from docs.appgyver.com/en/stable/index.html"
+    downloadFromURL "http://docs.appgyver.com/en/stable/index.html", "/test.response"
+
 
   @downloadRedirectTest = () ->
-    window.requestFileSystem LocalFileSystem.PERSISTENT, 0, (fs) ->
-      fileTransfer = new FileTransfer()
-      filePath = fs.root.toURL() + "/test.redirect.response"
-      uri = encodeURI "http://cloud.appgyver.com/applications/" # redirects to /users/sign_in
-
-      fileTransfer.download(
-        uri
-        filePath
-        (entry) ->
-          fileTransfer_result.innerHTML = "download complete: " + entry.fullPath
-        (error) ->
-          fileTransfer_result.innerHTML = "
-            download error source: #{error.source} \n
-            download error target: #{error.target} \n
-            download error code: #{error.code}"
-        false
-        {}
-      )
-    , (error) ->
-      fileTransfer_result.innerHTML = "Requesting fileSystem failed: " + JSON.stringify error
+    fileTransfer_result.innerHTML = "Downloading from docs.appgyver.com, should redirect to /en/stable/index.html"
+    downloadFromURL "http://docs.appgyver.com", "/test.redirect.response"
 
   @downloadAuthTest = () ->
-    window.requestFileSystem LocalFileSystem.PERSISTENT, 0, (fs) ->
-      fileTransfer = new FileTransfer()
-      filePath = fs.root.toURL() + "/test.auth.response"
-      uri = encodeURI "https://api.flowdock.com/flows/flemy/main/files/XaD24A7P0l_M__E4B1YBUw/20130624_130747.jpg" # redirects to acual image
+    fileTransfer_result.innerHTML = "Downloading with basic auth"
+    downloadFromURL(
+      "https://api.flowdock.com/flows/flemy/main/files/XaD24A7P0l_M__E4B1YBUw/20130624_130747.jpg"
+      "test.auth.response"
+      { headers: { "Authorization": "Basic NjBlMDQ1MTE5NWZhZDY4OTg5OTU5NGE4Zjg0YzNjYmE6bnVsbA==" } }
+    )
 
-      fileTransfer.download(
-        uri
-        filePath
-        (entry) ->
-          fileTransfer_result.innerHTML = "download complete: " + entry.fullPath
-        (error) ->
-          fileTransfer_result.innerHTML = "
-            download error source: #{error.source} \n
-            download error target: #{error.target} \n
-            download error code: #{error.code}"
-        false
-        {
-          headers: { "Authorization": "Basic NjBlMDQ1MTE5NWZhZDY4OTg5OTU5NGE4Zjg0YzNjYmE6bnVsbA==" }
-        }
-      )
-    , (error) ->
-      fileTransfer_result.innerHTML = "Requesting fileSystem failed: " + JSON.stringify error
+  @clearDownloadResult = () ->
+    fileTransfer_result.innerHTML = "result cleared"
 
   # GEOLOCATION TEST
 
