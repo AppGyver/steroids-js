@@ -1,18 +1,7 @@
 # -- Required settings --
 
 steroids.config.name = "Steroids.js test app (with tabs)"
-steroids.config.location = "http://localhost/views/applicationcoffee/index.html"
-
-## -- Drawer for testing --
-# steroids.config.drawers =
-#   left:
-#     id: "leftDrawer"
-#     location: "http://localhost/views/drawers/leftDrawer.html"
-#
-#   right:
-#     id: "rightDrawer"
-#     location: "http://localhost/views/drawers/rightDrawer.html"
-
+steroids.config.location = "http://localhost/views/steroids/index.html"
 
 # -- Tabs --
 
@@ -33,6 +22,11 @@ steroids.config.tabBar.enabled = true
 #   - http://www.google.com (directly from internet)
 #
 steroids.config.tabBar.tabs = [
+  # {
+  #   title: "FUT"
+  #   icon: "icons/telescope@2x.png"
+  #   location: "http://localhost/views/steroids/serve.html"
+  # }
   {
     title: "HTTP"
     icon: "icons/pill@2x.png"
@@ -58,11 +52,6 @@ steroids.config.tabBar.tabs = [
     icon: "icons/shoebox@2x.png"
     location: "http://localhost/views/config/index.html"
   }
-  {
-    title: "Map"
-    icon: "icons/telescope@2x.png"
-    location: "http://localhost/views/mapview/index.html"
-  }
 ]
 
 steroids.config.preloads = [
@@ -72,9 +61,9 @@ steroids.config.preloads = [
   }
 ]
 
-# steroids.config.initialView =
-#   id: "initialView"
-#   location: "http://localhost/views/initview/index.html"
+steroids.config.initialView =
+  id: "initialView"
+  location: "http://localhost/views/initview/index.html"
 
 
 # -- Status bar --
@@ -118,4 +107,4 @@ steroids.config.navigationBar.borderColor = "#aef"
 # steroids.config.hooks.postMake.cmd = "echo"
 # steroids.config.hooks.postMake.args = ["cleaning up files"]
 
-steroids.config.copyToUserFiles = ["test.txt", "test.png"]
+

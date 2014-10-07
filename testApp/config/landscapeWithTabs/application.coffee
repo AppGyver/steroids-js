@@ -50,7 +50,7 @@ steroids.config.tabBar.tabs = [
   {
     title: "Config-iOS"
     icon: "icons/shoebox@2x.png"
-    location: "http://localhost/views/config-ios/index.html"
+    location: "http://localhost/views/config/index.html"
   }
 ]
 
