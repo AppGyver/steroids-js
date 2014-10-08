@@ -146,4 +146,4 @@ steroids.config.navigationBar.borderColor = "#aef"
 # steroids.config.hooks.postMake.cmd = "echo"
 # steroids.config.hooks.postMake.args = ["cleaning up files"]
 
-
+steroids.config.copyToUserFiles = ["test.txt", "test.png"]
