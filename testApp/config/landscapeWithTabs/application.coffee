@@ -1,7 +1,23 @@
+
+################### DEVELOPERS PLEASE NOTE ###################
+###                                                        ###
+### Any changes made to application.coffee should also be  ###
+###      made to the application.coffee files under the    ###
+###                    following folders:                  ###
+###                                                        ###
+###                  config/landscapeNoTabs                ###
+###                 config/landscapeWithTabs               ###
+###                       config/noTabs                    ###
+###                      config/withTabs                   ###
+###                                                        ###
+########################## THANK YOU #########################
+
+
 # -- Required settings --
 
 steroids.config.name = "Steroids.js test app (landscape with tabs)"
 steroids.config.location = "http://localhost/views/steroids/index.html"
+
 
 # -- Tabs --
 
@@ -61,6 +77,29 @@ steroids.config.preloads = [
   }
 ]
 
+
+# -- Drawer test --
+# steroids.config.drawers =
+#   left:
+#     id: "leftDrawer"
+#     location: "http://localhost/views/drawers/leftDrawer.html"
+#     # showOnAppLoad: false    # DOES NOT YET WORK ON ANDROID | true breaks on iOS
+#     # widthOfDrawerInPixels: 200    # DOES NOT YET WORK ON ANDROID
+#   right:
+#     id: "rightDrawer"
+#     location: "http://localhost/views/drawers/rightDrawer.html"
+#   #   showOnAppLoad: false    # DOES NOT YET WORK ON ANDROID | true breaks on iOS
+#   #   widthOfDrawerInPixels: 200    # DOES NOT YET WORK ON ANDROID
+#   # options:    # DOES NOT YET WORK ON ANDROID
+#   #   centerViewInteractionMode: "Full"   # DOES NOT YET WORK ON ANDROID
+#   #   closeGestures: ["PanNavBar", "PanCenterView", "TapCenterView"]    # DOES NOT YET WORK ON ANDROID
+#   #   openGestures: ["PanNavBar", "PanCenterView"]    # DOES NOT YET WORK ON ANDROID
+#   #   showShadow: true    # DOES NOT YET WORK ON ANDROID
+#   #   stretchDrawer: true   # DOES NOT YET WORK ON ANDROID
+#   #   widthOfLayerInPixels: 0   # DOES NOT YET WORK ON ANDROID
+
+
+# -- Initial View ---
 steroids.config.initialView =
   id: "initialView"
   location: "http://localhost/views/initview/index.html"
