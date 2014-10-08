@@ -31,7 +31,7 @@ navigation-bar title {
 
 navigation-bar back-indicator {
   background-image: url(icons/apple_colorfull.png);
-  background-size: 18;
+  background-size: 60;
 }
 
 /*used in styling apis tests*/
