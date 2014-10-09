@@ -1,3 +1,16 @@
+## 3.5.5 (TODO)
+
+Features:
+- API calls for styling Native UI with CSS:
+  - API methods `setStyle` and `setClass` for Tab Bar and Navigation Bar
+  - API method `setTheme` to apply a set of styles at once
+- `steroids.screen.dismissNextAlert` to dismiss the next appearing alert (intended for test automation)
+- `steroids.view.navigationBar.tapButton` to tap a specified navigation bar button (intended for test automation)
+
+Bugfixes:
+- Allow `steroids.layers.replace` to be used even when the target view is in the layer stack (fixes [#411](https://github.com/AppGyver/steroids/issues/411))
+- Fixed typo in Drawer options (strechDrawer -> stretchDrawer)
+
 ## 3.5.4 (2014-09-22)
 
 Rollback: `steroids.views.WebView` object reads url parameters from `_parameters` object instead of `parameters`. Related to [#502](https://github.com/AppGyver/steroids/issues/502)
@@ -9,7 +22,7 @@ We have added a lot more tests to our Steroids.js testApp for etc. pushing layer
 Secret features:
 - Tabs for Android (Fresh) have the possibility to be defined to be at the top or the bottom of the screen.
   - On the top the tabs would be "Android default" but for now tabs can only be at the bottom to make the app look similar to iOS apps on Android.
-- The first things for MapViews are now in Steroids.js, but this feature is not coming before iOS native runtime v3.5.3.
+- The first things for MapViews are now in Steroids.js, but this feature is not coming before iOS native runtime v4.0.0.
 
 ## 3.5.2 (2014-08-26)
 
