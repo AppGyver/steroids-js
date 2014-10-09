@@ -1,4 +1,4 @@
-## 3.5.5 (TODO)
+## 3.5.5 (2014-10-10)
 
 Features:
 - API calls for styling Native UI with CSS:
