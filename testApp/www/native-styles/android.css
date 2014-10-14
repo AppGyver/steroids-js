@@ -7,17 +7,39 @@ freestyle-config {
 
 /* Tab Bar */
 tab-bar {
-  background-color: white;
+  background-color: #EBEBEB;
+}
+
+/* vertical separator between tab items (Android Only) */
+tab-bar divider {
+  background-color: #D8D8D8;
+}
+
+/* top and bottom markers (Android Only) */
+tab-bar tab-bar-item marker-top {
+  background-color: #00ffffff;
+}
+
+tab-bar tab-bar-item marker-top:selected {
+  background-color: #0299CC;
+}
+
+tab-bar tab-bar-item marker-bottom {
+  background-color: #00ffffff;
 }
 
 tab-bar tab-bar-item {
-  color: #b0b1b4;
   font-family: "Avenir";
-  font-size: 10pt;
+  font-size: 14px;
+  color: #3E3E3E;
 }
 
 tab-bar tab-bar-item:selected {
-  color: #0096d7;
+  color: #111111;
+}
+
+tab-bar tab-bar-item:pressed {
+  color: black;
 }
 
 /*
@@ -39,7 +61,7 @@ tab-bar tab-bar-item:nth-child(4) image {
 }
 
 navigation-bar {
-  background-color: #1596f7;
+  background-color: #EBEBEB;
 }
 
 navigation-bar title {
@@ -48,8 +70,17 @@ navigation-bar title {
 }
 
 navigation-bar back-indicator {
-  background-image: url(icons/apple_colorfull.png);
-  background-size: 60;
+  background-image: url(default_back_icon.png);
+  background-size: 18;
+}
+
+navigation-bar back-bar-button {
+  color: #9A9A9A;
+  font-size: 17px;
+}
+
+navigation-bar back-bar-button:pressed {
+  color: blue;
 }
 
 /*used in styling apis tests*/
