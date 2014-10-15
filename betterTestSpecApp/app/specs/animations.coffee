@@ -1,4 +1,4 @@
-describe "Animation", ->
+describe "Animations", ->
   transitionNames = [
     "curlUp"
     "curlDown"
@@ -30,9 +30,8 @@ describe "Animation", ->
       onAnimationEnded: -> done()
     }
 
-  describe "Animation", ->
-    it "should be defined", ->
-      steroids.Animation.should.be.defined
+  it "should be defined", ->
+    steroids.Animation.should.be.defined
 
   describe "constructor", ->
     it "should create a new Animation object", ->
@@ -42,12 +41,6 @@ describe "Animation", ->
   describe "perform", ->
     it "should be a function", ->
       steroids.Animation.prototype.perform.should.be.a "function"
-
-    # it "should fire a success callback", (done)->
-    #   animation = new steroids.Animation()
-    #   animation.perform
-    #     onSuccess: -> done()
-    #     onAnimationEnded: -> done()
 
     for transition in transitionNames
       for curve in curves then do (transition, curve) ->
