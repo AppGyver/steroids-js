@@ -1,0 +1,17 @@
+{
+  "name": "betterTestSpecApp",
+  "version": "0.0.1",
+  "authors": [
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "www/components",
+    "www/spec",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "steroids-js": "3.x"
+  }
+}

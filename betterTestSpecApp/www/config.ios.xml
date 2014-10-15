@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.appgyver.helloSteroids" version="3.1.8" xmlns="http://www.w3.org/ns/widgets">
+    <!--
+      The following preferences are explained in more detail in the config.ios.xml guide:
+        http://guides.appgyver.com/steroids/guides/project_configuration/config-xml-ios/
+      -->
+    <access origin="*" />
+
+    <preference name="AllowInlineMediaPlayback" value="false" />
+    <preference name="DisallowOverscroll" value="false" />
+    <preference name="EnableViewportScale" value="false" />
+    <preference name="HideKeyboardFormAccessoryBar" value="false" />
+    <preference name="KeyboardDisplayRequiresUserAction" value="false" />
+    <preference name="KeyboardShrinksView" value="false" />
+
+    <preference name="EnablePopGestureRecognition" value="true" />
+    <preference name="DisableTabBarUnselectedIconTintColor" value="false" />
+    <preference name="AutoHideSplashScreen" value="true" />
+    <preference name="DisableDoubleTapToFocus" value="true" />
+    <preference name="ViewIgnoresStatusBar" value="false" />
+</widget>
