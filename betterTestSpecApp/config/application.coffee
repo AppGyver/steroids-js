@@ -4,7 +4,7 @@
 steroids.config.name = "betterTestSpecApp"
 
 # ## Start Location
-steroids.config.location = "http://localhost/index.html"
+steroids.config.location = "http://localhost/views/tests/index.html"
 
 # ## Tab Bar
 # steroids.config.tabBar.enabled = true

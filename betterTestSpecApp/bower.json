@@ -1,8 +1,7 @@
 {
   "name": "betterTestSpecApp",
   "version": "0.0.1",
-  "authors": [
-  ],
+  "authors": [],
   "ignore": [
     "**/.*",
     "node_modules",
@@ -12,6 +11,8 @@
     "tests"
   ],
   "dependencies": {
-    "steroids-js": "3.x"
+    "steroids-js": "3.x",
+    "chai": "1.9.2",
+    "mocha": "1.21.5"
   }
 }

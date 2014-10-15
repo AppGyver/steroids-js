@@ -35,6 +35,7 @@ class window.AnimationController
     }
 
     anim.perform({}, {
+      onSuccess: -> alert "YEY"
       onFailure: -> navigator.notification.alert "..and it is failing with onFailure. great success."
     })
 
