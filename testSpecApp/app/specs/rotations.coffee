@@ -1,5 +1,5 @@
 describe "Rotations", ->
-  orientations = [
+  allOrientations = [
     "portraitUpsideDown"
     "landscapeLeft"
     "landscapeRight"
@@ -14,7 +14,7 @@ describe "Rotations", ->
     it "should be a function", ->
       steroids.screen.rotate.should.be.a "function"
 
-    for orientation in orientations then do (orientation) ->
+    for orientation in allOrientations then do (orientation) ->
       it "should rotate to #{orientation}", (done) ->
         setTimeout ->
           steroids.screen.rotate orientation,
@@ -27,8 +27,10 @@ describe "Rotations", ->
     it "should not rotate to unallowed orientations", (done) ->
       steroids.screen.setAllowedRotations "portrait",
         onSuccess: ->
-          steroids.screen.rotate "portrait",
-            onSuccess: -> done()
+          steroids.screen.rotate "portraitUpsideDown",
+            onSuccess: ->
+              steroids.screen.setAllowedRotations allOrientations
+              done()
             onFailure: (error) ->
               done new Error error
         onFailure: (error) ->
