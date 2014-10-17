@@ -13,8 +13,12 @@ describe "splashscreen", ->
     steroids.splashscreen.show {},
       onSuccess: ->
         done()
+      onFailure: (error) ->
+        done new Error error
 
   it "should hide splashscreen", (done) ->
       steroids.splashscreen.hide {},
         onSuccess: ->
           done()
+        onFailure: (error) ->
+          done new Error error

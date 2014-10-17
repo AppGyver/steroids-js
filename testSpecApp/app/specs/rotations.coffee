@@ -19,6 +19,8 @@ describe "Rotations", ->
         setTimeout ->
           steroids.screen.rotate orientation,
             onTransitionEnded: -> done()
+            onFailure: (error) ->
+              done new Error error
         , 500
 
   describe "combined tests", ->
@@ -27,3 +29,7 @@ describe "Rotations", ->
         onSuccess: ->
           steroids.screen.rotate "portrait",
             onSuccess: -> done()
+            onFailure: (error) ->
+              done new Error error
+        onFailure: (error) ->
+          done new Error error

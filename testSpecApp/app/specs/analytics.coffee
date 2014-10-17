@@ -3,6 +3,7 @@ trackEvent = (eventObject, done) ->
     eventObject
   }, {
     onSuccess: -> done()
+    onFailure: (error) -> done new Error error
   }
 
 describe "analytics", ->

@@ -28,6 +28,7 @@ describe "Animations", ->
 
     anim.perform {}, {
       onAnimationEnded: -> done()
+      onFailure: (error) -> done new Error error
     }
 
   it "should be defined", ->
