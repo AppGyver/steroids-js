@@ -1,0 +1,17 @@
+{
+  "name": "betterTestSpecApp",
+  "version": "0.0.1",
+  "authors": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "www/components",
+    "www/spec",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "chai": "1.9.2",
+    "mocha": "1.21.5"
+  }
+}
