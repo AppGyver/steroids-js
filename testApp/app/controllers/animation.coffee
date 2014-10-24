@@ -29,6 +29,15 @@ class window.AnimationController
   @testFlipVerticalFromBottom: ->
     animate("flipVerticalFromBottom")
 
+  @testFlipFromTop: ->
+    animate("flipVerticalFromTop")
+
+  @testFlipFromRight: ->
+    animate("flipHorizontalFromRight")
+
+  @testFlipFromLeft: ->
+    animate("flipHorizontalFromLeft")
+
   @testSlideFromLeft: () ->
     anim = new steroids.Animation {
       transition: "slideFromLeft"
