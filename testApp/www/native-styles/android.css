@@ -1,0 +1,150 @@
+
+freestyle-config {
+  parse-error-destination: console;
+  cache-styles: auto;
+  image-cache-count: 100;
+}
+
+/* Tab Bar */
+tab-bar {
+  background-color: #EBEBEB;
+}
+
+/* vertical separator between tab items (Android Only) */
+tab-bar divider {
+  background-color: #D8D8D8;
+}
+
+/* top and bottom markers (Android Only) */
+tab-bar tab-bar-item marker-top {
+  background-color: #00ffffff;
+}
+
+tab-bar tab-bar-item marker-top:selected {
+  background-color: #0299CC;
+}
+
+tab-bar tab-bar-item marker-bottom {
+  background-color: #00ffffff;
+}
+
+tab-bar tab-bar-item {
+  font-family: "Avenir";
+  font-size: 14px;
+  color: #3E3E3E;
+}
+
+tab-bar tab-bar-item:selected {
+  color: #111111;
+}
+
+tab-bar tab-bar-item:pressed {
+  color: black;
+}
+
+/*
+ In Android ->
+ For now.. there is a separator between each tabItem.. so the first tabItem is index 0,
+ but the second is index 2 (since index 1 is the separator ) .. and the third element is index 4..
+ and etc.
+*/
+tab-bar tab-bar-item:nth-child(0) image {
+  background-image: url(icons/apple_colorfull.png);
+}
+
+tab-bar tab-bar-item:nth-child(2) image {
+  background-image: url(icons/shoebox@2x.png);
+}
+
+tab-bar tab-bar-item:nth-child(4) image {
+  background-image: url(icons/telescope@2x.png);
+}
+
+navigation-bar {
+  background-color: #EBEBEB;
+}
+
+navigation-bar title {
+  color: #363636;
+  font-size: 20px;
+}
+
+navigation-bar back-indicator {
+  background-image: url(default_back_icon.png);
+  background-size: 18;
+}
+
+navigation-bar back-bar-button {
+  color: #9A9A9A;
+  font-size: 17px;
+}
+
+navigation-bar back-bar-button:pressed {
+  color: blue;
+}
+
+/*used in styling apis tests*/
+#navBarBig {
+  background-color: #1f2838;
+}
+
+#navBarBig title {
+  color: #eeeeee;
+  font-size: 30px;
+}
+
+#navBarSmall {
+  background-color: #ea8b2a;
+}
+
+#navBarSmall title {
+  color: #b8435b;
+  font-size: 18px;
+}
+
+.navBarWithBorder {
+  border: 2px solid #f6546a;
+}
+
+.greenNavBar {
+  background-color: #74a259;
+}
+
+.greenNavBar title {
+  color: #aceace;
+}
+
+
+/*Navigation bar Items*/
+.rounded-button {
+  border-radius: 10pt;
+  border: 2px solid #1CD99A;
+}
+
+.primary {
+  background-color: #57B6E1;
+}
+
+#tokaButton {
+  background-color: #FFCF40;
+}
+
+/*TabBar test styling */
+.tabGray {
+  background-color: #B3B3B3;
+  color: black;
+}
+
+#myLittleTab {
+  background-color: #FFCF40;
+}
+
+/*TabBarItem test styling */
+.tab-bar-item-yellow {
+  background-color: yellow;
+}
+
+#second-item {
+  color: green;
+  background-color: #FF6363;
+}

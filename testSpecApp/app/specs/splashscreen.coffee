@@ -1,4 +1,4 @@
-describe "splashscreen", ->
+describe "Splashscreen", ->
 
   it "should be defined", ->
     steroids.splashscreen.should.be.defined

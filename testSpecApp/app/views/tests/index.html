@@ -1,4 +1,40 @@
-<script type="text/javascript" src="../../specs/splashscreen.js"></script>
-<script type="text/javascript" src="../../specs/analytics.js"></script>
-<script type="text/javascript" src="../../specs/animations.js"></script>
-<script type="text/javascript" src="../../specs/rotations.js"></script>
+<style>
+button {
+  margin: 10px;
+  display:block;
+}
+</style>
+
+<script>
+function openSpec(specName) {
+  view = new steroids.views.WebView("/views/tests/"+specName+".html");
+  steroids.layers.push(view);
+}
+steroids.navigationBar.show("Automated Tests");
+</script>
+
+<h1>Steroids Automated Tests</h1>
+
+<button onClick="openSpec('all')">
+  all
+</button>
+
+<button onClick="openSpec('anayltics')">
+  analytics
+</button>
+
+<button onClick="openSpec('animations')">
+  animations
+</button>
+
+<button onClick="openSpec('rotations')">
+  rotations
+</button>
+
+<button onClick="openSpec('splashscreen')">
+  splashscreen
+</button>
+
+<button onClick="openSpec('device')">
+  device
+</button>

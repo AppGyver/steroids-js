@@ -7,5 +7,6 @@
     -->
   <access origin="*" />
 
+  <preference name="AutoHideSplashScreen" value="true" />
   <preference name="fullscreen" value="false" />
 </widget>

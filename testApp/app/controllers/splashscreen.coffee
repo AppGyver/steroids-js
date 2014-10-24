@@ -17,7 +17,7 @@ class window.SplashscreenController
       onFailure: -> navigator.notification.alert "FAILURE in showing the splash screen"
 
     setTimeout ->
-      testHide()
+      steroids.splashscreen.hide()
     , 5000
 
   @testHide: ->
@@ -29,5 +29,5 @@ class window.SplashscreenController
     steroids.splashscreen.show()
 
     setTimeout ->
-      testHide()
+      steroids.splashscreen.hide()
     , 1000

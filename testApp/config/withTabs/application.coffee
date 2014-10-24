@@ -38,32 +38,32 @@ steroids.config.tabBar.enabled = true
 #   - http://www.google.com (directly from internet)
 #
 steroids.config.tabBar.tabs = [
-  # {
-  #   title: "FUT"
-  #   icon: "icons/telescope@2x.png"
-  #   location: "http://localhost/views/steroids/serve.html"
-  # }
   {
+    id: "tab-http"
     title: "HTTP"
     icon: "icons/pill@2x.png"
     location: "http://localhost/views/steroids/index.html"
   }
   {
+    id: "tab-fileurl"
     title: "FileURL"
     icon: "icons/shoebox@2x.png"
     location: "views/steroids/index.html"
   }
   {
+    id: "tab-nojs"
     title: "noJS"
     icon: "icons/shoebox@2x.png"
     location: "nojs.html"
   }
   {
+    id: "tab-cordova"
     title: "Cordova"
     icon: "icons/telescope@2x.png"
     location: "http://localhost/views/plugin/index.html"
   }
   {
+    id: "tab-config"
     title: "Config-iOS"
     icon: "icons/shoebox@2x.png"
     location: "http://localhost/views/config/index.html"
