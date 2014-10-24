@@ -21,14 +21,17 @@ NOTE!
 
 There is a Jasmine test project in specsApp/ that has steroids.js symlinked from dist/
 
+    1) Setup dependencies defined above under "Development"
+    2) cd testSpecApp
+    3) steroids connect
+
 ### Running the Manual Testsuite
 
 There is a Steroids project for manual testing under testApp/ that has steroids.js symlinked from dist/
 
-      1) Setup dependencies defined above under "Development"
-      2) cd testApp
-      3) grunt
-      4) steroids connect
+    1) Setup dependencies defined above under "Development"
+    2) cd testApp
+    3) steroids connect
 
 ## Bower distribution
 
