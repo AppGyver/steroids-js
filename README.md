@@ -12,22 +12,23 @@ Setup Steroids project "testApp":
     4) cd testApp && npm install
 
 NOTE!
-  You need to manually run "grunt" before reloading Steroids in testApp!
+  You may need to manually run "grunt" before reloading Steroids in testApp!
 
 
 ## Testing
 
-### Automated
+### Running the Automated Testsuite
 
 There is a Jasmine test project in specsApp/ that has steroids.js symlinked from dist/
 
-### Explorative
+### Running the Manual Testsuite
 
-There is a separate steroids project in testApp/ that has steroids.js symlinked from dist/
+There is a Steroids project for manual testing under testApp/ that has steroids.js symlinked from dist/
 
-Make sure you have grunt-cli installed:
-
-    npm install grunt-cli -g
+      1) Setup dependencies defined above under "Development"
+      2) cd testApp
+      3) grunt
+      4) steroids connect
 
 ## Bower distribution
 
@@ -35,7 +36,7 @@ Due to Bower limitations (cannot exclude certain files from a repository), the B
 
 ## Publishing:
 
-    sh ./bump-plz.sh
+    ./bump-plz.sh
 
     grunt
     git submodule init # not needed if already done
