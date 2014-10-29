@@ -590,9 +590,9 @@ class window.PluginController
     ref.removeEventListener 'exit', exit
 
     if loadNum > 1
-      steroids.logger.log "SUCCESS in IABRedirectTest"
+      steroids.logger.log "SUCCESS in IABRedirectTest, loadstarts: #{loadNum}"
     else
-      steroids.logger.log "FAILURE in IABRedirectTest"
+      steroids.logger.log "FAILURE in IABRedirectTest, loadstarts: #{loadNum}"
 
     loadNum = 0
 
