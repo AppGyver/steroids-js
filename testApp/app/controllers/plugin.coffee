@@ -580,6 +580,34 @@ class window.PluginController
         globalization_result.innerHTML = "Error: " + JSON.stringify error
     )
 
+  # INAPPBROWSER TEST
+
+  ref = undefined
+  loadNum = 0
+
+  exit = () ->
+    ref.removeEventListener 'loadstart', loadStart
+    ref.removeEventListener 'exit', exit
+
+    if loadNum > 1
+      steroids.logger.log "SUCCESS in IABRedirectTest"
+    else
+      steroids.logger.log "FAILURE in IABRedirectTest"
+
+    loadNum = 0
+
+  loadStart = (e) ->
+    loadNum++
+
+  @openIABTest = () ->
+    ref = window.open 'http://www.google.com', '_blank', 'location=yes'
+
+  @IABRedirectTest = () ->
+    ref = window.open 'http://www.gooogle.com', '_blank', 'location=yes'
+
+    ref.addEventListener('loadstart', loadStart);
+    ref.addEventListener('exit', exit);
+
   # MEDIA TEST
 
   my_media = null;
