@@ -6,6 +6,11 @@ class window.NavigationbarController
       # Make Navigation Bar to appear with a custom title text
       steroids.view.navigationBar.show { title: "navbar" }
 
+  @testPushThisView: ->
+    steroids.layers.push
+      view: new steroids.views.WebView
+        location: "/views/navigationbar/index.html"
+
   @testSetStyleId_navBarBig: ->
     steroids.view.navigationBar.setStyleId "navBarBig"
     , {
