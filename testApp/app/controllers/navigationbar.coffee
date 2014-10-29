@@ -48,11 +48,18 @@ class window.NavigationbarController
       onFailure: -> navigator.notification.alert "FAILURE in testAddStyleClass"
     }
 
-  @tesSetStyleClass: ->
+  @testSetStyleClass: ->
     steroids.view.navigationBar.setStyleClass "greenNavBar"
     , {
       onSuccess: -> steroids.logger.log "SUCCESS in tesSetStyleClass"
       onFailure: -> navigator.notification.alert "FAILURE in tesSetStyleClass"
+    }
+
+  @testSetNewStyleClass: ->
+    steroids.view.navigationBar.setStyleClass "navBarWithBorder"
+    , {
+      onSuccess: -> steroids.logger.log "SUCCESS in testSetNewStyleClass"
+      onFailure: -> navigator.notification.alert "FAILURE in testSetNewStyleClass"
     }
 
   @testHideAnimated: ->
