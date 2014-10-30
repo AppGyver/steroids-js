@@ -44,20 +44,21 @@ tab-bar tab-bar-item:pressed {
 
 /*
  In Android ->
- For now.. there is a separator between each tabItem.. so the first tabItem is index 0,
- but the second is index 2 (since index 1 is the separator ) .. and the third element is index 4..
- and etc.
+
+ You can define tab id's in application.coffee and create styles matching those id's, as shown below. Icons defined in application.cofee are overriden by native styles.
+
 */
-tab-bar tab-bar-item:nth-child(0) image {
+
+tab-bar #tab-http image {
   background-image: url(icons/apple_colorfull.png);
 }
 
-tab-bar tab-bar-item:nth-child(2) image {
+tab-bar #tab-fileurl image {
   background-image: url(icons/shoebox@2x.png);
 }
 
-tab-bar tab-bar-item:nth-child(4) image {
-  background-image: url(icons/telescope@2x.png);
+tab-bar #tab-nojs image {
+  background-image: url(icons/apple_colorfull.png);
 }
 
 navigation-bar {
