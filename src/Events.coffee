@@ -2,6 +2,8 @@
 
 class Events
 
+  @eventCounter = Date.now()
+
   @dispatchVisibilitychangedEvent: (options={}) =>
     steroids.debug
       msg: "dispatched visibilitychanged"
@@ -51,10 +53,14 @@ class Events
       steroids.debug
         msg: "focus added"
 
+      event = "lostFocus"
+      eventHandlerId = ++Events.eventCounter;
+
       steroids.nativeBridge.nativeCall
         method: "addEventListener"
         parameters:
-          event: "lostFocus"
+          event: event
+          eventHandlerId: "#{event}_#{eventHandlerId}"
         successCallbacks: [lostFocusAdded,callbacks.onSuccess]
         recurringCallbacks: [becomeHiddenEvent, callbacks.onFailure]
 
@@ -81,9 +87,13 @@ class Events
       @dispatchVisibilitychangedEvent()
 
 
+    event = "focus"
+    eventHandlerId = ++Events.eventCounter;
+
     steroids.nativeBridge.nativeCall
       method: "addEventListener"
       parameters:
-        event: "focus"
+        event: event
+        eventHandlerId: "#{event}_#{eventHandlerId}"
       successCallbacks: [focusAdded,callbacks.onSuccess]
       recurringCallbacks: [becomeVisibleEvent, callbacks.onFailure]
