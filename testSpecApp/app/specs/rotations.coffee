@@ -29,9 +29,10 @@ describe "Rotations", ->
         onSuccess: ->
           steroids.screen.rotate "portraitUpsideDown",
             onSuccess: ->
-              steroids.screen.setAllowedRotations allOrientations
-              done new Error "screen.rotate should have failed!"
+              done new Error "onSuccess callback of rotating the screen upside down when should not be able to rotate the screen!"
             onFailure: ->
               done()
         onFailure: (error) ->
           done new Error error
+
+      steroids.screen.setAllowedRotations allOrientations
