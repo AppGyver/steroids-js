@@ -149,3 +149,8 @@ navigation-bar back-bar-button:pressed {
   color: green;
   background-color: #FF6363;
 }
+
+/*styling the specific tab that has a specific id*/
+#tab-cordova {
+  color: red;
+}

@@ -101,3 +101,8 @@ navigation-bar back-indicator {
   color: green;
   background-color: #FF6363;
 }
+
+/*styling the specific tab that has a specific id*/
+#tab-cordova {
+  color: red;
+}
