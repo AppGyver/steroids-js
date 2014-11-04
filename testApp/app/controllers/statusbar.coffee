@@ -23,7 +23,7 @@ class window.StatusbarController
       onFailure: -> navigator.notification.alert "FAILURE in testShowLight status bar"
 
   @testOnTap: ->
-    steroids.statusBar.onTap -> steroids.logger.log "TEST status bar tapped !!",
+    steroids.statusBar.onTap -> navigator.notification.alert "TEST status bar tapped !!",
       onSuccess: -> steroids.logger.log "SUCCESS in setting onTap event for status bar"
       onFailure: -> navigator.notification.alert "FAILURE in testOnTap status bar"
 
