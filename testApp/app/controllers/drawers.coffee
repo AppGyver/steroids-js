@@ -379,6 +379,48 @@ class window.DrawersController
       onFailure: failure
     }
 
+  @testScrimColor: ->
+    success = ->
+      steroids.logger.log "SUCCESS in setting ScrimColor"
+    failure = ->
+      steroids.logger.log "FAILURE  in setting ScrimColor"
+      navigator.notification.alert "FAILURE in testScrimColor"
+
+    steroids.drawers.update
+      options:
+        scrimColor: "#0FFECDFA"
+    ,
+      onSuccess: success
+      onFailure: failure
+
+  @testNoScrimColor: ->
+    success = ->
+      steroids.logger.log "SUCCESS in setting ScrimColor"
+    failure = ->
+      steroids.logger.log "FAILURE  in setting ScrimColor"
+      navigator.notification.alert "FAILURE in testNoScrimColor"
+
+    steroids.drawers.update
+      options:
+        scrimColor: "#00FFFFFF"
+    ,
+      onSuccess: success
+      onFailure: failure
+
+  @testInvalidScrimColor: ->
+    success = ->
+      steroids.logger.log "FAILURE in setting invalid ScrimColor"
+      navigator.notification.alert "FAILURE in testInvalidScrimColor"
+    failure = ->
+      steroids.logger.log "SUCCESS  in setting invalid ScrimColor (It should fail)"
+
+    steroids.drawers.update
+      options:
+        scrimColor: "invalid string"
+    ,
+      onSuccess: success
+      onFailure: failure
+
   @testShowShadow: ->
     success = ->
       steroids.logger.log "SUCCESS in showing drawer shadow"
