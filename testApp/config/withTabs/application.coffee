@@ -79,25 +79,27 @@ steroids.config.preloads = [
 
 
 # -- Drawer test --
-# steroids.config.drawers =
-#   left:
-#     id: "leftDrawer"
-#     location: "http://localhost/views/drawers/leftDrawer.html"
-#     # showOnAppLoad: false    # DOES NOT YET WORK ON ANDROID | true breaks on iOS
-#     # widthOfDrawerInPixels: 200    # DOES NOT YET WORK ON ANDROID
-#   right:
-#     id: "rightDrawer"
-#     location: "http://localhost/views/drawers/rightDrawer.html"
-#   #   showOnAppLoad: false    # DOES NOT YET WORK ON ANDROID | true breaks on iOS
-#   #   widthOfDrawerInPixels: 200    # DOES NOT YET WORK ON ANDROID
-#   # options:    # DOES NOT YET WORK ON ANDROID
-#   #   centerViewInteractionMode: "Full"   # DOES NOT YET WORK ON ANDROID
-#   #   closeGestures: ["PanNavBar", "PanCenterView", "TapCenterView"]    # DOES NOT YET WORK ON ANDROID
-#   #   openGestures: ["PanNavBar", "PanCenterView"]    # DOES NOT YET WORK ON ANDROID
-#   #   showShadow: true    # DOES NOT YET WORK ON ANDROID
-#   #   stretchDrawer: true   # DOES NOT YET WORK ON ANDROID
-#   #   widthOfLayerInPixels: 0   # DOES NOT YET WORK ON ANDROID
-
+###
+steroids.config.drawers =
+  left:
+    id: "leftDrawer"
+    location: "http://localhost/views/drawers/leftDrawer.html"
+    showOnAppLoad: false    # true breaks on iOS
+    widthOfDrawerInPixels: 300
+  right:
+    id: "rightDrawer"
+    location: "http://localhost/views/drawers/rightDrawer.html"
+    showOnAppLoad: false    # true breaks on iOS
+    widthOfDrawerInPixels: 200
+  options:
+   #   centerViewInteractionMode: "Full"   # NOT SUPPORTED ON ANDROID
+    closeGestures: ["PanBezelCenterView", "TapCenterView"] # PanBezelCenterView and TapCenterView are always enabled in Android and cannot be disabled
+    openGestures: ["PanBezelCenterView"] # Only PanBezelCenterView is supported in Android
+    showShadow: true
+    scrimColor: "#0FEC0F0D" # ANDROID ONLY
+   #   stretchDrawer: true   # NOT SUPPORTED ON ANDROID
+   #   widthOfLayerInPixels: 0
+###
 
 # -- Initial View ---
 steroids.config.initialView =
