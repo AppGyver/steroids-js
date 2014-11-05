@@ -28,13 +28,18 @@ navigation-bar title {
   color: #363636;
   font-size: 20px;
 }
-/*
- Example on how to change the back button back indicator
-navigation-bar back-indicator {
-  background-image: url(icons/apple_colorfull.png);
-  background-size: 20;
+
+navigation-bar back-bar-button {
+  color: #ffffff;
+  /* font-size: 16px; */
 }
-*/
+
+navigation-bar back-indicator {
+  /* background-image: url(icons/apple_colorfull.png); */
+  /* background-size: 20; */
+  color: #ffffff;
+}
+
 
 /*used in styling apis tests*/
 #navBarBig {
