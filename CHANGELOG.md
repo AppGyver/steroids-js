@@ -1,4 +1,4 @@
-## 3.5.6 (2014-11-06)
+## 3.5.7 (2014-11-06)
 
 Features: 
 - Fixed the `visibilitychange` event to work with Android
