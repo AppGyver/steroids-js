@@ -49,15 +49,15 @@ tab-bar tab-bar-item:pressed {
 
 */
 
-tab-bar #tab-http image {
+tab-bar #tab-http {
   background-image: url(icons/apple_colorfull.png);
 }
 
-tab-bar #tab-fileurl image {
+tab-bar #tab-fileurl {
   background-image: url(icons/shoebox@2x.png);
 }
 
-tab-bar #tab-nojs image {
+tab-bar #tab-nojs {
   background-image: url(icons/apple_colorfull.png);
 }
 
