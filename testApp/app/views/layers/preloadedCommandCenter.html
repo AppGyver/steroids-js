@@ -1,0 +1,95 @@
+<div class="list">
+  <h1>I should never be displayed.. I just do stuff in the background</h1>
+
+  <script>
+
+    var counter = 0;
+
+    function pushLayer(){
+      steroids.layers.push({
+        view: new steroids.views.WebView({ location: "/views/layers/pop.html"} )
+      }, {
+        onSuccess: function(){
+          steroids.logger.log("SUCCESS push layer from preloaded in background");
+        },
+        onFailure: function(){
+          steroids.logger.log("FAILURE push layer from preloaded in background");
+          navigator.notification.alert("FAILURE push layer from preloaded in background");
+        }
+      });
+
+    }
+
+    function openModal(){
+      steroids.modal.show({
+        view: new steroids.views.WebView({ location: "/views/layers/index.html"} )
+      }, {
+        onSuccess: function(){
+          steroids.logger.log("SUCCESS open modal from preloaded in background");
+        },
+        onFailure: function(){
+          steroids.logger.log("FAILURE open modal from preloaded in background");
+          navigator.notification.alert("FAILURE open modal from preloaded in background");
+        }
+      });
+    }
+
+    function popAll() {
+      steroids.layers.popAll({},
+        {
+          onSuccess: function(){
+            steroids.logger.log("SUCCESS pop all layers from preloaded in background");
+          },
+          onFailure: function(){
+            steroids.logger.log("FAILURE pop all layers from preloaded in background");
+            navigator.notification.alert("FAILURE pop all layers from preloaded in background");
+          }
+        });
+    }
+
+    function closeAll(){
+      steroids.modal.hideAll({},
+        {
+          onSuccess: function(){
+            steroids.logger.log("SUCCESS closing all modals from preloaded in background");
+
+            popAll();
+          },
+          onFailure: function(){
+            steroids.logger.log("FAILURE closing all modals from preloaded in background");
+            navigator.notification.alert("FAILURE closing all modals from preloaded in background");
+          }
+        });
+    }
+
+    function tick(){
+
+      counter++;
+
+      var shouldContinue = true;
+
+      if( (counter % 10) == 0){
+        console.log("closing all modals and layers");
+        closeAll();
+      }
+      else{
+        if( (counter % 6) == 0){
+          console.log("open modal");
+          openModal();
+        }
+        else{
+          console.log("push layer");
+          pushLayer();
+        }
+      }
+
+      if(shouldContinue){
+        setTimeout(tick, 2000);
+      }
+    }
+
+    setTimeout(tick, 2000);
+
+  </script>
+
+</div>
