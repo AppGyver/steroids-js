@@ -19,6 +19,30 @@ class window.LayersController
       location: "/views/layers/pop.html"
     }
 
+  @testPreloadedCommandCenter2: ->
+
+    commandCenter = new steroids.views.WebView "/views/layers/preloadedCommandCenter2.html"
+
+    commandCenter.preload({}, {
+      onSuccess: ->
+        steroids.logger.log "SUCCESS in preloading the command center"
+      onFailure: ->
+        steroids.logger.log "FAILURE in preloading the command center"
+        navigator.notification.alert "FAILURE in preloading the command center"
+    })
+
+  @testPreloadedCommandCenter: ->
+
+    commandCenter = new steroids.views.WebView "/views/layers/preloadedCommandCenter.html"
+
+    commandCenter.preload({}, {
+      onSuccess: ->
+        steroids.logger.log "SUCCESS in preloading the command center"
+      onFailure: ->
+        steroids.logger.log "FAILURE in preloading the command center"
+        navigator.notification.alert "FAILURE in preloading the command center"
+    })
+
   @testPushPreloaded: ->
 
     success = ->
@@ -36,7 +60,7 @@ class window.LayersController
   @testShowNavBar: ->
     steroids.navigationBar.show "layers!",
       onSuccess: -> steroids.logger.log "SUCCESS in showing navigation bar"
-      onFailure: -> 
+      onFailure: ->
         steroids.logger.log "FAILURE in testShowNavBar"
         navigator.notification.alert "FAILURE in testShowNavBar"
 
