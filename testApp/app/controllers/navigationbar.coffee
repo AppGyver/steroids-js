@@ -107,6 +107,7 @@ class window.NavigationbarController
     onSuccess: -> steroids.logger.log "SUCCESS in showing nav bar with titleImagePath"
     onFailure: -> navigator.notification.alert "FAILURE in testShowWithTitleImagePath"
 
+  # LEGACY setButtons
   @testSetButtonsWithOneRightButton: ->
     button = new steroids.buttons.NavigationBarButton
     button.title = "TEST"
@@ -118,6 +119,7 @@ class window.NavigationbarController
       onSuccess: => steroids.logger.log "SUCCESS in setting one button into nav bar (legacy)"
       onFailure: => navigator.notification.alert "FAILURE in testSetButtonsWithOneRightButton (legacy)"
 
+  # LEGACY setButtons
   @testSetButtonsWithManyButtons: (options={override:false})->
     button1 = new steroids.buttons.NavigationBarButton
     button1.title = "EKA"
@@ -145,9 +147,11 @@ class window.NavigationbarController
       onSuccess: => steroids.logger.log "SUCCESS in setting many buttons with setButtons"
       onFailure: => navigator.notification.alert "FAILURE in testSetButtonsWithManyButtons with or without back button (legacy)"
 
+  # LEGACY setButtons
   @testSetButtonsWithManyButtonsWithoutBack: ->
     @testSetButtonsWithManyButtons { override: true }
 
+  # LEGACY setButtons
   @testSetButtonsWithoutButtons: ->
     steroids.view.navigationBar.setButtons {},
       onSuccess: => steroids.logger.log "SUCCESS in removing all buttons from nav bar"
@@ -238,6 +242,17 @@ class window.NavigationbarController
       onSuccess: -> steroids.logger.log "SUCCESS in testSetBackButtonImage"
       onFailure: -> navigator.notification.alert "FAILURE in testSetBackButtonImage"
 
+  @testUpdateOnlyOneOfTheButtons: ->
+    button1 = new steroids.buttons.NavigationBarButton
+    button1.title = "NEWNEW LEFT"
+    button1.onTap = => navigator.notification.alert "NEW RIGHT BUTTON TAPPED"
+
+    steroids.view.navigationBar.update {
+      buttons: {
+        left: [button1]
+      }
+    }
+
   @testUpdateButtonsWithoutBackButton: ->
     button1 = new steroids.buttons.NavigationBarButton
     button1.title = "NEW RIGHT"
@@ -277,6 +292,7 @@ class window.NavigationbarController
       onSuccess: -> steroids.logger.log "SUCCESS in testButtonWithImageAsOriginal - updating nav bar with tint and no tint buttons"
       onFailure: -> navigator.notification.alert "FAILURE in testButtonWithImageAsOriginal"
 
+  # LEGACY setAppearance
   @testSetAppearanceToRainbow: ->
     steroids.view.navigationBar.setAppearance {
       tintColor: '#FF0000'
