@@ -124,8 +124,8 @@ class window.ModalController
 
     preloadedView = new steroids.views.WebView
       location: "/views/modal/preload.html"
+      id: "preloadedModal"
     preloadedView.preload()
-
 
   @testShowPreloadedKeepLoading: () ->
 
