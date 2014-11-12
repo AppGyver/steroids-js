@@ -9,7 +9,7 @@ class window.PostmessageController
 
     window.addEventListener "message", receiveMessage
 
-    navigator.notification.alert "Listening for messages and appending them to this document."
+    alert "Listening for messages and appending them to this document."
 
   @testSendingUncommonCharacters: ->
     msg = {text: "%=!=€%&hay'jay  ____dolan"}
@@ -18,6 +18,29 @@ class window.PostmessageController
   @testSendHello: ->
     msg = { text: "hello!" }
     window.postMessage msg, "*"
+
+  @testPushLayerAndSendMessage: ->
+    pushView = (daview) ->
+      steroids.layers.push daview,
+        onSuccess: () ->
+          window.setTimeout =>
+            window.postMessage { text: "[2/2] this message is sent from onSuccess with a 100ms timeout" }, "*"
+          , 100
+
+          window.postMessage { text: "[1/2] hi this is sent from push onSuccess without a timeout" }, "*"
+        onFailure: ->
+          navigator.notification.alert "FAILURE in testPushLayerAndSendMessage failed to push layer"
+
+    webView = new steroids.views.WebView "views/postmessage/listener.html"
+
+    webView.preload {}, {
+      onSuccess: ->
+        pushView(webView)
+      onFailure: ->
+        steroids.logger.log "in testPushLayerAndSendMessage failed to preload layer, trying to push......."
+        pushView(webView)
+    }
+
 
   @testStressPostMessages: ->
     steroids.logger.log "TEST START starting postMessage stress test"
