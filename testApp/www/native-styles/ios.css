@@ -40,6 +40,11 @@ navigation-bar back-indicator {
   color: #ffffff;
 }
 
+navigation-bar button {
+  background-color: red;
+  color: green;
+  border-radius: 4px;
+}
 
 /*used in styling apis tests*/
 #navBarBig {

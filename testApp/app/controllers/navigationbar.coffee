@@ -157,6 +157,17 @@ class window.NavigationbarController
       onSuccess: => steroids.logger.log "SUCCESS in removing all buttons from nav bar"
       onFailure: => navigator.notification.alert "FAILURE in testSetButtonsWithoutButtons - removing buttons from nav bar"
 
+  @testSetButtonsWithDefaultStyle: ->
+    button1 = new steroids.buttons.NavigationBarButton
+    button1.title = "NEWNEW LEFT"
+    button1.onTap = => navigator.notification.alert "NEW RIGHT BUTTON TAPPED"
+
+    steroids.view.navigationBar.update {
+      buttons: {
+        left: [button1]
+      }
+    }
+
   @testUpdateTitle: ->
     steroids.view.navigationBar.update {
       title: "New title"

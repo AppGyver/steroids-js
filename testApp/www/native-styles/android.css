@@ -84,6 +84,12 @@ navigation-bar back-bar-button:pressed {
   color: blue;
 }
 
+navigation-bar button {
+  background-color: red;
+  color: green;
+  border-radius: 4px;
+}
+
 /*used in styling apis tests*/
 #navBarBig {
   background-color: #1f2838;
