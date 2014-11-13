@@ -31,7 +31,10 @@ class window.PostmessageController
         onFailure: ->
           navigator.notification.alert "FAILURE in testPushLayerAndSendMessage failed to push layer"
 
-    webView = new steroids.views.WebView "views/postmessage/listener.html"
+    webView = new steroids.views.WebView {
+      location: "views/postmessage/listener.html",
+      id: "uliuli"
+    }
 
     webView.preload {}, {
       onSuccess: ->
