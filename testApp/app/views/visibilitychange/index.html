@@ -3,15 +3,15 @@
     document.addEventListener("visibilitychange", cb)
   </a>
   <a class="performsTest item item-text-wrap" data-location="testPreloadVisibilityChange">
-    preload + visibilitychange
+    preload + push a view listening to visibilitychange
   </a>
   <a class="performsTest item item-text-wrap" data-location="testPrerenderVisibilityIsHidden">
-    preload initial visibility == "hidden"
+    preload a view (no push) and alert it's visibilitystate - should be hidden
   </a>
   <a class="performsTest item item-text-wrap" data-location="testInModal">
     open modal
   </a>
   <a class="performsTest item item-text-wrap" data-location="testCurrentVisibilityIsVisible">
-    document.hidden == false &amp;&amp; document.visibilityState == "visible"
+    show current visibilitystate, should be: document.visibilityState == visible &amp; &amp; document.hidden == false
   </a>
 </div>
