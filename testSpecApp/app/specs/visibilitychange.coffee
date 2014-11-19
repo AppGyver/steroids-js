@@ -1,5 +1,7 @@
 describe "visibilitychange", ->
 
+  @timeout 2500
+
   beforeEach (done) ->
     document.addEventListener "deviceready", ->
       setTimeout done, 750
