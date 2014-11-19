@@ -8,7 +8,7 @@ describe "visibilitychange", ->
   googleView = new steroids.views.WebView "http://www.google.com"
 
 
-  describe "when pushing & popping on top of listening layer", ->
+  describe "pushing & popping on top of listening layer", ->
     it "should log two visibilitychange events", (done) ->
       visibilityChangeCount = 0
 
@@ -84,7 +84,7 @@ describe "visibilitychange", ->
 
 
 
-  describe "when opening a modal on top of listening layer", ->
+  describe "opening a modal on top of listening layer", ->
     it "should log two visibilitychange events", (done) ->
       visibilityChangeCount = 0
 
