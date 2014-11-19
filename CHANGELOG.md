@@ -1,7 +1,12 @@
+## 3.5.8 (2014-11-19)
+
+Features:
+- Fixed `visibilitychange` so that `hidden` events may also fire on Android.
+
 ## 3.5.7 (2014-11-06)
 
-Features: 
-- Fixed the `visibilitychange` event to work with Android
+Features:
+- Fixed the `visibilitychange` event to work with Android.
 
 ## 3.5.5 (2014-10-09)
 
