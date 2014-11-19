@@ -103,10 +103,10 @@ describe "visibilitychange", ->
                 visibilityChangeCount.should.equal 2
                 done()
               onFailure: (error) ->
-                done new Error "could not pop view: " + error.message
+                done new Error "could not hide modal: " + error.message
           , 500
         onFailure: (error) ->
-          done new Error "could not push view: " + error.message
+          done new Error "could not show modal: " + error.message
       }
 
 
@@ -129,10 +129,10 @@ describe "visibilitychange", ->
                 hiddenCount.should.equal 1
                 done()
               onFailure: (error) ->
-                done new Error "could not pop view: " + error.message
+                done new Error "could not hide modal: " + error.message
           , 500
         onFailure: (error) ->
-          done new Error "could not push view: " + error.message
+          done new Error "could not show modal: " + error.message
       }
 
 
@@ -154,9 +154,9 @@ describe "visibilitychange", ->
                 visibleCount.should.equal 1
                 done()
               onFailure: (error) ->
-                done new Error "could not pop view: " + error.message
+                done new Error "could not hide modal: " + error.message
           , 500
         onFailure: (error) ->
-          done new Error "could not push view: " + error.message
+          done new Error "could not show modal: " + error.message
       }
 
