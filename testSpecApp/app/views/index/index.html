@@ -3,17 +3,12 @@ function openSpec(specName) {
   view = new steroids.views.WebView("/views/tests/"+specName+".html");
   steroids.layers.push(view);
 }
+
 steroids.navigationBar.show("Steroids Automated Tests");
 </script>
 
-<br/><br/> <!-- sry -->
-
 <button class="button button-block button-balanced" onClick="openSpec('all')">
   All non-legacy tests
-</button>
-
-<button class="button button-block" onClick="openSpec('analytics')">
-  Analytics
 </button>
 
 <button class="button button-block" onClick="openSpec('animations')">
@@ -38,4 +33,11 @@ steroids.navigationBar.show("Steroids Automated Tests");
 
 <button class="button button-block" onClick="openSpec('visibilitychange')">
   visibilitychange
+</button>
+
+<br/>
+<center><h3 style="font-color:grey;">Legacy Tests</h3></center>
+
+<button class="button button-block button-light" onClick="openSpec('analytics')">
+  Analytics
 </button>
