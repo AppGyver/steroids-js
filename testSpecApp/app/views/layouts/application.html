@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
   <title>Steroids automated test runner</title>
 
+  <link rel="stylesheet" href="../../components/ionic/css/ionic.css" />
   <link rel="stylesheet" href="../../components/mocha/mocha.css">
 
   <script src="http://localhost/cordova.js"></script>
@@ -16,13 +17,15 @@
 
   <script src="../../controllers/application.js"></script>
 </head>
-<body>
+<body class="content">
   <script>
     mocha.setup("bdd");
   </script>
 
-  <%= yield.view %>
-  <div id="mocha"></div>
+  <div class="padding">
+    <%= yield.view %>
+    <div id="mocha"></div>
+  </div>
 
   <script>
     mocha.run();

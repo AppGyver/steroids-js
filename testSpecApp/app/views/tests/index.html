@@ -1,44 +1,41 @@
-<style>
-button {
-  margin: 10px;
-  display:block;
-}
-</style>
-
 <script>
 function openSpec(specName) {
   view = new steroids.views.WebView("/views/tests/"+specName+".html");
   steroids.layers.push(view);
 }
-steroids.navigationBar.show("Automated Tests");
+steroids.navigationBar.show("Steroids Automated Tests");
 </script>
 
-<h1>Steroids Automated Tests</h1>
+<br/><br/> <!-- sry -->
 
-<button onClick="openSpec('all')">
-  all
+<button class="button button-block button-energized" onClick="openSpec('all')">
+  ALL non-legacy tests
 </button>
 
-<button onClick="openSpec('analytics')">
-  analytics
+<button class="button button-block" onClick="openSpec('analytics')">
+  Analytics
 </button>
 
-<button onClick="openSpec('animations')">
-  animations
+<button class="button button-block" onClick="openSpec('animations')">
+  Animations
 </button>
 
-<button onClick="openSpec('device')">
-  device
+<button class="button button-block" onClick="openSpec('device')">
+  Device
 </button>
 
-<button onClick="openSpec('layers')">
-  layers
+<button class="button button-block" onClick="openSpec('layers')">
+  Layers
 </button>
 
-<button onClick="openSpec('rotations')">
-  rotations
+<button class="button button-block" onClick="openSpec('rotations')">
+  Rotations
 </button>
 
-<button onClick="openSpec('splashscreen')">
-  splashscreen
+<button class="button button-block" onClick="openSpec('splashscreen')">
+  Splashscreen
+</button>
+
+<button class="button button-block" onClick="openSpec('visibilitychange')">
+  Visibilitychange
 </button>
