@@ -1,6 +1,6 @@
 describe "Layers", ->
 
-  before (done) ->
+  beforeEach (done) ->
     document.addEventListener "deviceready", ->
       setTimeout done, 500
       # to solve iOS issue of trying to push when previous push is still under way
@@ -43,6 +43,4 @@ describe "Layers", ->
       steroids.layers.on "didchange", ->
         eventsCount++
 
-      setTimeout -> # because we can't be sure the previous test has ended
-        pushAndPopGoogle(done)
-      , 500
+      pushAndPopGoogle(done)
