@@ -4,7 +4,9 @@ class window.VisibilitychangeController
 
   @testPreloadVisibilityChange: () ->
 
-    webView = new steroids.views.WebView "/views/visibilitychange/preloadThatSetsVisibilityChanges.html"
+    webView = new steroids.views.WebView
+      id: "preloadThatSetsVisibilityChanges"
+      location: "/views/visibilitychange/preloadThatSetsVisibilityChanges.html"
 
     webView.preload {},
     {

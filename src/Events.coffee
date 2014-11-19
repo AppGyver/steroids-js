@@ -1,24 +1,42 @@
-
-
 class Events
-
-  @eventCounter = Date.now()
 
   @dispatchVisibilitychangedEvent: (options={}) =>
     steroids.debug
       msg: "dispatched visibilitychanged"
 
-    visibilityChangeCustomEvent = document.createEvent("CustomEvent")
-    visibilityChangeCustomEvent.initCustomEvent("visibilitychange", true, true)
+    visibilityChangeCustomEvent = document.createEvent "CustomEvent"
+    visibilityChangeCustomEvent.initCustomEvent "visibilitychange", true, true
 
-    document.dispatchEvent(visibilityChangeCustomEvent)
+    document.dispatchEvent visibilityChangeCustomEvent
+
+  @overrideVisibilityProperties: =>
+    if document.__defineGetter__
+      delete document.visibilityState
+      delete document.hidden
+
+      document.__visibilityState_internal = ""
+      document.__hidden_internal = false
+
+      document.__defineGetter__ "visibilityState", ->
+        return document.__visibilityState_internal
+
+      document.__defineSetter__ "visibilityState", (val) ->
+        document.__visibilityState_internal = val
+
+      document.__defineGetter__ "hidden", ->
+        return document.__hidden_internal
+
+      document.__defineSetter__ "hidden", (val) ->
+        document.__hidden_internal = val
 
   @initializeVisibilityState: (options={}) =>
     steroids.debug
       msg: "set document.visibilityState to unloaded"
 
+    @overrideVisibilityProperties()
+
     document.visibilityState = "unloaded"
-    document.hidden = "true"
+    document.hidden = true
 
     document.addEventListener "DOMContentLoaded", () =>
       steroids.debug
@@ -30,16 +48,29 @@ class Events
     setVisibilityStatus = (event) ->
       document.hidden = (event.currentVisibility == "hidden")
       document.visibilityState = event.currentVisibility
-      steroids.markComponentReady("Events.initialVisibility")
+
+      steroids.markComponentReady "Events.initialVisibility"
 
     steroids.nativeBridge.nativeCall
       method: "getCurrentVisibility"
       successCallbacks: [setVisibilityStatus, callbacks.onSuccess]
       failureCallbacks: [callbacks.onFailure]
 
+  @waitForWebViewUUID: (callback) ->
+    checkWebViewUUID = () =>
+      if window.AG_WEBVIEW_UUID
+        callback()
+      else
+        setTimeout checkWebViewUUID, 100
 
+    setTimeout checkWebViewUUID, 100
+
+  #we need the window.AG_WEBVIEW_UUID before we call the addEventListener API
   @extend: (options={}, callbacks={}) ->
+    @waitForWebViewUUID =>
+      @setupEventHandlers options, callbacks
 
+  @setupEventHandlers: (options={}, callbacks={}) ->
     # Mark initialVisibility and focuslisteners components always ready on iOS
     unless navigator.userAgent.match(/Android/i)
       steroids.markComponentReady("Events.initialVisibility")
@@ -54,21 +85,22 @@ class Events
         msg: "focus added"
 
       event = "lostFocus"
-      eventHandlerId = ++Events.eventCounter;
+      eventHandlerId = "#{event.toLowerCase()}_#{window.AG_WEBVIEW_UUID}"
 
       steroids.nativeBridge.nativeCall
         method: "addEventListener"
         parameters:
           event: event
-          eventHandlerId: "#{event}_#{eventHandlerId}"
-        successCallbacks: [lostFocusAdded,callbacks.onSuccess]
-        recurringCallbacks: [becomeHiddenEvent, callbacks.onFailure]
+          eventHandlerId: eventHandlerId
+        successCallbacks: [lostFocusAdded, callbacks.onSuccess]
+        recurringCallbacks: [becomeHiddenEvent]
+        failureCallbacks: [callbacks.onFailure]
 
     lostFocusAdded = () =>
       steroids.debug
         msg: "lostfocus added"
 
-      steroids.markComponentReady("Events.focuslisteners")
+      steroids.markComponentReady "Events.focuslisteners"
 
     becomeVisibleEvent = () =>
       steroids.debug
@@ -76,6 +108,7 @@ class Events
 
       document.visibilityState = "visible"
       document.hidden = false
+
       @dispatchVisibilitychangedEvent()
 
     becomeHiddenEvent = () =>
@@ -84,16 +117,17 @@ class Events
 
       document.visibilityState = "hidden"
       document.hidden = true
+
       @dispatchVisibilitychangedEvent()
 
-
     event = "focus"
-    eventHandlerId = ++Events.eventCounter;
+    eventHandlerId = "#{event}_#{window.AG_WEBVIEW_UUID}"
 
     steroids.nativeBridge.nativeCall
       method: "addEventListener"
       parameters:
         event: event
-        eventHandlerId: "#{event}_#{eventHandlerId}"
+        eventHandlerId: eventHandlerId
       successCallbacks: [focusAdded,callbacks.onSuccess]
-      recurringCallbacks: [becomeVisibleEvent, callbacks.onFailure]
+      failureCallbacks: [callbacks.onFailure]
+      recurringCallbacks: [becomeVisibleEvent]
