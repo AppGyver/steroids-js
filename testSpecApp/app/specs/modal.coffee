@@ -55,7 +55,7 @@ describe "Modal", ->
 
     it "should show 2 modals and hide them", (done) ->
 
-      @timeout 2500
+      @timeout 3000
 
       steroids.modal.show {
         view: modalView
