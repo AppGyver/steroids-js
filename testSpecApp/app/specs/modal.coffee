@@ -90,3 +90,106 @@ describe "Modal", ->
         onFailure: (error) ->
           done new Error "could not show the first modal: " + error.message
       }
+
+  describe "show & hide events", ->
+    it "should log 1 'willshow' event when showing & hiding a modal", (done)->
+
+      willshow = 0
+
+      steroids.modal.on "willshow", ->
+        willshow++
+
+      googleView = new steroids.views.WebView "http://www.google.com"
+
+      steroids.modal.show {
+        view: googleView
+      }, {
+        onSuccess: ->
+          setTimeout ->
+            steroids.modal.hide {},
+              onSuccess: ->
+                willshow.should.equal 1
+                done()
+              onFailure: (error) ->
+                done new Error "could not hide modal: " + error.message
+          , 500
+        onFailure: (error) ->
+          done new Error "could not show modal: " + error.message
+      }
+
+    it "should log 1 'willclose' event when showing & hiding a modal", (done)->
+
+      willclose = 0
+
+      steroids.modal.on "willclose", ->
+        willclose++
+
+      googleView = new steroids.views.WebView "http://www.google.com"
+
+      steroids.modal.show {
+        view: googleView
+      }, {
+        onSuccess: ->
+          setTimeout ->
+            steroids.modal.hide {},
+              onSuccess: ->
+                willclose.should.equal 1
+                done()
+              onFailure: (error) ->
+                done new Error "could not hide modal: " + error.message
+          , 500
+        onFailure: (error) ->
+          done new Error "could not show modal: " + error.message
+      }
+
+
+    it "should log 1 'didshow' event when showing & hiding a modal", (done)->
+
+      didshow = 0
+
+      steroids.modal.on "didshow", ->
+        didshow++
+
+      googleView = new steroids.views.WebView "http://www.google.com"
+
+      steroids.modal.show {
+        view: googleView
+      }, {
+        onSuccess: ->
+          setTimeout ->
+            steroids.modal.hide {},
+              onSuccess: ->
+                didshow.should.equal 1
+                done()
+              onFailure: (error) ->
+                done new Error "could not hide modal: " + error.message
+          , 500
+        onFailure: (error) ->
+          done new Error "could not show modal: " + error.message
+      }
+
+
+    it "should log 1 'didclose' event when showing & hiding a modal", (done)->
+
+      didclose = 0
+
+      steroids.modal.on "didclose", ->
+        didclose++
+
+      googleView = new steroids.views.WebView "http://www.google.com"
+
+      steroids.modal.show {
+        view: googleView
+      }, {
+        onSuccess: ->
+          setTimeout ->
+            steroids.modal.hide {},
+              onSuccess: ->
+                didclose.should.equal 1
+                done()
+              onFailure: (error) ->
+                done new Error "could not hide modal: " + error.message
+          , 500
+        onFailure: (error) ->
+          done new Error "could not show modal: " + error.message
+      }

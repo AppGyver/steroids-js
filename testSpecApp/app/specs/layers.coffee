@@ -30,7 +30,7 @@ describe "Layers", ->
       }
 
 
-  describe "layers.on", ->
+  describe "willchange & didchange events", ->
     it "should log 2 'willchange' events when pushing & popping a layer", (done)->
 
       eventsCount = 0
