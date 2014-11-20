@@ -250,7 +250,7 @@ class window.WebviewController
     eventHandler = steroids.view.on 'unloaded', (event) ->
       steroids.logger.log "SUCCESS unloaded event -> eventName: #{event.name} webview.location: #{event.webview.location}"
 
-    sterpods.logger.log "unload event listener added"
+    steroids.logger.log "unload event listener added"
 
   @testOffAllEvents: ->
     steroids.view.off 'created'
