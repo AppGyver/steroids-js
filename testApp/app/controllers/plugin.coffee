@@ -147,7 +147,7 @@ class window.PluginController
   fileMoved = (file)->
     image = document.querySelector '#cameraTest'
     image.src = "/#{file.name}?#{(new Date()).getTime()}"
-    
+
   gotFileObject = (file)->
     targetDirURI = "file://" + steroids.app.absoluteUserFilesPath
     fileName = "user_pic.png"
@@ -670,7 +670,7 @@ class window.PluginController
       localStorage_result.innerHTML = "Got '#{item}'"
     else
       localStorage_result.innerHTML = "Error: could not find the item item-text-wrap"
-  
+
   @removeItemTest = () ->
     item = window.localStorage.getItem "items"
     if item?
@@ -678,8 +678,7 @@ class window.PluginController
       localStorage_result.innerHTML = "'items' removed"
     else
       localStorage_result.innerHTML = "Error: could not find the item to be removed"
-    
+
   # EXIT APP
   @exitAppTest = () ->
     navigator.app.exitApp()
-
