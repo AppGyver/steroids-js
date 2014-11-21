@@ -292,18 +292,15 @@ class window.PluginController
   # EVENTS TESTS
 
   @addPause = () ->
-    # alert doesn't work with pause so need to edit DOM
     document.addEventListener "pause", () ->
-      pause_result.innerHTML = "YES"
+      pause_result.innerHTML = "YES: " + new Date().toLocaleTimeString();
 
     navigator.notification.alert "Event listener added: pause"
 
   @addResume = () ->
     # alert needs to be wrapped in setTimeout to work
     document.addEventListener "resume", () ->
-      setTimeout () ->
-       navigator.notification.alert "resume got triggered!"
-      , 0
+      resume_result.innerHTML = "YES: " + new Date().toLocaleTimeString();
 
     navigator.notification.alert "Event listener added: resume"
 
