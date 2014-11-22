@@ -253,10 +253,21 @@ class window.NavigationbarController
       onSuccess: -> steroids.logger.log "SUCCESS in testSetBackButtonImage"
       onFailure: -> navigator.notification.alert "FAILURE in testSetBackButtonImage"
 
+  @testUpdateOnlyRightButtons: ->
+    button1 = new steroids.buttons.NavigationBarButton
+    button1.title = "New Right"
+    button1.onTap = => navigator.notification.alert "NEW RIGHT BUTTON TAPPED"
+
+    steroids.view.navigationBar.update {
+      buttons: {
+        right: [button1]
+      }
+    }
+
   @testUpdateOnlyOneOfTheButtons: ->
     button1 = new steroids.buttons.NavigationBarButton
     button1.title = "NEWNEW LEFT"
-    button1.onTap = => navigator.notification.alert "NEW RIGHT BUTTON TAPPED"
+    button1.onTap = => navigator.notification.alert "NEW LEFT BUTTON TAPPED"
 
     steroids.view.navigationBar.update {
       buttons: {
