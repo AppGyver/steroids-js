@@ -293,14 +293,20 @@ class window.PluginController
 
   @addPause = () ->
     document.addEventListener "pause", () ->
-      pause_result.innerHTML = "YES: " + new Date().toLocaleTimeString();
+      if pause_result.innerHTML == "NO"
+        pause_result.innerHTML = "YES: " + new Date().toLocaleTimeString();
+      else
+        pause_result.innerHTML += "<br>another one: " + new Date().toLocaleTimeString();
 
     navigator.notification.alert "Event listener added: pause"
 
   @addResume = () ->
     # alert needs to be wrapped in setTimeout to work
     document.addEventListener "resume", () ->
-      resume_result.innerHTML = "YES: " + new Date().toLocaleTimeString();
+      if resume_result.innerHTML == "NO"
+        resume_result.innerHTML = "YES: " + new Date().toLocaleTimeString();
+      else
+        resume_result.innerHTML += "<br>another one: " + new Date().toLocaleTimeString();
 
     navigator.notification.alert "Event listener added: resume"
 
