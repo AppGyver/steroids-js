@@ -72,15 +72,15 @@ navigation-bar title {
 
 navigation-bar back-indicator {
   background-image: url(default_back_icon.png);
-  background-size: 18;
+  background-size: 28;
 }
 
-navigation-bar back-bar-button {
-  color: #9A9A9A;
+navigation-bar back-button {
+  color: red;
   font-size: 17px;
 }
 
-navigation-bar back-bar-button:pressed {
+navigation-bar back-button:pressed {
   color: blue;
 }
 
