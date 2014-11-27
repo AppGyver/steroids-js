@@ -1,6 +1,7 @@
 <script>
   var visibilityChanged = function() {
-    alert("FROM PRELOADED VIEW window.location: " + window.location.href + " - visibilityState: " + document.visibilityState + " - hidden:" + document.hidden);
+    steroids.logger.log("FROM PRELOADED VIEW window.location: " + window.location.href + ", document.visibilityState == " + document.visibilityState + " && document.hidden ==" + document.hidden);
+    alert("FROM PRELOADED VIEW window.location: " + window.location.href + ", document.visibilityState == " + document.visibilityState + " && document.hidden ==" + document.hidden);
   }
 
   steroids.on("ready", function() {
