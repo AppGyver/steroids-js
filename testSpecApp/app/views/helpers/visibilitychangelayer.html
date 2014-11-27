@@ -1,0 +1,27 @@
+<script>
+  function sendVisibilityState() {
+    window.postMessage({text: "document.visibilityState == " + document.visibilityState}, "*");
+  }
+
+  function sendHidden() {
+    window.postMessage({text: "document.hidden == " + document.hidden}, "*");
+  }
+
+  var visibilityChanged = function() {
+    sendVisibilityState();
+    sendHidden();
+    steroids.logger.log("--------------- VISIBILITY CHANGED -----------------");
+  }
+
+  steroids.on("ready", function() {
+    if (steroids.view.params.mode == "hidden") {
+      sendHidden();
+    } else if (steroids.view.params.mode == "visibilityState") {
+      sendVisibilityState();
+    } else {
+      document.addEventListener("visibilitychange", visibilityChanged);
+    }
+  });
+</script>
+
+<h2>hi i have eventlisteners on visibilitychange</h2>
