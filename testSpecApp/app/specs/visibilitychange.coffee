@@ -1,6 +1,6 @@
 describe "visibilitychange", ->
 
-  @timeout 3500
+  @timeout 4000
 
   googleView = new steroids.views.WebView "http://www.google.com"
 
@@ -207,32 +207,31 @@ describe "visibilitychange", ->
       postMessageCount = 0
 
       receiveMessage = (message) ->
-        postMessageCount++
+        if message.data.text is "ready"
+          steroids.layers.push {
+            view: listenerView
+          }, {
+            onSuccess: ->
+              setTimeout ->
+                window.removeEventListener "message", receiveMessage
+
+                steroids.layers.pop {},
+                  onSuccess: ->
+                    listenerView.unload()
+                    postMessageCount.should.equal 2
+                    done()
+                  onFailure: (error) ->
+                    done new Error "could not pop view: " + error.errorDescription
+              , 500
+            onFailure: (error) ->
+              done new Error "could not push view: " + error.errorDescription
+          }
+        else
+          postMessageCount++
 
       window.addEventListener "message", receiveMessage
 
       listenerView.preload {},
-        onSuccess: ->
-          setTimeout ->
-            steroids.layers.push {
-              view: listenerView
-            }, {
-              onSuccess: ->
-                setTimeout ->
-                  window.removeEventListener "message", receiveMessage
-
-                  steroids.layers.pop {},
-                    onSuccess: ->
-                      listenerView.unload()
-                      postMessageCount.should.equal 2
-                      done()
-                    onFailure: (error) ->
-                      done new Error "could not pop view: " + error.errorDescription
-                , 500
-              onFailure: (error) ->
-                done new Error "could not push view: " + error.errorDescription
-            }
-          , 500
         onFailure: (error) ->
           window.removeEventListener "message", receiveMessage
           done new Error "could not preload view: " + error.errorDescription
@@ -252,35 +251,32 @@ describe "visibilitychange", ->
           hiddenCount++
         else if message.data.text is "document.visibilityState == visible"
           visibleCount++
+        else if message.data.text is "ready"
+          steroids.layers.push {
+            view: listenerView
+          }, {
+            onSuccess: ->
+              setTimeout ->
+                window.removeEventListener "message", receiveMessage
+
+                steroids.layers.pop {},
+                  onSuccess: ->
+                    setTimeout ->
+                      listenerView.unload()
+                      hiddenCount.should.equal 1, "did not have right hidden state"
+                      visibleCount.should.equal 1, "did not have right visibilityState"
+                      done()
+                    , 750
+                  onFailure: (error) ->
+                    done new Error "could not pop view: " + error.errorDescription
+              , 500
+            onFailure: (error) ->
+              done new Error "could not push view: " + error.errorDescription
+          }
 
       window.addEventListener "message", receiveMessage
 
       listenerView.preload {},
-        onSuccess: ->
-          setTimeout ->
-            steroids.layers.push {
-              view: listenerView
-            }, {
-              onSuccess: ->
-                window.removeEventListener "message", receiveMessage
-
-                setTimeout ->
-                  steroids.layers.pop {},
-                    onSuccess: ->
-                      setTimeout ->
-                        listenerView.unload()
-                        hiddenCount.should.equal 1, "did not have right hidden state"
-                        visibleCount.should.equal 1, "did not have right visibilityState"
-                        done()
-                      , 750
-                    onFailure: (error) ->
-                      done new Error "could not pop view: " + error.errorDescription
-                , 500
-
-              onFailure: (error) ->
-                done new Error "could not push view: " + error.errorDescription
-            }
-          , 500
         onFailure: (error) ->
           window.removeEventListener "message", receiveMessage
           done new Error "could not preload view: " + error.errorDescription
@@ -295,7 +291,8 @@ describe "visibilitychange", ->
       postMessageCount = 0
 
       receiveMessage = (message) ->
-        postMessageCount++
+        if message.data.text isnt "ready"
+          postMessageCount++
 
       listenerView.preload {},
         onSuccess: ->
@@ -311,7 +308,7 @@ describe "visibilitychange", ->
                     setTimeout ->
                       window.removeEventListener "message", receiveMessage
                       listenerView.unload()
-                      postMessageCount.should.equal 2
+                      postMessageCount.should.equal 2, "did not receive postmessage from visibilitychange"
                       done()
                     , 750
                   onFailure: (error) ->
