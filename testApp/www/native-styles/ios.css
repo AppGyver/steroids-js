@@ -29,9 +29,13 @@ navigation-bar title {
   font-size: 20px;
 }
 
-navigation-bar back-bar-button {
-  color: #ffffff;
-  /* font-size: 16px; */
+navigation-bar back-button {
+  color: red;
+  font-size: 17px;
+}
+
+navigation-bar back-button:pressed {
+  color: blue;
 }
 
 navigation-bar back-indicator {
