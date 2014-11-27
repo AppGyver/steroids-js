@@ -21,10 +21,10 @@ describe "Modal", ->
               onSuccess: ->
                 done()
               onFailure: (error) ->
-                done new Error "could not hide modal: " + error.message
+                done new Error "could not hide modal: " + error.errorDescription
           , 500
         onFailure: (error) ->
-          done new Error "could not show modal: " + error.message
+          done new Error "could not show modal: " + error.errorDescription
       }
 
   describe "hideAll", ->
@@ -45,12 +45,12 @@ describe "Modal", ->
               onFailure: (error) ->
                 steroids.modal.hide {},
                 onSuccess: ->
-                  done new Error "could not hide modal with hideAll: " + error.message
+                  done new Error "could not hide modal with hideAll: " + error.errorDescription
                 onFailure: ->
                   done new Error "could not hide modal with hideAll and failsafe hide failed too: " + error
           , 500
         onFailure: (error) ->
-          done new Error "could not show modal: " + error.message
+          done new Error "could not show modal: " + error.errorDescription
       }
 
     it "should show 2 modals and hide them", (done) ->
@@ -75,7 +75,7 @@ describe "Modal", ->
                       onSuccess: ->
                         steroids.modal.hide {},
                         onSuccess: ->
-                          done new Error "could not hide modals with hideAll: " + error.message
+                          done new Error "could not hide modals with hideAll: " + error.errorDescription
                         onFailure: ->
                           done new Error "could not hide modals with hideAll and failsafe hide failed too: " + error
                       onFailure: ->
@@ -84,11 +84,11 @@ describe "Modal", ->
                 , 500
               onFailure: (error) ->
                 steroids.modal.hide
-                done new Error "could not show the second modal: " + error.message
+                done new Error "could not show the second modal: " + error.errorDescription
             }
           , 500
         onFailure: (error) ->
-          done new Error "could not show the first modal: " + error.message
+          done new Error "could not show the first modal: " + error.errorDescription
       }
 
   describe "show & hide events", ->
@@ -111,10 +111,10 @@ describe "Modal", ->
                 willshow.should.equal 1
                 done()
               onFailure: (error) ->
-                done new Error "could not hide modal: " + error.message
+                done new Error "could not hide modal: " + error.errorDescription
           , 500
         onFailure: (error) ->
-          done new Error "could not show modal: " + error.message
+          done new Error "could not show modal: " + error.errorDescription
       }
 
     it "should log 1 'willclose' event when showing & hiding a modal", (done)->
@@ -136,10 +136,10 @@ describe "Modal", ->
                 willclose.should.equal 1
                 done()
               onFailure: (error) ->
-                done new Error "could not hide modal: " + error.message
+                done new Error "could not hide modal: " + error.errorDescription
           , 500
         onFailure: (error) ->
-          done new Error "could not show modal: " + error.message
+          done new Error "could not show modal: " + error.errorDescription
       }
 
 
@@ -162,10 +162,10 @@ describe "Modal", ->
                 didshow.should.equal 1
                 done()
               onFailure: (error) ->
-                done new Error "could not hide modal: " + error.message
+                done new Error "could not hide modal: " + error.errorDescription
           , 500
         onFailure: (error) ->
-          done new Error "could not show modal: " + error.message
+          done new Error "could not show modal: " + error.errorDescription
       }
 
 
@@ -188,8 +188,8 @@ describe "Modal", ->
                 didclose.should.equal 1
                 done()
               onFailure: (error) ->
-                done new Error "could not hide modal: " + error.message
+                done new Error "could not hide modal: " + error.errorDescription
           , 500
         onFailure: (error) ->
-          done new Error "could not show modal: " + error.message
+          done new Error "could not show modal: " + error.errorDescription
       }

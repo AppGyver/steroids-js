@@ -23,10 +23,10 @@ describe "Layers", ->
               onSuccess: ->
                 done()
               onFailure: (error) ->
-                done new Error "could not pop view: " + error.message
+                done new Error "could not pop view: " + error.errorDescription
           , 500
         onFailure: (error) ->
-          done new Error "could not push view: " + error.message
+          done new Error "could not push view: " + error.errorDescription
       }
 
 
@@ -50,10 +50,10 @@ describe "Layers", ->
                 eventsCount.should.equal 2
                 done()
               onFailure: (error) ->
-                done new Error "could not pop view: " + error.message
+                done new Error "could not pop view: " + error.errorDescription
           , 500
         onFailure: (error) ->
-          done new Error "could not push view: " + error.message
+          done new Error "could not push view: " + error.errorDescription
       }
 
 
@@ -76,9 +76,9 @@ describe "Layers", ->
                 eventsCount.should.equal 2
                 done()
               onFailure: (error) ->
-                done new Error "could not pop view: " + error.message
+                done new Error "could not pop view: " + error.errorDescription
           , 500
         onFailure: (error) ->
-          done new Error "could not push view: " + error.message
+          done new Error "could not push view: " + error.errorDescription
       }
 
