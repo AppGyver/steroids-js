@@ -164,7 +164,7 @@ describe "visibilitychange", ->
 
 
 
-  describe "a different layer than the one shown listening to visibilitychange", =>
+  describe "on a preloaded layer", =>
 
     it "should be hidden after being preloaded", (done) =>
       listenerView = new steroids.views.WebView "/views/helpers/visibilitychangelayer.html?mode=hidden"
@@ -366,5 +366,3 @@ describe "visibilitychange", ->
         onFailure: (error) ->
           window.removeEventListener "message", receiveMessage
           done new Error "could not preload view: " + error.errorDescription
-
-

@@ -19,6 +19,7 @@
     } else if (steroids.view.params.mode == "visibilityState") {
       sendVisibilityState();
     } else {
+      window.postMessage({text: "ready"}, "*");
       document.addEventListener("visibilitychange", visibilityChanged);
     }
   });

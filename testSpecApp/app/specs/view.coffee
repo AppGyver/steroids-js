@@ -5,15 +5,30 @@ describe "View", ->
 
   it "should track WebView created events", (done)->
 
+    @timeout 3000
+
     created = 0
 
     steroids.view.on "created", ->
       created++
 
-    testView = new steroids.views.WebView {location: "http://www.google.com", id:"eventTrackerTest"}
+    lulView = new steroids.views.WebView {location: "http://www.google.com", id:"eventTest"}
 
-    created.should.equal 1
-    done()
+    steroids.layers.push {
+      view: "eventTest"
+    }, {
+      onSuccess: ->
+        setTimeout ->
+          steroids.layers.pop {},
+            onSuccess: ->
+              created.should.equal 1
+              done()
+            onFailure: (error) ->
+              done new Error "could not pop layer:" + error
+        , 500
+      onFailure: (error) ->
+        done new Error "could not push layer: " + error.errorDescription
+    }
 
 
   it "should track WebView preloaded & unloaded events", (done)->
@@ -40,3 +55,13 @@ describe "View", ->
       onFailure: ->
         done new Error "could not preload view"
 
+
+  it "should recognize a preloaded layer's visibilityState as 'prerender'", (done) ->
+    yahooView = new steroids.views.WebView "http://www.yahoo.com"
+
+    yahooView.preload {},
+      onSuccess: ->
+        (document.visibilityState).should.equal "prerender"
+        done()
+      onFailure: ->
+        done new Error "could not preload view:" + error.errorDescription
