@@ -25,7 +25,7 @@ navigation-bar {
 }
 
 navigation-bar title {
-  color: #363636;
+  color: red;
   font-size: 20px;
 }
 
@@ -39,8 +39,8 @@ navigation-bar back-button:pressed {
 }
 
 navigation-bar back-indicator {
-  /* background-image: url(icons/apple_colorfull.png); */
-  /* background-size: 20; */
+   /*background-image: url(icons/apple_colorfull.png);*/
+   /*background-size: 20;*/
   color: #ffffff;
 }
 
@@ -49,6 +49,20 @@ navigation-bar button {
   color: green;
   border-radius: 4px;
 }
+
+navigation-bar back-button {
+  color: red;
+  font-size: 18;
+}
+
+/*
+ NOTE: -> :pressed pseudo class is NOT supported in iOS.
+
+navigation-bar back-button:pressed {
+  color: green;
+}
+
+*/
 
 /*used in styling apis tests*/
 #navBarBig {
