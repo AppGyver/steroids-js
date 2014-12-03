@@ -5,14 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
   <title>New Application</title>
 
-  <link rel="stylesheet" href="../../vendor/ionic/css/ionic.css" />
-  <link rel="stylesheet" href="../../stylesheets/application.css" />
-
   <script>
+    window.___START_TIME = window.___START_TIME || new Date();
+
     window.onerror = function(a,b,c){ alert(a+" "+b+" "+c); }
-  </script>
 
-  <script>
     function capitaliseFirstLetter(string) {
       return string.charAt(0).toUpperCase() + string.slice(1);
     }
@@ -21,6 +18,8 @@
     STEROIDS.controllerName = capitaliseFirstLetter("<%= yield.controller %>") + "Controller";
   </script>
 
+  <link rel="stylesheet" href="../../vendor/ionic/css/ionic.css" />
+  <link rel="stylesheet" href="../../stylesheets/application.css" />
 
   <script src="http://localhost/cordova.js"></script>
 
