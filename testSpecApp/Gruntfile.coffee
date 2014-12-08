@@ -7,7 +7,7 @@ module.exports = (grunt) ->
     copy:
       "steroids-dist":
         src: "../dist/steroids.js"
-        dest: "www/components/steroids-js/steroids.js"
+        dest: "dist/components/steroids-js/steroids.js"
     shell:
       "steroids-build":
         command: "grunt"
@@ -17,7 +17,7 @@ module.exports = (grunt) ->
 
   grunt.registerTask "default", [
     "shell:steroids-build"
-    "copy:steroids-dist"
     "steroids-make"
     "steroids-compile-sass"
+    "copy:steroids-dist"
   ]
