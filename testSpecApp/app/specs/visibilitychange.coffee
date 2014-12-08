@@ -2,18 +2,20 @@ describe "visibilitychange", ->
 
   @timeout 4000
 
+  @preloadedIdCounter = 0
+
   googleView = new steroids.views.WebView "http://www.google.com"
 
 
-  beforeEach (done) ->
+  beforeEach (done) =>
     document.addEventListener "deviceready", ->
       setTimeout done, 750
       # to solve iOS issue of trying to push when previous push is still under way
 
 
 
-  describe "pushing & popping on top of listening layer", ->
-    it "should log two visibilitychange events", (done) ->
+  describe "pushing & popping on top of listening layer", =>
+    it "should log two visibilitychange events", (done) =>
       visibilityChangeCount = 0
 
       document.addEventListener "visibilitychange", ->
@@ -37,7 +39,7 @@ describe "visibilitychange", ->
 
 
 
-    it "should log one and only one 'hidden' visibilitychange", (done) ->
+    it "should log one and only one 'hidden' visibilitychange", (done) =>
 
       hiddenCount = 0
 
@@ -63,7 +65,7 @@ describe "visibilitychange", ->
 
 
 
-    it "should log one 'visible' visibilitychange", (done) ->
+    it "should log one 'visible' visibilitychange", (done) =>
       visibleCount = 0
 
       document.addEventListener "visibilitychange", ->
@@ -88,8 +90,8 @@ describe "visibilitychange", ->
 
 
 
-  describe "opening a modal on top of listening layer", ->
-    it "should log two visibilitychange events", (done) ->
+  describe "opening a modal on top of listening layer", =>
+    it "should log two visibilitychange events", (done) =>
       visibilityChangeCount = 0
 
       document.addEventListener "visibilitychange", ->
@@ -113,7 +115,7 @@ describe "visibilitychange", ->
 
 
 
-    it "should log one and only one 'hidden' visibilitychange", (done) ->
+    it "should log one and only one 'hidden' visibilitychange", (done) =>
 
       hiddenCount = 0
 
@@ -139,7 +141,7 @@ describe "visibilitychange", ->
 
 
 
-    it "should log one 'visible' visibilitychange", (done) ->
+    it "should log one 'visible' visibilitychange", (done) =>
       visibleCount = 0
 
       document.addEventListener "visibilitychange", ->
@@ -167,7 +169,10 @@ describe "visibilitychange", ->
   describe "on a preloaded layer", =>
 
     it "should be hidden after being preloaded", (done) =>
-      listenerView = new steroids.views.WebView "/views/helpers/visibilitychangelayer.html?mode=hidden"
+
+      listenerView = new steroids.views.WebView
+        location: "/views/helpers/visibilitychangelayer.html?mode=hidden"
+        id: "preloaded_" + @preloadedIdCounter++
 
       receiveMessage = (message) ->
         window.removeEventListener "message", receiveMessage
@@ -183,7 +188,9 @@ describe "visibilitychange", ->
 
 
     it "should have visibilityState hidden after being preloaded", (done) =>
-      listenerView = new steroids.views.WebView "/views/helpers/visibilitychangelayer.html?mode=visibilityState"
+      listenerView = new steroids.views.WebView
+        location: "/views/helpers/visibilitychangelayer.html?mode=visibilityState"
+        id: "preloaded_" + @preloadedIdCounter++
 
       receiveMessage = (message) ->
         window.removeEventListener "message", receiveMessage
@@ -198,11 +205,10 @@ describe "visibilitychange", ->
           done new Error "could not preload view: " + error.errorDescription
 
 
-    it "should fire some kind of visibilitychange on push after preload", (done) ->
-      listenerView = new steroids.views.WebView {
+    it "should fire some kind of visibilitychange on push after preload", (done) =>
+      listenerView = new steroids.views.WebView
         location: "/views/helpers/visibilitychangelayer.html",
-        id: "listener1"
-      }
+        id: "preloaded_" + @preloadedIdCounter++
 
       postMessageCount = 0
 
@@ -237,11 +243,10 @@ describe "visibilitychange", ->
           done new Error "could not preload view: " + error.errorDescription
 
 
-    it "should fire right kind of visibilitychange on push after preload", (done) ->
-      listenerView = new steroids.views.WebView {
+    it "should fire right kind of visibilitychange on push after preload", (done) =>
+      listenerView = new steroids.views.WebView
         location: "/views/helpers/visibilitychangelayer.html",
-        id: "listener2"
-      }
+        id: "preloaded_" + @preloadedIdCounter++
 
       hiddenCount = 0
       visibleCount = 0
@@ -282,11 +287,10 @@ describe "visibilitychange", ->
           done new Error "could not preload view: " + error.errorDescription
 
 
-    it "should fire some kind of visibilitychange on pop after preload&push", (done) ->
-      listenerView = new steroids.views.WebView {
+    it "should fire some kind of visibilitychange on pop after preload&push", (done) =>
+      listenerView = new steroids.views.WebView
         location: "/views/helpers/visibilitychangelayer.html",
-        id: "listener3"
-      }
+        id: "preloaded_" + @preloadedIdCounter++
 
       postMessageCount = 0
 
@@ -323,11 +327,10 @@ describe "visibilitychange", ->
           done new Error "could not preload view: " + error.errorDescription
 
 
-    it "should fire right kind of visibilitychange on pop after preload&push", (done) ->
-      listenerView = new steroids.views.WebView {
+    it "should fire right kind of visibilitychange on pop after preload&push", (done) =>
+      listenerView = new steroids.views.WebView
         location: "/views/helpers/visibilitychangelayer.html",
-        id: "listener4"
-      }
+        id: "preloaded_" + @preloadedIdCounter++
 
       hiddenCount = 0
       visibleCount = 0
