@@ -3,6 +3,11 @@ describe "View", ->
   it "should be defined", ->
     steroids.view.should.be.defined
 
+  beforeEach (done) ->
+    document.addEventListener "deviceready", ->
+      setTimeout done, 750
+      # to solve iOS issue of trying to push when previous push is still under way
+
   it "should track WebView created events", (done)->
 
     @timeout 3000
@@ -54,14 +59,3 @@ describe "View", ->
             done new Error "could not unload view"
       onFailure: ->
         done new Error "could not preload view"
-
-
-  it "should recognize a preloaded layer's visibilityState as 'prerender'", (done) ->
-    yahooView = new steroids.views.WebView "http://www.yahoo.com"
-
-    yahooView.preload {},
-      onSuccess: ->
-        (document.visibilityState).should.equal "prerender"
-        done()
-      onFailure: ->
-        done new Error "could not preload view:" + error.errorDescription
