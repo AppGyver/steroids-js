@@ -13,20 +13,36 @@ describe "visibilitychange", ->
       # to solve iOS issue of trying to push when previous push is still under way
 
 
-  it "should have the correct visibilityState to begin with", ->
-    document.visibilityState.should.equal "visible"
+  describe "visibilitystate for current layer", =>
+    it "should visibilitystate == visible and hidden == false", (done) =>
+      document.visibilityState.should.equal "visible"
+      document.hidden.should.equal false
 
-  it "should have the correct hidden state to begin with", ->
-    document.hidden.should.equal false
+      steroids.layers.push
+        view: googleView
+      ,
+        onSuccess: ->
+          document.visibilityState.should.equal "hidden"
+          document.hidden.should.equal true
 
-<<<<<<< HEAD
-  describe "pushing & popping on top of listening layer", ->
+          setTimeout ->
+            steroids.layers.pop {},
+              onSuccess: ->
+                document.visibilityState.should.equal "visible"
+                document.hidden.should.equal false
 
-    it "should log two visibilitychange events", (done) ->
-=======
+                done()
+              onFailure: (error) ->
+                done new Error "could not pop view: " + error.errorDescription
+          , 500
+
+        onFailure: (error) ->
+          done new Error "could not push view: " + error.errorDescription
+
+
   describe "pushing & popping on top of listening layer", =>
     it "should log two visibilitychange events", (done) =>
->>>>>>> chore (auto tests) improve auto tests for view and visibility change
+
       visibilityChangeCount = 0
 
       document.addEventListener "visibilitychange", ->
