@@ -11,8 +11,14 @@ describe "visibilitychange", ->
       # to solve iOS issue of trying to push when previous push is still under way
 
 
+  it "should have the correct visibilityState to begin with", ->
+    document.visibilityState.should.equal "visible"
+
+  it "should have the correct hidden state to begin with", ->
+    document.hidden.should.equal false
 
   describe "pushing & popping on top of listening layer", ->
+
     it "should log two visibilitychange events", (done) ->
       visibilityChangeCount = 0
 
