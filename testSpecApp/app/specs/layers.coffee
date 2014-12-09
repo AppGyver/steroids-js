@@ -24,7 +24,7 @@ describe "Layers", ->
                 done()
               onFailure: (error) ->
                 done new Error "could not pop view: " + error.errorDescription
-          , 500
+          , 600
         onFailure: (error) ->
           done new Error "could not push view: " + error.errorDescription
       }
@@ -51,7 +51,7 @@ describe "Layers", ->
                 done()
               onFailure: (error) ->
                 done new Error "could not pop view: " + error.errorDescription
-          , 500
+          , 600
         onFailure: (error) ->
           done new Error "could not push view: " + error.errorDescription
       }
@@ -77,7 +77,7 @@ describe "Layers", ->
                 done()
               onFailure: (error) ->
                 done new Error "could not pop view: " + error.errorDescription
-          , 500
+          , 600
         onFailure: (error) ->
           done new Error "could not push view: " + error.errorDescription
       }

@@ -36,7 +36,7 @@ describe "visibilitychange", ->
                 done()
               onFailure: (error) ->
                 done new Error "could not pop view: " + error.errorDescription
-          , 500
+          , 600
         onFailure: (error) ->
           done new Error "could not push view: " + error.errorDescription
       }
@@ -62,7 +62,7 @@ describe "visibilitychange", ->
                 done()
               onFailure: (error) ->
                 done new Error "could not pop view: " + error.errorDescription
-          , 500
+          , 600
         onFailure: (error) ->
           done new Error "could not push view: " + error.errorDescription
       }
@@ -87,7 +87,7 @@ describe "visibilitychange", ->
                 done()
               onFailure: (error) ->
                 done new Error "could not pop view: " + error.errorDescription
-          , 500
+          , 600
         onFailure: (error) ->
           done new Error "could not push view: " + error.errorDescription
       }
@@ -112,7 +112,7 @@ describe "visibilitychange", ->
                 done()
               onFailure: (error) ->
                 done new Error "could not hide modal: " + error.errorDescription
-          , 500
+          , 600
         onFailure: (error) ->
           done new Error "could not show modal: " + error.errorDescription
       }
@@ -138,7 +138,7 @@ describe "visibilitychange", ->
                 done()
               onFailure: (error) ->
                 done new Error "could not hide modal: " + error.errorDescription
-          , 500
+          , 600
         onFailure: (error) ->
           done new Error "could not show modal: " + error.errorDescription
       }
@@ -163,7 +163,7 @@ describe "visibilitychange", ->
                 done()
               onFailure: (error) ->
                 done new Error "could not hide modal: " + error.errorDescription
-          , 500
+          , 600
         onFailure: (error) ->
           done new Error "could not show modal: " + error.errorDescription
       }
@@ -228,7 +228,7 @@ describe "visibilitychange", ->
                     done()
                   onFailure: (error) ->
                     done new Error "could not pop view: " + error.errorDescription
-              , 500
+              , 600
             onFailure: (error) ->
               done new Error "could not push view: " + error.errorDescription
           }
@@ -275,7 +275,7 @@ describe "visibilitychange", ->
                     , 750
                   onFailure: (error) ->
                     done new Error "could not pop view: " + error.errorDescription
-              , 500
+              , 600
             onFailure: (error) ->
               done new Error "could not push view: " + error.errorDescription
           }
@@ -319,7 +319,7 @@ describe "visibilitychange", ->
                     , 750
                   onFailure: (error) ->
                     done new Error "could not pop view: " + error.errorDescription
-              , 500
+              , 600
 
             onFailure: (error) ->
               done new Error "could not push view: " + error.errorDescription
@@ -364,7 +364,7 @@ describe "visibilitychange", ->
                     , 750
                   onFailure: (error) ->
                     done new Error "could not pop view: " + error.errorDescription
-              , 500
+              , 600
 
             onFailure: (error) ->
               done new Error "could not push view: " + error.errorDescription
