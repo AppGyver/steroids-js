@@ -43,6 +43,9 @@ describe "visibilitychange", ->
   describe "pushing & popping on top of listening layer", =>
     it "should log two visibilitychange events", (done) =>
 
+
+  describe "pushing & popping on top of listening layer", =>
+    it "should log two visibilitychange events", (done) =>
       visibilityChangeCount = 0
 
       document.addEventListener "visibilitychange", ->
