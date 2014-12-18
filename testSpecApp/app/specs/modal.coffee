@@ -47,8 +47,8 @@ describe "Modal", ->
                 onSuccess: ->
                   done new Error "could not hide modal with hideAll: " + error.errorDescription
                 onFailure: ->
-                  done new Error "could not hide modal with hideAll and failsafe hide failed too: " + error
-          , 500
+                  done new Error "could not hide modal with hideAll and failsafe hide failed too: " + error.errorDescription
+          , 600
         onFailure: (error) ->
           done new Error "could not show modal: " + error.errorDescription
       }
@@ -77,16 +77,16 @@ describe "Modal", ->
                         onSuccess: ->
                           done new Error "could not hide modals with hideAll: " + error.errorDescription
                         onFailure: ->
-                          done new Error "could not hide modals with hideAll and failsafe hide failed too: " + error
+                          done new Error "could not hide modals with hideAll and failsafe hide failed too: " + error.errorDescription
                       onFailure: ->
-                        done new Error "could not hide modals with hideAll and failsafe hide failed too: " + error
-                      done new Error "could not hide modals with hideAll: " + error
-                , 500
+                        done new Error "could not hide modals with hideAll and failsafe hide failed too: " + error.errorDescription
+                      done new Error "could not hide modals with hideAll: " + error.errorDescription
+                , 600
               onFailure: (error) ->
                 steroids.modal.hide
                 done new Error "could not show the second modal: " + error.errorDescription
             }
-          , 500
+          , 600
         onFailure: (error) ->
           done new Error "could not show the first modal: " + error.errorDescription
       }

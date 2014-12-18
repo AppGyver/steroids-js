@@ -23,7 +23,7 @@ describe "Animations", ->
   animate = (transitionName, curve, done) ->
     anim = new steroids.Animation
       transition: transitionName
-      duration: Math.random()
+      duration: 0.5
       curve: curve
 
     anim.perform {}, {

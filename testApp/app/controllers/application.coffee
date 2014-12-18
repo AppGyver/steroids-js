@@ -23,4 +23,15 @@ $(document).ready ->
 
     eval "#{STEROIDS.controllerName}.#{@getAttribute("data-location")}()"
 
+document.addEventListener "deviceready", ->
+
+  leftButton = new steroids.buttons.NavigationBarButton()
+  leftButton.title = "Left"
+  leftButton.onTap = -> alert("Left button tapped")
+
+  steroids.navigationBar.update {
+    buttons: {
+      left: [leftButton]
+    }
+  }
 

@@ -95,6 +95,24 @@ class window.DrawersController
       onFailure: failure
     }
 
+  @testShowAndHide: ->
+    steroids.drawers.show {}, {
+      onSuccess: ->
+        steroids.logger.log "1/2 SUCCESS testShowAndHide - showed drawer"
+        setTimeout ->
+          steroids.drawers.hide {}, {
+            onSuccess: ->
+              steroids.logger.log "2/2 SUCCESS testShowAndHide - hid the drawer"
+            onFailure: ->
+              steroids.logger.log "FAILURE testShowAndHide - could not hide drawer"
+              navigator.notification.alert "FAILURE testShowAndHide - could not hide drawer"
+          }
+        , 1000
+      onFailure: ->
+        steroids.logger.log "FAILURE in testShowAndHide - could not show drawer"
+        navigator.notification.alert "FAILURE in testShowAndHide - could not show drawer"
+    }
+
   @testShowLeft: ->
     success = ->
       steroids.logger.log "SUCCESS in showing left drawer"

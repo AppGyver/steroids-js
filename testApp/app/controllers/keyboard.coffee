@@ -38,3 +38,13 @@ class window.KeyboardController
       onSuccess: -> steroids.logger.log "SUCCESS updateKeyboard called with no parameters (no change)"
       onFailure: (error) -> navigator.notification.alert "FAILURE in testKeyboardAccessoryWithEmptyParams:\n\n#{error.errorDescription}"
     }
+
+  @testInPreloadedView: () ->
+    thisView = new steroids.views.WebView "/views/keyboard/index.html"
+
+    thisView.preload({}, {
+      onSuccess: ->
+        steroids.layers.push thisView
+      onFailure: ->
+        steroids.layers.push thisView
+    })

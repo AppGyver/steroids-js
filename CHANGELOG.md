@@ -1,3 +1,8 @@
+## 3.5.9 (2014-12-18)
+
+Features:
+- Removed timeOut hack from JSCoreBridge now that the problem was fixed in iOS native 4.0.2
+
 ## 3.5.8 (2014-11-19)
 
 Features:
