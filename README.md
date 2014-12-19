@@ -39,6 +39,8 @@ Due to Bower limitations (cannot exclude certain files from a repository), the B
 
 ## Publishing:
 
+Remember to up the version number in `package.json`.
+
     ./bump-plz.sh
 
     grunt
