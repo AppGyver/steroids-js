@@ -26,7 +26,8 @@ $(document).ready ->
 document.addEventListener "deviceready", ->
 
   leftButton = new steroids.buttons.NavigationBarButton()
-  leftButton.title = "Left"
+  #leftButton.title = "Left"
+  leftButton.styleClass = "menuBtn"
   leftButton.onTap = -> alert("Left button tapped")
 
   steroids.navigationBar.update {
