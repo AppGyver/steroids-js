@@ -95,6 +95,11 @@ navigation-bar back-button:pressed {
   color: #aceace;
 }
 
+.menuBtn image {
+  background-image: url(icons/home.svg);
+  background-size: 24;
+}
+
 
 /*Navigation bar Items*/
 .rounded-button {

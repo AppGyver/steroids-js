@@ -121,6 +121,10 @@ navigation-bar button {
   color: #aceace;
 }
 
+.menuBtn image {
+  background-image: url(/icons/home.svg);
+}
+
 
 /*Navigation bar Items*/
 .rounded-button {
