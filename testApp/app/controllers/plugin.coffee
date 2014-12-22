@@ -14,6 +14,96 @@ class window.PluginController
     el.innerHTML = now.toLocaleTimeString() + " Cordova READY - " + diff + " ms since page load"
     list.appendChild(el)
 
+  appendToDom = (content) =>
+    parent = document.getElementById("app-status-ul")
+    li = document.createElement("li")
+    li.innerHTML = content
+    parent.appendChild li
+
+  printNotification = (notification) =>
+    # android and ios have difference payloads
+    message = notification.message || notification.alert
+    sound = notification.sound || notification.soundname
+
+    appendToDom "notification .message || .alert: #{message}"
+    appendToDom "notification.badge: #{notification.badge}"
+    appendToDom "notification .sound || .soundname: #{sound}"
+    appendToDom "notification.msgcnt: #{notification.msgcnt}"
+
+  @testPushHandleBackGroundMessages = () =>
+
+    errorHandler = (error) =>
+      console.log "pushNotification.register error: ", error
+      appendToDom "ERROR -> MSG: #{error.msg}"
+
+    # this notifications happened while the app was in the background
+    # when notification are received in the background the app might be running
+    # or not running.
+    backgroundNotifications = (notification) =>
+
+      console.log "BACKGROUND Notifications : #{JSON.stringify(notification)}"
+
+      appendToDom "BACKGROUND NOTIFICATION"
+
+      # coldstart indicates that the application was not running
+      # and it was started by the notification
+      if notification.coldstart
+        #ios is always true ?
+        appendToDom "COLDSTART - App was started by the notification :-)"
+      else
+        appendToDom "RUNNIG - App received and handled the notification while running in background"
+
+      printNotification notification
+
+    window.plugins.pushNotification.onMessageInBackground backgroundNotifications, errorHandler
+
+  @testPushHandleForegroundMessages = () =>
+    errorHandler = (error) =>
+      console.log "pushNotification.register error: ", error
+      appendToDom "ERROR -> MSG: #{error.msg}"
+
+    # this notification happened while we were in the foreground.
+    # you might want to play a sound to get the user's attention, throw up a dialog, etc.
+    foregroundNotifications = (notification) =>
+      console.log "foregroundNotifications : #{JSON.stringify(notification)}"
+
+      appendToDom "FOREGROUND NOTIFICATION"
+
+      # if the notification contains a soundname, play it.
+      sound = notification.sound || notification.soundname
+
+      myMedia = new Media "#{steroids.app.absolutePath}/#{sound}"
+      myMedia.play()
+
+      printNotification notification
+
+    # register the notification handlers
+    window.plugins.pushNotification.onMessageInForeground foregroundNotifications, errorHandler
+
+  # Push Plugin
+  # Project Number: 1065347639553
+  @testPushRegister = () =>
+
+    successHandler = (token) =>
+      console.log "pushNotification.register success : #{token}"
+      # save the device registration/token in the server
+      appendToDom "Registration Complete -> Token/DeviceID -> #{token}"
+
+    errorHandler = (error) =>
+      console.log "pushNotification.register error: ", error
+      appendToDom "ERROR -> MSG: #{error}"
+
+    window.plugins.pushNotification.register successHandler, errorHandler, {
+
+      "senderID": "1065347639553" # android only option
+
+      "badge": "true" # ios only options
+      "sound": "true"
+      "alert": "true"
+    }
+    # senderID can also be configured in the -> config.android.xml
+
+
   # ACCELEROMETER TEST
 
   accelerometerOnSuccess = (acceleration) ->
