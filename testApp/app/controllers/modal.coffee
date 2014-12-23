@@ -118,6 +118,18 @@ class window.ModalController
         id: 'hide_preloaded'
         location:"/views/modal/hide.html"
 
+  @testShowPreloadedWithFade: () ->
+
+    animation = new steroids.Animation
+      transition: "fade"
+
+    steroids.modal.show
+      view: new steroids.views.WebView
+        id: 'hide_preloaded'
+        location:"/views/modal/hide.html"
+      animation: animation
+
+
   @testShowPreloadedOnce: () ->
     window.addEventListener "message", (message) =>
       steroids.modal.show(preloadedView) if message.data == "okay to show modal"
@@ -147,7 +159,6 @@ class window.ModalController
 
     hidden = () ->
       steroids.logger.log "SUCCESS in hiding modal"
-      navigator.notification.alert "SUCCESS modal hidden, n.n.alert does not crash here"
 
     steroids.modal.hide {
     }, {
@@ -297,7 +308,3 @@ class window.ModalController
         steroids.logger.log "SUCCESS in receiving app state, see horrible mess of JSON string"
       onFailure: () ->
         navigator.notification.alert "FAILURE application state not received"
-
-
-
-    
