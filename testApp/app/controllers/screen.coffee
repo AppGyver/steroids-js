@@ -14,7 +14,7 @@ class window.ScreenController
         onSuccess: ->
           steroids.logger.log "SUCCESS in setting dismissAlert"
         onFailure: -> navigator.notification.alert "FAILURE in dismissAlert"
-    
+
     steroids.logger.log "SUCCESS in adding event listener -> alertDidShow"
 
     navigator.notification.alert "lol", ->
@@ -31,6 +31,19 @@ class window.ScreenController
         onFailure: -> navigator.notification.alert "FAILURE in testFreeze in unfreezing the screen"
 
     setTimeout unfreezer, 1000
+
+  @testCapturePNG: ->
+    steroids.screen.capture {
+      output:"png"
+    },
+      onSuccess: (params)->
+        img = document.createElement 'img'
+        img.setAttribute 'src', params.screenshot
+        captureResult.innerHTML = ""
+        captureResult.appendChild img
+        steroids.logger.log "SUCCESS in capturing screen"
+      onFailure: ->
+        navigator.notification.alert "FAILURE in capturing the screen testCapture"
 
   @testCapture: ->
     steroids.screen.capture {},
