@@ -31,7 +31,7 @@ class Modal extends EventsSupport
             filenameWithPath: view.getNativeFilePath()
           successCallbacks: [callbacks.onSuccess]
           failureCallbacks: [callbacks.onFailure]
-      
+
       when "MapView", "WebView"
 
         parameters = if view.id?
@@ -44,6 +44,16 @@ class Modal extends EventsSupport
         parameters.disableAnimation = options.disableAnimation
 
         parameters.waitTransitionEnd = options.waitTransitionEnd
+
+
+        if options.animation?
+          parameters.pushAnimation = options.animation.transition
+          parameters.pushAnimationDuration = options.animation.duration
+          parameters.popAnimation = options.animation.reversedTransition
+          parameters.popAnimationDuration = options.animation.reversedDuration
+
+          parameters.pushAnimationCurve = options.animation.curve
+          parameters.popAnimationCurve = options.animation.reversedCurve
 
         if allowedRotations?
           parameters.allowedRotations = allowedRotations
