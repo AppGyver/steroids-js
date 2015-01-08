@@ -97,11 +97,48 @@ class window.PluginController
 
       "senderID": "1065347639553" # android only option
 
-      "badge": "true" # ios only options
-      "sound": "true"
-      "alert": "true"
+      "badge": true # ios only options
+      "sound": true
+      "alert": true
     }
     # senderID can also be configured in the -> config.android.xml
+
+  @testPushUnregister = () =>
+
+    successHandler = (msg) =>
+      console.log "pushNotification.unregister success : #{msg}"
+      # save the device registration/token in the server
+      appendToDom "Unregister complete: #{msg}"
+
+    errorHandler = (error) =>
+      console.log "pushNotification.unregister error: ", error
+      appendToDom "ERROR -> MSG: #{error}"
+
+    window.plugins.pushNotification.unregister successHandler, errorHandler
+
+  @testBadgeReset = () =>
+    successHandler = (msg) =>
+      console.log "pushNotification.setApplicationIconBadgeNumber success : #{msg}"
+      # save the device registration/token in the server
+      appendToDom "Badges reset!"
+
+    errorHandler = (error) =>
+      console.log "pushNotification.setApplicationIconBadgeNumber error: ", error
+      appendToDom "ERROR -> MSG: #{error}"
+
+    plugins.pushNotification.setApplicationIconBadgeNumber successHandler, errorHandler, 0
+
+  @testBadgeSet = () =>
+    successHandler = (msg) =>
+      console.log "pushNotification.setApplicationIconBadgeNumber success: #{msg}"
+      # save the device registration/token in the server
+      appendToDom "Badge set to 2!"
+
+    errorHandler = (error) =>
+      console.log "pushNotification.setApplicationIconBadgeNumber error: ", error
+      appendToDom "ERROR -> MSG: #{error}"
+
+    plugins.pushNotification.setApplicationIconBadgeNumber successHandler, errorHandler, 2
 
 
   # ACCELEROMETER TEST
