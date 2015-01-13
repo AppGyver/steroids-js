@@ -662,6 +662,9 @@ class window.PluginController
   @confirmTest = () ->
     navigator.notification.confirm "Hello world!", null, "Cordova confirm", "Regards, Uncle, Dolan"
 
+  @promptTest = () ->
+    navigator.notification.prompt "Hello world!", null
+
   @beepTest = () ->
     navigator.notification.beep 5
 
