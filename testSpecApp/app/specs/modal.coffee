@@ -34,6 +34,9 @@ describe "Modal", ->
       steroids.modal.hideAll.should.be.a.function
 
     it "should show 1 modal and hide it", (done) ->
+
+      @timeout 3000
+
       steroids.modal.show {
         view: modalView
       }, {
@@ -48,14 +51,14 @@ describe "Modal", ->
                   done new Error "could not hide modal with hideAll: " + error.errorDescription
                 onFailure: ->
                   done new Error "could not hide modal with hideAll and failsafe hide failed too: " + error.errorDescription
-          , 600
+          , 750
         onFailure: (error) ->
           done new Error "could not show modal: " + error.errorDescription
       }
 
     it "should show 2 modals and hide them", (done) ->
 
-      @timeout 3000
+      @timeout 3500
 
       steroids.modal.show {
         view: modalView
@@ -81,12 +84,12 @@ describe "Modal", ->
                       onFailure: ->
                         done new Error "could not hide modals with hideAll and failsafe hide failed too: " + error.errorDescription
                       done new Error "could not hide modals with hideAll: " + error.errorDescription
-                , 600
+                , 750
               onFailure: (error) ->
                 steroids.modal.hide
                 done new Error "could not show the second modal: " + error.errorDescription
             }
-          , 600
+          , 750
         onFailure: (error) ->
           done new Error "could not show the first modal: " + error.errorDescription
       }
