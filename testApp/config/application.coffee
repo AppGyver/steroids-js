@@ -92,10 +92,14 @@ steroids.config.drawers =
     widthOfDrawerInPixels: 200
   options:
    #   centerViewInteractionMode: "Full"   # NOT SUPPORTED ON ANDROID
-    closeGestures: ["PanBezelCenterView", "TapCenterView"] # Only PanBezelCenterView and TapCenterView are available in Android 
+    closeGestures: ["PanBezelCenterView", "TapCenterView"] # Only PanBezelCenterView and TapCenterView are available in Android
     openGestures: ["PanBezelCenterView"] # Only PanBezelCenterView is supported in Android
     showShadow: true
     scrimColor: "#0FEC0F0D" # ANDROID ONLY
+    # No harm in using High values ..it will not make the scrolling worse then
+    # the default behaviour of Drawer Layout...
+    diagonalThreshold: -2   # ANDROID ONLY
+    verticalThreshold: 3.5  # ANDROID ONLY
    #   stretchDrawer: true   # NOT SUPPORTED ON ANDROID
    #   widthOfLayerInPixels: 0
 ###

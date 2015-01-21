@@ -397,38 +397,6 @@ class window.DrawersController
       onFailure: failure
     }
 
-  @testScrollParams2: ->
-    success = ->
-      steroids.logger.log "SUCCESS in setting Scroll Params"
-    failure = ->
-      steroids.logger.log "FAILURE  in setting Scroll Params"
-      navigator.notification.alert "FAILURE in testScrollParams"
-
-    # No harm in using High values ..it will not make the scrolling worse then
-    # the default behaviour of Drawer Layout...
-    steroids.drawers.update
-      options:
-        diagonalThreshold: 10
-        verticalThreshold: 10
-    ,
-      onSuccess: success
-      onFailure: failure
-
-  @testScrollParams: ->
-    success = ->
-      steroids.logger.log "SUCCESS in setting Scroll Params"
-    failure = ->
-      steroids.logger.log "FAILURE  in setting Scroll Params"
-      navigator.notification.alert "FAILURE in testScrollParams"
-
-    steroids.drawers.update
-      options:
-        diagonalThreshold: -4.5
-        verticalThreshold: 3.2
-    ,
-      onSuccess: success
-      onFailure: failure
-
   @testScrimColor: ->
     success = ->
       steroids.logger.log "SUCCESS in setting ScrimColor"
