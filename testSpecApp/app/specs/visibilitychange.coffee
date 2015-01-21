@@ -22,26 +22,25 @@ describe "visibilitychange", ->
         view: googleView
       ,
         onSuccess: ->
-          document.visibilityState.should.equal "hidden"
-          document.hidden.should.equal true
-
           setTimeout ->
+            document.visibilityState.should.equal "hidden"
+            document.hidden.should.equal true
+
             steroids.layers.pop {},
               onSuccess: ->
-                document.visibilityState.should.equal "visible"
-                document.hidden.should.equal false
+                setTimeout ->
+                  document.visibilityState.should.equal "visible"
+                  document.hidden.should.equal false
 
-                done()
+                  done()
+                , 750
               onFailure: (error) ->
                 done new Error "could not pop view: " + error.errorDescription
-          , 500
+          , 750
 
         onFailure: (error) ->
           done new Error "could not push view: " + error.errorDescription
 
-
-  describe "pushing & popping on top of listening layer", =>
-    it "should log two visibilitychange events", (done) =>
 
 
   describe "pushing & popping on top of listening layer", =>
@@ -58,8 +57,10 @@ describe "visibilitychange", ->
           setTimeout ->
             steroids.layers.pop {},
               onSuccess: ->
-                visibilityChangeCount.should.equal 2
-                done()
+                setTimeout ->
+                  visibilityChangeCount.should.equal 2
+                  done()
+                , 600
               onFailure: (error) ->
                 done new Error "could not pop view: " + error.errorDescription
           , 600
@@ -109,8 +110,10 @@ describe "visibilitychange", ->
           setTimeout ->
             steroids.layers.pop {},
               onSuccess: ->
-                visibleCount.should.equal 1
-                done()
+                setTimeout ->
+                  visibleCount.should.equal 1
+                  done()
+                , 600
               onFailure: (error) ->
                 done new Error "could not pop view: " + error.errorDescription
           , 600

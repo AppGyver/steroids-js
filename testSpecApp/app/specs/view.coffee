@@ -32,7 +32,7 @@ describe "View", ->
               done()
             onFailure: (error) ->
               done new Error "could not pop layer:" + error
-        , 500
+        , 750
       onFailure: (error) ->
         done new Error "could not push layer: " + error.errorDescription
     }
