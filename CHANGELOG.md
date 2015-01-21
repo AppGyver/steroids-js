@@ -1,3 +1,8 @@
+## 3.5.10 (2014-01-21)
+
+Features:
+- Support fade animations for modals
+
 ## 3.5.9 (2014-12-18)
 
 Features:
