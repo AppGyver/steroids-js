@@ -32,7 +32,7 @@ document.addEventListener "deviceready", ->
 
   steroids.navigationBar.update {
     buttons: {
-      left: [leftButton]
+      right: [leftButton]
     }
   }
 
