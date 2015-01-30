@@ -59,3 +59,7 @@ class window.SteroidsController
       onSuccess: () -> steroids.logger.log "maps opened"
       onFailure: () -> navigator.notification.alert "failed to open maps"
     }
+
+  @testSendMessage: ->
+    msg = { text: "push!" }
+    window.postMessage msg, "*"

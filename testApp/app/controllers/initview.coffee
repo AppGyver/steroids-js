@@ -1,5 +1,12 @@
 class window.InitviewController
 
+  document.addEventListener "deviceready", ->
+    @preloadedView = new steroids.views.WebView
+      id: 'pop_preloaded',
+      location:"/views/layers/pop.html"
+
+    @preloadedView.preload()
+
   @testTest: ->
     navigator.notification.alert "test test"
 
@@ -61,3 +68,23 @@ class window.InitviewController
 
   @testPopView: ->
     steroids.layers.pop {}
+
+  @testListenMessages: ->
+    receiveMessage = (message) ->
+      steroids.logger.log message
+
+      success = ->
+        steroids.logger.log "SUCCESS in pushing pop.html preloaded"
+      failure = ->
+        steroids.logger.log "FAILURE in pushing preloaded view"
+
+      steroids.layers.push
+        view:
+          id: 'pop_preloaded'
+      ,
+        onSuccess: success
+        onFailure: failure
+
+    window.addEventListener "message", receiveMessage
+
+    alert "Listening for messages and pushing layer when getting them"
