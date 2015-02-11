@@ -91,7 +91,12 @@ class window.LayersController
     })
 
   @testPushAnimated: ->
-    animation = new steroids.Animation()
+    animation = new steroids.Animation {
+      transition: "flipVerticalFromTop",
+      duration: 1.2,
+      curve: "linear"
+    }
+
 
     steroids.layers.push {
       view: @createWebView(),
