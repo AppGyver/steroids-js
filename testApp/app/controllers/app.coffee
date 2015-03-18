@@ -70,3 +70,14 @@ class window.AppController
         navigator.notification.alert "should return empty object, returned: #{obj}"
       onFailure: ->
         navigator.notification.alert "error in getting ns user defaults"
+
+  @testGetLaunchURI: ->
+    steroids.app.getLaunchURI {},
+      onSuccess: (uri)->
+        navigator.notification.alert "Launch URI is #{uri}"
+      onFailure: (error)->
+        navigator.notification.alert error.errorDescription
+
+  @testGetLaunchURIOnResume: ->
+    document.addEventListener "resume", =>
+      @testGetLaunchURI()

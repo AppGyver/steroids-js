@@ -56,6 +56,16 @@ class App
   getLaunchURL: (options={}, callbacks={}) ->
     return window.AG_STEROIDS_SCANNER_URL
 
+  getLaunchURI: (options={}, callbacks={}) ->
+    extractStringFromUriJson = (uriJson) ->
+      callbacks.onSuccess uriJson.uri
+
+    steroids.nativeBridge.nativeCall
+      method: "getLaunchUri"
+      parameters: {}
+      successCallbacks: [extractStringFromUriJson]
+      failureCallbacks: [callbacks.onFailure]
+
   getMode: (options={}, callbacks={}) ->
     mode = if navigator.userAgent.match(/(StandAlonePackage)/)
       "standalone"
