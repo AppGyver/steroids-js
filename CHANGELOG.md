@@ -1,4 +1,9 @@
-## 3.5.10 (2014-01-21)
+## 3.5.11 (2015-05-25)
+
+Features:
+- Add `steroids.getLaunchURI` API (requires Android native runtime v4.0.5/iOS v4.0.4)
+
+## 3.5.10 (2015-01-21)
 
 Features:
 - Support fade animations for modals
