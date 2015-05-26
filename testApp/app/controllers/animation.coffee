@@ -95,3 +95,33 @@ class window.AnimationController
       onAnimationEnded: -> navigator.notification.alert "animation ended"
       onFailure: -> navigator.notification.alert "..and it is failing with onFailure. great success."
     })
+
+  @testInvalidParams_01: () ->
+    anim = new steroids.Animation {
+      transition: "slideFromLeft"
+      duration: "A.6"
+    }
+
+    anim.perform({}, {
+      onFailure: -> navigator.notification.alert "..and it is failing with onFailure. great success."
+    })
+
+  @testInvalidParams_02: () ->
+    anim = new steroids.Animation {
+      transition: "slideFromLeft"
+      duration: "hellow"
+    }
+
+    anim.perform({}, {
+      onFailure: -> navigator.notification.alert "..and it is failing with onFailure. great success."
+    })
+
+  @testLongDuration: () ->
+    anim = new steroids.Animation {
+      transition: "slideFromLeft"
+      duration: "3"
+    }
+
+    anim.perform({}, {
+      onFailure: -> navigator.notification.alert "..and it is failing with onFailure. great success."
+    })
