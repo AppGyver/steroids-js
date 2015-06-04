@@ -821,3 +821,46 @@ class window.PluginController
   # EXIT APP
   @exitAppTest = () ->
     navigator.app.exitApp()
+
+  @testInAppBrowserNOBar = () ->
+    url = "http://localhost/views/plugin/index.html"
+    target = "_blank"
+    options = "location=no"
+    ref = cordova.InAppBrowser.open url, target, options
+
+  @testInAppBrowserClearCache = () ->
+    url = "http://localhost/views/plugin/index.html"
+    target = "_blank"
+    options = "location=yes,clearcache=yes"
+    ref = cordova.InAppBrowser.open url, target, options
+
+  @testInAppBrowserClearSessionCache = () ->
+    url = "http://localhost/views/plugin/index.html"
+    target = "_blank"
+    options = "location=yes,clearsessioncache=yes"
+    ref = cordova.InAppBrowser.open url, target, options
+
+  @testInAppBrowserWithBar = () ->
+
+    appendEvent = (content) =>
+      parent = document.getElementById("in-app-browser-status")
+      li = document.createElement("li")
+      li.innerHTML = "#{content} - time: #{new Date()}"
+      parent.appendChild li
+
+    url = "http://www.google.com"
+    target = "_blank"
+    options = "location=yes"
+
+    appendEvent "open window"
+
+    ref = cordova.InAppBrowser.open url, target, options
+
+    ref.addEventListener "loadstart", () ->
+      appendEvent "loadstart"
+    ref.addEventListener "loadstop", () ->
+      appendEvent "loadstop"
+    ref.addEventListener "loaderror", () ->
+      appendEvent "loaderror"
+    ref.addEventListener "exit", () ->
+      appendEvent "exit"
