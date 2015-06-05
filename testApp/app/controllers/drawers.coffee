@@ -619,3 +619,17 @@ class window.DrawersController
         onFailure: -> navigator.notification.alert "FAILURE in testPushLayer"
       }
     )
+
+  @testDisableLeftDrawer: ->
+    steroids.drawers.disable
+      side: "left"
+    ,
+      onSuccess: -> steroids.logger.log "SUCCESS left drawer disabled"
+      onFailure: -> navigator.notification.alert "FAILURE in testDisableLeftDrawer"
+
+  @testEnableLeftDrawer: ->
+    steroids.drawers.enable
+      side: "left"
+    ,
+      onSuccess: -> steroids.logger.log "SUCCESS left drawer enabled"
+      onFailure: -> navigator.notification.alert "FAILURE in testEnableLeftDrawer"
