@@ -2,27 +2,56 @@
 
   <a class="opensLayer item item-text-wrap" data-location="views/webview/index.html">
     webview
-    
+
   </a>
   <a class="opensLayer item item-text-wrap" data-location="views/previewfileview/index.html">
     previewfileview
-    
+
   </a>
-  
+
   <a class="opensLayer item item-text-wrap" data-location="views/mapview/index.html">
     mapview
-    
+
   </a>
 
   <a class="openViewWithParameters" data-url="/views/views/params.html?jesse=awesome">
     open view with parameters with params in url
-    
+
   </a>
 
   <a class="openViewWithParameters" data-url="/views/views/params.html">
     open view with parameters without params in url
-    
+
+  </a>
+  <h3>window.innerHeight and window.innerWidth tests</h3>
+  <h4>The red bar on the right has the height equal to innerHeight -></h4>
+  <h4>innerHeight: <span id="innerHeight">0</span></h4>
+  <h4>innerWidth: <span id="innerWidth">0</span></h4>
+  <h4>onresize counter: <span id="onresizeCounter">0</span></h4>
+
+  <a class="performsTest item item-text-wrap" data-location="testShowNavBar">
+    Show Nav Bar - it should affect the innerHeight
+  </a>
+  <a class="performsTest item item-text-wrap" data-location="testHideNavBar">
+    Hide Nav Bar - it should affect the innerHeight
   </a>
 
+  <a class="performsTest item item-text-wrap" data-location="testShowTabBar">
+    Show Tab Bar - it should affect the innerHeight
+  </a>
+  <a class="performsTest item item-text-wrap" data-location="testHideTabBar">
+    Hide Tab Bar - it should affect the innerHeight
+  </a>
 
 </div>
+
+<style>
+  #heightBar {
+    position:absolute;
+    top:0;
+    right:1px;
+    width: 10px;
+    background-color: rgba(255, 155, 155, 0.5);
+  }
+</style>
+<div id="heightBar"></div>
