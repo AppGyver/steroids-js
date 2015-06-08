@@ -633,3 +633,17 @@ class window.DrawersController
     ,
       onSuccess: -> steroids.logger.log "SUCCESS left drawer enabled"
       onFailure: -> navigator.notification.alert "FAILURE in testEnableLeftDrawer"
+
+  @testDisableRightDrawer: ->
+    steroids.drawers.disable
+      side: "right"
+    ,
+      onSuccess: -> steroids.logger.log "SUCCESS right drawer disabled"
+      onFailure: -> navigator.notification.alert "FAILURE in testDisableRightDrawer"
+
+  @testEnableRightDrawer: ->
+    steroids.drawers.enable
+      side: "right"
+    ,
+      onSuccess: -> steroids.logger.log "SUCCESS right drawer enabled"
+      onFailure: -> navigator.notification.alert "FAILURE in testEnableRightDrawer"
