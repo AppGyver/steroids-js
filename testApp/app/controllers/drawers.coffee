@@ -671,3 +671,31 @@ class window.DrawersController
         onFailure: -> navigator.notification.alert "FAILURE in testPushLayer"
       }
     )
+
+  @testDisableLeftDrawer: ->
+    steroids.drawers.disable
+      side: "left"
+    ,
+      onSuccess: -> steroids.logger.log "SUCCESS left drawer disabled"
+      onFailure: -> navigator.notification.alert "FAILURE in testDisableLeftDrawer"
+
+  @testEnableLeftDrawer: ->
+    steroids.drawers.enable
+      side: "left"
+    ,
+      onSuccess: -> steroids.logger.log "SUCCESS left drawer enabled"
+      onFailure: -> navigator.notification.alert "FAILURE in testEnableLeftDrawer"
+
+  @testDisableRightDrawer: ->
+    steroids.drawers.disable
+      side: "right"
+    ,
+      onSuccess: -> steroids.logger.log "SUCCESS right drawer disabled"
+      onFailure: -> navigator.notification.alert "FAILURE in testDisableRightDrawer"
+
+  @testEnableRightDrawer: ->
+    steroids.drawers.enable
+      side: "right"
+    ,
+      onSuccess: -> steroids.logger.log "SUCCESS right drawer enabled"
+      onFailure: -> navigator.notification.alert "FAILURE in testEnableRightDrawer"

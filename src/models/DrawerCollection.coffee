@@ -24,6 +24,26 @@ class DrawerCollection extends EventsSupport
       })
     }
 
+  enable: (options={}, callbacks={}) ->
+    parameters = {}
+    parameters.side = options.side
+
+    steroids.nativeBridge.nativeCall
+      method: "enableDrawer"
+      parameters: parameters
+      successCallbacks: [callbacks.onSuccess]
+      failureCallbacks: [callbacks.onFailure]
+
+  disable: (options={}, callbacks={}) ->
+    parameters = {}
+    parameters.side = options.side
+
+    steroids.nativeBridge.nativeCall
+      method: "disableDrawer"
+      parameters: parameters
+      successCallbacks: [callbacks.onSuccess]
+      failureCallbacks: [callbacks.onFailure]
+
   hide: (options={}, callbacks={}) ->
     steroids.debug "steroids.drawers.hide called"
 
