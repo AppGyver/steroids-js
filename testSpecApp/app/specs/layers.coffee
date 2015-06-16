@@ -31,8 +31,10 @@ describe "Layers", ->
 
 
   describe "willchange & didchange events", ->
-    it "should log 2 'willchange' events when pushing & popping a layer", (done)->
 
+    @timeout 2500
+
+    it "should log 2 'willchange' events when pushing & popping a layer", (done)->
       eventsCount = 0
 
       steroids.layers.on "willchange", ->
@@ -47,11 +49,13 @@ describe "Layers", ->
           setTimeout ->
             steroids.layers.pop {},
               onSuccess: ->
-                eventsCount.should.equal 2
-                done()
+                setTimeout ->
+                  eventsCount.should.equal 2
+                  done()
+                , 500
               onFailure: (error) ->
                 done new Error "could not pop view: " + error.errorDescription
-          , 600
+          , 1000
         onFailure: (error) ->
           done new Error "could not push view: " + error.errorDescription
       }
@@ -73,12 +77,13 @@ describe "Layers", ->
           setTimeout ->
             steroids.layers.pop {},
               onSuccess: ->
-                eventsCount.should.equal 2
-                done()
+                setTimeout ->
+                  eventsCount.should.equal 2
+                  done()
+                , 750
               onFailure: (error) ->
                 done new Error "could not pop view: " + error.errorDescription
           , 600
         onFailure: (error) ->
           done new Error "could not push view: " + error.errorDescription
       }
-
