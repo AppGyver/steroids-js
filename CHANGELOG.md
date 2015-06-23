@@ -1,4 +1,4 @@
-## 3.5.12 (TODO)
+## 3.5.12 (2015-06-23)
 
 Features:
 - Enabling/Disabling the Drawer via API. Closes [#749](https://github.com/AppGyver/steroids/issues/749).
