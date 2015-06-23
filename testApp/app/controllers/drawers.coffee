@@ -527,18 +527,70 @@ class window.DrawersController
     }
 
   @testReplaceLayers: ->
-    steroids.layers.replace(
-      {
-        view: DrawersController.center2
-      }
-      {
-        onSuccess: ->
-          steroids.logger.log "SUCCESS in replacing center layer to center 2"
-        onFailure: ->
-          steroids.logger.log "FAILURE in testReplaceLayers - could not replace center layer"
-          navigator.notification.alert "FAILURE in testReplaceLayers - could not replace center layer"
-      }
-    )
+    steroids.layers.replace
+      view: DrawersController.center2
+    ,
+      onSuccess: ->
+        steroids.logger.log "SUCCESS in replacing center layer to center 2"
+    ,
+      onFailure: ->
+        steroids.logger.log "FAILURE in testReplaceLayers - could not replace center layer"
+        navigator.notification.alert "FAILURE in testReplaceLayers - could not replace center layer"
+
+  @testUnloadCenter2: ->
+
+    center2 = new steroids.views.WebView
+      location: "views/drawers/index2.html"
+      id: "center2"
+
+    center2.unload {},
+      onSuccess: ->
+        steroids.logger.log "SUCCESS in unloading center 2 from inside the drawer"
+
+      onFailure: ->
+        steroids.logger.log "FAILURE in testUnloadLayer - could not unload center 2 layer"
+        navigator.notification.alert "FAILURE in testUnloadLayer - could not unload center 2 layer"
+
+  @testUnloadLayer: ->
+
+    center1: new steroids.views.WebView
+      location: "views/drawers/index.html"
+      id: "center1"
+
+    center2 = new steroids.views.WebView
+      location: "views/drawers/index2.html"
+      id: "center2"
+
+    steroids.layers.replace
+      view: center1
+    ,
+      onSuccess: ->
+        steroids.logger.log "SUCCESS in replacing center layer to center 1"
+
+        center2.unload {},
+          onSuccess: ->
+            steroids.logger.log "SUCCESS in unloading center 2 from inside the drawer"
+
+          onFailure: ->
+            steroids.logger.log "FAILURE in testUnloadLayer - could not unload center 2 layer"
+            navigator.notification.alert "FAILURE in testUnloadLayer - could not unload center 2 layer"
+    ,
+      onFailure: ->
+        steroids.logger.log "FAILURE in testReplaceLayers - could not replace center layer"
+        navigator.notification.alert "FAILURE in testReplaceLayers - could not replace center layer"
+
+  @testInvalidUnload: ->
+    webView = new steroids.views.WebView
+      location: "views/drawers/index.html"
+      id: "anyid"
+    webView.unload {}
+    ,
+      onSuccess: ->
+        steroids.logger.log "FAILURE in testInvalidUnload - it should not succeed"
+        navigator.notification.alert "FAILURE in testInvalidUnload - it should not succeed"
+
+      onFailure: ->
+        steroids.logger.log "SUCCESS in testInvalidUnload - unload should fail for webview that does not exists"
 
   @testShowModal: ->
 
@@ -619,3 +671,31 @@ class window.DrawersController
         onFailure: -> navigator.notification.alert "FAILURE in testPushLayer"
       }
     )
+
+  @testDisableLeftDrawer: ->
+    steroids.drawers.disable
+      side: "left"
+    ,
+      onSuccess: -> steroids.logger.log "SUCCESS left drawer disabled"
+      onFailure: -> navigator.notification.alert "FAILURE in testDisableLeftDrawer"
+
+  @testEnableLeftDrawer: ->
+    steroids.drawers.enable
+      side: "left"
+    ,
+      onSuccess: -> steroids.logger.log "SUCCESS left drawer enabled"
+      onFailure: -> navigator.notification.alert "FAILURE in testEnableLeftDrawer"
+
+  @testDisableRightDrawer: ->
+    steroids.drawers.disable
+      side: "right"
+    ,
+      onSuccess: -> steroids.logger.log "SUCCESS right drawer disabled"
+      onFailure: -> navigator.notification.alert "FAILURE in testDisableRightDrawer"
+
+  @testEnableRightDrawer: ->
+    steroids.drawers.enable
+      side: "right"
+    ,
+      onSuccess: -> steroids.logger.log "SUCCESS right drawer enabled"
+      onFailure: -> navigator.notification.alert "FAILURE in testEnableRightDrawer"
