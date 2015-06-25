@@ -5,6 +5,17 @@ freestyle-config {
   image-cache-count: 100;
 }
 
+/* Native Loading */
+loading-view {
+  background-color: red;
+}
+
+loading-icon {
+  background-image: url(/icons/home.svg);
+  background-size: 100;
+}
+
+
 /* Tab Bar */
 tab-bar {
   background-color: #EBEBEB;
