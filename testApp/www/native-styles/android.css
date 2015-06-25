@@ -7,12 +7,12 @@ freestyle-config {
 
 /* Native Loading */
 loading-view {
-  background-color: red;
+  background-color: white;
 }
 
 loading-icon {
-  background-image: url(/icons/home.svg);
-  background-size: 100;
+  background-image: url(/icons/icon_loading.svg);
+  background-size: 150px;
 }
 
 
