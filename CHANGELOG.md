@@ -1,3 +1,9 @@
+## ??
+
+Features:
+- Support for Native Loading View.
+- Support for animations when calling steroids.view.displayLoading({transition:'slideFromRight', ...});
+
 ## v3.5.13 (2015-08-13)
 
 Features:
