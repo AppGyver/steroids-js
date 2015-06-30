@@ -80,14 +80,20 @@ class WebView extends EventsSupport
 
     steroids.nativeBridge.nativeCall
       method: "removeTransitionHelper"
-      successCallbacks: [callbacks.onSuccess]
+      successCallbacks: [callbacks.onSuccess, callbacks.onAnimationStarted]
+      recurringCallbacks: [callbacks.onAnimationEnded]
       failureCallbacks: [callbacks.onFailure]
 
   displayLoading: (options={}, callbacks={}) ->
 
     steroids.nativeBridge.nativeCall
       method: "displayTransitionHelper"
-      successCallbacks: [callbacks.onSuccess]
+      parameters:
+        transition: options.transition
+        curve: options.curve
+        duration: options.duration
+      successCallbacks: [callbacks.onSuccess, callbacks.onAnimationStarted]
+      recurringCallbacks: [callbacks.onAnimationEnded]
       failureCallbacks: [callbacks.onFailure]
 
   # Deprecated. should use steroids.screen.setAllowedRotations() instead.
