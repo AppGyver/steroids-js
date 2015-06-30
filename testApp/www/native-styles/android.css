@@ -164,3 +164,52 @@ navigation-bar button {
 #tab-cordova {
   color: red;
 }
+
+
+/* Native Input Plugin */
+
+/*default values*/
+.nativeInput {
+  background-color: whitesmoke;
+  color:black;
+  border:1px solid black;
+}
+
+.nativeInput:pressed {
+  background-color: whitesmoke;
+  border:1px solid black;
+}
+
+.nativeInput-panel {
+  background-color: white;
+}
+
+.nativeInput-leftButton {
+  background-color: whitesmoke;
+}
+
+.nativeInput-leftButton:pressed {
+  background-color: whitesmoke;
+}
+
+.nativeInput-rightButton {
+  background-color: whitesmoke;
+}
+
+.nativeInput-rightButton:pressed{
+  background-color: #C0C0C0;
+}
+
+.grey-panel{
+  background-color: grey;
+}
+
+.send-button{
+  background-color: #CFCFCF;
+  background-image: url(/icons/home.svg);
+}
+
+.send-button:pressed{
+  background-color: #C0CFC0;
+  background-image: url(/icons/home.svg);
+}
