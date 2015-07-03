@@ -113,6 +113,8 @@ window.steroids.statusBar = new StatusBar
 
 window.steroids.tabBar = new TabBar
 
+window.steroids.transitions = new Transitions
+
 # Public Device singleton
 window.steroids.device = new Device
 
