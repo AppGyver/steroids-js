@@ -20,3 +20,9 @@ class Transitions
       successCallbacks: [callbacks.onSuccess, callbacks.onAnimationStarted]
       recurringCallbacks: [callbacks.onAnimationEnded]
       failureCallbacks: [callbacks.onFailure]
+
+  removeStaticContainer: (options = {}, callbacks = {}) ->
+    steroids.nativeBridge.nativeCall
+        method: "removeStaticContainerFromLayer"
+        successCallbacks: [callbacks.onSuccess]
+        failureCallbacks: [callbacks.onFailure]
