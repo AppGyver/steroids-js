@@ -1,4 +1,4 @@
-module.exports = class Transitions
+class Transitions
 
   push: (options = {}, callbacks = {}) ->
     steroids.nativeBridge.nativeCall
