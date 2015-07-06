@@ -1,22 +1,34 @@
 class Transitions
 
   push: (options = {}, callbacks = {}) ->
+
+    parameters =
+      navigationBar: options.navigationBar
+
+    if options.animation
+      parameters.pushAnimation = options.animation.transition
+      parameters.pushAnimationDuration = options.animation.duration
+      parameters.pushAnimationCurve = options.animation.curve
+
     steroids.nativeBridge.nativeCall
       method: "performTransitionPush"
-      parameters: {
-        navigationBar: options.navigationBar
-        animation: options.animation
-      }
+      parameters: parameters
       successCallbacks: [callbacks.onSuccess, callbacks.onAnimationStarted]
       recurringCallbacks: [callbacks.onAnimationEnded]
       failureCallbacks: [callbacks.onFailure]
 
   pop: (options = {}, callbacks = {}) ->
+
+    parameters = {}
+
+    if options.animation
+      parameters.popAnimation = options.animation.transition
+      parameters.popAnimationDuration = options.animation.duration
+      parameters.popAnimationCurve = options.animation.curve
+
     steroids.nativeBridge.nativeCall
       method: "performTransitionPop"
-      parameters: {
-        animation: options.animation
-      }
+      parameters: parameters
       successCallbacks: [callbacks.onSuccess, callbacks.onAnimationStarted]
       recurringCallbacks: [callbacks.onAnimationEnded]
       failureCallbacks: [callbacks.onFailure]
