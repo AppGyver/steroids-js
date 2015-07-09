@@ -871,7 +871,7 @@ class window.PluginController
         styleClass: 'send-button'
       input:
         placeHolder: 'Type your message here'
-        type: ['normal']
+        type: 'normal'
         lines: 1
 
     cordova.plugins.NativeInput.show params
@@ -879,7 +879,7 @@ class window.PluginController
   @testNativeInputShow_style = () ->
     params =
       leftButton:
-        styleCSS: 'text:hellow;color:blue;background-color:green;'
+        styleCSS: 'text:Up;color:white;background-color:gray;'
       rightButton:
         styleClass: 'myRightButtonClass'
         cssId: 'myRightButton'
@@ -887,10 +887,10 @@ class window.PluginController
         styleClass: 'grey-panel'
       input:
         placeHolder: 'Type your message here'
-        type: ['uri']
+        type: 'uri'
         lines: 2
         styleClass: 'myInputClass'
-        cssId: 'myInputId'
+        styleId: 'myInputId'
 
     cordova.plugins.NativeInput.show params
 
@@ -898,7 +898,7 @@ class window.PluginController
     params =
       input:
         placeHolder: 'Chat box'
-        type: ['email']
+        type: 'email'
         lines: 1
 
     cordova.plugins.NativeInput.show params
