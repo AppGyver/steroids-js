@@ -40,7 +40,7 @@ class Animation
   perform: (options={}, callbacks={}) =>
 
     steroids.nativeBridge.nativeCall
-      method: "performTransition"
+      method: "performAnimation"
       parameters: {
         transition: @transition
         curve: options.curve || @curve
