@@ -826,19 +826,35 @@ class window.PluginController
     url = "http://localhost/views/plugin/index.html"
     target = "_blank"
     options = "location=no"
-    ref = cordova.InAppBrowser.open url, target, options
+    ref = window.open url, target, options
+
+  @testInAppBrowserRedirect = () ->
+    url = "https://jigsaw.w3.org/HTTP/300/"
+    target = "_blank"
+    options = "location=yes"
+    newWindow = window.open url, target, options
+
+    exit = ->
+      newWindow.removeEventListener 'loadstart', loadStart
+      newWindow.removeEventListener 'exit', exit
+
+    loadStart = (e) ->
+      console.log 'URL : ', e.url
+
+    newWindow.addEventListener 'loadstart', loadStart
+    newWindow.addEventListener 'exit', exit
 
   @testInAppBrowserClearCache = () ->
     url = "http://localhost/views/plugin/index.html"
     target = "_blank"
     options = "location=yes,clearcache=yes"
-    ref = cordova.InAppBrowser.open url, target, options
+    ref = window.open url, target, options
 
   @testInAppBrowserClearSessionCache = () ->
     url = "http://localhost/views/plugin/index.html"
     target = "_blank"
     options = "location=yes,clearsessioncache=yes"
-    ref = cordova.InAppBrowser.open url, target, options
+    ref = window.open url, target, options
 
   @testInAppBrowserWithBar = () ->
 
@@ -854,7 +870,7 @@ class window.PluginController
 
     appendEvent "open window"
 
-    ref = cordova.InAppBrowser.open url, target, options
+    ref = window.open url, target, options
 
     ref.addEventListener "loadstart", () ->
       appendEvent "loadstart"
