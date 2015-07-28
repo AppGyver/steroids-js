@@ -16,6 +16,9 @@ class WebView extends EventsSupport
     else
       options.location
 
+    @navigationBarParams = if options.navigationBar?
+      options.navigationBar
+
     if options._parameters?
       @setParams(options._parameters)
 
@@ -42,6 +45,7 @@ class WebView extends EventsSupport
       parameters:
         id: proposedId
         url: options.location || @location
+        navigationBar : @navigationBarParams
       successCallbacks: [setIdOnSuccess, callbacks.onSuccess]
       failureCallbacks: [callbacks.onFailure]
 
