@@ -74,11 +74,29 @@ steroids.config.preloads = [
   {
     id: "preloadedViaPreloadsArray"
     location: "http://localhost/views/webview/preloadedViaPreloadsArray.html"
+    navigationBar:
+      title: "From the config ;-)"
+      id : "myCssId"
+      styleClass : "myCssClas"
+      styleCSS: "color: #fff;background-color:red;"
+      overrideBackButton:true
+
+      backButton:
+        title: "<<"
+        id: "myCustomBackButton"
+        styleClass: "customBackCssClass"
+
+      buttons:
+        right: [{
+          title: "right"
+          id: "myRightButton"
+          styleClass: "customBackCssClass"
+        }]
+
   }
 ]
 
 # -- Drawer test --
-###
 steroids.config.drawers =
   left:
     id: "leftDrawer"
@@ -102,13 +120,13 @@ steroids.config.drawers =
     verticalThreshold: 3.5  # ANDROID ONLY
    #   stretchDrawer: true   # NOT SUPPORTED ON ANDROID
    #   widthOfLayerInPixels: 0
-###
 
+###
 # -- Initial View ---
 steroids.config.initialView =
   id: "initialView"
   location: "http://localhost/views/initview/index.html"
-
+###
 
 # -- Status bar --
 # Sets status bar visible (carrier, clock, battery status)
