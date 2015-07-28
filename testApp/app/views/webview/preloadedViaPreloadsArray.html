@@ -13,6 +13,29 @@ document.addEventListener("DOMContentLoaded", function() {
 
 window.WebviewController.addPreloadedViewMessageListener();
 
+steroids.on("ready", function(){
+  //not really needed to handle button events, but can be used by supersonic
+  //to construct the objects.
+  steroids.navigationBar.getNativeState({
+    onSuccess:function(navBarState){
+      var el = document.querySelector("#nativeState");
+      el.textContent = JSON.stringify(navBarState);
+    }
+  });
+
+  steroids.navigationBar.on("buttonTapped", function(button) {
+    if(button.id == "myRightButton"){
+      navigator.notification.alert("myRightButton was clicked");
+    }
+  });
+
+});
+
+
 </script>
 
 <p>I've been alive since app start, for <span id="timeAlive"></span> seconds.</p>
+
+My native state is:
+<code id="nativeState">
+</code>
