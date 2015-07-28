@@ -138,8 +138,8 @@ class NavigationBar extends EventsSupport
 
               steroids.debug "steroids.navigationBar.setButtons adding button #{JSON.stringify(buttonParameters)} to location #{location}"
 
-              steroids.navigationBar.on "buttonTapped", (tapedButton) ->
-                if tapedButton.id == button.id
+              steroids.navigationBar.on "buttonTapped", (tappedButton) ->
+                if tappedButton.id == button.id
                   callback = button.getCallback() ? ->
                   callback()
 
@@ -244,8 +244,8 @@ class NavigationBar extends EventsSupport
 
               steroids.debug "steroids.navigationBar.update adding button #{JSON.stringify(parameters)} to location #{location}"
 
-              steroids.navigationBar.on "buttonTapped", (tapedButton) ->
-                if tapedButton.id == button.id
+              steroids.navigationBar.on "buttonTapped", (tappedButton) ->
+                if tappedButton.id == button.id
                   callback = button.getCallback() ? ->
                   callback()
 
