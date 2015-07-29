@@ -244,8 +244,8 @@ class NavigationBar extends EventsSupport
 
               steroids.debug "steroids.navigationBar.update adding button #{JSON.stringify(parameters)} to location #{location}"
 
-              steroids.navigationBar.on "buttonTapped", (tappedButton) ->
-                if tappedButton.id == button.id
+              steroids.navigationBar.on "buttonTapped", (event) ->
+                if event.button.id == button.id
                   callback = button.getCallback() ? ->
                   callback()
 

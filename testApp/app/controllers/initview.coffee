@@ -1,5 +1,10 @@
 class window.InitviewController
 
+  # the loginButton button was defined in the application.coffee
+  steroids.navigationBar.on "buttonTapped", (event) ->
+    if event.button.id == "loginButton"
+      navigator.notification.alert "loginButton tapped!"
+
   document.addEventListener "deviceready", ->
     @preloadedView = new steroids.views.WebView
       id: 'pop_preloaded',

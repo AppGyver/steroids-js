@@ -4,7 +4,7 @@ class window.PluginController
   document.addEventListener "deviceready", ->
 
     # Make Navigation Bar to appear with a custom title text
-    steroids.navigationBar.show { title: "Plugin" }
+    steroids.navigationBar.show()
 
     now = new Date()
     diff = now.getTime() - window.___START_TIME.getTime()

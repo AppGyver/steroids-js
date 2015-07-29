@@ -129,12 +129,18 @@ steroids.config.drawers =
    #   stretchDrawer: true   # NOT SUPPORTED ON ANDROID
    #   widthOfLayerInPixels: 0
 
-###
 # -- Initial View ---
 steroids.config.initialView =
   id: "initialView"
   location: "http://localhost/views/initview/index.html"
-###
+  hidesNavigationBar:false #default is true for initial view
+  navigationBar:
+    title: "Initial View"
+    buttons:
+      right: [{
+        title: "Login"
+        id: "loginButton"
+      }]
 
 # -- Status bar --
 # Sets status bar visible (carrier, clock, battery status)
