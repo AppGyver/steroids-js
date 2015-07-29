@@ -61,6 +61,14 @@ steroids.config.tabBar.tabs = [
     title: "Cordova"
     icon: "icons/telescope@2x.png"
     location: "http://localhost/views/plugin/index.html"
+
+    navigationBar:
+      title: "Cordova TAB"
+      buttons:
+        right: [{
+          title: "CDV"
+          id: "cdvButton"
+        }]
   }
   {
     id: "tab-config"
