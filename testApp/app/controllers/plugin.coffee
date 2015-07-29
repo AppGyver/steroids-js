@@ -2,10 +2,6 @@ class window.PluginController
 
   # always put everything inside PhoneGap deviceready
   document.addEventListener "deviceready", ->
-
-    # Make Navigation Bar to appear with a custom title text
-    steroids.navigationBar.show()
-
     now = new Date()
     diff = now.getTime() - window.___START_TIME.getTime()
 
@@ -13,6 +9,11 @@ class window.PluginController
     el = document.createElement("li")
     el.innerHTML = now.toLocaleTimeString() + " Cordova READY - " + diff + " ms since page load"
     list.appendChild(el)
+
+    # the cdvButton button was defined in the application.coffee
+    steroids.navigationBar.on "buttonTapped", (event) ->
+      if event.button.id == "cdvButton"
+        navigator.notification.alert "cdvButton tapped!"
 
   appendToDom = (content) =>
     parent = document.getElementById("app-status-ul")

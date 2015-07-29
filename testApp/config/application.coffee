@@ -62,6 +62,7 @@ steroids.config.tabBar.tabs = [
     icon: "icons/telescope@2x.png"
     location: "http://localhost/views/plugin/index.html"
 
+    hidesNavigationBar:false #default is true for tabs
     navigationBar:
       title: "Cordova TAB"
       buttons:

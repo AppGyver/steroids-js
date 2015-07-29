@@ -23,8 +23,8 @@ steroids.on("ready", function(){
     }
   });
 
-  steroids.navigationBar.on("buttonTapped", function(button) {
-    if(button.id == "myRightButton"){
+  steroids.navigationBar.on("buttonTapped", function(event) {
+    if(event.button.id == "myRightButton"){
       navigator.notification.alert("myRightButton was clicked");
     }
   });

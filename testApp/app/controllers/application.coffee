@@ -22,17 +22,3 @@ $(document).ready ->
     # return if !window.chrome && e.gesture.srcEvent.type == "mousedown"
 
     eval "#{STEROIDS.controllerName}.#{@getAttribute("data-location")}()"
-
-document.addEventListener "deviceready", ->
-
-  leftButton = new steroids.buttons.NavigationBarButton()
-  #leftButton.title = "Left"
-  leftButton.styleClass = "menuBtn"
-  leftButton.onTap = -> alert("Left button tapped")
-
-  steroids.navigationBar.update {
-    buttons: {
-      right: [leftButton]
-    }
-  }
-
