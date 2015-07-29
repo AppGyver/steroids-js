@@ -3,10 +3,10 @@ class NavigationBarButton
 
     uuidPartOfSize = (length) ->
       uuidpart = ""
-      for idx in [0 .. length]
-        uuidchar = parseInt(Math.random() * 256, 10).toString 16
-        uuidchar = if uuidchar.length == 1
-          "0" + uuidchar
+      for idx in [1 .. length]
+        uuidchar = parseInt(Math.random() * 256, 10).toString(16)
+        if uuidchar.length == 1
+          uuidchar = "0" + uuidchar
         uuidpart += uuidchar
       return uuidpart
 
