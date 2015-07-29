@@ -257,7 +257,7 @@ class NavigationBar extends EventsSupport
 
   getNativeState: (options={}, callbacks={}) ->
     steroids.nativeBridge.nativeCall
-      method: "GetNavigationBarState"
+      method: "getNavigationBarState"
       parameters: options
       successCallbacks: [callbacks.onSuccess]
       failureCallbacks: [callbacks.onFailure]

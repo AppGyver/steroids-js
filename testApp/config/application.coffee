@@ -88,7 +88,6 @@ steroids.config.preloads = [
       id : "myCssId"
       styleClass : "myCssClas"
       styleCSS: "color: #fff;background-color:red;"
-      overrideBackButton:true
 
       backButton:
         title: "<<"

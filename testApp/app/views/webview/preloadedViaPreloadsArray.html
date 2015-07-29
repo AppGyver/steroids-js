@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 window.WebviewController.addPreloadedViewMessageListener();
 
-steroids.on("ready", function(){
+function getNativeState(){
   //not really needed to handle button events, but can be used by supersonic
   //to construct the objects.
   steroids.view.navigationBar.getNativeState({}, {
@@ -22,6 +22,11 @@ steroids.on("ready", function(){
       el.textContent = JSON.stringify(navBarState);
     }
   });
+}
+
+steroids.on("ready", function(){
+
+  getNativeState();
 
   steroids.navigationBar.on("buttonTapped", function(event) {
     if(event.button.id == "myRightButton"){
