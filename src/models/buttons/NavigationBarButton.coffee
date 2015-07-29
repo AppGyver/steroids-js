@@ -12,14 +12,15 @@ class NavigationBarButton
 
     generateId = () ->
       "#{uuidPartOfSize 2}-#{uuidPartOfSize 4}-#{uuidPartOfSize 6}-#{uuidPartOfSize 2}"
-    
+
     @title = options.title
     @onTap = options.onTap
     @imagePath = options.imagePath
     @imageAsOriginal = options.imageAsOriginal
     @styleClass = options.styleClass
-    @styleId = options.styleId || options.id || generateId()
-    @id = @styleId
+
+    @id = options.id || options.styleId || generateId()
+    @styleId = @id
     @styleCSS = options.styleCSS
 
   toParams: () ->
