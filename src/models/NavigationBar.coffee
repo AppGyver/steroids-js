@@ -2,7 +2,7 @@ class NavigationBar extends EventsSupport
 
   constructor: ()->
     #setup the events support
-    super "navigationBar", ["buttonTapped"]
+    super "navigationBar", ["buttonTapped"], "webview"
 
   setStyleId: (options={}, callbacks={}) ->
 
@@ -138,8 +138,8 @@ class NavigationBar extends EventsSupport
 
               steroids.debug "steroids.navigationBar.setButtons adding button #{JSON.stringify(buttonParameters)} to location #{location}"
 
-              steroids.navigationBar.on "buttonTapped", (tappedButton) ->
-                if tappedButton.id == button.id
+              steroids.navigationBar.on "buttonTapped", (event) ->
+                if event.button.id == button.id
                   callback = button.getCallback() ? ->
                   callback()
 
@@ -254,3 +254,10 @@ class NavigationBar extends EventsSupport
         parameters: params
         successCallbacks: [callbacks.onSuccess]
         failureCallbacks: [callbacks.onFailure]
+
+  getNativeState: (options={}, callbacks={}) ->
+    steroids.nativeBridge.nativeCall
+      method: "GetNavigationBarState"
+      parameters: options
+      successCallbacks: [callbacks.onSuccess]
+      failureCallbacks: [callbacks.onFailure]
