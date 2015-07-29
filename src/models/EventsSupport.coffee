@@ -1,6 +1,6 @@
 class EventsSupport
 
-  constructor: (@prefixName, @validEvents) ->
+  constructor: (@prefixName, @validEvents, @scope = "global") ->
 
   # used to generate a unique event handler id
   # that can be used to de-register the handler later
@@ -71,6 +71,7 @@ class EventsSupport
       parameters:
         event: event
         eventHandlerId: "#{event}_#{eventHandlerId}"
+        scope: @scope
       successCallbacks: [eventListenerAdded]
       recurringCallbacks: [fireEventHandler]
       failureCallbacks: [errorAddingEventListener]
