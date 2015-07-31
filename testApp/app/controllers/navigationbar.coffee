@@ -107,19 +107,6 @@ class window.NavigationbarController
     onSuccess: -> steroids.logger.log "SUCCESS in showing nav bar with titleImagePath"
     onFailure: -> navigator.notification.alert "FAILURE in testShowWithTitleImagePath"
 
-  # LEGACY setButtons
-  @testSetButtonsWithOneRightButton: ->
-    button = new steroids.buttons.NavigationBarButton
-    button.title = "TEST"
-    button.onTap = => navigator.notification.alert "RIGHT BUTTON TAPPED"
-
-    steroids.view.navigationBar.setButtons {
-      right: [button]
-    },
-      onSuccess: => steroids.logger.log "SUCCESS in setting one button into nav bar (legacy)"
-      onFailure: => navigator.notification.alert "FAILURE in testSetButtonsWithOneRightButton (legacy)"
-
-  # LEGACY setButtons
   @testSetButtonsWithManyButtons: (options={override:false})->
     button1 = new steroids.buttons.NavigationBarButton
     button1.title = "EKA"
@@ -139,23 +126,15 @@ class window.NavigationbarController
     button4.imagePath = "/icons/pill@2x.png"
     button4.onTap = => navigator.notification.alert "ICON BUTTON TAPPED"
 
-    steroids.view.navigationBar.setButtons {
+    steroids.view.navigationBar.update {
       overrideBackButton: options.override
-      left: [button1, button2]
-      right: [button3, button4]
+      buttons:
+        left: [button1, button2]
+        right: [button3, button4]
     },
-      onSuccess: => steroids.logger.log "SUCCESS in setting many buttons with setButtons"
-      onFailure: => navigator.notification.alert "FAILURE in testSetButtonsWithManyButtons with or without back button (legacy)"
+      onSuccess: => steroids.logger.log "SUCCESS in setting many buttons with update"
+      onFailure: => navigator.notification.alert "FAILURE in testSetButtonsWithManyButtons with or without back button"
 
-  # LEGACY setButtons
-  @testSetButtonsWithManyButtonsWithoutBack: ->
-    @testSetButtonsWithManyButtons { override: true }
-
-  # LEGACY setButtons
-  @testSetButtonsWithoutButtons: ->
-    steroids.view.navigationBar.setButtons {},
-      onSuccess: => steroids.logger.log "SUCCESS in removing all buttons from nav bar"
-      onFailure: => navigator.notification.alert "FAILURE in testSetButtonsWithoutButtons - removing buttons from nav bar"
 
   @testSetButtonsWithDefaultStyle: ->
     button1 = new steroids.buttons.NavigationBarButton

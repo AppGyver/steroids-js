@@ -94,8 +94,10 @@ class window.ModalController
     rightButton.title = "Right"
     rightButton.onTap = => steroids.logger.log "Event: Right button of Modal's navigation bar was touched!"
 
-    steroids.view.navigationBar.setButtons {
-      right: [rightButton]
+    steroids.view.navigationBar.update {
+      buttons: {
+        right: [rightButton]
+      }
     },
     {
       onSuccess: -> steroids.logger.log "SUCCESS in displaying navigation bar for modal"

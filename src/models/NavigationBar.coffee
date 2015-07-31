@@ -110,63 +110,6 @@ class NavigationBar extends EventsSupport
         successCallbacks: [callbacks.onSuccess]
         failureCallbacks: [callbacks.onFailure]
 
-  setButtons: (options={}, callbacks={}) ->
-    steroids.debug "steroids.navigationBar.setButtons options: #{JSON.stringify options} callbacks: #{JSON.stringify callbacks}"
-    steroids.on "ready", ()=>
-      relativeTo = options.relativeTo ? steroids.app.path
-
-      @buttonCallbacks = {}
-      params =
-        overrideBackButton: options.overrideBackButton
-
-      buttonParametersFrom = (obj)->
-        btnParams = obj.toParams()
-        if obj.imagePath?
-          btnParams.imagePath = relativeTo + obj.imagePath
-        return btnParams
-
-      if typeof AndroidAPIBridge is 'undefined' # no AndroidAPIBridge on iOS
-
-        for location in ["right", "left"]
-          steroids.debug "steroids.navigationBar.setButtons constructing location #{location}"
-          params[location] = []
-
-          if options[location]?
-            for button in options[location]
-              buttonParameters = buttonParametersFrom(button)
-              params[location].push buttonParameters
-
-              steroids.debug "steroids.navigationBar.setButtons adding button #{JSON.stringify(buttonParameters)} to location #{location}"
-
-              steroids.navigationBar.on "buttonTapped", (event) ->
-                if event.button.id == button.id
-                  callback = button.getCallback() ? ->
-                  callback()
-
-        steroids.nativeBridge.nativeCall
-          method: "setNavigationBarButtons"
-          parameters: params
-          successCallbacks: [callbacks.onSuccess]
-          failureCallbacks: [callbacks.onFailure]
-
-      else # is android, using legacy
-        if options.right? && options.right != []
-          steroids.debug "steroids.navigationBar.setButtons showing right button title: #{options.right[0].title} callback: #{options.right[0].onTap}"
-          steroids.nativeBridge.nativeCall
-            method: "showNavigationBarRightButton"
-            parameters:
-              title: options.right[0].title
-            successCallbacks: [callbacks.onSuccess]
-            recurringCallbacks: [options.right[0].onTap]
-            failureCallbacks: [callbacks.onFailure]
-        else
-          steroids.debug "steroids.navigationBar.setButtons hiding right button"
-          steroids.nativeBridge.nativeCall
-            method: "hideNavigationBarRightButton"
-            parameters: {}
-            successCallbacks: [callbacks.onSuccess]
-            failureCallbacks: [callbacks.onFailure]
-
   setAppearance: do ->
     appearancePropertyNames = [
       'portraitBackgroundImage'
