@@ -39,6 +39,9 @@ class LayerCollection extends EventsSupport
     if options.keepLoading == true
       parameters.keepTransitionHelper = true
 
+    parameters.navigationBar = if view.navigationBarParams?
+      view.navigationBarParams
+
     if options.animation?
       parameters.pushAnimation = options.animation.transition
       parameters.pushAnimationDuration = options.animation.duration
