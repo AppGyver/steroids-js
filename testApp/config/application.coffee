@@ -55,6 +55,10 @@ steroids.config.tabBar.tabs = [
     title: "noJS"
     icon: "icons/shoebox@2x.png"
     location: "nojs.html"
+
+    hidesNavigationBar:false #default is true for tabs
+    navigationBar:
+      title: "No JS ! "
   }
   {
     id: "tab-cordova"
