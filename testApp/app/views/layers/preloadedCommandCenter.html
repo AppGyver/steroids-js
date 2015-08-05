@@ -5,16 +5,54 @@
 
     var counter = 0;
 
+    var animations = [
+      {
+        transition: "flipVerticalFromTop",
+        duration: 0.5,
+        curve: "linear"
+      },
+      {
+        transition: "curlDown",
+        duration: 0.5,
+        curve: "linear"
+      },
+      {
+        transition: "curlUp",
+        duration: 0.5,
+        curve: "easeInOut"
+      },
+      {
+        transition: "fade",
+        duration: 0.5,
+        curve: "linear"
+      },
+      {
+        transition: "flipHorizontalFromLeft",
+        duration: 0.5,
+        curve: "easeInOut"
+      }
+    ];
+
+    var animationIndex = 0;
+
     function pushLayer(){
+      var animation = new steroids.Animation(animations[animationIndex]);
+
+      animationIndex++;
+      if(animationIndex > 4){
+        animationIndex = 0;
+      }
+      
       steroids.layers.push({
-        view: new steroids.views.WebView({ location: "/views/layers/pop.html"} )
+        view: new steroids.views.WebView({ location: "/views/layers/pop.html"} ),
+        animation:animation
       }, {
         onSuccess: function(){
           steroids.logger.log("SUCCESS push layer from preloaded in background");
         },
         onFailure: function(){
           steroids.logger.log("FAILURE push layer from preloaded in background");
-          navigator.notification.alert("FAILURE push layer from preloaded in background");
+          //navigator.notification.alert("FAILURE push layer from preloaded in background");
         }
       });
 
@@ -29,16 +67,17 @@
         },
         onFailure: function(){
           steroids.logger.log("FAILURE open modal from preloaded in background");
-          navigator.notification.alert("FAILURE open modal from preloaded in background");
+          //navigator.notification.alert("FAILURE open modal from preloaded in background");
         }
       });
     }
 
-    function popAll() {
+    function popAll(fn) {
       steroids.layers.popAll({},
         {
           onSuccess: function(){
             steroids.logger.log("SUCCESS pop all layers from preloaded in background");
+            fn();
           },
           onFailure: function(){
             steroids.logger.log("FAILURE pop all layers from preloaded in background");
@@ -47,33 +86,42 @@
         });
     }
 
-    function closeAll(){
+    function closeAll(fn){
       steroids.modal.hideAll({},
         {
           onSuccess: function(){
             steroids.logger.log("SUCCESS closing all modals from preloaded in background");
 
-            popAll();
+            popAll(fn);
           },
           onFailure: function(){
+            popAll(fn);
             steroids.logger.log("FAILURE closing all modals from preloaded in background");
             navigator.notification.alert("FAILURE closing all modals from preloaded in background");
           }
         });
     }
 
+    var delay = 2000;
     function tick(){
 
       counter++;
 
       var shouldContinue = true;
 
-      if( (counter % 10) == 0){
+      if( counter >= 15){
+        counter = 0;
         console.log("closing all modals and layers");
-        closeAll();
+        setTimeout(function(){
+          closeAll(function(){
+            shouldContinue = true;
+            setTimeout(tick, delay);
+          });
+        }, delay);
+        shouldContinue = false;
       }
       else{
-        if( (counter % 6) == 0){
+        if( counter === 14){
           console.log("open modal");
           openModal();
         }
@@ -84,11 +132,11 @@
       }
 
       if(shouldContinue){
-        setTimeout(tick, 2000);
+        setTimeout(tick, delay);
       }
     }
 
-    setTimeout(tick, 2000);
+    setTimeout(tick, delay);
 
   </script>
 
