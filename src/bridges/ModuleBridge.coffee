@@ -30,13 +30,17 @@ class ModuleBridge extends Bridge
     switch message.method
       when "ping"
         successOptions.message = "PONG"
+      when "popLayer"
+        window.history.back()
       when "openLayer"
-        window.open message.parameters.url, "_blank"
+        window.location.href = message.parameters.url
       when "openURL"
         window.open message.parameters.url, "_blank"
       when "openModal"
         #window.open message.parameters.url, "_blank"
         steroids.component.helper.openModal message.parameters.url, {}
+      when "closeModal"
+        steroids.component.helper.closeModal()
       else
         console.log "ModuleBridge: unsupported API method: #{message.method}" unless message.method in failSilentlyMethods
         failed = true
