@@ -1,5 +1,10 @@
 class PostMessage
 
+  @originalPostMessage: do (win = window)->
+    original = win.postMessage
+    (args...)->
+      original.apply win, args
+
   @postMessage: (message, targetOrigin) =>
     escapedJSONMessage = escape(JSON.stringify(message))
 
@@ -10,6 +15,8 @@ class PostMessage
       successCallbacks: []
       failureCallbacks: []
       recurringCallbacks: []
+
+    @originalPostMessage message, targetOrigin
 
 
 
