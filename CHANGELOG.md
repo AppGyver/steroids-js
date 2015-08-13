@@ -1,3 +1,11 @@
+## v3.5.13 (2015-08-13)
+
+Features:
+- Module bridge for web
+
+Bugfixes:
+- Fixed issue where window.postMessage could not be used for it's original purpose (iframe message passing). No longer hjiack the whole message, let it pass through.
+
 ## 3.5.12 (2015-06-23)
 
 Features:
