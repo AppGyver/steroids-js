@@ -3,7 +3,12 @@ class PostMessage
   @originalPostMessage: do (win = window)->
     original = win.postMessage
     (args...)->
-      original.apply win, args
+      if args.length and !args[1]?
+        args[1] = "*"
+      try
+        original.apply win, args
+      catch e
+        console.log "Could not pass postMessage to original window.postMessage: #{e}", args[0]
 
   @postMessage: (message, targetOrigin) =>
     escapedJSONMessage = escape(JSON.stringify(message))
