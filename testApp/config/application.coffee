@@ -55,12 +55,25 @@ steroids.config.tabBar.tabs = [
     title: "noJS"
     icon: "icons/shoebox@2x.png"
     location: "nojs.html"
+
+    hidesNavigationBar:false #default is true for tabs
+    navigationBar:
+      title: "No JS ! "
   }
   {
     id: "tab-cordova"
     title: "Cordova"
     icon: "icons/telescope@2x.png"
     location: "http://localhost/views/plugin/index.html"
+
+    hidesNavigationBar:false #default is true for tabs
+    navigationBar:
+      title: "Cordova TAB"
+      buttons:
+        right: [{
+          title: "CDV"
+          id: "cdvButton"
+        }]
   }
   {
     id: "tab-config"
@@ -74,11 +87,28 @@ steroids.config.preloads = [
   {
     id: "preloadedViaPreloadsArray"
     location: "http://localhost/views/webview/preloadedViaPreloadsArray.html"
+    navigationBar:
+      title: "From the config ;-)"
+      id : "myCssId"
+      styleClass : "myCssClas"
+      styleCSS: "color: #fff;background-color:red;"
+
+      backButton:
+        title: "<<"
+        id: "myCustomBackButton"
+        styleClass: "customBackCssClass"
+
+      buttons:
+        right: [{
+          title: "right"
+          id: "myRightButton"
+          styleClass: "customBackCssClass"
+        }]
+
   }
 ]
 
 # -- Drawer test --
-###
 steroids.config.drawers =
   left:
     id: "leftDrawer"
@@ -102,13 +132,19 @@ steroids.config.drawers =
     verticalThreshold: 3.5  # ANDROID ONLY
    #   stretchDrawer: true   # NOT SUPPORTED ON ANDROID
    #   widthOfLayerInPixels: 0
-###
 
 # -- Initial View ---
 steroids.config.initialView =
   id: "initialView"
   location: "http://localhost/views/initview/index.html"
-
+  hidesNavigationBar:false #default is true for initial view
+  navigationBar:
+    title: "Initial View"
+    buttons:
+      right: [{
+        title: "Login"
+        id: "loginButton"
+      }]
 
 # -- Status bar --
 # Sets status bar visible (carrier, clock, battery status)

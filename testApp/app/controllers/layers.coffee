@@ -19,6 +19,23 @@ class window.LayersController
       location: "/views/layers/pop.html"
     }
 
+  @testPushWithNavBarParams: ->
+    success = ->
+      steroids.logger.log "SUCCESS in pushing pop.html with nav bar params"
+    failure = ->
+      steroids.logger.log "FAILURE in testPushWithNavBarParams"
+      navigator.notification.alert "FAILURE in testPushWithNavBarParams"
+
+    steroids.layers.push {
+      view: new steroids.views.WebView
+        location: "/views/layers/pop.html"
+        navigationBar:
+          title:"Pop View"
+    }, {
+      onSuccess: success
+      onFailure: failure
+    }
+
   @testPreloadedCommandCenter2: ->
 
     commandCenter = new steroids.views.WebView "/views/layers/preloadedCommandCenter2.html"

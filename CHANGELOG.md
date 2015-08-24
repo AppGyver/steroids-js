@@ -1,8 +1,7 @@
-## ??
+## 3.5.? (TBD)
 
 Features:
-- Support for Native Loading View.
-- Support for animations when calling steroids.view.displayLoading({transition:'slideFromRight', ...});
+- Support for new Navivation Bar API and navigation parameters when creating web views programmatically or in the configuration.
 
 ## 3.5.12 (2015-06-23)
 

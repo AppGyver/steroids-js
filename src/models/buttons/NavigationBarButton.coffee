@@ -1,11 +1,26 @@
 class NavigationBarButton
   constructor: (options={})->
+
+    uuidPartOfSize = (length) ->
+      uuidpart = ""
+      for idx in [1 .. length]
+        uuidchar = parseInt(Math.random() * 256, 10).toString(16)
+        if uuidchar.length == 1
+          uuidchar = "0" + uuidchar
+        uuidpart += uuidchar
+      return uuidpart
+
+    generateId = () ->
+      "#{uuidPartOfSize 2}-#{uuidPartOfSize 4}-#{uuidPartOfSize 6}-#{uuidPartOfSize 2}"
+
     @title = options.title
     @onTap = options.onTap
     @imagePath = options.imagePath
     @imageAsOriginal = options.imageAsOriginal
     @styleClass = options.styleClass
-    @styleId = options.styleId
+
+    @id = options.id || options.styleId || generateId()
+    @styleId = @id
     @styleCSS = options.styleCSS
 
   toParams: () ->

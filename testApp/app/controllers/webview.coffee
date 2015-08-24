@@ -87,6 +87,14 @@ class window.WebviewController
       location: "/views/webview/preload.html"
       id: "myPreloaded"
 
+      navigationBar:
+        title: "Im Preloaded"
+        buttons:
+          right: [{
+            title: "^"
+            id: "rightButton"
+          }]
+
     webView.preload {
     }, {
       onSuccess: -> steroids.logger.log "SUCCESS in preload call"
