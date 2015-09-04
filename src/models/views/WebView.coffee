@@ -2,6 +2,7 @@ class WebView extends EventsSupport
 
   params: {}
   id: null
+  uuid: null
   location: null
 
   navigationBar: new NavigationBar
@@ -21,6 +22,9 @@ class WebView extends EventsSupport
 
     @id = if options.id?
       options.id
+
+    @uuid = if options.uuid?
+      options.uuid
 
     if @location.indexOf("://") == -1 # if a path
       if window.location.href.indexOf("file://") == -1 # if not currently on file protocol
