@@ -890,7 +890,7 @@ class window.PluginController
         type: 'normal'
         lines: 1
 
-    cordova.plugins.NativeInput.show params
+    cordova.plugins.NativeInput.show ""
 
   @testNativeInputShow_style = () ->
     params =
