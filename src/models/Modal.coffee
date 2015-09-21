@@ -23,6 +23,13 @@ class Modal extends EventsSupport
         Screen.mapDegreesToOrientations value
 
     switch view.constructor.name
+      when "MediaGalleryView"
+        steroids.nativeBridge.nativeCall
+          method: "showMediaGalery"
+          parameters:
+            files: view.getNativeFilePath()
+          successCallbacks: [callbacks.onSuccess]
+          failureCallbacks: [callbacks.onFailure]
 
       when "PreviewFileView"
         steroids.nativeBridge.nativeCall

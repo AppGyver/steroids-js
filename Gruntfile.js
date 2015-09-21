@@ -77,6 +77,7 @@ module.exports = function(grunt) {
             'src/models/InitialView.coffee',
             'src/models/Keyboard.coffee',
             'src/PostMessage.coffee',
+            'src/models/views/MediaGalleryView.coffee',
             'src/steroids.coffee'
           ]
         }

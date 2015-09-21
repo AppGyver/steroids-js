@@ -8,6 +8,7 @@ window.steroids =
   views:
     WebView: WebView
     PreviewFileView: PreviewFileView
+    MediaGalleryView: MediaGalleryView
     MapView: MapView
 
   buttons:
