@@ -23,6 +23,19 @@ class window.PreviewfileviewController
       onSuccess: -> steroids.logger.log "SUCCESS in showing the MediaGalleryView with the images and video"
       onFailure: -> navigator.notification.alert "FAILURE in testMediaGallery"
 
+
+
+  @testPreviewPDF2: () ->
+    pdfView = new steroids.views.PreviewFileView {
+      filePath: "pdfs/Commissions.pdf"
+    }
+
+    steroids.modal.show {
+      view: pdfView
+    },
+      onSuccess: -> steroids.logger.log "SUCCESS in showing the PreviewFileView with the PDF"
+      onFailure: -> navigator.notification.alert "FAILURE in testPreviewPDF"
+
   @testPreviewPDF: () ->
     pdfView = new steroids.views.PreviewFileView {
       filePath: "pdfs/team.pdf"
