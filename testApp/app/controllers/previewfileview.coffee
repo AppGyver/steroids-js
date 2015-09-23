@@ -9,6 +9,7 @@ class window.PreviewfileviewController
   @testMediaGallery: () ->
     mediaGallery = new steroids.views.MediaGalleryView {
       files: [
+        "http://www.themoorings.co.nz/images/lake-wanaka-new-zealand.jpg"
         "images/pic01.jpg"
         "images/pic02.jpg"
         "images/pic03.jpg"

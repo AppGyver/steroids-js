@@ -8,4 +8,8 @@ class MediaGalleryView
 
     @relativeTo = options.relativeTo ? steroids.app.path
 
-  getNativeFilePath: => @files.map (file)=> "#{@relativeTo}/#{file}"
+  getNativeFilePath: => @files.map (file)=>
+    if /^http.*/.test(file)
+      file
+    else
+      "#{@relativeTo}/#{file}"
