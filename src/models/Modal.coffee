@@ -25,7 +25,7 @@ class Modal extends EventsSupport
     switch view.constructor.name
       when "MediaGalleryView"
         steroids.nativeBridge.nativeCall
-          method: "showMediaGalery"
+          method: "showMediaGallery"
           parameters:
             files: view.getNativeFilePath()
           successCallbacks: [callbacks.onSuccess]
