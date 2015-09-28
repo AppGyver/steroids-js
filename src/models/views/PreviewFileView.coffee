@@ -9,4 +9,7 @@ class PreviewFileView
     @relativeTo = options.relativeTo ? steroids.app.path
 
   getNativeFilePath: ->
-    "#{@relativeTo}/#{@filePath}"
+    if /^http.*/.test(@filePath)
+      @filePath
+    else
+      "#{@relativeTo}/#{@filePath}"

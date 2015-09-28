@@ -35,7 +35,7 @@ class Modal extends EventsSupport
         steroids.nativeBridge.nativeCall
           method: "previewFile"
           parameters:
-            filenameWithPath: view.getNativeFilePath()
+            filePath: view.getNativeFilePath()
           successCallbacks: [callbacks.onSuccess]
           failureCallbacks: [callbacks.onFailure]
 
