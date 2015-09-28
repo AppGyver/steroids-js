@@ -1,6 +1,16 @@
-## ??
+## 3.5.? (TBD)
 
 Features:
+- PreviewFileView now supports remote URLs
+- New API to display a media gallery:
+~~~
+mediaGallery = new steroids.views.MediaGalleryView {
+  files: [...]
+}
+steroids.modal.show {
+  view: mediaGallery
+}
+~~~
 - Support for Native Loading View.
 - Support for animations when calling steroids.view.displayLoading({transition:'slideFromRight', ...});
 
