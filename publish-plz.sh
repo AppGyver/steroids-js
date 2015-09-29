@@ -32,5 +32,3 @@ git add bower && git commit -m "Updated submodule to $VERSION" && git push && gi
 
 echo "Publishing to NPM"
 npm publish ./
-
-echo "NOTE: Bump manually the version number in package.json"
