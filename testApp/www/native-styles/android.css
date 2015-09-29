@@ -5,6 +5,17 @@ freestyle-config {
   image-cache-count: 100;
 }
 
+/* Native Loading */
+loading-view {
+  background-color: white;
+}
+
+loading-icon {
+  background-image: url(/icons/icon_loading.svg);
+  background-size: 150px;
+}
+
+
 /* Tab Bar */
 tab-bar {
   background-color: #EBEBEB;
@@ -90,6 +101,18 @@ navigation-bar button {
   border-radius: 4px;
 }
 
+.document-viewer-button{
+  background-color: white;
+  color: black;
+  border: 0px solid #fff;
+}
+
+#document-viewer-close-button {
+  background-color: whitesmoke;
+}
+
+/* Document Viewer */
+
 /*used in styling apis tests*/
 #navBarBig {
   background-color: #1f2838;
@@ -163,4 +186,53 @@ navigation-bar button {
 /*styling the specific tab that has a specific id*/
 #tab-cordova {
   color: red;
+}
+
+
+/* Native Input Plugin */
+
+/*default values*/
+.nativeInput {
+  background-color: whitesmoke;
+  color:black;
+  border:1px solid black;
+}
+
+.nativeInput:pressed {
+  background-color: whitesmoke;
+  border:1px solid black;
+}
+
+.nativeInput-panel {
+  background-color: white;
+}
+
+.nativeInput-leftButton {
+  background-color: whitesmoke;
+}
+
+.nativeInput-leftButton:pressed {
+  background-color: whitesmoke;
+}
+
+.nativeInput-rightButton {
+  background-color: whitesmoke;
+}
+
+.nativeInput-rightButton:pressed{
+  background-color: #C0C0C0;
+}
+
+.grey-panel{
+  background-color: grey;
+}
+
+.send-button{
+  background-color: #CFCFCF;
+  background-image: url(/icons/home.svg);
+}
+
+.send-button:pressed{
+  background-color: #C0CFC0;
+  background-image: url(/icons/home.svg);
 }

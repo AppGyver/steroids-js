@@ -224,6 +224,21 @@ class window.WebviewController
       steroids.view.removeLoading()
     , 3000
 
+
+  @testDisplayLoadingWithAnimation: ->
+    steroids.view.displayLoading
+      transition: "slideFromRight",
+      duration: 0.5,
+      curve: "easeInOut"
+    ,
+      onAnimationEnded: ->
+        setTimeout ->
+          #auto hide the loading screen after 3 seconds
+          steroids.view.removeLoading()
+        , 3000
+
+
+
   @testPreloadViaArray: () ->
     preloadedView = new steroids.views.WebView
       id: "preloadedViaPreloadsArray"

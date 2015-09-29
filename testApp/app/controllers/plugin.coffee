@@ -826,19 +826,35 @@ class window.PluginController
     url = "http://localhost/views/plugin/index.html"
     target = "_blank"
     options = "location=no"
-    ref = cordova.InAppBrowser.open url, target, options
+    ref = window.open url, target, options
+
+  @testInAppBrowserRedirect = () ->
+    url = "https://jigsaw.w3.org/HTTP/300/"
+    target = "_blank"
+    options = "location=yes"
+    newWindow = window.open url, target, options
+
+    exit = ->
+      newWindow.removeEventListener 'loadstart', loadStart
+      newWindow.removeEventListener 'exit', exit
+
+    loadStart = (e) ->
+      console.log 'URL : ', e.url
+
+    newWindow.addEventListener 'loadstart', loadStart
+    newWindow.addEventListener 'exit', exit
 
   @testInAppBrowserClearCache = () ->
     url = "http://localhost/views/plugin/index.html"
     target = "_blank"
     options = "location=yes,clearcache=yes"
-    ref = cordova.InAppBrowser.open url, target, options
+    ref = window.open url, target, options
 
   @testInAppBrowserClearSessionCache = () ->
     url = "http://localhost/views/plugin/index.html"
     target = "_blank"
     options = "location=yes,clearsessioncache=yes"
-    ref = cordova.InAppBrowser.open url, target, options
+    ref = window.open url, target, options
 
   @testInAppBrowserWithBar = () ->
 
@@ -854,7 +870,7 @@ class window.PluginController
 
     appendEvent "open window"
 
-    ref = cordova.InAppBrowser.open url, target, options
+    ref = window.open url, target, options
 
     ref.addEventListener "loadstart", () ->
       appendEvent "loadstart"
@@ -864,3 +880,67 @@ class window.PluginController
       appendEvent "loaderror"
     ref.addEventListener "exit", () ->
       appendEvent "exit"
+
+  @testNativeInputShow = () ->
+    params =
+      rightButton:
+        styleClass: 'send-button'
+      input:
+        placeHolder: 'Type your message here'
+        type: 'normal'
+        lines: 1
+
+    cordova.plugins.NativeInput.show ""
+
+  @testNativeInputShow_style = () ->
+    params =
+      leftButton:
+        styleCSS: 'text:Up;color:white;background-color:gray;'
+      rightButton:
+        styleClass: 'myRightButtonClass'
+        cssId: 'myRightButton'
+      panel:
+        styleClass: 'grey-panel'
+      input:
+        placeHolder: 'Type your message here'
+        type: 'uri'
+        lines: 2
+        styleClass: 'myInputClass'
+        styleId: 'myInputId'
+
+    cordova.plugins.NativeInput.show params
+
+  @testNativeInputShow_email = () ->
+    params =
+      input:
+        placeHolder: 'Chat box'
+        type: 'email'
+        lines: 1
+
+    cordova.plugins.NativeInput.show params
+
+  @testNativeInputKeyboardAction = () ->
+    cordova.plugins.NativeInput.onKeyboardAction true, (action) ->
+      keyboardAction = document.getElementById("keyboardAction")
+      keyboardAction.innerHTML = keyboardAction.innerHTML + "action: #{action}<br>"
+
+  @testNativeInputCloseKeyboard = () ->
+    cordova.plugins.NativeInput.closeKeyboard()
+
+  @testNativeInputOnButtonAction = () ->
+    cordova.plugins.NativeInput.onButtonAction (button) ->
+      buttonAction = document.getElementById("buttonAction")
+      buttonAction.innerHTML = buttonAction.innerHTML + "button: #{button}<br>"
+
+  @testNativeInputHide = () ->
+    cordova.plugins.NativeInput.hide()
+
+  @testNativeInputOnChange = () ->
+    cordova.plugins.NativeInput.onChange (value) ->
+      nativeInputValue1 = document.getElementById("nativeInputValue1")
+      nativeInputValue1.innerHTML = value
+
+  @testNativeInputGetValue = () ->
+    cordova.plugins.NativeInput.getValue (value) ->
+      nativeInputValue2 = document.getElementById("nativeInputValue2")
+      nativeInputValue2.innerHTML = value

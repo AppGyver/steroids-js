@@ -56,6 +56,7 @@ module.exports = function(grunt) {
             'src/models/StatusBar.coffee',
             'src/models/Splashscreen.coffee',
             'src/models/TabBar.coffee',
+            'src/models/Transitions.coffee',
             'src/models/views/WebView.coffee',
             'src/models/views/PreviewFileView.coffee',
             'src/models/views/MapView.coffee',
@@ -76,6 +77,8 @@ module.exports = function(grunt) {
             'src/models/InitialView.coffee',
             'src/models/Keyboard.coffee',
             'src/PostMessage.coffee',
+            'src/models/views/MediaGalleryView.coffee',
+            'src/models/Spinner.coffee',
             'src/steroids.coffee'
           ]
         }

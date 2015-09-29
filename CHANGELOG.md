@@ -1,3 +1,21 @@
+## 3.5.14 (2015-09-29)
+
+Features:
+- PreviewFileView now supports remote URLs
+- Display a blocking native spinner with `steroids.spinner.show` and hide it with `steroids.spinner.hide`.
+  Spinner can block either the current webview or the whole app.
+- New API to display a media gallery:
+~~~
+mediaGallery = new steroids.views.MediaGalleryView {
+  files: [...]
+}
+steroids.modal.show {
+  view: mediaGallery
+}
+~~~
+- Support for Native Loading View.
+- Support for animations when calling steroids.view.displayLoading({transition:'slideFromRight', ...});
+
 ## v3.5.13 (2015-08-13)
 
 Features:

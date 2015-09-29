@@ -8,6 +8,7 @@ window.steroids =
   views:
     WebView: WebView
     PreviewFileView: PreviewFileView
+    MediaGalleryView: MediaGalleryView
     MapView: MapView
 
   buttons:
@@ -113,6 +114,8 @@ window.steroids.statusBar = new StatusBar
 
 window.steroids.tabBar = new TabBar
 
+window.steroids.transitions = new Transitions
+
 # Public Device singleton
 window.steroids.device = new Device
 
@@ -123,6 +126,8 @@ window.steroids.screen = new Screen
 window.steroids.notifications = new Notifications
 
 window.steroids.splashscreen = new Splashscreen
+
+window.steroids.spinner = new Spinner
 
 window.steroids.PostMessage = PostMessage
 window.postMessage = PostMessage.postMessage
