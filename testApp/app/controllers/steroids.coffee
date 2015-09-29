@@ -63,3 +63,34 @@ class window.SteroidsController
   @testSendMessage: ->
     msg = { text: "push!" }
     window.postMessage msg, "*"
+
+
+  @testShowSpinnerBlockingApp: () ->
+    params =
+      target:"app"
+      text:"Bloking App ..."
+
+    steroids.spinner.show params
+    ,
+      onSuccess: ->
+        steroids.logger.log "SUCCESS in otestShowSpinnerBlockingApp"
+        setTimeout ->
+          steroids.spinner.hide params
+        ,
+         3000
+      onFailure: (error) -> navigator.notification "FAILURE in testShowSpinnerBlockingApp", error
+
+  @testShowSpinnerBlockingWebView: () ->
+    params =
+      target:"webview"
+      text:"Bloking Webview ..."
+
+    steroids.spinner.show params
+    ,
+      onSuccess: ->
+        steroids.logger.log "SUCCESS in otestShowSpinnerBlockingApp"
+        setTimeout ->
+          steroids.spinner.hide()
+        ,
+         3000
+      onFailure: (error) -> navigator.notification "FAILURE in testShowSpinnerBlockingApp", error
