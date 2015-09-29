@@ -1,7 +1,9 @@
-## 3.5.? (TBD)
+## 3.5.14 (2015-09-29)
 
 Features:
 - PreviewFileView now supports remote URLs
+- Display a blocking native spinner with `steroids.spinner.show` and hide it with `steroids.spinner.hide`.
+  Spinner can block either the current webview or the whole app.
 - New API to display a media gallery:
 ~~~
 mediaGallery = new steroids.views.MediaGalleryView {
