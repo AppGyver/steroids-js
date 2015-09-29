@@ -68,7 +68,7 @@ class window.SteroidsController
   @testShowSpinnerBlockingApp: () ->
     params =
       target:"app"
-      text:"Bloking App ..."
+      text:"Blocking App ..."
 
     steroids.spinner.show params
     ,
@@ -83,7 +83,7 @@ class window.SteroidsController
   @testShowSpinnerBlockingWebView: () ->
     params =
       target:"webview"
-      text:"Bloking Webview ..."
+      text:"Blocking Webview ..."
 
     steroids.spinner.show params
     ,
