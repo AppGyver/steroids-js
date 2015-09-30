@@ -7,7 +7,7 @@ class EventsSupport
   @eventCounter = Date.now()
 
   #register an event handler
-  on: (event, callback) ->
+  on: (event, callback) =>
     # validate the event name
     unless @validEvents.indexOf(event) >= 0
       throw new Error("Invalid event name!")
@@ -78,7 +78,7 @@ class EventsSupport
     #return the eventHandlerId
     eventHandlerId
 
-  off: (event, eventHandlerId) ->
+  off: (event, eventHandlerId) =>
     # validate the event name
     unless @validEvents.indexOf(event) >= 0
       throw new Error("Invalid event name!")
