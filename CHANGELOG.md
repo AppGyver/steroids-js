@@ -1,11 +1,11 @@
-## 3.5.15 (2015-10-01)
+## 3.5.16 (2015-10-01)
 
 Features:
 - Trigger event `blocked` for `steroids.view.on()` and `.off()` when trying to
   close the current WebView which is not yet ready to be disposed (controlled
   by Supersonic).
 
-## 3.5.14 (2015-09-29)
+## 3.5.15 (2015-09-29)
 
 Features:
 - PreviewFileView now supports remote URLs
@@ -23,7 +23,12 @@ steroids.modal.show {
 - Support for Native Loading View.
 - Support for animations when calling steroids.view.displayLoading({transition:'slideFromRight', ...});
 
-## v3.5.13 (2015-08-13)
+## 3.5.14 (2015-08-17)
+
+Fix:
+- Add source argument to postMessage if it's not supplied. Fail gracefully when trying to send objects with functions.
+
+## 3.5.13 (2015-08-13)
 
 Features:
 - Module bridge for web
