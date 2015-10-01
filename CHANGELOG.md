@@ -1,3 +1,10 @@
+## 3.5.15 (2015-10-01)
+
+Features:
+- Trigger event `blocked` for `steroids.view.on()` and `.off()` when trying to
+  close the current WebView which is not yet ready to be disposed (controlled
+  by Supersonic).
+
 ## 3.5.14 (2015-09-29)
 
 Features:
