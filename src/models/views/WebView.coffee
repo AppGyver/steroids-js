@@ -10,7 +10,7 @@ class WebView extends EventsSupport
   constructor: (options={})->
 
     #setup the events support
-    super "webview", ["created", "preloaded", "unloaded"]
+    super "webview", ["created", "preloaded", "unloaded", "blocked"]
 
     @location = if options.constructor.name == "String"
       options
