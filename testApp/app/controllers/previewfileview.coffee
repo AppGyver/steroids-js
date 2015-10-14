@@ -10,6 +10,7 @@ class window.PreviewfileviewController
     mediaGallery = new steroids.views.MediaGalleryView {
       files: [
         "http://www.themoorings.co.nz/images/lake-wanaka-new-zealand.jpg"
+        "http://kopparberg.co.uk/sites/default/files/imagecache/content_main_image/anything_logo.jpg"
         "images/pic01.jpg"
         "images/pic02.jpg"
         "images/pic03.jpg"
@@ -36,6 +37,28 @@ class window.PreviewfileviewController
     },
       onSuccess: -> steroids.logger.log "SUCCESS in showing the PreviewFileView with the PDF"
       onFailure: -> navigator.notification.alert "FAILURE in testPreviewPDF"
+
+  @testPreviewPDFRemote: () ->
+    pdfView = new steroids.views.PreviewFileView {
+      filePath: "http://www.sanface.com/pdf/test.pdf"
+    }
+
+    steroids.modal.show {
+      view: pdfView
+    },
+      onSuccess: -> steroids.logger.log "SUCCESS in testPreviewPDFRemote"
+      onFailure: -> navigator.notification.alert "FAILURE in testPreviewPDFRemote"
+
+  @testPreviewPDFRemote_invalidURL: () ->
+    pdfView = new steroids.views.PreviewFileView {
+      filePath: "http://some.invalid.url/file.pdf"
+    }
+
+    steroids.modal.show {
+      view: pdfView
+    },
+      onSuccess: -> navigator.notification.alert "API call should have failed -> testPreviewPDFRemote_invalidURL"
+      onFailure: -> navigator.notification.alert "Api call failed as expected ;)"
 
   @testPreviewPDF: () ->
     pdfView = new steroids.views.PreviewFileView {
