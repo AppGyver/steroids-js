@@ -81,7 +81,18 @@ class window.PluginController
     window.plugins.pushNotification.onMessageInForeground foregroundNotifications, errorHandler
 
   # Push Plugin
-  # Project Number: 1065347639553
+  #
+  # API is described in the README:
+  #      https://github.com/AppGyver/PushNotifications/blob/master/README.md
+  #
+  # N.B. senderID must match your project defined in GCM Developer console
+  #      See https://console.developers.google.com/project/composer-2
+  #      using richard.anderson@appgyver.com
+  #
+  # N.B. You must restart Scanner app if you change the GCM senderID
+  #
+  # N.B. It seems that you cannot set senderID in config.android.xml although
+  #      the docs say otherwise.
   @testPushRegister = () =>
 
     successHandler = (token) =>
@@ -95,7 +106,7 @@ class window.PluginController
 
     window.plugins.pushNotification.register successHandler, errorHandler, {
 
-      "senderID": "1065347639553" # android only option
+      "senderID": "695873862319" # android only option
 
       "badge": true # ios only options
       "sound": true
