@@ -86,6 +86,8 @@ window.steroids =
 # Valid values are subclasses of Bridge
 window.steroids.nativeBridge = Bridge.getBestNativeBridge()
 
+new AndroidUploadSupport().patch() 
+
 # All compnents that perform async operations are here
 window.steroids.waitingForComponents.push("App")
 window.steroids.waitingForComponents.push("Events.focuslisteners")

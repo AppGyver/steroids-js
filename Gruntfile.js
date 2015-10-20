@@ -79,6 +79,7 @@ module.exports = function(grunt) {
             'src/PostMessage.coffee',
             'src/models/views/MediaGalleryView.coffee',
             'src/models/Spinner.coffee',
+            'src/models/AndroidUploadSupport.coffee',
             'src/steroids.coffee'
           ]
         }
