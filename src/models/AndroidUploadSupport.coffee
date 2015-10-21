@@ -81,11 +81,16 @@ class AndroidUploadSupport
     event.loaded = loaded
     event.total = total
     event.lengthComputable = lengthComputable
-    instance[fnName](event)
+    try
+      eventFn = instance[fnName]
+      eventFn(event)
+    catch e
+      console.log "Error invoking event: #{fnName}"
 
   onFailure: (instance) => (error) =>
     console.log "onFailure error: #{JSON.stringify(error)}"
     @patchError instance, error
+    @fireProgressEvent instance, "error", 0, 0, true
 
   loadImage: (payload, done) ->
     fileReader = new FileReader();
@@ -175,11 +180,12 @@ class AndroidUploadSupport
       XMLHttpRequest.prototype.send = (payload) ->
         params = getParams this
         if params.method == 'PUT' && params.hasUploadHeaders && canUseApiForPayload(payload)
+
           patchReadyState this
 
           nativeSend this, payload, params
 
-          fireProgressEvent instance, "onloadstart", "loadstart", 0, payload.size, true
+          fireProgressEvent this, "loadstart", 0, payload.size, true
 
           #all info received -> HEADERS_RECEIVED
           params.readyState = 2
