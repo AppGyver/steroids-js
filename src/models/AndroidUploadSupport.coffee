@@ -83,9 +83,19 @@ class AndroidUploadSupport
     event.lengthComputable = lengthComputable
     try
       eventFn = instance[fnName]
-      eventFn(event)
+      if(eventFn)
+        eventFn(event)
+
+      eventFn = instance.upload[fnName]
+      if(eventFn)
+        eventFn(event)
     catch e
-      console.log "Error invoking event: #{fnName}"
+      console.log "Error invoking event: #{fnName} error: #{JSON.stringify(e)}"
+
+    if(type == "loadend")
+      #upload ended
+      instance.__params.readyState = 4
+      instance.onreadystatechange()
 
   onFailure: (instance) => (error) =>
     console.log "onFailure error: #{JSON.stringify(error)}"
@@ -138,8 +148,8 @@ class AndroidUploadSupport
 
   patchError: (instance, error) =>
     delete instance.error
-    Object.defineProperty instance, 'readyState', {
-      get: -> instance.__params.readyState
+    Object.defineProperty instance, 'error', {
+      get: -> error
       enumerable: true
     }
 
@@ -180,6 +190,7 @@ class AndroidUploadSupport
       XMLHttpRequest.prototype.send = (payload) ->
         params = getParams this
         if params.method == 'PUT' && params.hasUploadHeaders && canUseApiForPayload(payload)
+          this.abort()
 
           patchReadyState this
 
