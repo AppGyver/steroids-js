@@ -1,3 +1,11 @@
+debug = switch
+  when localStorage.debug? and (localStorage.debug || "").indexOf("steroids") isnt -1
+    (args...) ->
+      console.log "WebBridge: ", args...
+  else
+    ->
+      # Swallow debug messages
+
 class WebBridge extends Bridge
 
   constructor: ()->
@@ -16,12 +24,12 @@ class WebBridge extends Bridge
       , false
 
       source.addEventListener "open", (e)->
-        console.log "Monitoring updates from steroids npm."
+        debug "Monitoring updates from steroids npm."
       , false
 
       source.addEventListener "error", (e)->
         if e.readyState == EventSource.CLOSED
-          console.log "No longer monitoring updates from steroids npm."
+          debug "No longer monitoring updates from steroids npm."
     else
       pollForRefresh = ()->
         xhr = new XMLHttpRequest()
@@ -41,7 +49,7 @@ class WebBridge extends Bridge
   sendMessageToNative:(messageString)->
     message = JSON.parse(messageString)
 
-    console.log "WebBridge: ", message
+    debug message
 
     failed = false
 
@@ -80,7 +88,7 @@ class WebBridge extends Bridge
         document.body.appendChild closeButton
 
       else
-        console.log "WebBridge: unsupported API method: #{message.method}"
+        debug "unsupported API method: #{message.method}"
         failed = true
 
 

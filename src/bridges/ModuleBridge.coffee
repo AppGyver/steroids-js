@@ -1,3 +1,12 @@
+debug = switch
+  when localStorage.debug? and (localStorage.debug || "").indexOf("steroids") isnt -1
+    (args...) ->
+      console.log "ModuleBridge: ", args...
+  else
+    ->
+      # Swallow debug messages
+
+
 class ModuleBridge extends Bridge
 
   constructor: ()->
@@ -12,7 +21,7 @@ class ModuleBridge extends Bridge
   sendMessageToNative:(messageString)->
     message = JSON.parse(messageString)
 
-    console.log "ModuleBridge: ", message
+    debug message
 
     failed = false
 
@@ -42,7 +51,7 @@ class ModuleBridge extends Bridge
       when "closeModal"
         steroids.component.helper.closeModal()
       else
-        console.log "ModuleBridge: unsupported API method: #{message.method}" unless message.method in failSilentlyMethods
+        debug "unsupported API method: #{message.method}" unless message.method in failSilentlyMethods
         failed = true
 
 
