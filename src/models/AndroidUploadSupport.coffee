@@ -51,13 +51,16 @@ class AndroidUploadSupport
     t1 = performance.now()
     console.log("[#{where}] took " + (t1 - @t0) + " milliseconds.");
 
+  @fireOnReadyStateChange: (instance) =>
+    if instance.onreadystatechange
+      instance.onreadystatechange()
+
   onSuccess: (instance) => () =>
     @logTime 'payload sent to the native API'
 
     #LOADING
     instance.__params.readyState = 3
-    instance.onreadystatechange()
-
+    @fireOnReadyStateChange instance
 
   onProgress: (instance) => (result) =>
     {event, size, progress} = result
@@ -95,7 +98,7 @@ class AndroidUploadSupport
     if(type == "loadend")
       #upload ended
       instance.__params.readyState = 4
-      instance.onreadystatechange()
+      @fireOnReadyStateChange instance
 
   onFailure: (instance) => (error) =>
     console.log "onFailure error: #{JSON.stringify(error)}"
@@ -125,13 +128,9 @@ class AndroidUploadSupport
         failureCallbacks: [@onFailure(instance)]
         recurringCallbacks: [@onProgress(instance)]
 
+  #24mb is the size limit to go through the API
   canUseApiForPayload: (payload) ->
-    extension = payload.name.toLowerCase().substring payload.name.lastIndexOf('.') + 1
-    isImage = "jpg" == extension ||
-                "jpeg" == extension ||
-                "png" == extension ||
-                "ico" == extension
-    #24mb is the size limit to go through the API
+    isImage = (/\.(gif|jpg|jpeg|tiff|png)$/i).test(payload.name)
     belowMaxSize = payload.size <= (1000 * 1000 * 24)
     console.log "size of payload: #{payload.size} bytes - #{(payload.size / 1000 / 1000)} mbs"
     return isImage && belowMaxSize
@@ -180,27 +179,44 @@ class AndroidUploadSupport
       enumerable: true
     }
 
+  showLoading: () => steroids.spinner.show {text:'Uploading...'}
+
+  hideLoading: () => steroids.spinner.hide()
+
+  listenOnReadyStateChange: (instance, fn) =>
+    previous = instance.onreadystatechange
+    instance.onreadystatechange = (state) =>
+      fn state
+      previous state unless !previous
+
   patchSend: () =>
     getParams = @ensureParams
     patchReadyState = @patchReadyState
     nativeSend = @nativeSend
     canUseApiForPayload = @canUseApiForPayload
     fireProgressEvent = @fireProgressEvent
+    fireOnReadyStateChange = @fireOnReadyStateChange
+    listenOnReadyStateChange = @listenOnReadyStateChange
+    showLoading = @showLoading
+    hideLoading = @hideLoading
     applyPatch = (send) ->
       XMLHttpRequest.prototype.send = (payload) ->
         params = getParams this
-        if params.method == 'PUT' && params.hasUploadHeaders && canUseApiForPayload(payload)
-          this.abort()
+        if params.method == 'PUT' && params.hasUploadHeaders
+          if canUseApiForPayload(payload)
+            patchReadyState this
 
-          patchReadyState this
+            nativeSend this, payload, params
 
-          nativeSend this, payload, params
+            fireProgressEvent this, "loadstart", 0, payload.size, true
 
-          fireProgressEvent this, "loadstart", 0, payload.size, true
-
-          #all info received -> HEADERS_RECEIVED
-          params.readyState = 2
-          this.onreadystatechange()
+            params.readyState = 2
+            fireOnReadyStateChange this
+          else
+            showLoading()
+            listenOnReadyStateChange this, () =>
+              hideLoading()
+            send.call this, payload
         else
           send.call this, payload
 
