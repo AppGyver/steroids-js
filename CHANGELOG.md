@@ -1,3 +1,8 @@
+## 3.5.17 (2015-11-13)
+
+Fixes:
+- Fix dispatching of `visibilitychange` event in some older versions of the Android Platform WebView.
+
 ## 3.5.16 (2015-10-01)
 
 Features:

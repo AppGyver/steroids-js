@@ -5,7 +5,7 @@ class Events
       msg: "dispatched visibilitychanged"
 
     visibilityChangeCustomEvent = document.createEvent "CustomEvent"
-    visibilityChangeCustomEvent.initCustomEvent "visibilitychange", true, true
+    visibilityChangeCustomEvent.initCustomEvent "visibilitychange", true, true, {}
 
     document.dispatchEvent visibilityChangeCustomEvent
 
