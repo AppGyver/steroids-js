@@ -88,7 +88,7 @@ class NavigationBar
         relativeTo = options.relativeTo ? steroids.app.path
 
         parameters = if title
-          title: title
+          title: String(title)
         else
           titleImagePath: relativeTo + options.titleImagePath
 
@@ -212,10 +212,10 @@ class NavigationBar
       params = {}
 
       if options.constructor.name == "String"
-        params.title = options
+        params.title = String(options)
 
       if options.title?
-        params.title = options.title
+        params.title = String(options.title)
         params.titleImagePath = ""
 
       params.border = options.border
