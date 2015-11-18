@@ -100,6 +100,13 @@ class window.NavigationbarController
       onSuccess: -> steroids.logger.log "SUCCESS in showing navigation bar with title"
       onFailure: -> navigator.notification.alert "FAILURE in testShowWithTitle nav bar"
 
+  @testShowWithNumberTitle: ->
+    steroids.view.navigationBar.show {
+      title: 9001
+    },
+      onSuccess: -> steroids.logger.log "SUCCESS in showing navigation bar with number title"
+      onFailure: -> navigator.notification.alert "FAILURE in testShowWithTitle nav bar"
+
   @testShowWithTitleImagePath: ->
     steroids.view.navigationBar.show {
       titleImagePath: "/icons/pill@2x.png"
@@ -173,6 +180,13 @@ class window.NavigationbarController
       title: "New title"
     },
       onSuccess: -> steroids.logger.log "SUCCESS in updating navigationBar title"
+      onFailure: -> navigator.notification.alert "FAILURE in testUpdateTitle"
+
+  @testUpdateNumberTitle: ->
+    steroids.view.navigationBar.update {
+      title: 9001
+    },
+      onSuccess: -> steroids.logger.log "SUCCESS in updating navigationBar title with number"
       onFailure: -> navigator.notification.alert "FAILURE in testUpdateTitle"
 
   @testUpdateTitleImage: ->
