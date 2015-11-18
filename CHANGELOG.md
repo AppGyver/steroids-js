@@ -1,3 +1,11 @@
+## 3.5.18 (2015-11-17)
+
+Fixes:
+- Prevent duplicate postMessage events from being received in WebViews originating the event (fixes [#1033](https://github.com/AppGyver/steroids/issues/1033))
+
+Changes:
+- Do not spam console with debug output from WebBridge and ModuleBridge
+
 ## 3.5.17 (2015-11-13)
 
 Fixes:
