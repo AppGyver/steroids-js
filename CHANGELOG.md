@@ -1,3 +1,8 @@
+## 3.5.19 (2015-11-18)
+
+Fixes:
+- Prevent triggering a crash bug affecting iOS v4.0.8 and earlier when setting a `number` as the navigation bar title
+
 ## 3.5.18 (2015-11-17)
 
 Fixes:
