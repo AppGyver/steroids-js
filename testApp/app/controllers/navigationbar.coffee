@@ -127,15 +127,27 @@ class window.NavigationbarController
       onFailure: => navigator.notification.alert "FAILURE in testSetButtonsWithOneRightButton (legacy)"
 
   # LEGACY setButtons
+  @testSetButtonsWithOneRightButtonWithNumber: ->
+    button = new steroids.buttons.NavigationBarButton
+    button.title = 42
+    button.onTap = => navigator.notification.alert "RIGHT NUMBER BUTTON TAPPED"
+
+    steroids.view.navigationBar.setButtons {
+      right: [button]
+    },
+      onSuccess: => steroids.logger.log "SUCCESS in setting one button into nav bar (legacy)"
+      onFailure: => navigator.notification.alert "FAILURE in testSetButtonsWithOneRightButton (legacy)"
+
+  # LEGACY setButtons
   @testSetButtonsWithManyButtons: (options={override:false})->
     button1 = new steroids.buttons.NavigationBarButton
-    button1.title = "EKA"
+    button1.title = "FIRST"
     button1.onTap = => navigator.notification.alert "EKA BUTTON TAPPED"
     button1.styleClass = "rounded-button primary"
 
     button2 = new steroids.buttons.NavigationBarButton
-    button2.title = "TOKA"
-    button2.onTap = => navigator.notification.alert "TOKA BUTTON TAPPED"
+    button2.title = 42
+    button2.onTap = => navigator.notification.alert "NUMBER BUTTON TAPPED"
     button2.styleId = "tokaButton"
 
     button3 = new steroids.buttons.NavigationBarButton
