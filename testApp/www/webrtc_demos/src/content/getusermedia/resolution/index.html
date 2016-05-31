@@ -87,9 +87,23 @@
 
   <script src="../../../js/adapter.js"></script>
   <script src="../../../js/common.js"></script>
-  <script src="js/main.js"></script>
-
-  <script src="../../../js/lib/ga.js"></script>
+  
+  <!-- Minimum required setup for WebRTC -->
+  <script src="http://localhost/cordova.js"></script>
+  <script>
+      document.addEventListener('deviceready', function () {
+        try {
+          cordova.plugins.iosrtc.registerGlobals();
+        }
+        catch(e) {
+          alert('Issues trying to communicate with the iosrtc plugin :( ');
+        }
+        var s = document.createElement("script");
+        s.type = "text/javascript";
+        s.src = "js/main.js";
+        document.body.appendChild(s);
+      });
+  </script>
 
 </body>
 </html>

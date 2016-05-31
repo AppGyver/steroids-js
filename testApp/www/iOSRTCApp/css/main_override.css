@@ -1,0 +1,32 @@
+* {
+	/* make transparent link selection, adjust last value opacity 0 to 1.0 */
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+	/* disable copy/paste */
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+input, textarea {
+	/* disable copy/paste */
+	-webkit-user-select: auto !important;
+	-khtml-user-select: auto !important;
+	-moz-user-select: auto !important;
+	-ms-user-select: auto !important;
+	user-select: auto !important;
+}
+
+#local-video.active {
+	opacity: 0.85 !important;
+}
+
+#mini-video.active {
+	z-index: 100 !important;
+}
+
+#remote-video.active {
+	opacity: 0.85 !important;
+}
+
