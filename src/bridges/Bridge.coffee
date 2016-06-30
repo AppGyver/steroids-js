@@ -11,7 +11,6 @@ class Bridge
     prioritizedList =
     [
       FreshAndroidBridge
-      ModuleBridge
       TizenBridge
       WebBridge
       AndroidBridge
