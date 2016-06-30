@@ -12,6 +12,15 @@ class WebBridge extends Bridge
     window.AG_SCREEN_ID = 0
     window.AG_LAYER_ID = 0
     window.AG_VIEW_ID = 0
+    @registerForClientRefresh()
+    @
+
+  @isUsable: ()->
+    return navigator.userAgent.indexOf("AppGyverSteroids") == -1
+
+  registerForClientRefresh: ->
+    # Don't poll for refresh if we're not in localhost (e.g. Composer2 web app).
+    return if window.location.hostname isnt "localhost"
 
     refresh =
       id: null
@@ -40,11 +49,6 @@ class WebBridge extends Bridge
         xhr.send()
 
       refresh.id = setInterval pollForRefresh, 1000
-
-    return @
-
-  @isUsable: ()->
-    return navigator.userAgent.indexOf("AppGyverSteroids") == -1
 
   sendMessageToNative:(messageString)->
     message = JSON.parse(messageString)
