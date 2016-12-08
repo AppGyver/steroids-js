@@ -73,15 +73,33 @@ class Bridge
       parameters: if options?.parameters? then options.parameters else {}
       callbacks: callbacks
 
+    context = @bestWindow()
+
     # Add context parameters
-    request.parameters["view"] = window.top.AG_VIEW_ID
-    request.parameters["screen"] = window.top.AG_SCREEN_ID
-    request.parameters["layer"] = window.top.AG_LAYER_ID
-    request.parameters["udid"] = window.top.AG_WEBVIEW_UDID
+    request.parameters["view"] = context.AG_VIEW_ID
+    request.parameters["screen"] = context.AG_SCREEN_ID
+    request.parameters["layer"] = context.AG_LAYER_ID
+    request.parameters["udid"] = context.AG_WEBVIEW_UDID
 
     #console.log(request)
     request = @parseMessage request
     @sendMessageToNative request
+
+  # Climb the window tree until we find the topmost window we have access to.
+  # This allows for a steroids app to optionally be embedded in an iframe.
+  bestWindow: ->
+    currentBest = window
+    loop
+      reachedTop = currentBest is currentBest.parent
+      return currentBest if reachedTop
+
+      try
+        currentBest.parent.location.href
+      catch e
+        # No access due to cross-origin
+        return currentBest
+
+      currentBest = currentBest.parent
 
   #allow for the implementation to override and decide
   #to call stringify or not (iOS we pass as objects)
