@@ -84,6 +84,7 @@ window.steroids =
 # Communication endpoint to native API
 # Native bridge is the communication layer from WebView to Native
 # Valid values are subclasses of Bridge
+window.steroids.Bridge = Bridge
 window.steroids.nativeBridge = Bridge.getBestNativeBridge()
 
 # All compnents that perform async operations are here
