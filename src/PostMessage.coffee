@@ -38,8 +38,15 @@ class PostMessage
 
       e = document.createEvent "MessageEvent"
 
-      #                  type       bubles etc    message    origin
-      e.initMessageEvent "message", false, false, message, "", "", window, null
+      # https://html.spec.whatwg.org/multipage/comms.html#messageevent
+      e.initMessageEvent "message", # type
+        false, # bubles
+        false, # cancurable
+        message, # data
+        "", # origin
+        "", # lastEventId
+        window, # source
+        [] # ports
 
       window.dispatchEvent e
     ,
